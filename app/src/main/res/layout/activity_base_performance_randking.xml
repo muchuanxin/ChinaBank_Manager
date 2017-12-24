@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:id="@+id/activity_base_performance_ranking"
+    tools:context="com.xd.aselab.chinabankmanager.kafenqi.manager.BasePerformanceRandkingActivity">
+
+    <RelativeLayout
+        android:id="@+id/act_kafenqi_perf_ranking_top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:orientation="horizontal"
+        android:background="@color/colorPrimaryDark">
+
+        <RelativeLayout
+            android:id="@+id/act_kafenqi_perf_ranking_back_btn"
+            android:layout_width="50dp"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="27dp"
+                android:src="@drawable/back_btn_bg"/>
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/act_kafenqi_perf_ranking_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="27dp"
+            android:layout_centerHorizontal="true"
+            android:textColor="#fff"
+            android:textSize="22dp"
+            android:text="银行卡客户经理业绩排名"/>
+
+        <!--<TextView
+            android:id="@+id/act_kafenqi_perf_ranking_select"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="13dp"
+            android:gravity="center"
+            android:textColor="#fff"
+            android:textSize="18dp"
+            android:text="排序"/>-->
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/act_kafenqi_perf_ranking_ll"
+        android:layout_below="@id/act_kafenqi_perf_ranking_top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:orientation="horizontal">
+        <!--<TextView
+            android:layout_marginLeft="25dp"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textSize="17dp"
+            android:textColor="#000"
+            android:text="业绩时间范围："/>
+        <TextView
+            android:id="@+id/act_kefenqi_basic_perf_select_time"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="25dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#E0E0E0"
+            android:gravity="center"
+            android:textSize="17dp"
+            android:textColor="#000"
+            android:text="近一周业绩"/>-->
+
+        <RelativeLayout
+            android:id="@+id/rl_kefenqi_worker_select_sort"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <TextView
+                android:id="@+id/act_kafenqi_perf_ranking_select"
+                android:layout_marginLeft="25dp"
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="17dp"
+                android:textColor="@color/gray_text_most"
+                android:text="业绩排序"/>
+            <ImageView
+                android:layout_toRightOf="@id/act_kafenqi_perf_ranking_select"
+                android:layout_centerVertical="true"
+                android:layout_width="11dp"
+                android:layout_height="10dp"
+                android:src="@drawable/arrow_down_hui"/>
+            <View
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_width="1dp"
+                android:layout_height="20dp"
+                android:background="@color/gray_text_most"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_kefenqi_worker_perf_select_time"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1">
+            <TextView
+                android:id="@+id/act_kefenqi_basic_perf_select_time"
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textSize="17dp"
+                android:textColor="@color/gray_text_most"
+                android:text="近一周业绩"/>
+            <ImageView
+                android:layout_toRightOf="@id/act_kefenqi_basic_perf_select_time"
+                android:layout_centerVertical="true"
+                android:layout_width="11dp"
+                android:layout_height="10dp"
+                android:src="@drawable/arrow_down_hui"/>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/grey_divider"
+        android:layout_below="@id/act_kafenqi_perf_ranking_ll"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray_bg"/>
+
+    <ListView
+        android:id="@+id/act_kafenqi_perf_ranking_list_view"
+        android:layout_below="@id/grey_divider"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@null"
+        android:visibility="gone"/>
+
+    <RelativeLayout
+        android:id="@+id/act_kafenqi_perf_ranking_no_data"
+        android:layout_below="@id/act_kafenqi_perf_ranking_top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/act_kafenqi_perf_ranking_no_data_img"
+            android:layout_marginTop="200dp"
+            android:layout_width="85dp"
+            android:layout_height="85dp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/no_data"/>
+
+        <TextView
+            android:id="@+id/act_perf_ranking_no_data_txt"
+            android:layout_below="@id/act_kafenqi_perf_ranking_no_data_img"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="14dp"
+            android:text="还没有基层经理排名信息~"/>
+    </RelativeLayout>
+
+
+</RelativeLayout>

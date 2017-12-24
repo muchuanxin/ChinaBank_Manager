@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    tools:context="com.xd.aselab.chinabankmanager.activity.MyQRcode">
+
+    <RelativeLayout
+        android:id="@+id/act_my_qrcode_top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:background="#B81C1E">
+
+        <RelativeLayout
+            android:id="@+id/act_my_qrcode_back_btn"
+            android:layout_width="50dp"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/back_btn_bg"/>
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_centerHorizontal="true"
+            android:textColor="#fff"
+            android:textSize="22dp"
+            android:text="我的二维码"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/act_my_qrcode_tips"
+        android:layout_below="@id/act_my_qrcode_top_bar"
+        android:layout_margin="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#B81C1E"
+        android:textSize="14dp"
+        android:text="注：店铺扫描二维码即可申请加盟，店铺注册成功后，基层客户经理请到  我的管理->店铺管理->店铺加盟审核  中同意或拒绝加盟"/>
+
+    <ImageView
+        android:id="@+id/act_my_qrcode_qrcode_img"
+        android:layout_below="@id/act_my_qrcode_tips"
+        android:layout_centerInParent="true"
+        android:layout_width="320dp"
+        android:layout_height="320dp" />
+
+</RelativeLayout>

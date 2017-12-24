@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#fff"
+    tools:context="com.xd.aselab.chinabankmanager.gerenxiaodai.GerenxiaodaiActivity">
+
+    <RelativeLayout
+        android:id="@+id/act_my_mana_top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:background="#B81C1E">
+
+        <RelativeLayout
+            android:id="@+id/act_gerenxiaodai_back_btn"
+            android:layout_width="50dp"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/back_btn_bg"/>
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_centerHorizontal="true"
+            android:textColor="#fff"
+            android:textSize="22dp"
+            android:text="个人消贷"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/act_my_mana_division1"
+        android:layout_below="@id/act_my_mana_top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="#EFF3F9"/>
+
+    <LinearLayout
+        android:id="@+id/act_gerenxiaodai_my_perf"
+        android:padding="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="20dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/my_performance"/>
+
+        <TextView
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:textSize="20dp"
+            android:text="我的业绩"/>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/act_my_mana_division2"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="#EFF3F9"/>
+
+    <LinearLayout
+        android:id="@+id/act_gerenxiaodai_worker_management"
+        android:layout_below="@id/act_my_mana_division2"
+        android:padding="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="20dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/base_ranking"/>
+
+        <TextView
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:textSize="20dp"
+            android:text="推广员管理"/>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/act_my_mana_division3"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="#EFF3F9"/>
+
+    <LinearLayout
+        android:id="@+id/act_gerenxiaodai_online_communication"
+        android:layout_below="@id/act_my_mana_division3"
+        android:padding="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="20dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/online"/>
+
+        <TextView
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:textSize="20dp"
+            android:text="在线交流"/>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/act_my_mana_division4"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="#EFF3F9"/>
+
+    <LinearLayout
+        android:id="@+id/act_gerenxiaodai_announcement"
+        android:layout_below="@id/act_my_mana_division4"
+        android:padding="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="20dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/announcement"/>
+
+        <TextView
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:textSize="20dp"
+            android:text="发布公告"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
+        <ImageView
+            android:id="@+id/gerenxiaodai_qrcode"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:src="@drawable/qrcode"/>
+    </LinearLayout>
+
+
+</LinearLayout>

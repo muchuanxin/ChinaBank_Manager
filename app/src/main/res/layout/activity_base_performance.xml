@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:orientation="vertical"
+    tools:context="com.xd.aselab.chinabankmanager.com.xd.aselab.chinabankmanager.activity.BasePerformance">
+
+    <RelativeLayout
+        android:id="@+id/act_base_perf_top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:background="#B81C1E">
+
+        <RelativeLayout
+            android:id="@+id/act_base_perf_back_btn"
+            android:layout_width="50dp"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/back_btn_bg"/>
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_centerHorizontal="true"
+            android:textColor="#fff"
+            android:textSize="22dp"
+            android:text="基层客户经理业绩"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_marginLeft="25dp"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textSize="17dp"
+            android:textColor="#000"
+            android:text="业绩时间范围："/>
+
+        <TextView
+            android:id="@+id/act_base_perf_select_time"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="25dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#E0E0E0"
+            android:gravity="center"
+            android:textSize="17dp"
+            android:textColor="#000"
+            android:text="近一周业绩"/>
+
+    </LinearLayout>
+
+    <!--<TextView
+        android:id="@+id/act_base_perf_red_total"
+        android:layout_marginLeft="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="17dp"
+        android:textColor="#B81C1E"
+        android:text="该时间段内共有13人成功办卡"
+        android:visibility="gone"/>-->
+
+    <ListView
+        android:id="@+id/act_base_perf_list_view"
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@null"
+        android:visibility="gone"/>
+
+    <ImageView
+        android:id="@+id/act_base_perf_no_data_img"
+        android:layout_marginTop="140dp"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:layout_gravity="center"
+        android:src="@drawable/no_data"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/act_base_perf_no_data_txt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="14dp"
+        android:text="还没有基层经理业绩信息~"
+        android:visibility="gone"/>
+
+</LinearLayout>

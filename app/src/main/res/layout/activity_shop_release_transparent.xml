@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.xd.aselab.chinabankmanager.com.xd.aselab.chinabankmanager.activity.ShopReleaseTransparent">
+
+    <RelativeLayout
+        android:id="@+id/act_shop_release_trans_top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:background="#B81C1E">
+
+        <RelativeLayout
+            android:id="@+id/act_shop_release_trans_back_btn"
+            android:layout_width="50dp"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/back_btn_bg"/>
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_centerHorizontal="true"
+            android:textColor="#fff"
+            android:textSize="22dp"
+            android:text="店铺解约审核"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:textColor="#5A5A5A"
+            android:text="请根据需要，选择以下操作"/>
+
+        <TextView
+            android:id="@+id/act_shop_release_trans_contact"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:textColor="#FF4040"
+            android:text="联系店家"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#E5E5E5"/>
+
+        <TextView
+            android:id="@+id/act_shop_release_trans_agree"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:textColor="#000"
+            android:textSize="20dp"
+            android:text="同意解约"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#E5E5E5"/>
+
+        <TextView
+            android:id="@+id/act_shop_release_trans_refuse"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:textColor="#000"
+            android:textSize="20dp"
+            android:text="拒绝解约"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="#E5E5E5"/>
+
+        <TextView
+            android:id="@+id/act_shop_release_trans_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:textColor="#000"
+            android:textSize="20dp"
+            android:text="取消"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#fff"
+    android:id="@+id/activity_kmy_preformence"
+    tools:context="com.xd.aselab.chinabankmanager.kafenqi.KMyPreformenceActivity">
+
+    <RelativeLayout
+        android:id="@+id/act_fenqi_my_perf_top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:orientation="horizontal"
+        android:background="#B81C1E">
+
+        <RelativeLayout
+            android:id="@+id/act_fenqi_my_perf_back_btn"
+            android:layout_width="50dp"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="27dp"
+                android:src="@drawable/back_btn_bg"/>
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="27dp"
+            android:layout_centerHorizontal="true"
+            android:textColor="#fff"
+            android:textSize="22dp"
+            android:text="我的业绩"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:orientation="horizontal">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <TextView
+                android:layout_marginLeft="25dp"
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="17dp"
+                android:textColor="@color/gray_text_most"
+                android:text="时间范围"/>
+            <View
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_width="1dp"
+                android:layout_height="20dp"
+                android:background="@color/gray_text_most"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_my_perf_select_time"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1">
+            <TextView
+                android:id="@+id/act_my_perf_select_time"
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textSize="17dp"
+                android:textColor="@color/gray_text_most"
+                android:text="近一周业绩"/>
+            <ImageView
+                android:layout_toRightOf="@id/act_my_perf_select_time"
+                android:layout_centerVertical="true"
+                android:layout_width="11dp"
+                android:layout_height="10dp"
+                android:src="@drawable/arrow_down_hui"/>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/gray_bg"/>
+
+    <TextView
+        android:id="@+id/act_my_perf_red_success_num"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="17dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="17dp"
+        android:textColor="@color/black_text_most"
+        android:text="分期业务成功数量：暂无"/>
+
+    <TextView
+        android:id="@+id/act_my_perf_red_success_money"
+        android:layout_marginLeft="17dp"
+        android:layout_marginTop="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="17dp"
+        android:textColor="@color/black_text_most"
+        android:text="分期业务成功金额：暂无"/>
+
+    <RelativeLayout
+        android:id="@+id/act_kafenqi_my_perf_gray_bar_top"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="40dp"
+        android:background="@color/gray_bg">
+        <View
+            android:id="@+id/red_flag"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="8dp"
+            android:layout_width="6dp"
+            android:layout_height="15dp"
+            android:background="@color/colorPrimary"/>
+        <TextView
+            android:id="@+id/act_kafenqi_my_perf_gray_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="18dp"
+            android:layout_centerVertical="true"
+            android:textColor="@color/gray_bar_text"
+            android:textSize="16dp"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_chart"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <com.github.mikephil.charting.charts.BarChart
+            android:layout_marginTop="5dp"
+            android:id="@+id/chart1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+
+    <ImageView
+        android:id="@+id/act_kafenqi_my_perf_no_data_img"
+        android:layout_marginTop="120dp"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:layout_gravity="center"
+        android:src="@drawable/no_data"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/act_kafenqi_my_perf_no_data_txt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="14dp"
+        android:text="还没有业绩数据~"
+        android:visibility="gone"/>
+
+</LinearLayout>

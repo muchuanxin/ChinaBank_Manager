@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#B81C1E</color>
+    <color name="colorPrimaryDark">#b50029</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="grey">#A0A0A0</color>
+    <color name="black">#000</color>
+    <color name="translucent_background">#80000000</color>
+    <color name="orange">#ef8000</color>
+    <color name="white">#ffffff</color>
+    <color name="gray">#8e8e8e</color>
+    <!-- 百分之五十透明度的灰色  -->
+    <color name="black_alpha_fifty">#7F000000</color>
+    <color name="none_color">#00000000</color>
+    <color name="gray_light">#E0E0E0</color>
+    <color name="gray_bar_text">#3A3A3A</color>
+    <color name="gray_text">#5B5B5B</color>
+    <color name="transparent">#00000000</color>
+    <color name="divider">#BFBFBF</color>
+    <color name="gray_bg">#eeeeee</color>
+    <color name="gray_line">#aaaaaa</color>
+    <color name="gray_text_most_1">#9e9e9e</color>
+    <color name="gray_text_most">#8d8d8d</color>
+    <color name="black_text_most">#2d2d2d</color>
+    <color name="black_text_light">#6b6b6b</color>
+    <color name="list_item_grey_bg">#e5e5e5</color>
+    <color name="list_grey_bg">#d2d5d7</color>
+    <color name="red_histogram">#dc3225</color>
+    <color name="blue_text">#67aeee</color>
+
+    <!--<color name="china_bank_red">#B81C1E</color>-->
+    <color name="china_bank_red">#b50029</color>
+    <color name="my_transparent">#b0000000</color>
+
+</resources>

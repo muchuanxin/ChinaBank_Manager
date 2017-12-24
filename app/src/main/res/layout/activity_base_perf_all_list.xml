@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_bg"
+    android:orientation="vertical"
+    android:id="@+id/activity_base_perf_all_list"
+    tools:context="com.xd.aselab.chinabankmanager.my.BasePerfAllListActivity">
+
+    <RelativeLayout
+        android:id="@+id/act_base_perf_all_list_top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:orientation="horizontal"
+        android:background="#B81C1E">
+
+        <RelativeLayout
+            android:id="@+id/act_base_perf_all_list_back_btn"
+            android:layout_width="50dp"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="27dp"
+                android:src="@drawable/back_btn_bg"/>
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="27dp"
+            android:layout_centerHorizontal="true"
+            android:textColor="#fff"
+            android:textSize="22dp"
+            android:text="银行卡客户经理业绩"/>
+
+        <TextView
+            android:id="@+id/act_base_perf_all_list_sort"
+            android:padding="7dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="17dp"
+            android:layout_marginRight="15dp"
+            android:layout_alignParentRight="true"
+            android:textSize="18dp"
+            android:textColor="#fff"
+            android:text="排序"
+            android:visibility="gone"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:orientation="horizontal"
+        android:background="@color/white">
+        <!--<TextView
+            android:layout_marginLeft="25dp"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textSize="17dp"
+            android:textColor="#000"
+            android:text="业绩时间范围："/>
+        <TextView
+            android:id="@+id/act_base_perf_all_list_select_time"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="25dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#E0E0E0"
+            android:gravity="center"
+            android:textSize="17dp"
+            android:textColor="#000"
+            android:text="近一周业绩"/>-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <TextView
+                android:layout_marginLeft="25dp"
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="17dp"
+                android:textColor="@color/gray_text_most"
+                android:text="时间范围"/>
+            <View
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_width="1dp"
+                android:layout_height="20dp"
+                android:background="@color/gray_text_most"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_my_perf_select_time"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1">
+            <TextView
+                android:id="@+id/act_base_perf_all_list_select_time"
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textSize="17dp"
+                android:textColor="@color/gray_text_most"
+                android:text="近一周业绩"/>
+            <ImageView
+                android:layout_toRightOf="@id/act_base_perf_all_list_select_time"
+                android:layout_centerVertical="true"
+                android:layout_width="11dp"
+                android:layout_height="10dp"
+                android:src="@drawable/arrow_down_hui"/>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/gray_bg"/>
+
+    <ListView
+        android:id="@+id/base_perf_all_list_listView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:dividerHeight="5dp"
+        android:divider="@color/transparent"
+        android:visibility="gone"/>
+
+    <LinearLayout
+        android:id="@+id/act_base_perf_all_list_no_data"
+        android:layout_marginTop="120dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <ImageView
+            android:layout_width="85dp"
+            android:layout_height="85dp"
+            android:layout_gravity="center"
+            android:src="@drawable/no_data"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="当前时间段没有数据~"/>
+    </LinearLayout>
+
+
+</LinearLayout>

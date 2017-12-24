@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    tools:context="com.xd.aselab.chinabankmanager.com.xd.aselab.chinabankmanager.activity.MyContact">
+
+    <RelativeLayout
+        android:id="@+id/act_my_cont_top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:background="#B81C1E">
+
+        <RelativeLayout
+            android:id="@+id/act_my_cont_back_btn"
+            android:layout_width="50dp"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/back_btn_bg"/>
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_centerHorizontal="true"
+            android:textColor="#fff"
+            android:textSize="22dp"
+            android:text="我的联系人"/>
+
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/act_my_cont_list_view"
+        android:layout_below="@id/act_my_cont_top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <!--<TextView
+        android:id="@+id/act_my_cont_manager_label"
+        android:layout_below="@id/act_my_cont_top_bar"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000"
+        android:textSize="20dp"
+        android:text="分区经理："/>
+
+    <TextView
+        android:id="@+id/act_my_cont_manager_txt"
+        android:layout_toRightOf="@id/act_my_cont_manager_label"
+        android:layout_alignBottom="@id/act_my_cont_manager_label"
+        android:layout_marginLeft="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000"
+        android:textSize="20dp"/>
+
+    <TextView
+        android:id="@+id/act_my_cont_job_num_label"
+        android:layout_below="@id/act_my_cont_manager_label"
+        android:layout_alignLeft="@id/act_my_cont_manager_label"
+        android:layout_marginTop="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000"
+        android:textSize="20dp"
+        android:text="工号："/>
+
+    <TextView
+        android:id="@+id/act_my_cont_job_num_txt"
+        android:layout_alignLeft="@id/act_my_cont_manager_txt"
+        android:layout_alignBottom="@id/act_my_cont_job_num_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000"
+        android:textSize="20dp"/>
+
+    <TextView
+        android:id="@+id/act_my_cont_tel_label"
+        android:layout_below="@id/act_my_cont_job_num_label"
+        android:layout_alignLeft="@id/act_my_cont_manager_label"
+        android:layout_marginTop="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000"
+        android:textSize="20dp"
+        android:text="电话"/>
+
+    <TextView
+        android:id="@+id/act_my_cont_tel_txt"
+        android:layout_alignLeft="@id/act_my_cont_manager_txt"
+        android:layout_alignBottom="@id/act_my_cont_tel_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000"
+        android:textSize="20dp"/>
+
+    <TextView
+        android:id="@+id/act_my_cont_landline_label"
+        android:layout_below="@id/act_my_cont_tel_label"
+        android:layout_alignLeft="@id/act_my_cont_manager_label"
+        android:layout_marginTop="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000"
+        android:textSize="20dp"
+        android:text="座机"/>
+
+    <TextView
+        android:id="@+id/act_my_cont_landline_txt"
+        android:layout_alignLeft="@id/act_my_cont_manager_txt"
+        android:layout_alignBottom="@id/act_my_cont_landline_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000"
+        android:textSize="20dp"/>-->
+
+</RelativeLayout>

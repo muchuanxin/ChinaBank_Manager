@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="105dp">
+
+    <TextView
+        android:id="@+id/list_view_my_contact_name"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:text="王光明"/>
+
+    <TextView
+        android:id="@+id/list_view_my_contact_job_number"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="12dp"
+        android:layout_marginRight="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18dp"
+        android:text="工号：00001"/>
+
+    <TextView
+        android:id="@+id/list_view_my_contact_tel"
+        android:layout_below="@id/list_view_my_contact_name"
+        android:layout_alignLeft="@id/list_view_my_contact_name"
+        android:layout_marginTop="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18dp"
+        android:text="手机：6431321231"/>
+
+    <TextView
+        android:id="@+id/list_view_my_contact_landline"
+        android:layout_below="@id/list_view_my_contact_tel"
+        android:layout_alignLeft="@id/list_view_my_contact_name"
+        android:layout_marginTop="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18dp"
+        android:text="座机：535483254"/>
+
+</RelativeLayout>

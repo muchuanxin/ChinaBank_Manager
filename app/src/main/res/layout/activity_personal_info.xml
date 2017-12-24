@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    tools:context="com.xd.aselab.chinabankmanager.my.PersonalInfo">
+
+    <RelativeLayout
+        android:id="@+id/act_personal_info_top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:background="#B81C1E">
+
+        <RelativeLayout
+            android:id="@+id/act_personal_info_back_btn"
+            android:layout_width="50dp"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/back_btn_bg"/>
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_centerHorizontal="true"
+            android:textColor="#fff"
+            android:textSize="22dp"
+            android:text="个人信息"/>
+
+        <TextView
+            android:id="@+id/act_personal_info_update"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="13dp"
+            android:layout_marginRight="10dp"
+            android:gravity="center"
+            android:textColor="#fff"
+            android:textSize="16dp"
+            android:text="  修改"/>
+
+        <TextView
+            android:id="@+id/act_personal_info_my_contact"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toLeftOf="@id/act_personal_info_update"
+            android:layout_marginTop="13dp"
+            android:gravity="center"
+            android:textColor="#fff"
+            android:textSize="16dp"
+            android:text="联系人  |"/>
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_below="@id/act_personal_info_top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.xd.aselab.chinabankmanager.util.CircleImageView
+                android:id="@+id/head"
+                android:layout_marginTop="20dp"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/portrait"/>
+
+            <TextView
+                android:id="@+id/act_personal_info_name_label"
+                android:layout_below="@id/head"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000"
+                android:textSize="20dp"
+                android:text="姓名"/>
+
+            <TextView
+                android:id="@+id/act_personal_info_name_txt"
+                android:layout_alignParentRight="true"
+                android:layout_alignBottom="@id/act_personal_info_name_label"
+                android:layout_marginRight="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:text="default"/>
+
+            <TextView
+                android:id="@+id/act_personal_info_job_num_label"
+                android:layout_below="@id/act_personal_info_name_label"
+                android:layout_alignLeft="@id/act_personal_info_name_label"
+                android:layout_marginTop="25dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000"
+                android:textSize="20dp"
+                android:text="员工编号"/>
+
+            <TextView
+                android:id="@+id/act_personal_info_job_num_txt"
+                android:layout_alignRight="@id/act_personal_info_name_txt"
+                android:layout_alignBottom="@id/act_personal_info_job_num_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:text="default"/>
+
+            <TextView
+                android:id="@+id/act_personal_info_emp_type_label"
+                android:layout_below="@id/act_personal_info_job_num_label"
+                android:layout_alignLeft="@id/act_personal_info_name_label"
+                android:layout_marginTop="25dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000"
+                android:textSize="20dp"
+                android:text="员工类型"/>
+
+            <TextView
+                android:id="@+id/act_personal_info_emp_type_txt"
+                android:layout_alignRight="@id/act_personal_info_name_txt"
+                android:layout_alignBottom="@id/act_personal_info_emp_type_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:text="default"/>
+
+            <RelativeLayout
+                android:id="@+id/act_personal_info_tel"
+                android:layout_below="@id/act_personal_info_emp_type_label"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+                <TextView
+                    android:layout_marginLeft="20dp"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000"
+                    android:textSize="20dp"
+                    android:text="手机"/>
+
+                <TextView
+                    android:id="@+id/act_personal_info_tel_txt"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="20dp"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18dp"
+                    android:text="default"/>
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/act_personal_info_landline_label"
+                android:layout_below="@id/act_personal_info_tel"
+                android:layout_alignLeft="@id/act_personal_info_name_label"
+                android:layout_marginTop="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000"
+                android:textSize="20dp"
+                android:text="座机"/>
+
+            <TextView
+                android:id="@+id/act_personal_info_landline_txt"
+                android:layout_alignRight="@id/act_personal_info_name_txt"
+                android:layout_alignBottom="@id/act_personal_info_landline_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:text="default"/>
+
+            <RelativeLayout
+                android:id="@+id/act_personal_info_division1"
+                android:layout_below="@id/act_personal_info_landline_label"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:background="#EFF3F9"/>
+
+            <RelativeLayout
+                android:id="@+id/act_personal_info_QRcode"
+                android:visibility="gone"
+                android:layout_below="@id/act_personal_info_division1"
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+                <TextView
+                    android:id="@+id/act_personal_info_QRcode_label"
+                    android:layout_marginLeft="20dp"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000"
+                    android:textSize="20dp"
+                    android:text="我的二维码"/>
+
+                <ImageView
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="20dp"
+                    android:layout_centerVertical="true"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/qrcode"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/act_personal_info_psw"
+                android:layout_below="@id/act_personal_info_QRcode"
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+                <TextView
+                    android:layout_marginLeft="20dp"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000"
+                    android:textSize="20dp"
+                    android:text="密码"/>
+
+                <TextView
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="20dp"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18dp"
+                    android:text="******"/>
+
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/act_personal_info_check_out"
+                android:layout_below="@id/act_personal_info_psw"
+                android:layout_margin="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:background="#B81C1E"
+                android:textColor="#fff"
+                android:textSize="20dp"
+                android:text="退出登录"/>
+        </RelativeLayout>
+    </ScrollView>
+
+
+</RelativeLayout>

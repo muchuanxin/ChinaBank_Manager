@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
+
+    <TextView
+        android:id="@+id/list_view_base_info_name"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18dp"
+        android:text="经理：西风雪"/>
+
+    <TextView
+        android:id="@+id/list_view_base_info_job_number"
+        android:layout_below="@id/list_view_base_info_name"
+        android:layout_alignLeft="@id/list_view_base_info_name"
+        android:layout_marginTop="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black_text_most"
+        android:textSize="16dp"
+        android:text="工号：0000002"/>
+
+    <TextView
+        android:id="@+id/list_view_base_info_tel"
+        android:layout_below="@id/list_view_base_info_job_number"
+        android:layout_alignLeft="@id/list_view_base_info_name"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16dp"
+        android:textColor="@color/black_text_most"
+        android:text="联系方式：17856236984"/>
+
+    <!--<TextView
+        android:id="@+id/list_view_base_info_branch_sub"
+        android:layout_below="@id/list_view_base_info_tel"
+        android:layout_alignLeft="@id/list_view_base_info_name"
+        android:layout_marginTop="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18dp"
+        android:text="工作地点：中国银行西安太白小区支行"/>-->
+
+</RelativeLayout>

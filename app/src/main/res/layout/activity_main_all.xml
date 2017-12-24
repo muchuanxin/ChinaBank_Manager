@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    tools:context="com.xd.aselab.chinabankmanager.activity.MainActivity_all">
+
+    <RelativeLayout
+        android:id="@+id/act_main_boss_top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:background="#B81C1E">
+
+        <TextView
+            android:id="@+id/act_main_toast_i"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="27dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/rounded_circle"
+            android:gravity="center"
+            android:textSize="15dp"
+            android:textColor="#fff"
+            android:textAllCaps="false"
+            android:text="i"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_centerHorizontal="true"
+            android:textColor="#fff"
+            android:textSize="22dp"
+            android:text="金融获客"/>
+
+        <ImageView
+            android:id="@+id/act_main_personal_info"
+            android:layout_width="90dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="15dp"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/personal_info"/>
+
+    </RelativeLayout>
+
+    <com.xd.aselab.chinabankmanager.fragment.ImageCycleView
+        android:id="@+id/act_main_ImageCycleView"
+        android:layout_below="@id/act_main_boss_top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="180dp" />
+
+    <LinearLayout
+        android:layout_below="@id/act_main_ImageCycleView"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="@dimen/ui_10_dip"
+        android:layout_marginRight="@dimen/ui_10_dip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:id="@+id/act_main_card"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:layout_weight="1" >
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/my_management"/>
+                <TextView
+                    android:layout_marginTop="3dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textSize="16dp"
+                    android:textColor="#000"
+                    android:text="信用卡发卡"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/act_main_kafenqi"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:layout_weight="1" >
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/kafenqi"/>
+                <TextView
+                    android:layout_marginTop="3dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textSize="16dp"
+                    android:textColor="#000"
+                    android:text="信用卡分期"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/act_main_gerenxiaodai"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:layout_weight="1" >
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/gerenxiaodai"/>
+                <TextView
+                    android:layout_marginTop="3dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textSize="16dp"
+                    android:textColor="#000"
+                    android:text="特惠商圈"/>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:id="@+id/act_main_hot_recommend"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:layout_weight="1" >
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/hot_recommend"/>
+                <TextView
+                    android:layout_marginTop="3dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textSize="16dp"
+                    android:textColor="#000"
+                    android:text="营销导航"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/act_main_china_bank_network"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:layout_weight="1" >
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/my_network"/>
+                <TextView
+                    android:layout_marginTop="3dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textSize="16dp"
+                    android:textColor="#000"
+                    android:text="省行近期重点\n工作"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/act_main_china_bank_benefit"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:layout_weight="1" >
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/china_bank_benefit"/>
+                <TextView
+                    android:layout_marginTop="3dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textSize="16dp"
+                    android:textColor="#000"
+                    android:text="市场活动集锦"/>
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </LinearLayout>
+    <ImageView
+        android:visibility="gone"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="70dp"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:src="@drawable/juyunlogo"/>
+
+</RelativeLayout>

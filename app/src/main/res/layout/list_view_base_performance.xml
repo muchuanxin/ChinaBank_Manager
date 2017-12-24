@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/list_view_base_perf_name"
+        android:layout_marginTop="6dp"
+        android:layout_marginLeft="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#B81C1E"
+        android:textSize="20dp"
+        android:text="刘昊贤"/>
+
+    <TextView
+        android:id="@+id/list_view_base_perf_saoma"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18dp"
+        android:text="扫码人数：0"/>
+
+    <TextView
+        android:id="@+id/list_view_base_perf_banka"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18dp"
+        android:text="成功办卡人数：0"/>
+
+</LinearLayout>

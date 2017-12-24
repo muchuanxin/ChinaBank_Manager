@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/choose_bg"
+    android:padding="2dp">
+    <TextView
+        android:id="@+id/sort_item" 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="近一周业绩"
+        android:layout_marginLeft="10dp"
+        android:textColor="@color/gray_text_most"
+        android:textSize="16dp"
+        android:layout_centerVertical="true"/>
+    <ImageView
+        android:id="@+id/iv_choose"
+        android:visibility="gone"
+        android:layout_toRightOf="@id/sort_item"
+        android:layout_marginLeft="3dp"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_centerVertical="true"
+        android:src="@drawable/item_choose"/>
+</RelativeLayout>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    tools:context="com.xd.aselab.chinabankmanager.activity.PerformanceRanking">
+
+    <RelativeLayout
+        android:id="@+id/act_perf_ranking_top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:background="#B81C1E">
+
+        <RelativeLayout
+            android:id="@+id/act_perf_ranking_back_btn"
+            android:layout_width="50dp"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/back_btn_bg"/>
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/act_perf_ranking_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_centerHorizontal="true"
+            android:textColor="#fff"
+            android:textSize="22dp"
+            android:text="累计业绩排名"/>
+
+        <TextView
+            android:id="@+id/act_perf_ranking_select"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="13dp"
+            android:gravity="center"
+            android:textColor="#fff"
+            android:textSize="18dp"
+            android:text="选择"/>
+
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/act_perf_ranking_list_view"
+        android:layout_below="@id/act_perf_ranking_top_bar"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@null"
+        android:visibility="gone"/>
+
+    <ImageView
+        android:id="@+id/act_perf_ranking_no_data_img"
+        android:layout_below="@id/act_perf_ranking_top_bar"
+        android:layout_marginTop="200dp"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:layout_gravity="center"
+        android:src="@drawable/no_data"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/act_perf_ranking_no_data_txt"
+        android:layout_below="@id/act_perf_ranking_no_data_img"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="14dp"
+        android:text="还没有基层经理排名信息~"
+        android:visibility="gone"/>
+
+</RelativeLayout>

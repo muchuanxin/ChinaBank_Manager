@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    tools:context="com.xd.aselab.chinabankmanager.kafenqi.manager.MannagerKafenqiActivity">
+
+    <RelativeLayout
+        android:id="@+id/act_my_mana_top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:orientation="horizontal"
+        android:background="@color/colorPrimaryDark">
+
+        <RelativeLayout
+            android:id="@+id/act_manager_my_mana_back_btn"
+            android:layout_width="50dp"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="27dp"
+                android:src="@drawable/back_btn_bg"/>
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="27dp"
+            android:layout_centerHorizontal="true"
+            android:textColor="#fff"
+            android:textSize="22dp"
+            android:text="卡分期"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/act_manager_my_mana_division1"
+        android:layout_below="@id/act_my_mana_top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/gray_bg"/>
+
+    <LinearLayout
+        android:id="@+id/act_manager_my_mana_my_perf"
+        android:layout_below="@id/act_manager_my_mana_division1"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="30dp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
+            android:src="@drawable/my_all_performence"/>
+
+        <TextView
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:textSize="18dp"
+            android:text="我的业绩"/>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/act_manager_my_mana_division2"
+        android:layout_below="@id/act_manager_my_mana_my_perf"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/gray_bg"/>
+
+    <LinearLayout
+        android:id="@+id/act_manager_my_mana_base_ranking"
+        android:layout_below="@id/act_manager_my_mana_division2"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="30dp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
+            android:src="@drawable/base_ranking"/>
+
+        <TextView
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:textSize="18dp"
+            android:text="银行卡客户经理业绩排名"/>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/act_manager_my_mana_division3"
+        android:layout_below="@id/act_manager_my_mana_base_ranking"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/gray_bg"/>
+
+    <LinearLayout
+        android:id="@+id/act_manager_my_mana_base_info"
+        android:layout_below="@id/act_manager_my_mana_division3"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="30dp"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
+            android:src="@drawable/base_info"/>
+
+        <TextView
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:textSize="18dp"
+            android:text="银行卡客户经理信息"/>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/act_manager_my_mana_division4"
+        android:layout_below="@id/act_manager_my_mana_base_info"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/gray_bg"/>
+
+    <LinearLayout
+        android:id="@+id/act_manager_my_mana_base_perf"
+        android:layout_below="@id/act_manager_my_mana_division4"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="30dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/my_performance"/>
+
+        <TextView
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:textSize="18dp"
+            android:text="银行卡客户经理业绩"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

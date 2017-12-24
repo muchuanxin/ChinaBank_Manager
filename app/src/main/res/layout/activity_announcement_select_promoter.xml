@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:scrollbars="vertical"
+    android:fadingEdge="vertical">-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_bg">
+
+    <RelativeLayout
+        android:id="@+id/act_announ_select_promoter_top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:orientation="horizontal"
+        android:background="@color/colorPrimaryDark">
+
+        <RelativeLayout
+            android:id="@+id/act_announ_select_promoter_back_btn"
+            android:layout_width="50dp"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="27dp"
+                android:src="@drawable/back_btn_bg"/>
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="27dp"
+            android:layout_centerHorizontal="true"
+            android:textColor="#fff"
+            android:textSize="22dp"
+            android:text="选择推广员"/>
+
+        <TextView
+            android:id="@+id/act_announ_promoter_ensure"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="25dp"
+            android:gravity="center"
+            android:textColor="#fff"
+            android:textSize="18dp"
+            android:text="确定"/>
+
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/act_announcement_list_view"
+        android:layout_below="@id/act_announ_select_promoter_top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="5dp"
+        android:dividerHeight="5dp"
+        android:divider="@color/gray_bg" />
+
+    <ImageView
+        android:id="@+id/act_announcement_no_data_img"
+        android:layout_below="@id/act_announ_select_promoter_top_bar"
+        android:layout_marginTop="200dp"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/no_data"/>
+
+    <TextView
+        android:id="@+id/act_announcement_no_data_txt"
+        android:layout_below="@id/act_announcement_no_data_img"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="14dp"
+        android:text="没有推广员信息~"/>
+
+
+</RelativeLayout>
+<!--</ScrollView>-->

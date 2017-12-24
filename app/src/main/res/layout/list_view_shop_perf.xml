@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="110dp">
+    
+    <TextView
+        android:id="@+id/list_view_shop_perf_shop_name"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#B81C1E"
+        android:textSize="21dp"/>
+
+    <TextView
+        android:id="@+id/list_view_shop_perf_release"
+        android:layout_alignParentRight="true"
+        android:layout_alignBottom="@id/list_view_shop_perf_shop_name"
+        android:layout_marginRight="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="14dp"/>
+
+    <TextView
+        android:id="@+id/list_view_shop_perf_manager_name"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="12dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18dp"/>
+
+    <TextView
+        android:id="@+id/list_view_shop_perf_saoma"
+        android:layout_below="@id/list_view_shop_perf_shop_name"
+        android:layout_alignLeft="@id/list_view_shop_perf_shop_name"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18dp"/>
+
+    <TextView
+        android:id="@+id/list_view_shop_perf_banka"
+        android:layout_below="@id/list_view_shop_perf_saoma"
+        android:layout_alignLeft="@id/list_view_shop_perf_shop_name"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18dp"/>
+
+</RelativeLayout>
