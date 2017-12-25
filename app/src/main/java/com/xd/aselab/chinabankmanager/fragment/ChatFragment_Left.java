@@ -1,5 +1,6 @@
 package com.xd.aselab.chinabankmanager.fragment;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -45,19 +46,20 @@ public class ChatFragment_Left extends Fragment {
     private String[][] basic_child_headimage;
     private String[][] basic_child_account;
     private String[] parent;
+    private Context mContext;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         root = inflater.inflate(R.layout.chat_fragment_left, container, false);
         extendable_listview = (ExpandableListView) root.findViewById(R.id.expandable_listview);
-        sp = new SharePreferenceUtil(getActivity(), "user");
+        sp = new SharePreferenceUtil(mContext, "user");
 
 
         extendable_listview.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-                Intent intent = new Intent(getActivity(), ChatActivity.class);
+                Intent intent = new Intent(mContext, ChatActivity.class);
                 intent.putExtra("jump", "left");
                 intent.putExtra("receiver",basic_child_account[groupPosition][childPosition]);
                 intent.putExtra("receiver_name",basic_child[groupPosition][childPosition]);
@@ -67,6 +69,12 @@ public class ChatFragment_Left extends Fragment {
             }
         });
         return root;
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        this.mContext = getActivity();
+        super.onAttach(context);
     }
 
     @Override
@@ -152,7 +160,7 @@ public class ChatFragment_Left extends Fragment {
             try {
                 switch (msg.what) {
                     case 0:
-                        Toast.makeText(getActivity(), msg.obj.toString(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(mContext, msg.obj.toString(), Toast.LENGTH_SHORT).show();
                         break;
                     case 1:
 //MANAGER
@@ -175,11 +183,11 @@ public class ChatFragment_Left extends Fragment {
 
                             //false表示不显示人名字后面的  复选框
                             //child 是联系人名字的二维数组  head_image 是头像的二维数组
-                            adapter = new MyExtendableAdapter(parent, basic_child, getActivity(), false, basic_child_headimage, basic_child_account);
+                            adapter = new MyExtendableAdapter(parent, basic_child, mContext, false, basic_child_headimage, basic_child_account);
                             adapter.setCheckBoxInvisible();
                             extendable_listview.setAdapter(adapter);
                         } else {
-                            Toast.makeText(getActivity(), obj.getString("message"), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(mContext, obj.getString("message"), Toast.LENGTH_SHORT).show();
                         }
                         break;
                     case 2:
@@ -189,7 +197,7 @@ public class ChatFragment_Left extends Fragment {
                         JSONObject my_special_shop = new JSONObject((String) map.get("my_special_shop"));
                         JSONObject my_4s_list = new JSONObject((String) map.get("my_4s_list"));
                         if (my_boss.getString("status").equals("false") || my_special_shop.getString("status").equals("false") || my_4s_list.getString("status").equals("false")) {
-                            Toast.makeText(getActivity(), my_boss.getString("message"), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(mContext, my_boss.getString("message"), Toast.LENGTH_SHORT).show();
                         } else {
 
                             JSONArray tempArray1 = my_boss.getJSONArray("list");
@@ -232,7 +240,7 @@ public class ChatFragment_Left extends Fragment {
                             }
                             //false表示不显示人名字后面的  复选框
                             //child 是联系人名字的二维数组  head_image 是头像的二维数组
-                            adapter = new MyExtendableAdapter(parent, basic_child, getActivity(), false, basic_child_headimage, basic_child_account);
+                            adapter = new MyExtendableAdapter(parent, basic_child, mContext, false, basic_child_headimage, basic_child_account);
                             adapter.setCheckBoxInvisible();
                             extendable_listview.setAdapter(adapter);
                         }

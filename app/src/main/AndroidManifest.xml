@@ -582,7 +582,8 @@
             android:screenOrientation="nosensor"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan|stateHidden"/>
-        <activity android:name=".kafenqi.KWorkerManage.activity.NewNotificationDetailNewActivity"
+        <activity
+            android:name=".kafenqi.KWorkerManage.activity.NewNotificationDetailNewActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="nosensor"
             android:theme="@style/AppTheme.NoActionBar"
@@ -605,6 +606,8 @@
             android:screenOrientation="nosensor"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity
+            android:name="com.mabeijianxi.smallvideorecord2.MediaRecorderActivity"/>
     </application>
 
 </manifest>

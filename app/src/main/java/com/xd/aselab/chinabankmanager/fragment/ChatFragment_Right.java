@@ -1,5 +1,6 @@
 package com.xd.aselab.chinabankmanager.fragment;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -44,6 +45,7 @@ public class ChatFragment_Right extends Fragment {
     private JSONArray group2;
     private int[][] group_id;
     private String[][] group_name;
+    private Context mContext;
 
     String[] parent = new String[]{"我创建的群", "我加入的群"};
 
@@ -55,13 +57,13 @@ public class ChatFragment_Right extends Fragment {
 
 
         extendable_listview = (ExpandableListView) root.findViewById(R.id.extendable_listview);
-        sp = new SharePreferenceUtil(getActivity(), "user");
+        sp = new SharePreferenceUtil(mContext, "user");
 
 
         extendable_listview.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-                Intent intent = new Intent(getActivity(), GroupChatActivity.class);
+                Intent intent = new Intent(mContext, GroupChatActivity.class);
                 if (groupPosition != 0) {
                     //right11111   =说明是群聊   我加入的群
                     intent.putExtra("group_info", "right1");
@@ -105,7 +107,7 @@ public class ChatFragment_Right extends Fragment {
             super.handleMessage(msg);
             switch (msg.what) {
                 case 0:
-                    Toast.makeText(getActivity(), msg.obj.toString(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mContext, msg.obj.toString(), Toast.LENGTH_SHORT).show();
                     break;
                 case 1:
                     try {
@@ -113,7 +115,7 @@ public class ChatFragment_Right extends Fragment {
                         String jsonStr = map.get("jsonStr") + "";
                         JSONObject obj = new JSONObject(jsonStr);
                         if (obj.getString("status").equals("false")) {
-                            Toast.makeText(getActivity(), obj.getString("message"), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(mContext, obj.getString("message"), Toast.LENGTH_SHORT).show();
                             break;
                         } else if (obj.getString("status").equals("true")) {
                             group1 = obj.getJSONArray("group");
@@ -123,7 +125,7 @@ public class ChatFragment_Right extends Fragment {
                         String IjoinStr = map.get("IjoinStr") + "";
                         JSONObject Ijoinobj = new JSONObject(IjoinStr);
                         if (Ijoinobj.getString("status").equals("false")) {
-                            Toast.makeText(getActivity(), obj.getString("message"), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(mContext, obj.getString("message"), Toast.LENGTH_SHORT).show();
                             break;
                         } else if (Ijoinobj.getString("status").equals("true")) {
                             group2 = Ijoinobj.getJSONArray("group");
@@ -154,7 +156,7 @@ public class ChatFragment_Right extends Fragment {
 
                         }
 
-                        adapter = new MyExtendableAdapter(parent, group_name, getActivity(), false, child_head, null);
+                        adapter = new MyExtendableAdapter(parent, group_name, mContext, false, child_head, null);
                         extendable_listview.setAdapter(adapter);
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -164,6 +166,12 @@ public class ChatFragment_Right extends Fragment {
             }
         }
     };
+
+    @Override
+    public void onAttach(Context context) {
+        this.mContext = getActivity();
+        super.onAttach(context);
+    }
 
     @Override
     public void onResume() {
