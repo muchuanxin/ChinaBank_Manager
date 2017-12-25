@@ -127,7 +127,27 @@ public class MyReceiver extends BroadcastReceiver {
 					i.putExtra("group_id",json_extra.getString("group_id"));
 					i.putExtra("group_name",json_extra.getString("group_name"));
 					i.putExtra("group_head",json_extra.getString("group_head"));
-					Log.e("www","group_name:---"+json_extra.getString("group_name"));
+					Log.e("www","group_name1:---"+json_extra.getString("group_name"));
+					//i.putExtras(bundle2);
+					context.startActivity(i);
+				}else if(Constants.CreateChatGroup.equals(type)){
+					Log.e(TAG,"Constants.CreateChatGroup");
+					Intent i = new Intent(context, GroupChatActivity.class);  //自定义打开群聊界面
+					i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK| Intent.FLAG_ACTIVITY_CLEAR_TOP);
+					i.putExtra("group_id",json_extra.getString("group_id"));
+					i.putExtra("group_name",json_extra.getString("group_name"));
+					i.putExtra("group_head",json_extra.getString("group_head"));
+					Log.e("www","group_name2:---"+json_extra.getString("group_name"));
+					//i.putExtras(bundle2);
+					context.startActivity(i);
+				}else if(Constants.InviteMemberToGroup.equals(type)){
+					Log.e(TAG,"Constants.InviteMemberToGroup");
+					Intent i = new Intent(context, GroupChatActivity.class);  //自定义打开群聊界面
+					i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK| Intent.FLAG_ACTIVITY_CLEAR_TOP);
+					i.putExtra("group_id",json_extra.getString("group_id"));
+					i.putExtra("group_name",json_extra.getString("group_name"));
+					i.putExtra("group_head",json_extra.getString("group_head"));
+					Log.e("www","group_name3:---"+json_extra.getString("group_name"));
 					//i.putExtras(bundle2);
 					context.startActivity(i);
 				}
