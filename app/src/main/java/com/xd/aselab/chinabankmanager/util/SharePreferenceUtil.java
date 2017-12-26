@@ -254,4 +254,14 @@ public class SharePreferenceUtil {
     public String getGroupChatExtra() {
         return sp.getString("groupChatExtra", "");
     }
+
+    //地图marker缓存
+    public void setMarkerCache(String markerCache) {
+        editor.putString("markerCache", markerCache);
+        editor.commit();
+    }
+    public String getMarkerCache() {
+        return sp.getString("markerCache", "");
+    }
+
 }

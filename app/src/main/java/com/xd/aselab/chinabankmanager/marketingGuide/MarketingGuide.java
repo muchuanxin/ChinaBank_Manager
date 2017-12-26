@@ -77,11 +77,12 @@ public class MarketingGuide extends AppCompatActivity implements LocationSource,
     private String action;
     private String[] names=null;
     private String[] addrs=null;
+    private JSONObject markerCache;
     //private List<WorkerVO>[] list_arr = null;
 
     private final int GREEN_YELLOW_DIVIDE_LINE = 1;//0~GREEN_YELLOW_DIVIDE_LINE-1为绿
     private final int YELLOW_RED_DIVIDE_LINE = 4;//GREEN_YELLOW_DIVIDE_LINE~YELLOW_RED_DIVIDE_LINE-1为黄
-                                                //>=YELLOW_RED_DIVIDE_LINE为红
+                                                                            //>=YELLOW_RED_DIVIDE_LINE为红
     private final int STEP = 150;
 
     @Override
@@ -93,7 +94,7 @@ public class MarketingGuide extends AppCompatActivity implements LocationSource,
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         }
         requestDialog = new RequestDialog();
-        requestDialog.showProgressDialog(MarketingGuide.this,"正在定位，请稍后");
+        //requestDialog.showProgressDialog(MarketingGuide.this,"正在定位，请稍后");
 
         back = (RelativeLayout) findViewById(R.id.act_market_guide_back_btn);
         back.setOnClickListener(new View.OnClickListener() {
@@ -217,6 +218,17 @@ public class MarketingGuide extends AppCompatActivity implements LocationSource,
             // 在定位结束后，在合适的生命周期调用onDestroy()方法
             // 在单次定位情况下，定位无论成功与否，都无需调用stopLocation()方法移除请求，定位sdk内部会移除
 
+            AMapLocation location = locationClient.getLastKnownLocation();//获取最后一次定位
+            if (location!=null){
+                this.amapLocation = location;
+                mListener.onLocationChanged(amapLocation);// 显示系统小蓝点
+                aMap.moveCamera(CameraUpdateFactory.zoomTo(14));
+                //requestDialog.showProgressDialog(MarketingGuide.this,"正在搜索，请稍后");
+                //showProgressDialog("正在搜索，请稍后");
+            }
+            //定位与添加marker为异步，顺序为 调用最后一次定位->加marker->新定位
+            sendMsg();
+
             locationClient.startLocation();
         }
     }
@@ -267,14 +279,14 @@ public class MarketingGuide extends AppCompatActivity implements LocationSource,
     @Override
     public void onLocationChanged(AMapLocation amapLocation) {
         if (mListener != null && amapLocation != null) {
-            requestDialog.dissmissProgressDialog();
+            //requestDialog.dissmissProgressDialog();
             if ( amapLocation.getErrorCode() == 0) {
                 this.amapLocation = amapLocation;
                 mListener.onLocationChanged(amapLocation);// 显示系统小蓝点
                 aMap.moveCamera(CameraUpdateFactory.zoomTo(14));
-                requestDialog.showProgressDialog(MarketingGuide.this,"正在搜索，请稍后");
+                //requestDialog.showProgressDialog(MarketingGuide.this,"正在搜索，请稍后");
                 // showProgressDialog("正在搜索，请稍后");
-                sendMsg();
+                //sendMsg();
             } else {
                 Toast.makeText(MarketingGuide.this, "定位失败，请点击右上角的定位按钮重新定位", Toast.LENGTH_SHORT).show();
                 String errText = "定位失败," + amapLocation.getErrorCode()+ ": " + amapLocation.getErrorInfo();
@@ -300,6 +312,12 @@ public class MarketingGuide extends AppCompatActivity implements LocationSource,
                         if ("false".equals(status)) {
                             Toast.makeText(MarketingGuide.this, json.getString("message"), Toast.LENGTH_SHORT).show();
                         } else if ("true".equals(status)) {
+                            //获取marker经纬度缓存，缓存为JSONObject，以 4S店名+维度 和 4S店名+经度 为key，double类型的经纬度为value
+                            String marker_cache_str = spu.getMarkerCache();
+                            markerCache = new JSONObject();
+                            if (!"".equals(marker_cache_str)){
+                                markerCache = new JSONObject(marker_cache_str);
+                            }
                             final JSONArray jsonArray = json.getJSONArray("4sshop_list");
                             count=0;
                             if (jsonArray.length()>0){
@@ -307,6 +325,7 @@ public class MarketingGuide extends AppCompatActivity implements LocationSource,
                                 Log.e("size",""+size);
                                 //for (int k=0; k<jsonArray.length(); k+=STEP){
                                 //for (int i=k; i<(k+STEP<jsonArray.length()?k+STEP:jsonArray.length()); i++){
+                                //一个线程里，查询2个，以此减少线程数
                                 for (int i=0; i<size; i+=2){
 
                                     // for (int i=0; i<100; i++){
@@ -331,49 +350,77 @@ public class MarketingGuide extends AppCompatActivity implements LocationSource,
                                         public void run() {
                                             try {
                                                 JSONObject one_shop = (JSONObject) jsonArray.get(finalI);
+                                                String shop_name = one_shop.getString("4sshop_name");
+                                                String shop_addr = one_shop.getString("4sshop_addr");
                                                 JSONArray jsonArray_worker = one_shop.getJSONArray("worker_list");
 
-                                                GeocodeQuery query = new GeocodeQuery(one_shop.getString("4sshop_addr"), "西安");// 第一个参数表示地址，第二个参数表示查询城市，中文或者中文全拼，citycode、adcode，
-                                                List<GeocodeAddress> list_geocodeAddress = geocoderSearch.getFromLocationName(query);
-
-                                                if (list_geocodeAddress.size()>0){
-                                                    GeocodeAddress geocodeAddress = list_geocodeAddress.get(0);// 设置同步地理编码请求
-
-                                                    addMarkersToMap(AMapUtil.convertToLatLng(geocodeAddress.getLatLonPoint()), one_shop.getString("4sshop_name"), jsonArray_worker.toString(), jsonArray_worker.length());
-
-                                                    Log.e("getLatitude",""+geocodeAddress.getLatLonPoint().getLatitude());
-                                                    Log.e("getLongitude",""+geocodeAddress.getLatLonPoint().getLongitude());
-                                                    Log.e("4sshop_name",one_shop.getString("4sshop_name"));
-                                                    Log.e("4sshop_addr",one_shop.getString("4sshop_addr"));
-                                                    Log.e("gaode_addr",geocodeAddress.getFormatAddress());
+                                                LatLng latLng = null;
+                                                //缓存里有的读取缓存
+                                                if (markerCache.has(shop_name+"Latitude")){
+                                                    latLng = new LatLng(markerCache.getDouble(shop_name+"Latitude"), markerCache.getDouble(shop_name+"Longitude"));
                                                     count++;
-                                                    Log.e("count",""+count);
-                                                    requestDialog.dissmissProgressDialog();
-                                                    /*if (count==550){
-                                                        requestDialog.dissmissProgressDialog();
-                                                    }*/
+                                                }
+                                                //缓存里没有的，调用高德地图地理编码功能进行搜索，并将搜索结果存入缓存
+                                                else {
+                                                    GeocodeQuery query = new GeocodeQuery(shop_addr, "西安");// 第一个参数表示地址，第二个参数表示查询城市，中文或者中文全拼，citycode、adcode，
+                                                    List<GeocodeAddress> list_geocodeAddress = geocoderSearch.getFromLocationName(query);
+
+                                                    if (list_geocodeAddress.size()>0) {
+                                                        GeocodeAddress geocodeAddress = list_geocodeAddress.get(0);// 设置同步地理编码请求
+                                                        latLng = AMapUtil.convertToLatLng(geocodeAddress.getLatLonPoint());
+
+                                                        markerCache.put(shop_name+"Latitude", geocodeAddress.getLatLonPoint().getLatitude());
+                                                        markerCache.put(shop_name+"Longitude", geocodeAddress.getLatLonPoint().getLongitude());
+
+                                                        Log.e("getLatitude",""+geocodeAddress.getLatLonPoint().getLatitude());
+                                                        Log.e("getLongitude",""+geocodeAddress.getLatLonPoint().getLongitude());
+                                                        Log.e("4sshop_name", shop_name);
+                                                        Log.e("4sshop_addr", shop_addr);
+                                                        Log.e("gaode_addr",geocodeAddress.getFormatAddress());
+                                                        count++;
+                                                        Log.e("count",""+count);
+                                                    }
                                                 }
 
-                                                one_shop = (JSONObject) jsonArray.get(finalI+1);
-                                                jsonArray_worker = one_shop.getJSONArray("worker_list");
+                                                addMarkersToMap(latLng, shop_name, jsonArray_worker.toString(), jsonArray_worker.length());
 
-                                                query = new GeocodeQuery(one_shop.getString("4sshop_addr"), "西安");// 第一个参数表示地址，第二个参数表示查询城市，中文或者中文全拼，citycode、adcode，
-                                                list_geocodeAddress = geocoderSearch.getFromLocationName(query);
-                                                if (list_geocodeAddress.size()>0){
-                                                    GeocodeAddress geocodeAddress = list_geocodeAddress.get(0);// 设置同步地理编码请求
-                                                    addMarkersToMap(AMapUtil.convertToLatLng(geocodeAddress.getLatLonPoint()), one_shop.getString("4sshop_name"), jsonArray_worker.toString(), jsonArray_worker.length());
-                                                    Log.e("getLatitude",""+geocodeAddress.getLatLonPoint().getLatitude());
-                                                    Log.e("getLongitude",""+geocodeAddress.getLatLonPoint().getLongitude());
-                                                    Log.e("4sshop_name",one_shop.getString("4sshop_name"));
-                                                    Log.e("4sshop_addr",one_shop.getString("4sshop_addr"));
-                                                    Log.e("gaode_addr",geocodeAddress.getFormatAddress());
+                                                //if (count==500)
+                                                //    requestDialog.dissmissProgressDialog();
+
+                                                JSONObject one_shop2 = (JSONObject) jsonArray.get(finalI+1);
+                                                String shop_name2 = one_shop2.getString("4sshop_name");
+                                                String shop_addr2 = one_shop2.getString("4sshop_addr");
+                                                JSONArray jsonArray_worker2 = one_shop2.getJSONArray("worker_list");
+
+                                                LatLng latLng2 = null;
+                                                if (markerCache.has(shop_name2+"Latitude")){
+                                                    latLng2 = new LatLng(markerCache.getDouble(shop_name2+"Latitude"), markerCache.getDouble(shop_name2+"Longitude"));
                                                     count++;
-                                                    Log.e("count",""+count);
-                                                    requestDialog.dissmissProgressDialog();
-                                                    /*if (count==250){
-                                                        requestDialog.dissmissProgressDialog();
-                                                    }*/
                                                 }
+                                                else {
+                                                    GeocodeQuery query = new GeocodeQuery(shop_addr2, "西安");// 第一个参数表示地址，第二个参数表示查询城市，中文或者中文全拼，citycode、adcode，
+                                                    List<GeocodeAddress> list_geocodeAddress = geocoderSearch.getFromLocationName(query);
+                                                    if (list_geocodeAddress.size()>0) {
+                                                        GeocodeAddress geocodeAddress = list_geocodeAddress.get(0);// 设置同步地理编码请求
+                                                        latLng2 = AMapUtil.convertToLatLng(geocodeAddress.getLatLonPoint());
+
+                                                        markerCache.put(shop_name2+"Latitude", geocodeAddress.getLatLonPoint().getLatitude());
+                                                        markerCache.put(shop_name2+"Longitude", geocodeAddress.getLatLonPoint().getLongitude());
+
+                                                        Log.e("getLatitude",""+geocodeAddress.getLatLonPoint().getLatitude());
+                                                        Log.e("getLongitude",""+geocodeAddress.getLatLonPoint().getLongitude());
+                                                        Log.e("4sshop_name", shop_name2);
+                                                        Log.e("4sshop_addr", shop_addr2);
+                                                        Log.e("gaode_addr",geocodeAddress.getFormatAddress());
+                                                        count++;
+                                                        Log.e("count",""+count);
+                                                    }
+                                                }
+
+                                                //if (count==500)
+                                                //   requestDialog.dissmissProgressDialog();
+
+                                                addMarkersToMap(latLng2, shop_name2, jsonArray_worker2.toString(), jsonArray_worker2.length());
                                             }
                                             catch (Exception e){
                                                 e.printStackTrace();
@@ -383,7 +430,8 @@ public class MarketingGuide extends AppCompatActivity implements LocationSource,
 
                                     action = "mark";
                                 }
-                                //}
+                                //不论缓存是否修改，都将其塞进SharePreference
+                                spu.setMarkerCache(markerCache.toString());
                             }
                             else {
                                 Log.e("CBNetwork_Activity", "list长度为0");

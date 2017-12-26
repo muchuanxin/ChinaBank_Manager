@@ -94,7 +94,7 @@ public class CBNetwork extends AppCompatActivity implements LocationSource,AMapL
         }
 
         requestDialog = new RequestDialog();
-        requestDialog.showProgressDialog(CBNetwork.this,"正在定位，请稍后");
+        //requestDialog.showProgressDialog(CBNetwork.this,"正在定位，请稍后");
         //Log.e("SAH1_MCX", sHA1(CBNetwork.this));
 
         back = (RelativeLayout) findViewById(R.id.act_cb_network_back_btn);
@@ -220,6 +220,17 @@ public class CBNetwork extends AppCompatActivity implements LocationSource,AMapL
             // 在定位结束后，在合适的生命周期调用onDestroy()方法
             // 在单次定位情况下，定位无论成功与否，都无需调用stopLocation()方法移除请求，定位sdk内部会移除
 
+            AMapLocation location = locationClient.getLastKnownLocation();//获取最后一次定位
+            if (location!=null){
+                this.amapLocation = location;
+                mListener.onLocationChanged(amapLocation);// 显示系统小蓝点
+                aMap.moveCamera(CameraUpdateFactory.zoomTo(14));
+                //requestDialog.showProgressDialog(MarketingGuide.this,"正在搜索，请稍后");
+                //showProgressDialog("正在搜索，请稍后");
+            }
+            //定位与添加marker为异步，顺序为 调用最后一次定位->加marker->新定位
+            sendMsg();
+
             locationClient.startLocation();
         }
     }
@@ -270,14 +281,14 @@ public class CBNetwork extends AppCompatActivity implements LocationSource,AMapL
     @Override
     public void onLocationChanged(AMapLocation amapLocation) {
         if (mListener != null && amapLocation != null) {
-            requestDialog.dissmissProgressDialog();
+            //requestDialog.dissmissProgressDialog();
             if ( amapLocation.getErrorCode() == 0) {
                 this.amapLocation = amapLocation;
                 mListener.onLocationChanged(amapLocation);// 显示系统小蓝点
                 aMap.moveCamera(CameraUpdateFactory.zoomTo(14));
-                requestDialog.showProgressDialog(CBNetwork.this,"正在搜索，请稍后");
-               // showProgressDialog("正在搜索，请稍后");
-                sendMsg();
+                //requestDialog.showProgressDialog(CBNetwork.this,"正在搜索，请稍后");
+                //showProgressDialog("正在搜索，请稍后");
+                //sendMsg();
             } else {
                 Toast.makeText(CBNetwork.this, "定位失败，请点击右上角的定位按钮重新定位", Toast.LENGTH_SHORT).show();
                 String errText = "定位失败," + amapLocation.getErrorCode()+ ": " + amapLocation.getErrorInfo();
@@ -379,9 +390,9 @@ public class CBNetwork extends AppCompatActivity implements LocationSource,AMapL
     public void onGeocodeSearched(GeocodeResult result, int rCode) {
         count++;
         Log.e("count",""+count);
-        if (count==size){
+        /*if (count==size){
             requestDialog.dissmissProgressDialog();
-        }
+        }*/
         if (rCode == 1000) {
             if (result != null && result.getGeocodeAddressList() != null
                     && result.getGeocodeAddressList().size() > 0) {
@@ -425,8 +436,8 @@ public class CBNetwork extends AppCompatActivity implements LocationSource,AMapL
         if (endPoint == null) {
             ToastUtil.show(CBNetwork.this, "终点未设置");
         }
-        requestDialog.showProgressDialog(CBNetwork.this,"正在导航，请稍后");
-       // showProgressDialog("正在导航，请稍后");
+        //requestDialog.showProgressDialog(CBNetwork.this,"正在导航，请稍后");
+        //showProgressDialog("正在导航，请稍后");
         final RouteSearch.FromAndTo fromAndTo = new RouteSearch.FromAndTo(
                 startPoint, endPoint);
         if (routeType == ROUTE_TYPE_WALK) {// 步行路径规划
@@ -447,7 +458,7 @@ public class CBNetwork extends AppCompatActivity implements LocationSource,AMapL
 
     @Override
     public void onWalkRouteSearched(WalkRouteResult result, int errorCode) {
-        requestDialog.dissmissProgressDialog();
+        //requestDialog.dissmissProgressDialog();
         //aMap.clear();// 清理地图上的所有覆盖物
         if (errorCode == 1000) {
             if (result != null && result.getPaths() != null) {
