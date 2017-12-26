@@ -20,10 +20,11 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
                 android:layout_marginLeft="16dp"
-                android:layout_marginTop="27dp"
+                android:layout_marginTop="31dp"
+                android:padding="1.5dp"
                 android:src="@drawable/back_btn_bg"/>
 
         </RelativeLayout>

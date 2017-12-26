@@ -26,7 +26,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="28dp"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="27dp"
+                android:layout_marginTop="31dp"
+                android:padding="1.5dp"
                 android:src="@drawable/back_btn_bg"/>
 
         </RelativeLayout>
@@ -80,7 +81,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="18dp"
                 android:textColor="@color/black_text_light"
-                android:text="联系电话：15536269856"/>
+                android:text="联系电话："/>
             <ImageView
                 android:id="@+id/act_worker_communacate"
                 android:clickable="true"
@@ -110,7 +111,7 @@
             android:layout_marginRight="25dp"
             android:layout_marginBottom="@dimen/ui_10_dip"
             android:textColor="@color/black_text_light"
-            android:text="工作单位：雁塔区奥迪4S店"/>
+            android:text="工作单位："/>
     </LinearLayout>
 
     <ListView

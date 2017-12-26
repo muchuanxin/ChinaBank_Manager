@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:layout_marginLeft="25dp"
-    android:layout_marginRight="25dp"
+    android:background="@color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -10,8 +9,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
         android:layout_marginBottom="@dimen/ui_10_dip">
         <TextView
             android:id="@+id/worker_cancel_name"
@@ -23,23 +22,21 @@
             android:id="@+id/worker_cancel_tel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="2dp"
             android:textSize="18dp"
-            android:text="联系电话：15229241868"/>
+            android:text="联系电话："/>
         <TextView
             android:id="@+id/worker_cancel_address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
             android:textSize="18dp"
-            android:text="工作单位：雁塔区奥迪4S店"/>
+            android:text="工作单位："/>
         <TextView
             android:id="@+id/worker_cancel_reason"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
             android:textSize="18dp"
-            android:text="解约理由：从原单位辞职"/>
+            android:text="解约理由："/>
     </LinearLayout>
 
 

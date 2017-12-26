@@ -132,11 +132,11 @@ public class MyReceiver extends BroadcastReceiver {
 					context.startActivity(i);
 				}else if(Constants.CreateChatGroup.equals(type)){
 					Log.e(TAG,"Constants.CreateChatGroup");
-					Intent i = new Intent(context, GroupChatActivity.class);  //自定义打开群聊界面
+					Intent i = new Intent(context, GroupChatActivity.class);  //创建新群之后，跳转到这个群聊界面
 					i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK| Intent.FLAG_ACTIVITY_CLEAR_TOP);
 					i.putExtra("group_id",json_extra.getString("group_id"));
 					i.putExtra("group_name",json_extra.getString("group_name"));
-					i.putExtra("group_head",json_extra.getString("group_head"));
+					i.putExtra("group_head",json_extra.getString("head_image"));
 					Log.e("www","group_name2:---"+json_extra.getString("group_name"));
 					//i.putExtras(bundle2);
 					context.startActivity(i);
@@ -146,7 +146,7 @@ public class MyReceiver extends BroadcastReceiver {
 					i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK| Intent.FLAG_ACTIVITY_CLEAR_TOP);
 					i.putExtra("group_id",json_extra.getString("group_id"));
 					i.putExtra("group_name",json_extra.getString("group_name"));
-					i.putExtra("group_head",json_extra.getString("group_head"));
+					i.putExtra("group_head",json_extra.getString("head_image"));
 					Log.e("www","group_name3:---"+json_extra.getString("group_name"));
 					//i.putExtras(bundle2);
 					context.startActivity(i);

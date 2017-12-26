@@ -10,7 +10,7 @@
     <RelativeLayout
         android:id="@+id/act_main_boss_top_bar"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="65dp"
         android:orientation="horizontal"
         android:background="#B81C1E">
 

@@ -5,15 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#fff"
+    android:background="@color/gray_bg"
     tools:context="com.xd.aselab.chinabankmanager.kafenqi.KWorkerManage.activity.KMyContactsActivity">
 
     <RelativeLayout
         android:id="@+id/act_my_contacts_top_bar"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="65dp"
         android:orientation="horizontal"
-        android:background="#B81C1E">
+        android:background="@color/colorPrimaryDark">
 
         <RelativeLayout
             android:id="@+id/act_k_my_contacts_back_btn"
@@ -24,7 +24,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="28dp"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="31dp"
+                android:padding="1.5dp"
                 android:src="@drawable/back_btn_bg"/>
 
         </RelativeLayout>
@@ -32,7 +33,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="27dp"
             android:layout_centerHorizontal="true"
             android:textColor="#fff"
             android:textSize="22dp"
@@ -42,9 +43,13 @@
     <ListView
         android:id="@+id/act_k_my_contacts_list"
         android:layout_below="@id/act_my_contacts_top_bar"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"></ListView>
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:dividerHeight="5dp"
+        android:divider="@color/transparent"></ListView>
 
     <ImageView
         android:id="@+id/act_kafenqi_my_contacts_no_data_img"

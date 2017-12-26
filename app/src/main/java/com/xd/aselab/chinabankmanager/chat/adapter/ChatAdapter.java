@@ -418,6 +418,7 @@ public class ChatAdapter extends BaseAdapter {
                             msg.what = 1;
                             break;
                     }
+                    Log.e("filePath",filePath);
                     msg.obj = filePath;
                     handler.sendMessage(msg);
 

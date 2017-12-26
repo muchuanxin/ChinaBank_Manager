@@ -9,9 +9,9 @@
     <RelativeLayout
         android:id="@+id/act_personal_info_top_bar"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="65dp"
         android:orientation="horizontal"
-        android:background="#B81C1E">
+        android:background="@color/colorPrimaryDark">
 
         <RelativeLayout
             android:id="@+id/act_personal_info_back_btn"
@@ -22,7 +22,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="28dp"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="31dp"
+                android:padding="1.5dp"
                 android:src="@drawable/back_btn_bg"/>
 
         </RelativeLayout>
@@ -30,7 +31,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="27dp"
             android:layout_centerHorizontal="true"
             android:textColor="#fff"
             android:textSize="22dp"
@@ -41,7 +42,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"
-            android:layout_marginTop="13dp"
+            android:layout_marginTop="25dp"
             android:layout_marginRight="10dp"
             android:gravity="center"
             android:textColor="#fff"
@@ -53,7 +54,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_toLeftOf="@id/act_personal_info_update"
-            android:layout_marginTop="13dp"
+            android:layout_marginTop="25dp"
             android:gravity="center"
             android:textColor="#fff"
             android:textSize="16dp"
@@ -102,7 +103,7 @@
                 android:id="@+id/act_personal_info_job_num_label"
                 android:layout_below="@id/act_personal_info_name_label"
                 android:layout_alignLeft="@id/act_personal_info_name_label"
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#000"
@@ -122,7 +123,7 @@
                 android:id="@+id/act_personal_info_emp_type_label"
                 android:layout_below="@id/act_personal_info_job_num_label"
                 android:layout_alignLeft="@id/act_personal_info_name_label"
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#000"
@@ -141,7 +142,6 @@
             <RelativeLayout
                 android:id="@+id/act_personal_info_tel"
                 android:layout_below="@id/act_personal_info_emp_type_label"
-                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="50dp">
 
@@ -170,7 +170,7 @@
                 android:id="@+id/act_personal_info_landline_label"
                 android:layout_below="@id/act_personal_info_tel"
                 android:layout_alignLeft="@id/act_personal_info_name_label"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#000"
@@ -189,7 +189,7 @@
             <RelativeLayout
                 android:id="@+id/act_personal_info_division1"
                 android:layout_below="@id/act_personal_info_landline_label"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
                 android:background="#EFF3F9"/>
@@ -255,7 +255,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:gravity="center"
-                android:background="#B81C1E"
+                android:background="@drawable/login_btn_bg"
                 android:textColor="#fff"
                 android:textSize="20dp"
                 android:text="退出登录"/>

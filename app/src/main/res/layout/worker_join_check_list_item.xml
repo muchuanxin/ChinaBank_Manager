@@ -4,7 +4,8 @@
     android:layout_marginLeft="25dp"
     android:layout_marginRight="25dp"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,27 +13,26 @@
         android:orientation="vertical"
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"
-        android:layout_marginBottom="@dimen/ui_10_dip">
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp">
         <TextView
             android:id="@+id/worker_join_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="18dp"
-            android:text="小明"/>
+            android:text="姓名"/>
         <TextView
             android:id="@+id/worker_join_tel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
             android:textSize="18dp"
-            android:text="联系电话：15229241868"/>
+            android:text="联系电话："/>
         <TextView
             android:id="@+id/worker_join_address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
             android:textSize="18dp"
-            android:text="工作单位：雁塔区奥迪4S店"/>
+            android:text="工作单位："/>
     </LinearLayout>
 
 

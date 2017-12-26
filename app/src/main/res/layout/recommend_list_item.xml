@@ -26,7 +26,7 @@
                     android:id="@+id/shenqingren"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20dp"
+                    android:textSize="18dp"
                     android:textColor="@color/black_text_most"
                     android:text="申请人："/>
                 <TextView
@@ -34,7 +34,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:textSize="20dp"
+                    android:textSize="18dp"
                     android:textColor="@color/colorPrimaryDark"
                     android:text="朱平安"/>
             </LinearLayout>
@@ -53,7 +53,7 @@
             android:id="@+id/call_application"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="5dp"
             android:orientation="horizontal">
             <TextView
                 android:id="@+id/fenqi_money"
@@ -69,7 +69,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="16dp"
-                android:paddingTop="3dp"
+                android:paddingTop="2dp"
                 android:textColor="@color/gray_text_most"
                 android:text="联系电话：15269541269"/>
             <ImageView
@@ -78,8 +78,8 @@
                 android:layout_alignParentRight="true"
                 android:layout_alignBottom="@id/application_tel"
                 android:padding="5dp"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:gravity="right"
                 android:src="@drawable/telephone_red"/>
         </RelativeLayout>
@@ -92,7 +92,7 @@
                 android:id="@+id/left_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="2dp"
                 android:orientation="vertical">
                 <TextView
                     android:id="@+id/buy_commodity"
@@ -100,7 +100,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="16dp"
                     android:textColor="@color/gray_text_most"
-                    android:text="购买商品：奥迪Q8"/>
+                    android:text="购买商品："/>
                 <TextView
                     android:id="@+id/fenqi_num"
                     android:layout_width="wrap_content"
@@ -109,7 +109,7 @@
                     android:gravity="right"
                     android:textSize="16dp"
                     android:textColor="@color/gray_text_most"
-                    android:text="分期数：23期"/>
+                    android:text="分期数："/>
             </LinearLayout>
             <RelativeLayout
                 android:layout_alignBottom="@id/left_text"
@@ -164,6 +164,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="18dp"
+                android:textColor="@color/black_text_most"
                 android:text="80"/>
         </LinearLayout>
 

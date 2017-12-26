@@ -3,14 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.xd.aselab.chinabankmanager.com.xd.aselab.chinabankmanager.activity.ShopInfoTransparent">
+    tools:context="com.xd.aselab.chinabankmanager.activity.ShopInfoTransparent">
 
     <RelativeLayout
         android:id="@+id/act_shop_info_trans_top_bar"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="65dp"
         android:orientation="horizontal"
-        android:background="#B81C1E">
+        android:background="@color/colorPrimaryDark">
 
         <RelativeLayout
             android:id="@+id/act_shop_info_trans_back_btn"
@@ -21,7 +21,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="28dp"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="31dp"
+                android:padding="1.5dp"
                 android:src="@drawable/back_btn_bg"/>
 
         </RelativeLayout>
@@ -29,7 +30,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="27dp"
             android:layout_centerHorizontal="true"
             android:textColor="#fff"
             android:textSize="22dp"
