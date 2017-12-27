@@ -10,6 +10,7 @@ android {
         targetSdkVersion 25
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }
+        multiDexEnabled true
 
         ndk {
             //选择要添加的对应cpu类型的.so库。
@@ -42,9 +43,6 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile files('libs/AMap_Search_V3.3.0_20160616.jar')
-    compile files('libs/AMap_Location_V2.6.0_20160628.jar')
-    compile files('libs/AMap_3DMap_V3.3.2_20160525.jar')
     //MPAndroidChart
     //极光推送
     // 此处以JPush 3.0.9 版本为例。
@@ -62,4 +60,5 @@ dependencies {
     compile 'cn.bingoogolapple:bga-zxing:1.1.9@aar'
     compile 'com.mabeijianxi:small-video-record2:2.0.3@aar'
     testCompile 'junit:junit:4.12'
+    compile files('libs/AMap3DMap_5.6.0_AMapNavi_5.5.0_AMapSearch_5.5.0_AMapLocation_3.7.0_20171218.jar')
 }
