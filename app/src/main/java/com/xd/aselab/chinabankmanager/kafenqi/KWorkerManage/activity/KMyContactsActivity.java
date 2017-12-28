@@ -106,7 +106,7 @@ public class KMyContactsActivity extends AppCompatActivity {
                                         listView.setVisibility(View.GONE);
                                         no_data_img.setVisibility(View.VISIBLE);
                                         no_data_txt.setVisibility(View.VISIBLE);
-                                        Toast.makeText(KMyContactsActivity.this, "还没有推广员加盟信息", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(KMyContactsActivity.this, "还没有4S店销售的信息", Toast.LENGTH_SHORT).show();
                                         sleep_and_finish(2);
                                     }else{
                                         listView.setVisibility(View.VISIBLE);

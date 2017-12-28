@@ -89,7 +89,7 @@ public class SelectPromoterActivity extends AppCompatActivity {
                 ArrayList<String> checkBoxIDList=adapter.getCheckBoxIDList();
                 if(checkBoxIDList.size()<=0)
                 {
-                    Toast.makeText(SelectPromoterActivity.this, "请先至少选中一个推广员，再点击确定！", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SelectPromoterActivity.this, "请先至少选中一个4S店销售，再点击确定！", Toast.LENGTH_SHORT).show();
                 }else {
 
                     Intent mIntent = new Intent(SelectPromoterActivity.this,AnnouncementPublish.class);
@@ -129,7 +129,7 @@ public class SelectPromoterActivity extends AppCompatActivity {
                                         list_view.setVisibility(View.GONE);
                                         no_data_img.setVisibility(View.VISIBLE);
                                         no_data_txt.setVisibility(View.VISIBLE);
-                                        Toast.makeText(SelectPromoterActivity.this, "没有推广员信息", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(SelectPromoterActivity.this, "没有4S店销售的信息", Toast.LENGTH_SHORT).show();
                                     }
                                     else {
                                        // Log.e("123","exist ja");

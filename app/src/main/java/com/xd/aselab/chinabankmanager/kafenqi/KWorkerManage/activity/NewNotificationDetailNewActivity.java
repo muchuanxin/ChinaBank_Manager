@@ -120,7 +120,8 @@ public class NewNotificationDetailNewActivity extends AppCompatActivity {
                 String extra_str = json1.getString("extra");
                 JSONObject json = new JSONObject(extra_str);
                // worker_name.setText(json.getString("worker_name"));
-                id = json.getString("id");
+               // id = json.getString("id");
+                id = getIntent().getStringExtra("id");
                 /*applicate_time.setText(json.getString("recommend_time"));
                 worker_tel_str = json.getString("worker_telephone");
                 worker_tel.setText("联系电话："+json.getString("worker_telephone"));

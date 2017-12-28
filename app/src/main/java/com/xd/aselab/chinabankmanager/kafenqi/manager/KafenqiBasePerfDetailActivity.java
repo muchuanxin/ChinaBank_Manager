@@ -232,19 +232,19 @@ public class KafenqiBasePerfDetailActivity extends AppCompatActivity {
                                     listView.setAdapter(adapter);
                                     switch (range){
                                         case "近一周业绩":
-                                            base_red_total.setText("在"+worker_name+"发展的"+oneWeekJA.length()+"位推广员中，共成功办理"+num_one_week_sum+"笔分期业务，总金额为"+money_one_week_sum+"元");
+                                            base_red_total.setText("在"+worker_name+"发展的"+oneWeekJA.length()+"位4S店销售中，共成功办理"+num_one_week_sum+"笔分期业务，总金额为"+money_one_week_sum+"元");
                                             setListview(worker_list_one_week);
                                             break;
                                         case "近一月业绩":
-                                            base_red_total.setText("在"+worker_name+"发展的"+oneMonthJA.length()+"位推广员中，共成功办理"+num_one_month_sum+"笔分期业务，总金额为"+money_one_month_sum+"元");
+                                            base_red_total.setText("在"+worker_name+"发展的"+oneMonthJA.length()+"位4S店销售中，共成功办理"+num_one_month_sum+"笔分期业务，总金额为"+money_one_month_sum+"元");
                                             setListview(worker_list_one_month);
                                             break;
                                         case "近三月业绩":
-                                            base_red_total.setText("在"+worker_name+"发展的"+threeMonthJA.length()+"位推广员中，共成功办理"+num_three_month_sum+"笔分期业务，总金额为"+money_three_month_sum+"元");
+                                            base_red_total.setText("在"+worker_name+"发展的"+threeMonthJA.length()+"位4S店销售中，共成功办理"+num_three_month_sum+"笔分期业务，总金额为"+money_three_month_sum+"元");
                                             setListview(worker_list_three_month);
                                             break;
                                         case "近一年业绩":
-                                            base_red_total.setText("在"+worker_name+"发展的"+oneYearJA.length()+"位推广员中，共成功办理"+num_one_year_sum+"笔分期业务，总金额为"+money_one_year_sum+"元");
+                                            base_red_total.setText("在"+worker_name+"发展的"+oneYearJA.length()+"位4S店销售中，共成功办理"+num_one_year_sum+"笔分期业务，总金额为"+money_one_year_sum+"元");
                                             setListview(worker_list_one_year);
                                             break;
 

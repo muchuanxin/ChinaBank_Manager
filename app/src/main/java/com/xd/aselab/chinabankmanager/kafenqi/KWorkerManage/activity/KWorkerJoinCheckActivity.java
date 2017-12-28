@@ -106,7 +106,7 @@ public class KWorkerJoinCheckActivity extends AppCompatActivity {
                                         joinListview.setVisibility(View.GONE);
                                         no_data_img.setVisibility(View.VISIBLE);
                                         no_data_txt.setVisibility(View.VISIBLE);
-                                        Toast.makeText(KWorkerJoinCheckActivity.this, "还没有推广员加盟信息", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(KWorkerJoinCheckActivity.this, "还没有4S店销售加盟信息", Toast.LENGTH_SHORT).show();
                                         sleep_and_finish(1);
                                     }
                                     else {
@@ -164,7 +164,7 @@ public class KWorkerJoinCheckActivity extends AppCompatActivity {
                                         joinListview.setVisibility(View.GONE);
                                         no_data_img.setVisibility(View.VISIBLE);
                                         no_data_txt.setVisibility(View.VISIBLE);
-                                        Toast.makeText(KWorkerJoinCheckActivity.this, "还没有推广员加盟信息", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(KWorkerJoinCheckActivity.this, "还没有4S店销售加盟信息", Toast.LENGTH_SHORT).show();
                                         sleep_and_finish(2);
                                     }
                                 } else {
@@ -203,7 +203,7 @@ public class KWorkerJoinCheckActivity extends AppCompatActivity {
                                         joinListview.setVisibility(View.GONE);
                                         no_data_img.setVisibility(View.VISIBLE);
                                         no_data_txt.setVisibility(View.VISIBLE);
-                                        Toast.makeText(KWorkerJoinCheckActivity.this, "还没有推广员加盟信息", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(KWorkerJoinCheckActivity.this, "还没有4S店销售加盟信息", Toast.LENGTH_SHORT).show();
                                         sleep_and_finish(2);
                                     }
                                 } else {

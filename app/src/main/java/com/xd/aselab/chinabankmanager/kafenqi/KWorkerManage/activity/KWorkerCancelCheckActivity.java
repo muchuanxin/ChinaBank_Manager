@@ -106,7 +106,7 @@ public class KWorkerCancelCheckActivity extends AppCompatActivity {
                                         cancelListview.setVisibility(View.GONE);
                                         no_data_img.setVisibility(View.VISIBLE);
                                         no_data_txt.setVisibility(View.VISIBLE);
-                                        Toast.makeText(KWorkerCancelCheckActivity.this, "还没有推广员解约信息", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(KWorkerCancelCheckActivity.this, "还没有4S店销售解约信息", Toast.LENGTH_SHORT).show();
                                         sleep_and_finish(1);
                                     } else {
                                         no_data_img.setVisibility(View.GONE);
@@ -160,7 +160,7 @@ public class KWorkerCancelCheckActivity extends AppCompatActivity {
                                         cancelListview.setVisibility(View.GONE);
                                         no_data_img.setVisibility(View.VISIBLE);
                                         no_data_txt.setVisibility(View.VISIBLE);
-                                        Toast.makeText(KWorkerCancelCheckActivity.this, "还没有推广员解约信息", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(KWorkerCancelCheckActivity.this, "还没有4S店销售解约信息", Toast.LENGTH_SHORT).show();
                                         sleep_and_finish(2);
                                     }
                                 } else {
@@ -196,7 +196,7 @@ public class KWorkerCancelCheckActivity extends AppCompatActivity {
                                         cancelListview.setVisibility(View.GONE);
                                         no_data_img.setVisibility(View.VISIBLE);
                                         no_data_txt.setVisibility(View.VISIBLE);
-                                        Toast.makeText(KWorkerCancelCheckActivity.this, "还没有推广员加盟信息", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(KWorkerCancelCheckActivity.this, "还没有4S店销售信息", Toast.LENGTH_SHORT).show();
                                         sleep_and_finish(2);
                                     }
                                 } else {
