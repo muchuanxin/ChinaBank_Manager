@@ -90,7 +90,7 @@ public class ChatFragment_Left extends Fragment {
                     PostParameter[] params = new PostParameter[1];
                     params[0] = new PostParameter("branchLevel4", sp.getBranchLevel4());
                     String my_next = ConnectUtil.httpRequest(ConnectUtil.BASE_INFO, params, ConnectUtil.POST);
-                    Log.d("Dorise 刘伟",my_next);
+                    Log.d("Dorise 刘伟",""+my_next);
                     Message msg = handler.obtainMessage();
                     if (("").equals(my_next) || null == my_next) {
                         msg.what = 0;
@@ -115,7 +115,7 @@ public class ChatFragment_Left extends Fragment {
 
                     //获取我的上级
                     String my_boss = ConnectUtil.httpRequest(ConnectUtil.MY_CONTACT, params1, ConnectUtil.POST);
-                    Log.d("Dorise param1", my_boss);
+                    Log.d("Dorise param1", ""+my_boss);
                     //获取我的特约商户
                     PostParameter[] params2 = new PostParameter[4];
                     params2[0] = new PostParameter("account", sp.getAccount());
@@ -123,7 +123,7 @@ public class ChatFragment_Left extends Fragment {
                     params2[2] = new PostParameter("type", "" + 0);
                     params2[3] = new PostParameter("cookie", sp.getCookie());
                     String my_special_shop = ConnectUtil.httpRequest(ConnectUtil.SHOP_INFO, params2, ConnectUtil.POST);
-                    Log.d("Dorise param2", my_special_shop);
+                    Log.d("Dorise param2", ""+my_special_shop);
                     //account
 //                    branchLevel4
 //                            cookie
@@ -131,7 +131,7 @@ public class ChatFragment_Left extends Fragment {
                     PostParameter[] params3 = new PostParameter[1];
                     params3[0] = new PostParameter("account", sp.getAccount());
                     String my_4s_list = ConnectUtil.httpRequest(ConnectUtil.GetInstallmentWorker, params3, ConnectUtil.POST);
-                    Log.d("Dorise param3", my_4s_list);
+                    Log.d("Dorise param3", ""+my_4s_list);
 
                     Message msg = handler.obtainMessage();
                     if (("").equals(my_boss) || null == my_boss || ("").equals(my_special_shop) || null == my_special_shop || ("").equals(my_4s_list) || null == my_4s_list) {
@@ -174,11 +174,11 @@ public class ChatFragment_Left extends Fragment {
                                 JSONObject temp = (JSONObject) array.get(i);
                                 //basic_child获取名字   basic_child_headimage获取头像
                                 basic_child[0][i] = temp.getString("real_name");
-                                Log.d("Dorise 刘伟", basic_child[0][i]);
+                                Log.d("Dorise 刘伟", ""+basic_child[0][i]);
                                 basic_child_headimage[0][i] = temp.getString("head_image");
-                                Log.d("Dorise 刘伟", basic_child_headimage[0][i]);
+                                Log.d("Dorise 刘伟", ""+basic_child_headimage[0][i]);
                                 basic_child_account[0][i] = temp.getString("account");
-                                Log.d("Dorise 刘伟", basic_child_headimage[0][i]);
+                                Log.d("Dorise 刘伟", ""+basic_child_headimage[0][i]);
                             }
 
                             //false表示不显示人名字后面的  复选框
@@ -201,11 +201,11 @@ public class ChatFragment_Left extends Fragment {
                         } else {
 
                             JSONArray tempArray1 = my_boss.getJSONArray("list");
-                            Log.d("Dorise tempArray1", tempArray1 + "");
+                            Log.d("Dorise tempArray1", ""+tempArray1 + "");
                             JSONArray tempArray2 = my_special_shop.getJSONArray("shops");
-                            Log.d("Dorise tempArray2", tempArray2 + "");
+                            Log.d("Dorise tempArray2", ""+tempArray2 + "");
                             JSONArray tempArray3 = my_4s_list.getJSONArray("worker_list");
-                            Log.d("Dorise tempArray3", tempArray3 + "");
+                            Log.d("Dorise tempArray3", ""+tempArray3 + "");
 
                             int a = tempArray1.length(), b = tempArray2.length(), c = tempArray3.length();
                             int max = (((a > b) ? a : b) > c) ? ((a > b) ? a : b) : c;
@@ -215,25 +215,25 @@ public class ChatFragment_Left extends Fragment {
 
                             for (int i = 0; i < a; i++) {
                                 basic_child[0][i] = tempArray1.getJSONObject(i).getString("realName");
-                                Log.d("Dorise for11111", basic_child[0][i]);
+                                Log.d("Dorise for11111", ""+basic_child[0][i]);
 
                                 basic_child_headimage[0][i] = tempArray1.getJSONObject(i).getString("head_image");
-                                Log.d("Dorise for11111", basic_child_headimage[0][i]);
+                                Log.d("Dorise for11111", ""+basic_child_headimage[0][i]);
 
                                 //可以给上级建群嘛？
                                 basic_child_account[0][i] = tempArray1.getJSONObject(i).getString("jobNumber");
-                                Log.d("Dorise---------", basic_child_account[0][i]);
+                                Log.d("Dorise---------", ""+basic_child_account[0][i]);
                             }
                             for (int i = 0; i < b; i++) {
                                 basic_child[1][i] = tempArray2.getJSONObject(i).getString("shopName");
-                                Log.d("Dorise for22222", basic_child[1][i]);
+                                Log.d("Dorise for22222", ""+basic_child[1][i]);
 
                                 basic_child_headimage[1][i] = tempArray2.getJSONObject(i).getString("head_image");
                                 basic_child_account[1][i] = tempArray2.getJSONObject(i).getString("shopAccount");
                             }
                             for (int i = 0; i < c; i++) {
                                 basic_child[2][i] = tempArray3.getJSONObject(i).getString("name");
-                                Log.d("Dorise for33333", basic_child[2][i]);
+                                Log.d("Dorise for33333", ""+basic_child[2][i]);
 
                                 basic_child_headimage[2][i] = tempArray3.getJSONObject(i).getString("head_image");
                                 basic_child_account[2][i] = tempArray3.getJSONObject(i).getString("account");

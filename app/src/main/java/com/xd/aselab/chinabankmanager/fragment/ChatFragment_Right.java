@@ -67,7 +67,7 @@ public class ChatFragment_Right extends Fragment {
                 if (groupPosition != 0) {
                     //right11111   =说明是群聊   我加入的群
                     intent.putExtra("group_info", "right1");
-                    Log.d("Dorise 2017 12 11", group_id[1][childPosition] + "");
+                    Log.d("Dorise 2017 12 11", ""+group_id[1][childPosition] + "");
 //                    intent.putExtra("head_image", child_head[1][childPosition]);
                     intent.putExtra("group_id", "" + group_id[1][childPosition]);
                     intent.putExtra("group_head", child_head[1][childPosition]);
@@ -89,9 +89,9 @@ public class ChatFragment_Right extends Fragment {
                     intent.putExtra("group_head", child_head[0][childPosition]);
                     intent.putExtra("group_name", group_name[0][childPosition]);
                 }
-                Log.d("Dorise 14 groupNAME", group_name[0][childPosition] + "");
-                Log.d("Dorise 14 groupid", group_id[0][childPosition] + "");
-                Log.d("Dorise 14 head_image", child_head[0][childPosition] + "");
+                Log.d("Dorise 14 groupNAME", ""+group_name[0][childPosition] + "");
+                Log.d("Dorise 14 groupid", ""+group_id[0][childPosition] + "");
+                Log.d("Dorise 14 head_image", ""+child_head[0][childPosition] + "");
 
                 startActivity(intent);
                 return false;
@@ -148,7 +148,7 @@ public class ChatFragment_Right extends Fragment {
                             group_id[0][i] = one_group_info.getInt("group_id");
                         }
                         for (int i = 0; i < group2_number; i++) {
-                            Log.d("Dorise_group_info", group2.get(i) + "");
+                            Log.d("Dorise_group_info", ""+group2.get(i) + "");
                             JSONObject one_group_info = (JSONObject) group2.get(i);
                             group_name[1][i] = one_group_info.getString("group_name");
                             child_head[1][i] = one_group_info.getString("head_image");
@@ -186,7 +186,7 @@ public class ChatFragment_Right extends Fragment {
                 super.run();
                 String jsonStr = ConnectUtil.httpRequest(ConnectUtil.GetMyCreateGroup, post, "POST");
                 String IjoinStr = ConnectUtil.httpRequest(ConnectUtil.GetMyJoinGroup, post, "POST");
-                Log.d("我加入的群", IjoinStr);
+                Log.d("我加入的群", ""+IjoinStr);
                 //我创建的群和我加入的群都不能为空
                 if (null == jsonStr || null == IjoinStr) {
                     msg.what = 0;
