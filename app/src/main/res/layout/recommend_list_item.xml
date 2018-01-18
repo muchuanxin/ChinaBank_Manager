@@ -36,7 +36,7 @@
                     android:layout_weight="1"
                     android:textSize="18dp"
                     android:textColor="@color/colorPrimaryDark"
-                    android:text="朱平安"/>
+                    android:text="name"/>
             </LinearLayout>
 
             <TextView
@@ -62,7 +62,7 @@
                 android:layout_weight="1"
                 android:textSize="16dp"
                 android:textColor="@color/gray_text_most"
-                android:text="分期金额：123.00元"/>
+                android:text="分期金额："/>
             <TextView
                 android:id="@+id/application_tel"
                 android:layout_below="@id/fenqi_money"
@@ -71,7 +71,7 @@
                 android:textSize="16dp"
                 android:paddingTop="2dp"
                 android:textColor="@color/gray_text_most"
-                android:text="联系电话：15269541269"/>
+                android:text="联系电话："/>
             <ImageView
                 android:id="@+id/act_tel"
                 android:clickable="true"
@@ -100,7 +100,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="16dp"
                     android:textColor="@color/gray_text_most"
-                    android:text="购买商品："/>
+                    android:text="购买汽车品牌："/>
                 <TextView
                     android:id="@+id/fenqi_num"
                     android:layout_width="wrap_content"
@@ -168,11 +168,6 @@
                 android:text="80"/>
         </LinearLayout>
 
-
-
     </LinearLayout>
-
-
-
 
 </LinearLayout>

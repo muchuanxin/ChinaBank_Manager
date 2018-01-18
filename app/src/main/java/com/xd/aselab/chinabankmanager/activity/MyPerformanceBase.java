@@ -159,22 +159,36 @@ public class MyPerformanceBase extends AppCompatActivity {
                 calendar.setTime(new Date());
                 switch (time){
                     case "近一周业绩" :
-                        calendar.set(Calendar.DATE, calendar.get(Calendar.DATE) - 7);
+                        //calendar.set(Calendar.DATE, calendar.get(Calendar.DATE) - 7);
+                        calendar.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
                         params[2] = new PostParameter("begin", format.format(calendar.getTime()));
                         params[3] = new PostParameter("end", format.format(new Date()));
                         break;
                     case "近一月业绩" :
-                        calendar.set(Calendar.MONTH, calendar.get(Calendar.MONTH) - 1);
+                        //calendar.set(Calendar.MONTH, calendar.get(Calendar.MONTH) - 1);
+                        calendar.set(Calendar.DAY_OF_MONTH,1);
                         params[2] = new PostParameter("begin", format.format(calendar.getTime()));
                         params[3] = new PostParameter("end", format.format(new Date()));
                         break;
-                    case "近三月业绩" :
-                        calendar.set(Calendar.MONTH, calendar.get(Calendar.MONTH) - 3);
+                    case "近一季度业绩" :
+                        //calendar.set(Calendar.MONTH, calendar.get(Calendar.MONTH) - 3);
+                        int currentMonth = calendar.get(Calendar.MONTH) + 1;
+                        if (currentMonth >= 1 && currentMonth <= 3)
+                            calendar.set(Calendar.MONTH, 0);
+                        else if (currentMonth >= 4 && currentMonth <= 6)
+                            calendar.set(Calendar.MONTH, 3);
+                        else if (currentMonth >= 7 && currentMonth <= 9)
+                            calendar.set(Calendar.MONTH, 6);
+                        else if (currentMonth >= 10 && currentMonth <= 12)
+                            calendar.set(Calendar.MONTH, 9);
+                        calendar.set(Calendar.DAY_OF_MONTH,1);
                         params[2] = new PostParameter("begin", format.format(calendar.getTime()));
                         params[3] = new PostParameter("end", format.format(new Date()));
                         break;
                     case "近一年业绩" :
-                        calendar.set(Calendar.YEAR, calendar.get(Calendar.YEAR) - 1);
+                        //calendar.set(Calendar.YEAR, calendar.get(Calendar.YEAR) - 1);
+                        calendar.set(Calendar.MONTH, 0);
+                        calendar.set(Calendar.DAY_OF_MONTH,1);
                         params[2] = new PostParameter("begin", format.format(calendar.getTime()));
                         params[3] = new PostParameter("end", format.format(new Date()));
                         break;

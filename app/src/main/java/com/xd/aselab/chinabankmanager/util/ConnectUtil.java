@@ -101,7 +101,7 @@ public class ConnectUtil {
 	public static String RefuseInstallmentReleaseWorker = API_HOST+"RefuseInstallmentReleaseWorker";//卡分期--拒绝解约
 	public static String GetInstallmentWorkerRecommendList = API_HOST+"GetInstallmentWorkerRecommendList";//卡分期--获取某个推广员推荐的业务
 	public static String ConfirmInstallmentRecommend = API_HOST+"ConfirmInstallmentRecommend";//卡分期--确认或拒绝该笔推荐的业务
-	public static String GetInstallmentWorkerPerformance= API_HOST+"GetInstallmentWorkerPerformance";//卡分期
+	public static String GetInstallmentWorkerPerformance= API_HOST+"GetInstallmentWorkerPerformance";//卡分期--4s店销售业绩（前台处理四种排序）
 	public static String GetInstallmentWorker = API_HOST+"GetInstallmentWorker";
 	public static String PublishAnnouncement = API_HOST+"PublishAnnouncement";
 	public static String InstallmentActivelyRelieveWorker = API_HOST+"InstallmentActivelyRelieveWorker";

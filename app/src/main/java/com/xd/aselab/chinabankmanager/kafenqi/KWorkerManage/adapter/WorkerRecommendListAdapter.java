@@ -87,13 +87,13 @@ public class WorkerRecommendListAdapter extends BaseAdapter {
         holder.tv_application_tel.setText("联系电话："+list.get(position).getTel());
         holder.tv_applicate_money.setText("分期金额："+list.get(position).getFenqi_money()+"元");
         holder.tv_application_fenqi_num.setText("分期数："+list.get(position).getFenqi_num()+"笔");
-        holder.tv_application_comm.setText("购买商品："+list.get(position).getBuy_commodity());
+        holder.tv_application_comm.setText("购买汽车品牌："+list.get(position).getBuy_commodity());
         holder.tv_score.setText(""+list.get(position).getScore());
 
         String status = list.get(position).getState();
         switch (status){
             case "SUCCESS":
-                holder.bt_confirm.setText("业务成功");
+                holder.bt_confirm.setText("业务通过");
                 holder.bt_confirm.setBackgroundResource(R.drawable.grey_corner);
                 holder.bt_confirm.setVisibility(View.VISIBLE);
                 holder.bt_refuse.setVisibility(View.GONE);
@@ -127,6 +127,14 @@ public class WorkerRecommendListAdapter extends BaseAdapter {
                 holder.bt_refuse.setClickable(true);
                 holder.bt_confirm.setOnClickListener(mListener);
                 holder.bt_refuse.setOnClickListener(mListener);
+                break;
+            case "FAIL":
+                holder.bt_confirm.setText("业务不通过");
+                holder.bt_confirm.setBackgroundResource(R.drawable.grey_corner);
+                holder.bt_confirm.setVisibility(View.VISIBLE);
+                holder.bt_refuse.setVisibility(View.GONE);
+                holder.bt_confirm.setClickable(false);
+                holder.bt_refuse.setClickable(false);
                 break;
         }
 

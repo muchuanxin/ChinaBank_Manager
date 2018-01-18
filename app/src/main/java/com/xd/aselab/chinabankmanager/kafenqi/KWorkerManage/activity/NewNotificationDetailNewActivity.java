@@ -40,7 +40,7 @@ import java.util.List;
 
 public class NewNotificationDetailNewActivity extends AppCompatActivity {
 
-    //从推荐分期列表点进来，查看分期详情，申请人的住房、收入等信息从后台获取
+    //点击通知栏跳转到这个界面显示通知中的详细信息
     private RelativeLayout back;
     private RelativeLayout rl_show_information_text;
     private ImageView arrow;
@@ -73,9 +73,9 @@ public class NewNotificationDetailNewActivity extends AppCompatActivity {
 
         initView();
         initDatas();
+        parseData();
         getAllInfo();
         initEvents();
-        parseData();
 
     }
 
@@ -323,6 +323,7 @@ public class NewNotificationDetailNewActivity extends AppCompatActivity {
                     case 0:
                         String reCode0 =(String) msg.obj;
                         if(reCode0!=null){
+                            Log.e("www","newrecode:"+reCode0);
                             try {
                                 JSONObject json = new JSONObject(reCode0);
                                 String status = json.getString("status");
@@ -344,7 +345,7 @@ public class NewNotificationDetailNewActivity extends AppCompatActivity {
                                     application_tel.setText("联系电话："+application_tel_str);
                                     applicate_money.setText("申请金额："+json.getString("money"));
                                     applicate_num.setText("分期数："+json.getString("installment_num"));
-                                    buy_commodity.setText("购买商品："+json.getString("car_type"));
+                                    buy_commodity.setText("购买汽车品牌："+json.getString("car_type"));
                                     self_score.setText("评分："+json.getString("evaluation"));
                                     //返回什么
                                     system_score.setText(json.getString("car_type"));

@@ -103,7 +103,7 @@ public class MyPerformance extends AppCompatActivity {
             }
         });*/
 
-        select_string = new String[]{"近一周业绩", "近一月业绩", "近三月业绩", "近一年业绩"};
+        select_string = new String[]{"近一周业绩", "近一月业绩", "近一季度业绩", "近一年业绩"};
         //select_adapter = new ArrayAdapter<>(this, R.layout.textview_for_spinner, select_string);
         //select_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         select_time = (TextView) findViewById(R.id.act_my_perf_select_time);
@@ -124,22 +124,36 @@ public class MyPerformance extends AppCompatActivity {
                         calendar.setTime(new Date());
                         switch (select_string[which]){
                             case "近一周业绩" :
-                                calendar.set(Calendar.DATE, calendar.get(Calendar.DATE) - 7);
+                                //calendar.set(Calendar.DATE, calendar.get(Calendar.DATE) - 7);
+                                calendar.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
                                 params[3] = new PostParameter("begin", format.format(calendar.getTime()));
                                 params[4] = new PostParameter("end", format.format(new Date()));
                                 break;
                             case "近一月业绩" :
-                                calendar.set(Calendar.MONTH, calendar.get(Calendar.MONTH) - 1);
+                                //calendar.set(Calendar.MONTH, calendar.get(Calendar.MONTH) - 1);
+                                calendar.set(Calendar.DAY_OF_MONTH,1);
                                 params[3] = new PostParameter("begin", format.format(calendar.getTime()));
                                 params[4] = new PostParameter("end", format.format(new Date()));
                                 break;
-                            case "近三月业绩" :
-                                calendar.set(Calendar.MONTH, calendar.get(Calendar.MONTH) - 3);
+                            case "近一季度业绩" :
+                                //calendar.set(Calendar.MONTH, calendar.get(Calendar.MONTH) - 3);
+                                int currentMonth = calendar.get(Calendar.MONTH) + 1;
+                                if (currentMonth >= 1 && currentMonth <= 3)
+                                    calendar.set(Calendar.MONTH, 0);
+                                else if (currentMonth >= 4 && currentMonth <= 6)
+                                    calendar.set(Calendar.MONTH, 3);
+                                else if (currentMonth >= 7 && currentMonth <= 9)
+                                    calendar.set(Calendar.MONTH, 6);
+                                else if (currentMonth >= 10 && currentMonth <= 12)
+                                    calendar.set(Calendar.MONTH, 9);
+                                calendar.set(Calendar.DAY_OF_MONTH,1);
                                 params[3] = new PostParameter("begin", format.format(calendar.getTime()));
                                 params[4] = new PostParameter("end", format.format(new Date()));
                                 break;
                             case "近一年业绩" :
-                                calendar.set(Calendar.YEAR, calendar.get(Calendar.YEAR) - 1);
+                                //calendar.set(Calendar.YEAR, calendar.get(Calendar.YEAR) - 1);
+                                calendar.set(Calendar.MONTH, 0);
+                                calendar.set(Calendar.DAY_OF_MONTH,1);
                                 params[3] = new PostParameter("begin", format.format(calendar.getTime()));
                                 params[4] = new PostParameter("end", format.format(new Date()));
                                 break;
@@ -388,7 +402,8 @@ public class MyPerformance extends AppCompatActivity {
                 params[1] = new PostParameter("branchLevel4", spu.getBranchLevel4());
                 params[2] = new PostParameter("type", ""+type);
                 calendar.setTime(new Date());
-                calendar.set(Calendar.DATE, calendar.get(Calendar.DATE) - 7);
+                //calendar.set(Calendar.DATE, calendar.get(Calendar.DATE) - 7);
+                calendar.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
                 params[3] = new PostParameter("begin", format.format(calendar.getTime()));
                 params[4] = new PostParameter("end", format.format(new Date()));
                 params[5] = new PostParameter("cookie", spu.getCookie());

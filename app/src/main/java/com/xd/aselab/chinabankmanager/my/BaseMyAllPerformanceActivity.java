@@ -152,7 +152,7 @@ public class BaseMyAllPerformanceActivity extends AppCompatActivity  implements 
         if (getIntent().getStringExtra("name")!=null){
             title.setText(getIntent().getStringExtra("name")+"的所有业绩");
         }
-        select_string = new String[]{"近一周业绩", "近一月业绩", "近三月业绩", "近一年业绩"};
+        select_string = new String[]{"近一周业绩", "近一月业绩", "近一季度业绩", "近一年业绩"};
         format = new SimpleDateFormat("yyyy-MM-dd");
         calendar = Calendar.getInstance();
         gray_bar1.setText(Calendar.getInstance().get(Calendar.YEAR)+"年各月办卡成功情况分析");
@@ -239,7 +239,8 @@ public class BaseMyAllPerformanceActivity extends AppCompatActivity  implements 
                 params[1] = new PostParameter("branchLevel4", spu.getBranchLevel4());
                 params[2] = new PostParameter("type", ""+type);
                 calendar.setTime(new Date());
-                calendar.set(Calendar.DATE, calendar.get(Calendar.DATE) - 7);
+                //calendar.set(Calendar.DATE, calendar.get(Calendar.DATE) - 7);
+                calendar.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
                 params[3] = new PostParameter("begin", format.format(calendar.getTime()));
                 params[4] = new PostParameter("end", format.format(new Date()));
                 params[5] = new PostParameter("cookie", spu.getCookie());
@@ -593,7 +594,7 @@ public class BaseMyAllPerformanceActivity extends AppCompatActivity  implements 
                         params[3] = new PostParameter("begin", format.format(calendar.getTime()));
                         params[4] = new PostParameter("end", format.format(new Date()));
                         break;
-                    case "近三月业绩" :
+                    case "近一季度业绩" :
                         choosen_time="three_month";
                         setFenqiData(number3_fenqi,money3_fenqi);
                         calendar.set(Calendar.MONTH, calendar.get(Calendar.MONTH) - 3);

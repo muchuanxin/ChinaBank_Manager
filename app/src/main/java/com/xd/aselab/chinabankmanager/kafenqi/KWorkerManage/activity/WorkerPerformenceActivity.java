@@ -105,7 +105,7 @@ public class WorkerPerformenceActivity extends AppCompatActivity {
     void initDatas(){
         spu = new SharePreferenceUtil(WorkerPerformenceActivity.this, "user");
         select_sort_method = new String[]{"推荐业务数降序", "成功业务数降序", "成功金额数降序", "推荐成功率降序"};
-        select_string = new String[]{"近一周业绩", "近一月业绩", "近三月业绩", "近一年业绩"};
+        select_string = new String[]{"近一周业绩", "近一月业绩", "近一季度业绩", "近一年业绩"};
         chooseTimeAdapter = new ChooseTimeAdapter(Constants.chooseTimeList,WorkerPerformenceActivity.this);
         chooseSortAdapter = new ChooseSortAdapter(Constants.chooseSortList,WorkerPerformenceActivity.this);
 
@@ -483,7 +483,7 @@ public class WorkerPerformenceActivity extends AppCompatActivity {
                         worker_name = worker_list_one_month.get(position).getName();
                         worker_status = worker_list_one_month.get(position).getStatus();
                         break;
-                    case "近三月业绩" :
+                    case "近一季度业绩" :
                         worker_account = worker_list_three_month.get(position).getAccount();
                         worker_name = worker_list_three_month.get(position).getName();
                         worker_status = worker_list_three_month.get(position).getStatus();
@@ -669,7 +669,7 @@ public class WorkerPerformenceActivity extends AppCompatActivity {
                                 break;
                         }
                         break;
-                    case "近三月业绩" :
+                    case "近一季度业绩" :
                         choosen_time="three_month";
                         switch (choosen_sort){
                             case "recommend_num":

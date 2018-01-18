@@ -39,7 +39,7 @@ import java.util.List;
 
 public class NewNotificationDetail2Activity extends AppCompatActivity {
 
-    //点击通知栏跳转到这个界面显示通知中的详细信息
+    //从推荐分期列表点进来，查看分期详情，申请人的住房、收入等信息从后台获取
     private String id="";
     private int position=0;
     private RelativeLayout back;
@@ -150,6 +150,7 @@ public class NewNotificationDetail2Activity extends AppCompatActivity {
                     case 0:
                         String reCode0 =(String) msg.obj;
                         if(reCode0!=null){
+                            Log.e("www","22222-recode:"+reCode0);
                             JSONObject json = null;
                             try {
                                 json = new JSONObject(reCode0);
@@ -182,7 +183,7 @@ public class NewNotificationDetail2Activity extends AppCompatActivity {
                                     application_tel.setText("联系电话："+application_tel_str);
                                     applicate_money.setText("申请金额："+json.getString("money"));
                                     applicate_num.setText("分期数："+json.getString("installment_num"));
-                                    buy_commodity.setText("购买商品："+json.getString("car_type"));
+                                    buy_commodity.setText("购买汽车品牌："+json.getString("car_type"));
                                     self_score.setText("评分："+json.getString("evaluation"));
                                     //返回什么
                                     system_score.setText(json.getString("car_type"));
@@ -220,7 +221,7 @@ public class NewNotificationDetail2Activity extends AppCompatActivity {
                                         case "SUCCESS":
                                             ll_choose.setVisibility(View.GONE);
                                             tv_mark.setVisibility(View.VISIBLE);
-                                            tv_mark.setText("业务成功");
+                                            tv_mark.setText("业务通过");
                                             tv_mark.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
                                             break;
                                         case "YES":
@@ -238,6 +239,12 @@ public class NewNotificationDetail2Activity extends AppCompatActivity {
                                         case "CHECK":
                                             ll_choose.setVisibility(View.VISIBLE);
                                             tv_mark.setVisibility(View.GONE);
+                                            break;
+                                        case "FAIL":
+                                            ll_choose.setVisibility(View.GONE);
+                                            tv_mark.setVisibility(View.VISIBLE);
+                                            tv_mark.setText("业务不通过");
+                                            tv_mark.setTextColor(getResources().getColor(R.color.gray_text_most_1));
                                             break;
 
                                     }

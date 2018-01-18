@@ -89,7 +89,7 @@
             android:gravity="center"
             android:textSize="18dp"
             android:textColor="#5A5A5A"
-            android:text="近三月业绩"/>
+            android:text="近一季度业绩"/>
 
         <TextView
             android:id="@+id/act_my_perf_trans_year"

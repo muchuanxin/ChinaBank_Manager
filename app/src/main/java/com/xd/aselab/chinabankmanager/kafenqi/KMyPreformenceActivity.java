@@ -62,8 +62,7 @@ public class KMyPreformenceActivity extends AppCompatActivity implements OnChart
 
     private RelativeLayout back;
     private TextView select_time;
-    private TextView line1;
-    private TextView line2;
+    private TextView line1,line2,line3,line4;
     private LinearLayout ll_chart;
     private RelativeLayout gray_bar_top;
     private TextView gray_bar;
@@ -78,8 +77,8 @@ public class KMyPreformenceActivity extends AppCompatActivity implements OnChart
     private float[] numbers = new float[12];
     private float[] money = new float[12];
     private String choosen_time = "one_week";
-    private int number1,number2,number3,number4;
-    private int money1,money2,money3,money4;
+    private int number1,number2,number3,number4,recommend_number1,recommend_number2,recommend_number3,recommend_number4;
+    private int money1,money2,money3,money4,recommend_money1,recommend_money2,recommend_money3,recommend_money4;
     private String type;
     private ChooseTimeAdapter chooseTimeAdapter;
     private PopupWindow pop;
@@ -100,7 +99,7 @@ public class KMyPreformenceActivity extends AppCompatActivity implements OnChart
         screenWidth = dm.widthPixels;
 
         spu = new SharePreferenceUtil(KMyPreformenceActivity.this, "user");
-        select_string = new String[]{"近一周业绩", "近一月业绩", "近三月业绩", "近一年业绩"};
+        select_string = new String[]{"近一周业绩", "近一月业绩", "近一季度业绩", "近一年业绩"};
         chooseTimeAdapter = new ChooseTimeAdapter(Constants.chooseTimeList,KMyPreformenceActivity.this);
         //chooseTimeAdapter.setList(Constants.chooseTimeList);
         type = getIntent().getStringExtra("type");
@@ -124,8 +123,10 @@ public class KMyPreformenceActivity extends AppCompatActivity implements OnChart
         rl_choose_time = (RelativeLayout) findViewById(R.id.rl_my_perf_select_time);
         ll_chart = (LinearLayout)findViewById(R.id.ll_chart);
         select_time = (TextView) findViewById(R.id.act_my_perf_select_time);
-        line1 = (TextView)findViewById(R.id.act_my_perf_red_success_num);
-        line2 = (TextView)findViewById(R.id.act_my_perf_red_success_money);
+        line1 = (TextView)findViewById(R.id.act_my_perf_red_recommend_num);
+        line2 = (TextView)findViewById(R.id.act_my_perf_red_recommend_money);
+        line3 = (TextView)findViewById(R.id.act_my_perf_red_success_num);
+        line4 = (TextView)findViewById(R.id.act_my_perf_red_success_money);
         gray_bar_top = (RelativeLayout)findViewById(R.id.act_kafenqi_my_perf_gray_bar_top);
         gray_bar = (TextView)findViewById(R.id.act_kafenqi_my_perf_gray_bar);
         gray_bar.setText(Calendar.getInstance().get(Calendar.YEAR)+"年各月分期业务情况分析");
@@ -133,6 +134,13 @@ public class KMyPreformenceActivity extends AppCompatActivity implements OnChart
         no_data_txt = (TextView)findViewById(R.id.act_kafenqi_my_perf_no_data_txt);
 
         mChart = (BarChart) findViewById(R.id.chart1);
+        if("manager".equals(type)){
+            line1.setVisibility(View.GONE);
+            line2.setVisibility(View.GONE);
+        }else{
+            line1.setVisibility(View.VISIBLE);
+            line2.setVisibility(View.VISIBLE);
+        }
 
         /*timeSortLayout = getLayoutInflater().inflate(R.layout.choose_time_listview,null);
         ll_time_top = (LinearLayout)timeSortLayout.findViewById(R.id.ll_time_pop);
@@ -164,17 +172,27 @@ public class KMyPreformenceActivity extends AppCompatActivity implements OnChart
                                     JSONObject thisYearJO = json.getJSONObject("this_year");
                                     //Log.e("this_year", this_year.toString());
                                     // float[] numbers = new float[12];
+                                    recommend_number1 = oneWeekJO.getInt("recommend_num");
+                                    recommend_money1 = oneWeekJO.getInt("recommend_money");
                                     number1 = oneWeekJO.getInt("number");
                                     money1 = oneWeekJO.getInt("money");
+                                    recommend_number2 = oneMonthJO.getInt("recommend_num");
+                                    recommend_money2 = oneMonthJO.getInt("recommend_money");
                                     number2 = oneMonthJO.getInt("number");
                                     money2 = oneMonthJO.getInt("money");
+                                    recommend_number3 = threeMonthJO.getInt("recommend_num");
+                                    recommend_money3 = threeMonthJO.getInt("recommend_money");
                                     number3 = threeMonthJO.getInt("number");
                                     money3 = threeMonthJO.getInt("money");
+                                    recommend_number4 = oneYearJO.getInt("recommend_num");
+                                    recommend_money4 = oneYearJO.getInt("recommend_money");
                                     number4 = oneYearJO.getInt("number");
                                     money4 = oneYearJO.getInt("money");
 
-                                    line1.setText("分期业务成功数量："+("".equals(number1)? "暂无" : number1+"笔"));
-                                    line2.setText("分期业务成功金额："+("".equals(money1)? "暂无" : money1+"元"));
+                                    line1.setText("分期业务推荐数量："+("".equals(recommend_number1)? "暂无" : recommend_number1+"笔"));
+                                    line2.setText("分期业务推荐金额："+("".equals(recommend_money1)? "暂无" : recommend_money1+"元"));
+                                    line3.setText("分期业务成功数量："+("".equals(number1)? "暂无" : number1+"笔"));
+                                    line4.setText("分期业务成功金额："+("".equals(money1)? "暂无" : money1+"元"));
 
                                     boolean flag = false;
                                     for (int i=0; i<12; i++){
@@ -227,41 +245,8 @@ public class KMyPreformenceActivity extends AppCompatActivity implements OnChart
             @Override
             public void onClick(View v) {
                 showPopWindow();
-               /* AlertDialog.Builder builder = new AlertDialog.Builder(KMyPreformenceActivity.this);
-                builder.setTitle("选择时间范围");
-                builder.setItems(select_string, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        select_time.setText(select_string[which]);
-                        switch (select_string[which]){
-                            case "近一周业绩" :
-                                choosen_time="one_week";
-                                line1.setText("分期业务成功数量："+("".equals(number1)? "暂无" : number1+"笔"));
-                                line2.setText("分期业务成功金额："+("".equals(money1)? "暂无" : money1+"元"));
-                                break;
-                            case "近一月业绩" :
-                                line1.setText("分期业务成功数量："+("".equals(number2)? "暂无" : number2+"笔"));
-                                line2.setText("分期业务成功金额："+("".equals(money2)? "暂无" : money2+"元"));
-                                choosen_time="one_month";
-                                break;
-                            case "近三月业绩" :
-                                line1.setText("分期业务成功数量："+("".equals(number3)? "暂无" : number3+"笔"));
-                                line2.setText("分期业务成功金额："+("".equals(money3)? "暂无" : money3+"元"));
-                                choosen_time="three_month";
-                                break;
-                            case "近一年业绩" :
-                                line1.setText("分期业务成功数量："+("".equals(number4)? "暂无" : number4+"笔"));
-                                line2.setText("分期业务成功金额："+("".equals(money4)? "暂无" : money4+"元"));
-                                choosen_time="one_year";
-                                break;
-                        }
-                    }
-                });
-                builder.show();*/
             }
         });
-
-
 
         new Thread(){
             @Override
@@ -431,27 +416,38 @@ public class KMyPreformenceActivity extends AppCompatActivity implements OnChart
                 switch (Constants.chooseTimeList.get(position)){
                     case "近一周业绩" :
                         choosen_time="one_week";
-                        line1.setText("分期业务成功数量："+("".equals(number1)? "暂无" : number1+"笔"));
-                        line2.setText("分期业务成功金额："+("".equals(money1)? "暂无" : money1+"元"));
+                        setText(recommend_number1,recommend_money1,number1,money1);
+                        /*line1.setText("分期业务成功数量："+("".equals(number1)? "暂无" : number1+"笔"));
+                        line2.setText("分期业务成功金额："+("".equals(money1)? "暂无" : money1+"元"));*/
                         break;
                     case "近一月业绩" :
-                        line1.setText("分期业务成功数量："+("".equals(number2)? "暂无" : number2+"笔"));
-                        line2.setText("分期业务成功金额："+("".equals(money2)? "暂无" : money2+"元"));
+                        /*line1.setText("分期业务成功数量："+("".equals(number2)? "暂无" : number2+"笔"));
+                        line2.setText("分期业务成功金额："+("".equals(money2)? "暂无" : money2+"元"));*/
+                        setText(recommend_number2,recommend_money2,number2,money2);
                         choosen_time="one_month";
                         break;
-                    case "近三月业绩" :
-                        line1.setText("分期业务成功数量："+("".equals(number3)? "暂无" : number3+"笔"));
-                        line2.setText("分期业务成功金额："+("".equals(money3)? "暂无" : money3+"元"));
+                    case "近一季度业绩" :
+                        /*line1.setText("分期业务成功数量："+("".equals(number3)? "暂无" : number3+"笔"));
+                        line2.setText("分期业务成功金额："+("".equals(money3)? "暂无" : money3+"元"));*/
+                        setText(recommend_number3,recommend_money3,number3,money3);
                         choosen_time="three_month";
                         break;
                     case "近一年业绩" :
-                        line1.setText("分期业务成功数量："+("".equals(number4)? "暂无" : number4+"笔"));
-                        line2.setText("分期业务成功金额："+("".equals(money4)? "暂无" : money4+"元"));
+                        /*line1.setText("分期业务成功数量："+("".equals(number4)? "暂无" : number4+"笔"));
+                        line2.setText("分期业务成功金额："+("".equals(money4)? "暂无" : money4+"元"));*/
+                        setText(recommend_number4,recommend_money4,number4,money4);
                         choosen_time="one_year";
                         break;
                 }
             }
         });
 
+    }
+
+    void setText(int recommend_number,int recommend_money,int success_number,int success_money){
+        line1.setText("分期业务推荐数量："+("".equals(recommend_number)? "暂无" : recommend_number+"笔"));
+        line2.setText("分期业务推荐金额："+("".equals(recommend_money)? "暂无" : recommend_money+"元"));
+        line3.setText("分期业务成功数量："+("".equals(success_number)? "暂无" : success_number+"笔"));
+        line4.setText("分期业务成功金额："+("".equals(success_money)? "暂无" : success_money+"元"));
     }
 }

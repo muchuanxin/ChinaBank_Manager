@@ -91,7 +91,7 @@
             android:gravity="center"
             android:textSize="18dp"
             android:textColor="#5A5A5A"
-            android:text="近三月排名"/>
+            android:text="近一季度排名"/>
 
         <TextView
             android:id="@+id/act_perf_rank_trans_shop_total"

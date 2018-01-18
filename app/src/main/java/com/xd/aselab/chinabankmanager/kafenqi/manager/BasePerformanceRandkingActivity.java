@@ -101,7 +101,7 @@ public class BasePerformanceRandkingActivity extends AppCompatActivity {
     void initDatas(){
         spu = new SharePreferenceUtil(BasePerformanceRandkingActivity.this, "user");
         select_sort_method = new String[]{"分期业务数降序", "分期金额数降序"};
-        select_string = new String[]{"近一周业绩", "近一月业绩", "近三月业绩", "近一年业绩"};
+        select_string = new String[]{"近一周业绩", "近一月业绩", "近一季度业绩", "近一年业绩"};
 
         chooseTimeAdapter = new ChooseTimeAdapter(Constants.chooseTimeList,BasePerformanceRandkingActivity.this);
         chooseSortAdapter = new ChooseSortAdapter(Constants.chooseRankList,BasePerformanceRandkingActivity.this);
@@ -390,7 +390,7 @@ public class BasePerformanceRandkingActivity extends AppCompatActivity {
                                 break;
                         }
                         break;
-                    case "近三月业绩" :
+                    case "近一季度业绩" :
                         choosen_time="three_month";
                         switch (choosen_sort){
                             case "fenqi_num":

@@ -149,7 +149,7 @@ public class WorkerPerformanceDetailActivity extends AppCompatActivity  implemen
         gray_bar.setText(Calendar.getInstance().get(Calendar.YEAR)+"年各月分期业务情况分析");
 
         spu = new SharePreferenceUtil(WorkerPerformanceDetailActivity.this, "user");
-        select_string = new String[]{"近一周业绩", "近一月业绩", "近三月业绩", "近一年业绩"};
+        select_string = new String[]{"近一周业绩", "近一月业绩", "近一季度业绩", "近一年业绩"};
         final PostParameter[] params = new PostParameter[1];
         params[0] = new PostParameter("worker_account", worker_account);
         new Thread(){
@@ -572,7 +572,7 @@ public class WorkerPerformanceDetailActivity extends AppCompatActivity  implemen
                             right_arrow.setVisibility(View.VISIBLE);
                         }
                         break;
-                    case "近三月业绩" :
+                    case "近一季度业绩" :
                         choosen_time="three_month";
                         setText(recommend_num_three_month,success_num_three_month,success_money_three_month,score_three_month,exchange_score_three_month);
                         if(recommend_num_three_month==0){

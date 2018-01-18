@@ -91,7 +91,7 @@ public class KBasePerformanceActivity extends AppCompatActivity {
 
     void initDatas(){
         spu = new SharePreferenceUtil(KBasePerformanceActivity.this, "user");
-        select_string = new String[]{"近一周业绩", "近一月业绩", "近三月业绩", "近一年业绩"};
+        select_string = new String[]{"近一周业绩", "近一月业绩", "近一季度业绩", "近一年业绩"};
         chooseTimeAdapter = new ChooseTimeAdapter(Constants.chooseTimeList,KBasePerformanceActivity.this);
 
         handler = new Handler(){
@@ -256,10 +256,10 @@ public class KBasePerformanceActivity extends AppCompatActivity {
                         fenqi_num = base_list_one_month.get(position).getBase_fenqi_num();
                         fenqi_money = base_list_one_month.get(position).getBase_fenqi_money();
                         break;
-                    case "近三月业绩" :
+                    case "近一季度业绩" :
                         worker_account = base_list_three_month.get(position).getBase_account();
                         worker_name = base_list_three_month.get(position).getBase_name();
-                        range = "近三月业绩";
+                        range = "近一季度业绩";
                         fenqi_num = base_list_three_month.get(position).getBase_fenqi_num();
                         fenqi_money = base_list_three_month.get(position).getBase_fenqi_money();
                         break;
@@ -324,7 +324,7 @@ public class KBasePerformanceActivity extends AppCompatActivity {
                         choosen_time="one_month";
                         setListAndChangeData(base_list_one_month);
                         break;
-                    case "近三月业绩" :
+                    case "近一季度业绩" :
                         choosen_time="three_month";
                         setListAndChangeData(base_list_three_month);
                         break;

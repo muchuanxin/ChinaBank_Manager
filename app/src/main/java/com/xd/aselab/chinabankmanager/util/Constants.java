@@ -22,7 +22,7 @@ public class Constants {
     public static String ChangeGroupHeadPhoto = ConnectUtil.ChangeGroupHeadPhoto + "?";
 
     public static List<String> chooseSortList = new ArrayList<String>(Arrays.asList("推荐业务数降序", "成功业务数降序","成功金额数降序", "推荐成功率降序"));
-    public static List<String> chooseTimeList = new ArrayList<String>(Arrays.asList("近一周业绩", "近一月业绩","近三月业绩", "近一年业绩"));
+    public static List<String> chooseTimeList = new ArrayList<String>(Arrays.asList("近一周业绩", "近一月业绩","近一季度业绩", "近一年业绩"));
     public static List<String> chooseRankList = new ArrayList<String>(Arrays.asList("分期业务数降序", "分期金额数降序"));
 
     public static final int ChatToSelectPicture  = 19945;
