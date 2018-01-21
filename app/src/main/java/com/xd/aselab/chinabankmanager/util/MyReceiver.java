@@ -111,6 +111,7 @@ public class MyReceiver extends BroadcastReceiver {
 					Intent i = new Intent(context, NewNotificationDetailNewActivity.class);  //自定义打开推荐分期的界面
 					i.putExtras(bundle2);
 					i.putExtra("id",json_extra.getString("id"));
+					Log.e("www","");
 					i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK| Intent.FLAG_ACTIVITY_CLEAR_TOP);
 					context.startActivity(i);
 				}else if(Constants.CHAT.equals(type)){
