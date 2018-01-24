@@ -355,7 +355,7 @@
                </RelativeLayout>
        </LinearLayout>
 
-   </LinearLayout>-->
+   </LinearLayout>
 
         <TextView
             android:id="@+id/tv_mark"

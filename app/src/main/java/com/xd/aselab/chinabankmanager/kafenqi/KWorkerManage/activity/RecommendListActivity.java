@@ -58,7 +58,7 @@ public class RecommendListActivity extends AppCompatActivity {
     private JSONArray recommendJA;
     private WorkerRecommendListAdapter adaper;
     private String serial_num;
-    private int money;
+    private double money;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,6 +98,7 @@ public class RecommendListActivity extends AppCompatActivity {
                 final PostParameter[] params = new PostParameter[2];
                 params[0] = new PostParameter("worker_account", worker_account);
                 params[1] = new PostParameter("range", range);
+                //卡分期——推广员推荐分期列表
                 String reCode = ConnectUtil.httpRequest(ConnectUtil.GetInstallmentWorkerRecommendList, params, ConnectUtil.POST);
                 Log.e("reCode", "" + reCode);
                 Message msg = new Message();
@@ -227,7 +228,7 @@ public class RecommendListActivity extends AppCompatActivity {
                         applicationsVO.setApplicationID(temp.getString("id"));
                         applicationsVO.setApplicatinName(temp.getString("applicant"));
                         applicationsVO.setApplicateTime(temp.getString("time"));
-                        applicationsVO.setFenqi_money(temp.getInt("money"));
+                        applicationsVO.setFenqi_money(temp.getDouble("money"));
                         applicationsVO.setFenqi_num(temp.getInt("installment_num"));
 //                        applicationsVO.setBuy_commodity(temp.getString("car_type"));
 //                        applicationsVO.setScore(temp.getInt("evaluation"));
@@ -292,6 +293,7 @@ public class RecommendListActivity extends AppCompatActivity {
                             final PostParameter[] params = new PostParameter[2];
                             params[0] = new PostParameter("id", applicationsVOList.get(position).getApplicationID());
                             params[1] = new PostParameter("confirm", "YES");
+                            //卡分期——确认/拒绝推荐
                             String reCode = ConnectUtil.httpRequest(ConnectUtil.ConfirmInstallmentRecommend, params, ConnectUtil.POST);
                             Log.e("reCode", "" + reCode);
                             Message msg = new Message();
@@ -311,6 +313,7 @@ public class RecommendListActivity extends AppCompatActivity {
                             final PostParameter[] params = new PostParameter[2];
                             params[0] = new PostParameter("id", applicationsVOList.get(position).getApplicationID());
                             params[1] = new PostParameter("confirm", "NO");
+                            //卡分期——确认/拒绝推荐
                             String reCode = ConnectUtil.httpRequest(ConnectUtil.ConfirmInstallmentRecommend, params, ConnectUtil.POST);
                             Log.e("reCode", "" + reCode);
                             Message msg = new Message();
@@ -338,10 +341,11 @@ public class RecommendListActivity extends AppCompatActivity {
                         mview.findViewById(R.id.serial_number).setVisibility(View.GONE);
                         TextView text = (TextView) mview.findViewById(R.id.flow);
                         text.setText("流水号：" + applicationsVOList.get(position).getSerial_num());
-                        Log.d("Dorise流水号", applicationsVOList.get(position).getSerial_num()+"");
+                        Log.d("Dorise流水号", applicationsVOList.get(position).getSerial_num() + "");
+
                         mview.findViewById(R.id.money).setVisibility(View.GONE);
                         TextView text1 = (TextView) mview.findViewById(R.id.get_money);
-                        text1.setText("放款金额（万元）：" + applicationsVOList.get(position).getFenqi_money());
+                        text1.setText("放款金额(万元)：" + applicationsVOList.get(position).getFenqi_money());
                         Log.d("Dorise放款金额", applicationsVOList.get(position).getFenqi_money() + "");
                         builder.setNegativeButton("确定", new DialogInterface.OnClickListener() {
                             @Override
@@ -373,17 +377,18 @@ public class RecommendListActivity extends AppCompatActivity {
                                 EditText temp1 = ((EditText) mview.findViewById(R.id.serial_number));
                                 serial_num = (temp1.getText().toString().trim());
                                 EditText temp2 = ((EditText) mview.findViewById(R.id.money));
-                                money = Integer.parseInt(temp2.getText().toString().trim());
+                                String str=temp2.getText().toString().trim();
 
                                 if ("".equals(serial_num)) {
                                     Toast.makeText(RecommendListActivity.this, "请输入流水号", Toast.LENGTH_SHORT).show();
                                     Log.d("Dorise流水号", serial_num + "----------");
                                     return;
-                                } else if ("".equals(money)) {
+                                } else if ("".equals(str)) {
                                     Toast.makeText(RecommendListActivity.this, "请输入放款金额", Toast.LENGTH_SHORT).show();
-                                    Log.d("Dorise放款金额", money + "----------");
+                                    Log.d("Dorise放款金额", str + "----------");
                                     return;
                                 } else {
+                                    money = Double.parseDouble(str);
                                     Log.d("Dorise  elseli面", money + "----------");
                                     new Thread() {
                                         Message msg = handler.obtainMessage();
@@ -399,14 +404,16 @@ public class RecommendListActivity extends AppCompatActivity {
                                             Log.d("Dorise", serial_num + "");
                                             post[2] = new PostParameter("money", money + "");
                                             Log.d("Dorise", money + "");
+                                            //卡分期——添加备注
                                             jsonstr = ConnectUtil.httpRequest(ConnectUtil.AddInstallmentRecommendRemark, post, "POST");
                                             if ("" == jsonstr || jsonstr == null) {
                                                 msg.what = 4;
                                                 msg.obj = "提交失败";
                                             } else {
+
                                                 msg.what = 5;
 
-
+                                                msg.arg1 = position;
                                                 msg.obj = jsonstr;
                                             }
                                             handler.sendMessage(msg);
@@ -445,6 +452,10 @@ public class RecommendListActivity extends AppCompatActivity {
                 intent.setClass(RecommendListActivity.this, NewNotificationDetail2Activity.class);
                 intent.putExtra("id", applicationsVOList.get(position).getApplicationID());
                 intent.putExtra("position", position);
+
+
+                //把放款金额传过去
+//                intent.putExtra("get_money",applicationsVOList.get(position).getFenqi_money());
                 startActivityForResult(intent, 999);
                 //startActivity(intent);
 
@@ -470,6 +481,15 @@ public class RecommendListActivity extends AppCompatActivity {
                     Log.d("www", "refuse----" + position);
                     applicationsVOList.get(position).setState("NO");
                     adaper.setList(applicationsVOList);
+                    adaper.notifyDataSetChanged();
+                    break;
+                case "add_text":
+
+                    Log.d("Dorise进入add_text", "进来了进来了");
+                    Log.d("Dorise进入add_text", data.getDoubleExtra("money", 0) + "============");
+                    applicationsVOList.get(position).setFenqi_money(data.getDoubleExtra("money", 0));
+                    applicationsVOList.get(position).setState("SUCCESS");
+                    applicationsVOList.get(position).setserial_num(data.getStringExtra("serial_num"));
                     adaper.notifyDataSetChanged();
                     break;
             }

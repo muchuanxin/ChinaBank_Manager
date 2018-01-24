@@ -8,7 +8,7 @@ public class ApplicationsVO {
     private String applicationID; //卡分期的业务编号
     private String applicatinName;
     private String applicateTime;
-    private int fenqi_money;
+    private double fenqi_money;
     private int fenqi_num;
     private String buy_commodity;
     private int score;
@@ -41,11 +41,11 @@ public class ApplicationsVO {
         this.applicateTime = applicateTime;
     }
 
-    public int getFenqi_money() {
+    public double getFenqi_money() {
         return fenqi_money;
     }
 
-    public void setFenqi_money(int fenqi_money) {
+    public void setFenqi_money(double fenqi_money) {
         this.fenqi_money = fenqi_money;
     }
 

@@ -47,7 +47,7 @@ public class NewNotificationDetailNewActivity extends AppCompatActivity {
     //点击通知栏跳转到这个界面显示通知中的详细信息
     private RelativeLayout back;
     private RelativeLayout rl_show_information_text;
-    private ImageView arrow;
+    //    private ImageView arrow;
     private boolean isShow = false;
     private LinearLayout ll_detail_information;
     private NoScrollListView lv_detail_information;
@@ -67,11 +67,12 @@ public class NewNotificationDetailNewActivity extends AppCompatActivity {
     private List<EvaluationItemVO> list = new ArrayList<>();
     private EvaluationItemAdapter adapter;
     private String jsonstr;
-
+    private TextView tv_mark;
 
     private String confirm;
     private String serial_num;
     private double money;
+    private LinearLayout tv_confirm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,11 +92,12 @@ public class NewNotificationDetailNewActivity extends AppCompatActivity {
 
 
     void initView() {
-
+        tv_confirm = (LinearLayout) findViewById(R.id.confirm);
+        tv_mark = (TextView) findViewById(R.id.tv_mark);
         back = (RelativeLayout) findViewById(R.id.act_new_noti_new_back_btn);
-        rl_show_information_text = (RelativeLayout) findViewById(R.id.show_information_new);
+//        rl_show_information_text = (RelativeLayout) findViewById(R.id.show_information_new);
         set_info = (ImageView) findViewById(R.id.set_info);
-        arrow = (ImageView) findViewById(R.id.iv_right_arrow_new);
+//        arrow = (ImageView) findViewById(R.id.iv_right_arrow_new);
         lv_detail_information = (NoScrollListView) findViewById(R.id.detail_lv);
         bt_confirm = (Button) findViewById(R.id.new_notification_affirm_new);
         bt_refuse = (Button) findViewById(R.id.new_notification_refuse_new);
@@ -140,7 +142,7 @@ public class NewNotificationDetailNewActivity extends AppCompatActivity {
                 applicatin_name.setText("申请人："+json.getString("applicant"));
                 application_tel_str = json.getString("telephone");
                 application_tel.setText("联系电话："+application_tel_str);
-                applicate_money.setText("分期总金额（万元）："+json.getString("money"));
+                applicate_money.setText("分期总金额(万元)："+json.getString("money"));
                 applicate_num.setText("分期数："+json.getString("installment_num"));
                 buy_commodity.setText("购买商品："+json.getString("car_type"));
                 self_score.setText("评分："+json.getString("evaluation"));
@@ -183,7 +185,7 @@ public class NewNotificationDetailNewActivity extends AppCompatActivity {
             }
         });
 
-        rl_show_information_text.setOnClickListener(new View.OnClickListener() {
+/*        rl_show_information_text.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (isShow) {
@@ -196,8 +198,9 @@ public class NewNotificationDetailNewActivity extends AppCompatActivity {
                     isShow = true;
                 }
             }
-        });
+        });*/
 
+//拨打电话
         iv_call_worker_tel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -267,6 +270,17 @@ public class NewNotificationDetailNewActivity extends AppCompatActivity {
 
                 if ("SUCCESS".equals(confirm)) {
 
+
+
+
+                    tv_confirm.setVisibility(View.GONE);
+                    tv_mark.setVisibility(View.VISIBLE);
+                    tv_mark.setText("业务通过");
+                    tv_mark.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
+
+
+
+
                     mview.findViewById(R.id.serial_number).setVisibility(View.GONE);
                     TextView text = (TextView) mview.findViewById(R.id.flow);
                     text.setText("流水号：" + serial_num);
@@ -275,8 +289,8 @@ public class NewNotificationDetailNewActivity extends AppCompatActivity {
 
                     mview.findViewById(R.id.money).setVisibility(View.GONE);
                     TextView text1 = (TextView) mview.findViewById(R.id.get_money);
-                    text1.setText("放款金额（万元）：" + money);
-                    Log.d("Dorise放款金额", money + "");
+                    text1.setText("放款金额(万元)：" + money);
+                    Log.d("Dorise放款金额succcess", money + "");
 
                     builder.setNegativeButton("确定", new DialogInterface.OnClickListener() {
                         @Override
@@ -289,6 +303,21 @@ public class NewNotificationDetailNewActivity extends AppCompatActivity {
                     builder.show();
 
                 } else {
+
+
+
+
+
+
+                    tv_mark.setVisibility(View.GONE);
+                    tv_confirm.setVisibility(View.VISIBLE);
+//                    tv_mark.setText("业务通过");
+//                    tv_confirm.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
+
+
+
+
+
                     builder.setPositiveButton("提交", null);
                     builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
                         @Override
@@ -359,7 +388,7 @@ public class NewNotificationDetailNewActivity extends AppCompatActivity {
                 }
 
                 //kk
-             //   builder.show();
+                //   builder.show();
 
             }
         });
@@ -387,7 +416,9 @@ public class NewNotificationDetailNewActivity extends AppCompatActivity {
                 final PostParameter[] params = new PostParameter[1];
                 //id
                 params[0] = new PostParameter("id", id);
+                //卡分期——推广员推荐分期详情
                 String reCode = ConnectUtil.httpRequest(ConnectUtil.GetInstallmentWorkerRecommendDetail, params, ConnectUtil.POST);
+
                 Message msg = new Message();
                 msg.what = 0;
                 msg.obj = reCode;
@@ -405,6 +436,7 @@ public class NewNotificationDetailNewActivity extends AppCompatActivity {
                 //id
                 params[0] = new PostParameter("id", id);
                 params[1] = new PostParameter("confirm", "YES");
+                //卡分期——确认/拒绝推荐
                 String reCode = ConnectUtil.httpRequest(ConnectUtil.ConfirmInstallmentRecommend, params, ConnectUtil.POST);
                 Message msg = new Message();
                 msg.what = 1;
@@ -437,11 +469,12 @@ public class NewNotificationDetailNewActivity extends AppCompatActivity {
             @Override
             public void handleMessage(Message msg) {
                 super.handleMessage(msg);
+                Log.d("Dorise","cococococococo");
                 switch (msg.what) {
                     case 0:
                         String reCode0 = (String) msg.obj;
                         if (reCode0 != null) {
-                            Log.e("www", "newrecode:" + reCode0);
+                            Log.e("www1", "newrecode:" + reCode0);
                             try {
                                 JSONObject json = new JSONObject(reCode0);
                                 String status = json.getString("status");
@@ -450,6 +483,18 @@ public class NewNotificationDetailNewActivity extends AppCompatActivity {
                                     Toast.makeText(NewNotificationDetailNewActivity.this, "" + message, Toast.LENGTH_SHORT).show();
                                     finish();
                                 } else if ("true".equals(status)) {
+
+
+
+
+
+
+
+
+
+
+
+
                                     worker_account_str = json.getString("worker_account");
                                     worker_name_str = json.getString("worker_name");
                                     worker_head_str = json.getString("worker_head");
@@ -461,16 +506,21 @@ public class NewNotificationDetailNewActivity extends AppCompatActivity {
                                     applicatin_name.setText("申请人：" + json.getString("applicant"));
                                     application_tel_str = json.getString("applicant_telephone");
                                     application_tel.setText("联系电话：" + application_tel_str);
-                                    applicate_money.setText("分期总金额（万元）：" + json.getString("money"));
+                                    applicate_money.setText("分期总金额(万元)：" + json.getString("money"));
                                     applicate_num.setText("分期数：" + json.getString("installment_num"));
                                     //buy_commodity.setText("购买汽车品牌：" + json.getString("car_type"));
                                     //self_score.setText("评分：" + json.getString("evaluation"));
                                     //返回什么
                                     //system_score.setText(json.getString("car_type"));
                                     confirm = json.getString("confirm");
-                                    serial_num=json.getString("serial_num");
-                                    JSONArray jsonArray = json.getJSONArray("evaluation_detail");
-                                    if (jsonArray.length() > 0) {
+                                    serial_num = json.getString("serial_num");
+                                    money = Double.parseDouble(json.getString("money"));
+//                                    JSONArray jsonArray = json.getJSONArray("evaluation_detail");
+
+                                    Log.d("Dorise  confirm111",confirm);
+
+
+                                 /*   if (jsonArray.length() > 0) {
                                         for (int i = 0; i < jsonArray.length(); i++) {
                                             JSONObject temp = (JSONObject) jsonArray.get(i);
                                             Log.d("www", "temp:" + jsonArray.get(i));
@@ -483,9 +533,42 @@ public class NewNotificationDetailNewActivity extends AppCompatActivity {
                                         }
                                         adapter = new EvaluationItemAdapter(list, NewNotificationDetailNewActivity.this);
                                         lv_detail_information.setAdapter(adapter);
+
+
+
+
+                                        Log.d("Dorise  confirm222",confirm);
                                     } else {
+                                        Log.d("Dorise  confirm333",confirm);
                                         finish();
+                                    }*/
+
+
+
+
+                                        Log.d("Dorise  confirm444",confirm);
+
+                                    if(confirm.equals("SUCCESS")){
+                                        Log.d("Dorise  success","come in");
+                                        tv_confirm.setVisibility(View.GONE);
+                                        tv_mark.setVisibility(View.VISIBLE);
+                                        tv_mark.setText("业务通过");
+                                        tv_mark.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
+                                    }else{
+                                        Log.d("Dorise  fail","come in");
+                                        tv_mark.setVisibility(View.GONE);
+                                        tv_confirm.setVisibility(View.VISIBLE);
                                     }
+
+
+
+
+
+
+
+
+
+
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -538,7 +621,15 @@ public class NewNotificationDetailNewActivity extends AppCompatActivity {
                             Toast.makeText(NewNotificationDetailNewActivity.this, obj.getString("message"), Toast.LENGTH_SHORT).show();
 
                             if (obj.get("status").equals("true")) {
-                                applicate_money.setText("分期总金额（万元）：" + money);
+                                applicate_money.setText("分期总金额(万元)：" + money);
+                                confirm = "SUCCESS";
+
+                                tv_confirm.setVisibility(View.GONE);
+                                tv_mark.setVisibility(View.VISIBLE);
+                                tv_mark.setText("业务通过");
+                                tv_mark.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
+
+
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();

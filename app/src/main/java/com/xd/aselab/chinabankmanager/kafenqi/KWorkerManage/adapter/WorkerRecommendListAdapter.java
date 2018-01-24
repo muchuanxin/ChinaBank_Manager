@@ -86,7 +86,7 @@ public class WorkerRecommendListAdapter extends BaseAdapter {
         holder.tv_application_name.setText(list.get(position).getApplicatinName());
         holder.tv_applicate_time.setText("" + list.get(position).getApplicateTime());
         holder.tv_application_tel.setText("联系电话：" + list.get(position).getTel());
-        holder.tv_applicate_money.setText("分期总金额（万元）：" + list.get(position).getFenqi_money());
+        holder.tv_applicate_money.setText("分期总金额(万元)：" + list.get(position).getFenqi_money());
         holder.tv_application_fenqi_num.setText("分期数：" + list.get(position).getFenqi_num() + "笔");
 //        holder.tv_application_comm.setText("购买汽车品牌："+list.get(position).getBuy_commodity());
 //        holder.tv_score.setText(""+list.get(position).getScore());

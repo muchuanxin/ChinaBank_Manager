@@ -222,7 +222,7 @@
                     android:textColor="@color/black_text_light"
                     android:text="预授信评分:"/>
             </LinearLayout>-->
-            <RelativeLayout
+            <!--RelativeLayout
                 android:id="@+id/show_information_new"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -245,7 +245,7 @@
                     android:padding="2dp"
                     android:gravity="right"
                     android:src="@drawable/arrow_right"/>
-            </RelativeLayout>
+            </RelativeLayout-->
             <com.xd.aselab.chinabankmanager.util.NoScrollListView
                 android:id="@+id/detail_lv"
                 android:visibility="gone"
@@ -288,6 +288,7 @@
         </LinearLayout>
     </ScrollView>
 
+
     <LinearLayout
         android:id="@+id/bottom_choose"
         android:layout_width="match_parent"
@@ -300,7 +301,28 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/grey"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <LinearLayout
+
+            android:id="@+id/confirm"
             android:layout_width="match_parent"
             android:layout_height="43dp"
             android:orientation="horizontal">
@@ -341,6 +363,19 @@
             </RelativeLayout>
         </LinearLayout>
 
+
+
     </LinearLayout>
 
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/tv_mark"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/gray_bg"
+        android:gravity="center"
+        android:textSize="18dp"
+        android:textColor="@color/colorPrimaryDark"
+        android:text="已确认"/>
 </RelativeLayout>

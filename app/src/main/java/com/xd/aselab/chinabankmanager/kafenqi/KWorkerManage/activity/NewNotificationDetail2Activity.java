@@ -70,6 +70,11 @@ public class NewNotificationDetail2Activity extends AppCompatActivity {
     private LinearLayout ll_choose;
     private ImageView set_info;
     private String jsonstr;
+    private View.OnClickListener listener;
+    private String serial_num;
+    private double money;
+    private String confirm;
+    private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -138,7 +143,10 @@ public class NewNotificationDetail2Activity extends AppCompatActivity {
                 final PostParameter[] params = new PostParameter[1];
                 //id
                 params[0] = new PostParameter("id", id);
+                //卡分期——推广员推荐分期详情
                 String reCode = ConnectUtil.httpRequest(ConnectUtil.GetInstallmentWorkerRecommendDetail, params, ConnectUtil.POST);
+                Log.d("Dorise  url",reCode);
+
                 Message msg = new Message();
                 msg.what = 0;
                 msg.obj = reCode;
@@ -186,8 +194,12 @@ public class NewNotificationDetail2Activity extends AppCompatActivity {
                                     applicatin_name.setText("申请人：" + json.getString("applicant"));
                                     application_tel_str = json.getString("applicant_telephone");
                                     application_tel.setText("联系电话：" + application_tel_str);
-                                    applicate_money.setText("分期总金额（万元）：" + json.getString("money"));
+                                    applicate_money.setText("分期总金额(万元)：" + json.getString("money"));
                                     applicate_num.setText("分期数：" + json.getString("installment_num"));
+                                    serial_num = json.getString("serial_num");
+
+
+                                    money = Double.parseDouble(json.getString("money"));
 //                                    buy_commodity.setText("购买汽车品牌："+json.getString("car_type"));
 //                                    self_score.setText("评分："+json.getString("evaluation"));
                                     //返回什么
@@ -221,8 +233,15 @@ public class NewNotificationDetail2Activity extends AppCompatActivity {
                                         finish();
                                     }*/
 
-                                    String confirm = json.getString("confirm");
-                                    Log.e("www","----"+confirm);
+
+                                    //获取当前confirm状态
+                                    confirm = json.getString("confirm");
+
+
+                                    set_info.setOnClickListener(listener);
+
+
+                                    Log.e("www", "----" + confirm);
                                     switch (confirm) {
                                         case "SUCCESS":
                                             ll_choose.setVisibility(View.GONE);
@@ -328,6 +347,28 @@ public class NewNotificationDetail2Activity extends AppCompatActivity {
                             Toast.makeText(NewNotificationDetail2Activity.this, obj.getString("message"), Toast.LENGTH_SHORT).show();
                             if (obj.get("status").equals("true")) {
 
+
+                                applicate_money.setText("分期总金额(万元)：" + money);
+
+                                Intent intent = new Intent();
+                                intent.putExtra("action", "add_text");
+                                intent.putExtra("position", position);
+                                intent.putExtra("serial_num", serial_num);
+                                intent.putExtra("money", money);
+                                Log.d("Dorise 返回时候Monwy", money + "");
+                                setResult(1000, intent);
+                                confirm = "SUCCESS";
+
+
+
+                                ll_choose.setVisibility(View.GONE);
+                                tv_mark.setVisibility(View.VISIBLE);
+                                tv_mark.setText("业务通过");
+                                tv_mark.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
+
+
+
+
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -376,7 +417,7 @@ public class NewNotificationDetail2Activity extends AppCompatActivity {
             }
         });
 
-        set_info.setOnClickListener(new View.OnClickListener() {
+    /*    set_info.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(NewNotificationDetail2Activity.this);
                 final View view = getLayoutInflater().inflate(R.layout.manager_input_info, null);
@@ -389,6 +430,7 @@ public class NewNotificationDetail2Activity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         new Thread() {
                             Message msg = handler.obtainMessage();
+
                             @Override
                             public void run() {
                                 super.run();
@@ -397,11 +439,12 @@ public class NewNotificationDetail2Activity extends AppCompatActivity {
                                 view.findViewById(R.id.serial_number);
                                 PostParameter post[] = new PostParameter[3];
                                 post[0] = new PostParameter("id", id);
-                                Log.d("Dorise",id);
+                                Log.d("Dorise", id);
                                 post[1] = new PostParameter("serial_num", serial_num);
-                                Log.d("Dorise",serial_num);
+                                Log.d("Dorise", serial_num);
                                 post[2] = new PostParameter("money", money);
-                                Log.d("Dorise",money);
+                                Log.d("Dorise", money);
+                                //添加备注
                                 jsonstr = ConnectUtil.httpRequest(ConnectUtil.AddInstallmentRecommendRemark, post, "POST");
                                 if ("" == jsonstr || jsonstr == null) {
                                     msg.what = 4;
@@ -424,7 +467,7 @@ public class NewNotificationDetail2Activity extends AppCompatActivity {
                 builder.show();
 
             }
-        });
+        });*/
 
         iv_call_application_tel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -445,6 +488,101 @@ public class NewNotificationDetail2Activity extends AppCompatActivity {
                 }
             }
         });
+
+        listener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(NewNotificationDetail2Activity.this);
+                final View mview = getLayoutInflater().inflate(R.layout.manager_input_info, null);
+                if (confirm.equals("SUCCESS")) {
+                    mview.findViewById(R.id.serial_number).setVisibility(View.GONE);
+                    TextView text = (TextView) mview.findViewById(R.id.flow);
+                    text.setText("流水号：" + serial_num);
+                    Log.d("Dorise流水号", serial_num);
+                    mview.findViewById(R.id.money).setVisibility(View.GONE);
+                    TextView text1 = (TextView) mview.findViewById(R.id.get_money);
+                    text1.setText("放款金额(万元)：" + money);
+                    Log.d("Dorise放款金额22222", money + "");
+                    builder.setNegativeButton("确定", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+                    builder.setView(mview);
+                    builder.setTitle("备注信息");
+                    builder.show();
+                } else {
+
+                    builder.setPositiveButton("提交", null);
+                    builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+                    builder.setView(mview);
+                    builder.setTitle("添加备注");
+
+                    final AlertDialog dialog = builder.create();
+                    dialog.show();
+                    dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+
+                            EditText temp1 = ((EditText) mview.findViewById(R.id.serial_number));
+                            serial_num = (temp1.getText().toString().trim());
+                            EditText temp2 = ((EditText) mview.findViewById(R.id.money));
+                            money = Double.parseDouble(temp2.getText().toString().trim());
+
+                            if ("".equals(serial_num)) {
+                                Toast.makeText(NewNotificationDetail2Activity.this, "请输入流水号", Toast.LENGTH_SHORT).show();
+                                Log.d("Dorise流水号", serial_num + "----------");
+                                return;
+                            } else if ("".equals(money)) {
+                                Toast.makeText(NewNotificationDetail2Activity.this, "请输入放款金额", Toast.LENGTH_SHORT).show();
+                                Log.d("Dorise放款金额", money + "----------");
+                                return;
+                            } else {
+                                Log.d("Dorise  elseli面", money + "----------");
+                                new Thread() {
+                                    Message msg = handler.obtainMessage();
+
+                                    @Override
+                                    public void run() {
+                                        super.run();
+
+                                        PostParameter post[] = new PostParameter[3];
+                                        post[0] = new PostParameter("id", id);
+                                        Log.d("Dorise", id);
+                                        post[1] = new PostParameter("serial_num", serial_num + "");
+                                        Log.d("Dorise", serial_num + "");
+                                        post[2] = new PostParameter("money", money + "");
+                                        Log.d("Dorise", money + "");
+                                        jsonstr = ConnectUtil.httpRequest(ConnectUtil.AddInstallmentRecommendRemark, post, "POST");
+                                        if ("" == jsonstr || jsonstr == null) {
+                                            msg.what = 4;
+                                            msg.obj = "提交失败";
+                                        } else {
+                                            msg.what = 5;
+
+
+                                            msg.obj = jsonstr;
+                                        }
+                                        handler.sendMessage(msg);
+                                        dialog.dismiss();
+                                    }
+                                }.start();
+                            }
+
+
+                        }
+                    });
+                }
+
+            }
+        };
+
 
         iv_communacate_worker.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -487,6 +625,7 @@ public class NewNotificationDetail2Activity extends AppCompatActivity {
                 //id
                 params[0] = new PostParameter("id", id);
                 params[1] = new PostParameter("confirm", "YES");
+                //卡分期——确认/拒绝推荐
                 String reCode = ConnectUtil.httpRequest(ConnectUtil.ConfirmInstallmentRecommend, params, ConnectUtil.POST);
                 Message msg = new Message();
                 msg.what = 1;
@@ -514,4 +653,6 @@ public class NewNotificationDetail2Activity extends AppCompatActivity {
             }
         }.start();
     }
+
 }
+
