@@ -17,6 +17,7 @@ public class Constants {
     public static final int MIAN_ME_TO_INFO = 006;
     public static final int INFO_TO_MAIN = 007;
     public static final int LOGIN_TO_MAIN_HOME = 1001;
+    public static final int EXIT_TO_LOGIN = 1002;
     //me_uploadHeadPhoto
     public static String uploadHeadPhoto = ConnectUtil.UploadHeadPhoto + "?";
     public static String ChangeGroupHeadPhoto = ConnectUtil.ChangeGroupHeadPhoto + "?";

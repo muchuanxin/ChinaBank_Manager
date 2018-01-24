@@ -68,7 +68,7 @@ public class BasePerfDetailAdapter extends BaseAdapter {
         }
 
         holder.tv_base_name.setText(list.get(position).getName());
-        holder.tv_base_money.setText("分期业务金额："+list.get(position).getSuccess_money()+"元");
+        holder.tv_base_money.setText("分期业务金额："+list.get(position).getSuccess_money()+"万元");
         holder.tv_base_num.setText("分期业务数量："+list.get(position).getSuccess_number()+"笔");
         return convertView;
     }

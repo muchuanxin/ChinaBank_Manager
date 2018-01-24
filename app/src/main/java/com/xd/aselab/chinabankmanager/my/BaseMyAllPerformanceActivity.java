@@ -184,7 +184,7 @@ public class BaseMyAllPerformanceActivity extends AppCompatActivity  implements 
                                 choosen_time="one_week";
                                 setFenqiData(number1_fenqi,money1_fenqi);
                                 *//*line1.setText("分期业务成功数量："+("".equals(number1)? "暂无" : number1+"笔"));
-                                line2.setText("分期业务成功金额："+("".equals(money1)? "暂无" : money1+"元"));*//*
+                                line2.setText("分期业务成功金额："+("".equals(money1)? "暂无" : money1+"万元"));*//*
                                 calendar.set(Calendar.DATE, calendar.get(Calendar.DATE) - 7);
                                 params[3] = new PostParameter("begin", format.format(calendar.getTime()));
                                 params[4] = new PostParameter("end", format.format(new Date()));
@@ -373,7 +373,7 @@ public class BaseMyAllPerformanceActivity extends AppCompatActivity  implements 
                                     money4_fenqi = oneYearJO.getInt("money");
 
                                     tv_fenqi_1.setText("分期业务成功数量："+("".equals(number1_fenqi)? "暂无" : number1_fenqi+"笔"));
-                                    tv_fenqi_2.setText("分期业务成功金额："+("".equals(money1_fenqi)? "暂无" : money1_fenqi+"元"));
+                                    tv_fenqi_2.setText("分期业务成功金额："+("".equals(money1_fenqi)? "暂无" : money1_fenqi+"万元"));
 
                                     boolean flag = false;
                                     for (int i=0; i<12; i++){
@@ -453,7 +453,7 @@ public class BaseMyAllPerformanceActivity extends AppCompatActivity  implements 
 
         } else {
             // create 2 DataSets
-            set1 = new BarDataSet(yVals1, "分期总额(元)");
+            set1 = new BarDataSet(yVals1, "分期总额(万元)");
             set1.setColor(Color.rgb(255, 133, 133));
             set2 = new BarDataSet(yVals2, "业务量(笔)");
             set2.setColor(Color.rgb(98, 188, 255));
@@ -536,11 +536,11 @@ public class BaseMyAllPerformanceActivity extends AppCompatActivity  implements 
 
     void setFenqiData(int number,int money){
         tv_fenqi_1.setText("分期业务成功数量："+("".equals(number)? "暂无" : number+"笔"));
-        tv_fenqi_2.setText("分期业务成功金额："+("".equals(money)? "暂无" : money+"元"));
+        tv_fenqi_2.setText("分期业务成功金额："+("".equals(money)? "暂无" : money+"万元"));
     }
     void setGerenxiaodaiData(int number,int money){
         tv_xiaodai_1.setText("分期业务成功数量："+("".equals(number)? "暂无" : number+"笔"));
-        tv_xiaodai_2.setText("分期业务成功金额："+("".equals(money)? "暂无" : money+"元"));
+        tv_xiaodai_2.setText("分期业务成功金额："+("".equals(money)? "暂无" : money+"万元"));
     }
 
     @Override
@@ -582,7 +582,7 @@ public class BaseMyAllPerformanceActivity extends AppCompatActivity  implements 
                         choosen_time="one_week";
                         setFenqiData(number1_fenqi,money1_fenqi);
                                 /*line1.setText("分期业务成功数量："+("".equals(number1)? "暂无" : number1+"笔"));
-                                line2.setText("分期业务成功金额："+("".equals(money1)? "暂无" : money1+"元"));*/
+                                line2.setText("分期业务成功金额："+("".equals(money1)? "暂无" : money1+"万元"));*/
                         calendar.set(Calendar.DATE, calendar.get(Calendar.DATE) - 7);
                         params[3] = new PostParameter("begin", format.format(calendar.getTime()));
                         params[4] = new PostParameter("end", format.format(new Date()));

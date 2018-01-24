@@ -166,7 +166,8 @@ public class PersonalInfo extends AppCompatActivity {
                 JPushInterface.cleanTags(PersonalInfo.this, 1);
                 Intent intent = new Intent();
 //                intent.putExtra("action", "check_out");
-                setResult(Constants.INFO_TO_MAIN, intent);
+                //setResult(Constants.INFO_TO_MAIN, intent);
+                setResult(Constants.EXIT_TO_LOGIN, intent);
                 finish();
             }
         });

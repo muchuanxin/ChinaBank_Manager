@@ -33,8 +33,8 @@ public class WorkerRecommendListAdapter extends BaseAdapter {
     public WorkerRecommendListAdapter(List<ApplicationsVO> list, Context context, ListBtnListener mListener) {
         this.list = list;
         this.mContext = context;
-        this.mListener=mListener;
-        mInflater=(LayoutInflater)mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);//LayoutInflater.from(mContext);
+        this.mListener = mListener;
+        mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);//LayoutInflater.from(mContext);
     }
 
     public List<ApplicationsVO> getList() {
@@ -63,35 +63,36 @@ public class WorkerRecommendListAdapter extends BaseAdapter {
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
-        if(convertView==null){
+        if (convertView == null) {
             holder = new ViewHolder();
             convertView = mInflater.inflate(R.layout.recommend_list_item, null);
-            holder.tv_application_name = (TextView)convertView.findViewById(R.id.applicatinName);
-            holder.tv_applicate_time = (TextView)convertView.findViewById(R.id.applicateTime);
-            holder.rl_tel = (RelativeLayout)convertView.findViewById(R.id.call_application);
-            holder.tel = (ImageView)convertView.findViewById(R.id.act_tel);
-            holder.tv_applicate_money = (TextView)convertView.findViewById(R.id.fenqi_money);
-            holder.tv_application_fenqi_num = (TextView)convertView.findViewById(R.id.fenqi_num);
-            holder.tv_application_comm = (TextView)convertView.findViewById(R.id.buy_commodity);
-            holder.tv_application_tel = (TextView)convertView.findViewById(R.id.application_tel);
-            holder.tv_score = (TextView)convertView.findViewById(R.id.score);
+            holder.tv_application_name = (TextView) convertView.findViewById(R.id.applicatinName);
+            holder.tv_applicate_time = (TextView) convertView.findViewById(R.id.applicateTime);
+            holder.rl_tel = (RelativeLayout) convertView.findViewById(R.id.call_application);
+            holder.tel = (ImageView) convertView.findViewById(R.id.act_tel);
+            holder.tv_applicate_money = (TextView) convertView.findViewById(R.id.fenqi_money);
+            holder.tv_application_fenqi_num = (TextView) convertView.findViewById(R.id.fenqi_num);
+//            holder.tv_application_comm = (TextView)convertView.findViewById(R.id.buy_commodity);
+            holder.tv_application_tel = (TextView) convertView.findViewById(R.id.application_tel);
+//            holder.tv_score = (TextView)convertView.findViewById(R.id.score);
             holder.bt_confirm = (Button) convertView.findViewById(R.id.bt_list_confirm);
             holder.bt_refuse = (Button) convertView.findViewById(R.id.bt_list_refuse);
+            holder.input_info = (ImageView) convertView.findViewById(R.id.input_info);
             convertView.setTag(holder);
-        }else{
-            holder=(ViewHolder)convertView.getTag();
+        } else {
+            holder = (ViewHolder) convertView.getTag();
         }
 
         holder.tv_application_name.setText(list.get(position).getApplicatinName());
-        holder.tv_applicate_time.setText(""+list.get(position).getApplicateTime());
-        holder.tv_application_tel.setText("联系电话："+list.get(position).getTel());
-        holder.tv_applicate_money.setText("分期金额："+list.get(position).getFenqi_money()+"元");
-        holder.tv_application_fenqi_num.setText("分期数："+list.get(position).getFenqi_num()+"笔");
-        holder.tv_application_comm.setText("购买汽车品牌："+list.get(position).getBuy_commodity());
-        holder.tv_score.setText(""+list.get(position).getScore());
+        holder.tv_applicate_time.setText("" + list.get(position).getApplicateTime());
+        holder.tv_application_tel.setText("联系电话：" + list.get(position).getTel());
+        holder.tv_applicate_money.setText("分期总金额（万元）：" + list.get(position).getFenqi_money());
+        holder.tv_application_fenqi_num.setText("分期数：" + list.get(position).getFenqi_num() + "笔");
+//        holder.tv_application_comm.setText("购买汽车品牌："+list.get(position).getBuy_commodity());
+//        holder.tv_score.setText(""+list.get(position).getScore());
 
         String status = list.get(position).getState();
-        switch (status){
+        switch (status) {
             case "SUCCESS":
                 holder.bt_confirm.setText("业务通过");
                 holder.bt_confirm.setBackgroundResource(R.drawable.grey_corner);
@@ -140,6 +141,8 @@ public class WorkerRecommendListAdapter extends BaseAdapter {
 
         holder.rl_tel.setOnClickListener(mListener);
         holder.tel.setOnClickListener(mListener);
+        holder.input_info.setOnClickListener(mListener);
+        holder.input_info.setTag(position);
         holder.bt_confirm.setTag(position);
         holder.bt_refuse.setTag(position);
         holder.rl_tel.setTag(position);
@@ -160,6 +163,7 @@ public class WorkerRecommendListAdapter extends BaseAdapter {
         private TextView tv_score;
         private Button bt_confirm;
         private Button bt_refuse;
+        private ImageView input_info;
     }
 
     public static abstract class ListBtnListener implements View.OnClickListener {

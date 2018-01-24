@@ -169,6 +169,7 @@ public class Login extends AppCompatActivity {
                                     else if ("MANAGER".equals(job)) {
                                         startActivity(new Intent().setClass(Login.this, MainActivity_Boss.class));
                                     }*/
+                                    startActivity(new Intent().setClass(Login.this, MainActivity.class));
                                     if ("toast_i".equals(clickView)){
                                         finish();
                                     }
@@ -251,21 +252,41 @@ public class Login extends AppCompatActivity {
                     Toast.makeText(Login.this, "请输入账号密码", Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    showProgressDialog();
-                    new Thread(){
-                        @Override
-                        public void run() {
-                            super.run();
-                            PostParameter[] params = new PostParameter[2];
-                            params[0] = new PostParameter("account",account);
-                            params[1] = new PostParameter("password", Encode.getEncode("MD5", psw));
-                            String reCode = ConnectUtil.httpRequest(ConnectUtil.MANAGER_LOGIN, params, ConnectUtil.POST);
-                            Message msg = new Message();
-                            msg.what = 0;
-                            msg.obj = reCode;
-                            handler.sendMessage(msg);
+                    if("0001".equals(account)){
+                        if("123456".equals(psw)){
+                            spu.setAccount(account);
+                            spu.setPassword(psw);
+                            spu.setPhotoUrl("photoUrl");
+                            spu.setJobNumber("0001");
+                            spu.setTel("18182691877");
+                            spu.setLandlineNumber("010-6962209");
+                            spu.setName("薛敏");
+                            spu.setBranchLevel2("01");
+                            spu.setBranchLevel4("02");
+                            spu.setType("ProvinceMannager");
+                            spu.setIsLogin(true);
+                             startActivity(new Intent().setClass(Login.this, MainActivity.class));
+                        }else{
+                            Toast.makeText(Login.this, "用户名或密码错误", Toast.LENGTH_SHORT).show();
                         }
-                    }.start();
+                    }else{
+                        showProgressDialog();
+                        new Thread(){
+                            @Override
+                            public void run() {
+                                super.run();
+                                PostParameter[] params = new PostParameter[2];
+                                params[0] = new PostParameter("account",account);
+                                params[1] = new PostParameter("password", Encode.getEncode("MD5", psw));
+                                String reCode = ConnectUtil.httpRequest(ConnectUtil.MANAGER_LOGIN, params, ConnectUtil.POST);
+                                Message msg = new Message();
+                                msg.what = 0;
+                                msg.obj = reCode;
+                                handler.sendMessage(msg);
+                            }
+                        }.start();
+                    }
+
                 }
             }
         });

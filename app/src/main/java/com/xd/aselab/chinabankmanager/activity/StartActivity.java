@@ -40,7 +40,8 @@ public class StartActivity extends AppCompatActivity {
 
         final Intent intent = new Intent();
         //intent.putExtra("extras",extras);
-        intent.setClass(this, MainActivity.class);
+        //intent.setClass(this, MainActivity.class);
+        intent.setClass(this, Login.class);
         Timer timer = new Timer();
         TimerTask task = new TimerTask() {
             @Override

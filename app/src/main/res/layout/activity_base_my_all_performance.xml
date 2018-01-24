@@ -292,7 +292,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="17dp"
-                    android:text="个人消贷业务成功金额：0元"/>
+                    android:text="个人消贷业务成功金额：0万元"/>
 
                 <LinearLayout
                     android:id="@+id/act_my_all_perf_gerenxiaodai_rl"

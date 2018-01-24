@@ -149,6 +149,16 @@
                     android:textColor="@color/black_text_light"
                     android:text="联系电话："/>
                 <ImageView
+                    android:id="@+id/set_info"
+                    android:clickable="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_marginRight="36dp"
+                    android:gravity="right"
+                    android:src="@drawable/base_info"/>
+
+                <ImageView
                     android:id="@+id/iv_call_application_tel_new"
                     android:clickable="true"
                     android:layout_alignParentRight="true"
@@ -177,7 +187,7 @@
                 android:textSize="16dp"
                 android:textColor="@color/black_text_light"
                 android:text="分期数："/>
-            <TextView
+<!--            <TextView
                 android:id="@+id/detail_buy_commodity_new"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -186,8 +196,8 @@
                 android:layout_marginTop="5dp"
                 android:textSize="16dp"
                 android:textColor="@color/black_text_light"
-                android:text="购买汽车品牌："/>
-            <LinearLayout
+                android:text="购买汽车品牌："/>-->
+<!--            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
@@ -211,7 +221,7 @@
                     android:textSize="16dp"
                     android:textColor="@color/black_text_light"
                     android:text="预授信评分:"/>
-            </LinearLayout>
+            </LinearLayout>-->
             <RelativeLayout
                 android:id="@+id/show_information_new"
                 android:layout_width="match_parent"

@@ -30,6 +30,7 @@ import com.xd.aselab.chinabankmanager.fragment.ChatFragment;
 import com.xd.aselab.chinabankmanager.fragment.MainFragment;
 import com.xd.aselab.chinabankmanager.fragment.MeBasicFragment;
 import com.xd.aselab.chinabankmanager.fragment.MeManagerFragment;
+import com.xd.aselab.chinabankmanager.fragment.ProvinceMainFragment;
 import com.xd.aselab.chinabankmanager.fragment.RecommendFragment;
 import com.xd.aselab.chinabankmanager.util.ConnectUtil;
 import com.xd.aselab.chinabankmanager.util.Constants;
@@ -56,6 +57,7 @@ import static com.xd.aselab.chinabankmanager.util.Constants.LOGIN_TO_MAIN_ME;
 public class MainActivity extends AppCompatActivity {
 
     private MainFragment fra_main;
+    private ProvinceMainFragment fra_province_main;
     private ChatFragment fra_chat;
     private RecommendFragment fra_recommend;
     private MeBasicFragment fra_me_basic;
@@ -139,9 +141,20 @@ public class MainActivity extends AppCompatActivity {
                 // 当点击了消息tab时，改变控件的图片和文字颜色
                 ((ImageButton) main_home_btn.findViewById(R.id.mcx_footer_home_btn))
                         .setImageResource(R.drawable.main_black);
-                if (fra_main == null){
+                /*if (fra_main == null){
                     fra_main = new MainFragment();
                     transaction.add(R.id.mcx_main_content, fra_main,"main_home");
+                }*/
+                if(spu.getType().equals("ProvinceMannager")){
+                    if (fra_province_main == null){
+                        fra_province_main = new ProvinceMainFragment();
+                        transaction.add(R.id.mcx_main_content, fra_province_main,"main_home_province");
+                    }
+                }else {
+                    if (fra_main == null){
+                        fra_main = new MainFragment();
+                        transaction.add(R.id.mcx_main_content, fra_main,"main_home");
+                    }
                 }
                 break;
            case 1:
@@ -182,7 +195,12 @@ public class MainActivity extends AppCompatActivity {
                             transaction.add(R.id.mcx_main_content, fra_me_basic,"main_basic_me");
                         }
                         // intent.setClass(MainActivity_all.this, BaseMyActivity.class);
-                    }else{
+                    }else if(spu.getType().equals("MANAGER")){
+                        if (fra_me_manager == null){
+                            fra_me_manager = new MeManagerFragment();
+                            transaction.add(R.id.mcx_main_content, fra_me_manager,"main_manager_me");
+                        }
+                    }else if(spu.getType().equals("ProvinceMannager")){
                         if (fra_me_manager == null){
                             fra_me_manager = new MeManagerFragment();
                             transaction.add(R.id.mcx_main_content, fra_me_manager,"main_manager_me");
@@ -218,6 +236,11 @@ public class MainActivity extends AppCompatActivity {
         if (fra_main != null){
             transaction.remove(fra_main);
             fra_main = null;
+        }
+
+        if (fra_province_main != null){
+            transaction.remove(fra_province_main);
+            fra_province_main = null;
         }
 
         if (fra_chat != null){
@@ -256,6 +279,9 @@ public class MainActivity extends AppCompatActivity {
         if(resultCode== Constants.LOGIN_TO_MAIN_HOME){
             Log.e("www","LOGIN_TO_MAIN_HOME");
             setTabSelection(0);
+        }
+        if(resultCode== Constants.EXIT_TO_LOGIN){
+            finish();
         }
     }
 

@@ -190,9 +190,9 @@ public class KMyPreformenceActivity extends AppCompatActivity implements OnChart
                                     money4 = oneYearJO.getInt("money");
 
                                     line1.setText("分期业务推荐数量："+("".equals(recommend_number1)? "暂无" : recommend_number1+"笔"));
-                                    line2.setText("分期业务推荐金额："+("".equals(recommend_money1)? "暂无" : recommend_money1+"元"));
+                                    line2.setText("分期业务推荐金额："+("".equals(recommend_money1)? "暂无" : recommend_money1+"万元"));
                                     line3.setText("分期业务成功数量："+("".equals(number1)? "暂无" : number1+"笔"));
-                                    line4.setText("分期业务成功金额："+("".equals(money1)? "暂无" : money1+"元"));
+                                    line4.setText("分期业务成功金额："+("".equals(money1)? "暂无" : money1+"万元"));
 
                                     boolean flag = false;
                                     for (int i=0; i<12; i++){
@@ -303,7 +303,7 @@ public class KMyPreformenceActivity extends AppCompatActivity implements OnChart
 
         } else {
             // create 2 DataSets
-            set1 = new BarDataSet(yVals1, "分期总额(元)");
+            set1 = new BarDataSet(yVals1, "分期总额(万元)");
             set1.setColor(Color.rgb(255, 133, 133));
             set2 = new BarDataSet(yVals2, "业务量(笔)");
             set2.setColor(Color.rgb(98, 188, 255));
@@ -446,8 +446,8 @@ public class KMyPreformenceActivity extends AppCompatActivity implements OnChart
 
     void setText(int recommend_number,int recommend_money,int success_number,int success_money){
         line1.setText("分期业务推荐数量："+("".equals(recommend_number)? "暂无" : recommend_number+"笔"));
-        line2.setText("分期业务推荐金额："+("".equals(recommend_money)? "暂无" : recommend_money+"元"));
+        line2.setText("分期业务推荐金额："+("".equals(recommend_money)? "暂无" : recommend_money+"万元"));
         line3.setText("分期业务成功数量："+("".equals(success_number)? "暂无" : success_number+"笔"));
-        line4.setText("分期业务成功金额："+("".equals(success_money)? "暂无" : success_money+"元"));
+        line4.setText("分期业务成功金额："+("".equals(success_money)? "暂无" : success_money+"万元"));
     }
 }

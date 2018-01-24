@@ -35,7 +35,7 @@
             android:layout_marginTop="3dp"
             android:textSize="16dp"
             android:textColor="@color/black_text_most"
-            android:text="分期业务金额：0.00元"/>
+            android:text="分期业务金额：0.00万元"/>
     </LinearLayout>
 
 </LinearLayout>

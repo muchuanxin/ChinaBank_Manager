@@ -14,6 +14,8 @@ public class ApplicationsVO {
     private int score;
     private String state;
     private String tel;
+    private String serial_num;
+
 
     public String getApplicationID() {
         return applicationID;
@@ -86,4 +88,15 @@ public class ApplicationsVO {
     public void setTel(String tel) {
         this.tel = tel;
     }
+
+    public void setserial_num(String serial_num) {
+        this.serial_num = serial_num;
+    }
+
+    public String getSerial_num() {
+        return serial_num;
+    }
+
+
+
 }

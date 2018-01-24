@@ -78,7 +78,7 @@ public class NewNotificationDetailActivity extends AppCompatActivity {
     void initView(){
         rl_show_information_text = (RelativeLayout) findViewById(R.id.show_information);
         arrow = (ImageView)findViewById(R.id.iv_right_arrow);
-        ll_detail_information = (LinearLayout)findViewById(R.id.detail_application_information);
+//        ll_detail_information = (LinearLayout)findViewById(R.id.detail_application_information);
         bt_confirm = (Button)findViewById(R.id.new_notification_affirm);
         bt_refuse = (Button)findViewById(R.id.new_notification_refuse);
         iv_communacate_worker = (ImageView)findViewById(R.id.iv_worker_chat);
@@ -92,7 +92,7 @@ public class NewNotificationDetailActivity extends AppCompatActivity {
         application_tel = (TextView)findViewById(R.id.detail_application_tel);
         applicate_money = (TextView)findViewById(R.id.detail_applicate_money);
         applicate_num = (TextView)findViewById(R.id.detail_applicate_num);
-        buy_commodity = (TextView)findViewById(R.id.detail_buy_commodity);
+/*        buy_commodity = (TextView)findViewById(R.id.detail_buy_commodity);
         self_score = (TextView)findViewById(R.id.detail_self_score);
         system_score = (TextView)findViewById(R.id.detail_system_score);
         applicate_house = (TextView)findViewById(R.id.detail_applicate_house);
@@ -105,7 +105,7 @@ public class NewNotificationDetailActivity extends AppCompatActivity {
         applicate_hujiqingkuang = (TextView)findViewById(R.id.detail_applicate_hujiqingkuang);
         applicate_wenhua = (TextView)findViewById(R.id.detail_applicate_wenhua);
         applicate_nianling = (TextView)findViewById(R.id.detail_applicate_nianling);
-        applicate_shixin = (TextView)findViewById(R.id.detail_applicate_shixin);
+        applicate_shixin = (TextView)findViewById(R.id.detail_applicate_shixin);*/
 
     }
 

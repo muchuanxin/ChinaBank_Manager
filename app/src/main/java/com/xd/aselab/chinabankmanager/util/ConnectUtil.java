@@ -38,8 +38,8 @@ public class ConnectUtil {
 	public final static String HTTPS = "https://";
 
 	//public final static String API_HOST = "http://117.34.117.107/ChinaBank/Manager/";
-	public final static String IP = "http://47.93.31.35/";
-	//public final static String IP = "http://192.168.0.129/";
+//	public final static String IP = "http://47.93.31.35/";
+	public final static String IP = "http://192.168.0.129/";
 	//public final static String IP = "http://192.168.0.73:8080/";
 	//public final static String IP = "http://10.170.13.113:8080/";
 	//public final static String IP = "http://117.34.117.107/";
@@ -104,6 +104,7 @@ public class ConnectUtil {
 	public static String GetInstallmentWorkerPerformance= API_HOST+"GetInstallmentWorkerPerformance";//卡分期--4s店销售业绩（前台处理四种排序）
 	public static String GetInstallmentWorker = API_HOST+"GetInstallmentWorker";
 	public static String PublishAnnouncement = API_HOST+"PublishAnnouncement";
+	public static String AddInstallmentRecommendRemark = API_HOST+"AddInstallmentRecommendRemark";//卡分期--添加备注
 	public static String InstallmentActivelyRelieveWorker = API_HOST+"InstallmentActivelyRelieveWorker";
 	public static String GetInstallmentBasicPerformance = API_HOST+"GetInstallmentBasicPerformance";//卡分期--基层经理业绩（排名）
 	public static String GetInstallmentWorkerRecommendDetail = API_HOST+"GetInstallmentWorkerRecommendDetail";

@@ -38,7 +38,7 @@ import cn.jpush.android.api.JPushInterface;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MainFragment extends Fragment {
+public class ProvinceMainFragment extends Fragment {
 
     private View root;
     private ImageCycleView imageCycleView;
@@ -60,7 +60,7 @@ public class MainFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        root = inflater.inflate(R.layout.fragment_main, container, false);
+        root = inflater.inflate(R.layout.fragment_province_main, container, false);
         initView();
         initDatas();
         initEvents();
@@ -164,8 +164,11 @@ public class MainFragment extends Fragment {
                 if (spu.getisLogin()){
                     if(spu.getType().equals("BASIC")){
                         Toast.makeText(getActivity(), "银行卡客户经理，您好", Toast.LENGTH_SHORT).show();
-                    }else
+                    }else  if(spu.getType().equals("ProvinceMannager")){
+                        Toast.makeText(getActivity(), "省行管理者，您好", Toast.LENGTH_SHORT).show();
+                    }else{
                         Toast.makeText(getActivity(), "二级行管理者，您好", Toast.LENGTH_SHORT).show();
+                    }
                 }else{
                     Intent intent = new Intent();
                     intent.setClass(getActivity(), Login.class);
@@ -176,90 +179,17 @@ public class MainFragment extends Fragment {
             }
         });
 
-       /* personal_info.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                if (spu.getisLogin()){
-                    if(spu.getType().equals("BASIC")){
-                        intent.setClass(MainActivity_all.this, BaseMyActivity.class);
-                        startActivity(intent);
-                        // startActivityForResult(intent, 187);
-                    }else{
-                        intent.setClass(MainActivity_all.this, ManagerMyActivity.class);
-                        startActivity(intent);
-                    }
-
-                }else{
-                    intent.setClass(MainActivity_all.this, Login.class);
-                    intent.putExtra("clickView", "personalInfo");
-                    startActivity(intent);
-                }
-                *//*if(spu.getType().equals("BASIC")){
-                    if (spu.getisLogin()){
-                        intent.setClass(MainActivity_all.this, BaseMyActivity.class);
-                        startActivity(intent);
-                    }else{
-                        intent.setClass(MainActivity_all.this, Login.class);
-                        intent.putExtra("clickView", "baseMyActivity");
-                        startActivity(intent);
-                    }
-                }else{
-                    if (spu.getisLogin()){
-                        intent.setClass(MainActivity_all.this, ManagerMyActivity.class);
-                        startActivity(intent);
-                    }else{
-                        intent.setClass(MainActivity_all.this, Login.class);
-                        intent.putExtra("clickView", "managerMyActivity");
-                        startActivity(intent);
-                    }
-                }*//*
-
-            }
-        });*/
-
         ll_card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent();
-                if (spu.getisLogin()){
-                    if(spu.getType().equals("BASIC")){
-                        intent.setClass(getActivity(), MyManageBase.class);
-                        startActivity(intent);
-                        // startActivityForResult(intent, 187);
-                    }else{
-                        intent.setClass(getActivity(), MyManagement.class);
-                        startActivity(intent);
-                    }
-
-                }else{
-                    intent.setClass(getActivity(), Login.class);
-                    intent.putExtra("clickView", "card");
-                    startActivity(intent);
-                }
-
+                Toast.makeText(getActivity(),"省行管理者信用卡发管理界面",Toast.LENGTH_SHORT).show();
             }
         });
 
         ll_kafenqi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent();
-                if (spu.getisLogin()){
-                    if(spu.getType().equals("BASIC")){
-                        intent.setClass(getActivity(), KafenqiActivity.class);
-                        startActivity(intent);
-                        // startActivityForResult(intent, 187);
-                    }else{
-                        // Toast.makeText(MainActivity_all.this,"分区经理卡分期管理界面",Toast.LENGTH_SHORT).show();
-                        intent.setClass(getActivity(), MannagerKafenqiActivity.class);
-                        startActivity(intent);
-                    }
-                }else{
-                    intent.setClass(getActivity(), Login.class);
-                    intent.putExtra("clickView", "kafenqi");
-                    startActivity(intent);
-                }
+                Toast.makeText(getActivity(),"省行管理者卡分期管理界面",Toast.LENGTH_SHORT).show();
             }
         });
         ll_yingxiaodaohang.setOnClickListener(new View.OnClickListener() {
@@ -268,23 +198,6 @@ public class MainFragment extends Fragment {
                 Intent intent = new Intent();
                 intent.setClass(getActivity(), MarketingGuide.class);
                 startActivity(intent);
-                /*Intent intent = new Intent();
-                if (spu.getisLogin()){
-                    if(spu.getType().equals("BASIC")){
-                        intent.setClass(MainActivity_all.this, GerenxiaodaiActivity.class);
-                        startActivity(intent);
-                        // startActivityForResult(intent, 187);
-                    }else{
-                        Toast.makeText(MainActivity_all.this,"分区经理卡个人消贷管理界面",Toast.LENGTH_SHORT).show();
-//                        intent.setClass(MainActivity_all.this, MyManagement.class);
-//                        startActivity(intent);
-                    }
-                }else{
-                    intent.setClass(MainActivity_all.this, Login.class);
-                    intent.putExtra("clickView", "gerenxiaodai");
-                    startActivity(intent);
-                }*/
-
             }
         });
 
