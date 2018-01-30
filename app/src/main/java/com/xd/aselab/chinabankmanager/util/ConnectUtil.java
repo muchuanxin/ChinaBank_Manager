@@ -118,6 +118,17 @@ public class ConnectUtil {
 	public static String GetGroupHistoryChatLog = API_Chat+"GetGroupHistoryChatLog";
 
 
+	//省行管理者
+	public static String GetInstallmentSecondaryBankPerformace=API_HOST+"GetInstallmentSecondaryBankPerformace";
+	public static String GetInstallmentBossManagerPerformace=API_HOST+"GetInstallmentBossManagerPerformace";
+	public static String ForceReleaseBetweenBankAnd4SShop=API_HOST+"ForceReleaseBetweenBankAnd4SShop";
+    public static String GetInstallment4SShopPerformace=API_HOST+"GetInstallment4SShopPerformace";
+
+	public static String ForceReleaseBetweenBankAnd4SShopByID=API_HOST+"ForceReleaseBetweenBankAnd4SShopByID";
+	public static String GetInstallmentWorkerPerformanceIn4SShop=API_HOST+"GetInstallmentWorkerPerformanceIn4SShop";
+
+
+
 	public static String httpRequest(String url, PostParameter[] postParams, String httpMethod) {
 		InputStream input = null;
 		String jsonSource = null;

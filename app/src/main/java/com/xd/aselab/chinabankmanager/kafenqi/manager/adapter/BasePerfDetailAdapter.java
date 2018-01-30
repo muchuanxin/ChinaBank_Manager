@@ -61,6 +61,7 @@ public class BasePerfDetailAdapter extends BaseAdapter {
             holder.tv_base_name = (TextView)convertView.findViewById(R.id.kafenqi_base_perf_name);
             holder.tv_base_num = (TextView)convertView.findViewById(R.id.kafenqi_base_perf_num);
             holder.tv_base_money = (TextView)convertView.findViewById(R.id.kafenqi_base_perf_money);
+            holder.tv_base_status = (TextView)convertView.findViewById(R.id.detail_worker_status);
 
             convertView.setTag(holder);
         }else{
@@ -70,6 +71,14 @@ public class BasePerfDetailAdapter extends BaseAdapter {
         holder.tv_base_name.setText(list.get(position).getName());
         holder.tv_base_money.setText("分期业务金额："+list.get(position).getSuccess_money()+"万元");
         holder.tv_base_num.setText("分期业务数量："+list.get(position).getSuccess_number()+"笔");
+        if(!list.get(position).getStatus().equals("已加盟"))
+        {
+            holder.tv_base_status.setVisibility(View.VISIBLE);
+            holder.tv_base_status.setText(list.get(position).getStatus());
+        }else
+        {
+            holder.tv_base_status.setVisibility(View.GONE);
+        }
         return convertView;
     }
 
@@ -77,6 +86,7 @@ public class BasePerfDetailAdapter extends BaseAdapter {
         private TextView tv_base_name;
         private TextView tv_base_num;
         private TextView tv_base_money;
+        private TextView tv_base_status;
     }
 
 }
