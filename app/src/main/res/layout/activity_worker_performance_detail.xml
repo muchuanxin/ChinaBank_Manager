@@ -183,7 +183,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="17dp"
                 android:textColor="@color/black_text_light"
-                android:text="已兑换积分：0" />
+                android:text="累计兑换积分：0" />
         </LinearLayout>
     </LinearLayout>
 

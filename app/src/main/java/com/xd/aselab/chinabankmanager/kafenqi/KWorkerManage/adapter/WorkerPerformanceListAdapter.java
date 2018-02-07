@@ -76,7 +76,7 @@ public class WorkerPerformanceListAdapter extends BaseAdapter {
         holder.tv_success_number.setText("分期业务成功数量："+list.get(position).getSuccess_number()+"笔");
         holder.tv_success_money.setText("分期业务成功金额："+list.get(position).getSuccess_money()+"万元");
         holder.tv_sum_credit.setText("积分数："+list.get(position).getSum_credit());
-        holder.tv_exchange_credit.setText("已兑换积分："+list.get(position).getExchange_credit());
+        holder.tv_exchange_credit.setText("累计兑换积分："+list.get(position).getExchange_credit());
 
         String worker_status = list.get(position).getStatus();
         switch (worker_status){

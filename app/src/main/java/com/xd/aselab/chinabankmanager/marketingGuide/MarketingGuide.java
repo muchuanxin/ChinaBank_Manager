@@ -77,7 +77,7 @@ public class MarketingGuide extends AppCompatActivity implements LocationSource,
     private String action;
     private String[] names=null;
     private String[] addrs=null;
-    private JSONObject markerCache;
+    //private JSONObject markerCache;
     //private List<WorkerVO>[] list_arr = null;
 
     private final int GREEN_YELLOW_DIVIDE_LINE = 1;//0~GREEN_YELLOW_DIVIDE_LINE-1为绿
@@ -313,11 +313,11 @@ public class MarketingGuide extends AppCompatActivity implements LocationSource,
                             Toast.makeText(MarketingGuide.this, json.getString("message"), Toast.LENGTH_SHORT).show();
                         } else if ("true".equals(status)) {
                             //获取marker经纬度缓存，缓存为JSONObject，以 4S店名+维度 和 4S店名+经度 为key，double类型的经纬度为value
-                            String marker_cache_str = spu.getMarkerCache();
-                            markerCache = new JSONObject();
-                            if (!"".equals(marker_cache_str)){
+                            //String marker_cache_str = spu.getMarkerCache();
+                            //markerCache = new JSONObject();
+                            /*if (!"".equals(marker_cache_str)){
                                 markerCache = new JSONObject(marker_cache_str);
-                            }
+                            }*/
                             final JSONArray jsonArray = json.getJSONArray("4sshop_list");
                             count=0;
                             if (jsonArray.length()>0){
@@ -356,21 +356,58 @@ public class MarketingGuide extends AppCompatActivity implements LocationSource,
 
                                                 LatLng latLng = null;
                                                 //缓存里有的读取缓存
-                                                if (markerCache.has(shop_name+"Latitude")){
+                                                /*if (markerCache.has(shop_name+"Latitude")){
                                                     latLng = new LatLng(markerCache.getDouble(shop_name+"Latitude"), markerCache.getDouble(shop_name+"Longitude"));
                                                     count++;
-                                                }
+
+                                                    PostParameter[] params1 = new PostParameter[3];
+                                                    params1[0] = new PostParameter("id", one_shop.getString("4sshop_id"));
+                                                    params1[1] = new PostParameter("longitude", markerCache.getDouble(shop_name+"Longitude")+"");
+                                                    params1[2] = new PostParameter("latitude", markerCache.getDouble(shop_name+"Latitude")+"");
+                                                    ConnectUtil.httpRequest(ConnectUtil.Set4SShopLongitudeLatitude, params1, ConnectUtil.POST);
+                                                }*/
                                                 //缓存里没有的，调用高德地图地理编码功能进行搜索，并将搜索结果存入缓存
-                                                else {
-                                                    GeocodeQuery query = new GeocodeQuery(shop_addr, "西安");// 第一个参数表示地址，第二个参数表示查询城市，中文或者中文全拼，citycode、adcode，
+                                                //else {
+                                                    String city = null;
+                                                    if (shop_addr.contains("汉中")){
+                                                        city = "汉中";
+                                                    }
+                                                    else if (shop_addr.contains("铜川")){
+                                                        city = "铜川";
+                                                    }
+                                                    else if (shop_addr.contains("商洛")){
+                                                        city = "商洛";
+                                                    }
+                                                    else if (shop_addr.contains("榆林")){
+                                                        city = "榆林";
+                                                    }
+                                                    else if (shop_addr.contains("安康")){
+                                                        city = "安康";
+                                                    }
+                                                    else if (shop_addr.contains("渭南")){
+                                                        city = "渭南";
+                                                    }
+                                                    else if (shop_addr.contains("延安")){
+                                                        city = "延安";
+                                                    }
+                                                    else if (shop_addr.contains("咸阳")){
+                                                        city = "咸阳";
+                                                    }
+                                                    else if (shop_addr.contains("宝鸡")){
+                                                        city = "宝鸡";
+                                                    }
+                                                    else {
+                                                        city = "西安";
+                                                    }
+                                                    GeocodeQuery query = new GeocodeQuery(shop_name, city);// 第一个参数表示地址，第二个参数表示查询城市，中文或者中文全拼，citycode、adcode，
                                                     List<GeocodeAddress> list_geocodeAddress = geocoderSearch.getFromLocationName(query);
 
                                                     if (list_geocodeAddress.size()>0) {
                                                         GeocodeAddress geocodeAddress = list_geocodeAddress.get(0);// 设置同步地理编码请求
                                                         latLng = AMapUtil.convertToLatLng(geocodeAddress.getLatLonPoint());
 
-                                                        markerCache.put(shop_name+"Latitude", geocodeAddress.getLatLonPoint().getLatitude());
-                                                        markerCache.put(shop_name+"Longitude", geocodeAddress.getLatLonPoint().getLongitude());
+                                                        //markerCache.put(shop_name+"Latitude", geocodeAddress.getLatLonPoint().getLatitude());
+                                                        //markerCache.put(shop_name+"Longitude", geocodeAddress.getLatLonPoint().getLongitude());
 
                                                         Log.e("getLatitude",""+geocodeAddress.getLatLonPoint().getLatitude());
                                                         Log.e("getLongitude",""+geocodeAddress.getLatLonPoint().getLongitude());
@@ -379,8 +416,14 @@ public class MarketingGuide extends AppCompatActivity implements LocationSource,
                                                         Log.e("gaode_addr",geocodeAddress.getFormatAddress());
                                                         count++;
                                                         Log.e("count",""+count);
+
+                                                        PostParameter[] params1 = new PostParameter[3];
+                                                        params1[0] = new PostParameter("id", one_shop.getString("4sshop_id"));
+                                                        params1[1] = new PostParameter("longitude", geocodeAddress.getLatLonPoint().getLongitude()+"");
+                                                        params1[2] = new PostParameter("latitude", geocodeAddress.getLatLonPoint().getLatitude()+"");
+                                                        //ConnectUtil.httpRequest(ConnectUtil.Set4SShopLongitudeLatitude, params1, ConnectUtil.POST);
                                                     }
-                                                }
+                                                //}
 
                                                 addMarkersToMap(latLng, shop_name, jsonArray_worker.toString(), jsonArray_worker.length());
 
@@ -393,19 +436,55 @@ public class MarketingGuide extends AppCompatActivity implements LocationSource,
                                                 JSONArray jsonArray_worker2 = one_shop2.getJSONArray("worker_list");
 
                                                 LatLng latLng2 = null;
-                                                if (markerCache.has(shop_name2+"Latitude")){
+                                                /*if (markerCache.has(shop_name2+"Latitude")){
                                                     latLng2 = new LatLng(markerCache.getDouble(shop_name2+"Latitude"), markerCache.getDouble(shop_name2+"Longitude"));
                                                     count++;
+                                                    PostParameter[] params1 = new PostParameter[3];
+                                                    params1[0] = new PostParameter("id", one_shop2.getString("4sshop_id"));
+                                                    params1[1] = new PostParameter("longitude", markerCache.getDouble(shop_name2+"Longitude")+"");
+                                                    params1[2] = new PostParameter("latitude", markerCache.getDouble(shop_name2+"Latitude")+"");
+                                                    ConnectUtil.httpRequest(ConnectUtil.Set4SShopLongitudeLatitude, params1, ConnectUtil.POST);
                                                 }
-                                                else {
-                                                    GeocodeQuery query = new GeocodeQuery(shop_addr2, "西安");// 第一个参数表示地址，第二个参数表示查询城市，中文或者中文全拼，citycode、adcode，
-                                                    List<GeocodeAddress> list_geocodeAddress = geocoderSearch.getFromLocationName(query);
-                                                    if (list_geocodeAddress.size()>0) {
-                                                        GeocodeAddress geocodeAddress = list_geocodeAddress.get(0);// 设置同步地理编码请求
+                                                else {*/
+                                                    city = null;
+                                                    if (shop_addr2.contains("汉中")){
+                                                        city = "汉中";
+                                                    }
+                                                    else if (shop_addr2.contains("铜川")){
+                                                        city = "铜川";
+                                                    }
+                                                    else if (shop_addr2.contains("商洛")){
+                                                        city = "商洛";
+                                                    }
+                                                    else if (shop_addr2.contains("榆林")){
+                                                        city = "榆林";
+                                                    }
+                                                    else if (shop_addr2.contains("安康")){
+                                                        city = "安康";
+                                                    }
+                                                    else if (shop_addr2.contains("渭南")){
+                                                        city = "渭南";
+                                                    }
+                                                    else if (shop_addr2.contains("延安")){
+                                                        city = "延安";
+                                                    }
+                                                    else if (shop_addr2.contains("咸阳")){
+                                                        city = "咸阳";
+                                                    }
+                                                    else if (shop_addr2.contains("宝鸡")){
+                                                        city = "宝鸡";
+                                                    }
+                                                    else {
+                                                        city = "西安";
+                                                    }
+                                                    GeocodeQuery query2 = new GeocodeQuery(shop_name2, city);// 第一个参数表示地址，第二个参数表示查询城市，中文或者中文全拼，citycode、adcode，
+                                                    List<GeocodeAddress> list_geocodeAddress2 = geocoderSearch.getFromLocationName(query2);
+                                                    if (list_geocodeAddress2.size()>0) {
+                                                        GeocodeAddress geocodeAddress = list_geocodeAddress2.get(0);// 设置同步地理编码请求
                                                         latLng2 = AMapUtil.convertToLatLng(geocodeAddress.getLatLonPoint());
 
-                                                        markerCache.put(shop_name2+"Latitude", geocodeAddress.getLatLonPoint().getLatitude());
-                                                        markerCache.put(shop_name2+"Longitude", geocodeAddress.getLatLonPoint().getLongitude());
+                                                        //markerCache.put(shop_name2+"Latitude", geocodeAddress.getLatLonPoint().getLatitude());
+                                                        //markerCache.put(shop_name2+"Longitude", geocodeAddress.getLatLonPoint().getLongitude());
 
                                                         Log.e("getLatitude",""+geocodeAddress.getLatLonPoint().getLatitude());
                                                         Log.e("getLongitude",""+geocodeAddress.getLatLonPoint().getLongitude());
@@ -414,8 +493,14 @@ public class MarketingGuide extends AppCompatActivity implements LocationSource,
                                                         Log.e("gaode_addr",geocodeAddress.getFormatAddress());
                                                         count++;
                                                         Log.e("count",""+count);
+
+                                                        PostParameter[] params1 = new PostParameter[3];
+                                                        params1[0] = new PostParameter("id", one_shop2.getString("4sshop_id"));
+                                                        params1[1] = new PostParameter("longitude", geocodeAddress.getLatLonPoint().getLongitude()+"");
+                                                        params1[2] = new PostParameter("latitude", geocodeAddress.getLatLonPoint().getLatitude()+"");
+                                                        //ConnectUtil.httpRequest(ConnectUtil.Set4SShopLongitudeLatitude, params1, ConnectUtil.POST);
                                                     }
-                                                }
+                                                //}
 
                                                 //if (count==500)
                                                 //   requestDialog.dissmissProgressDialog();
@@ -431,7 +516,7 @@ public class MarketingGuide extends AppCompatActivity implements LocationSource,
                                     action = "mark";
                                 }
                                 //不论缓存是否修改，都将其塞进SharePreference
-                                spu.setMarkerCache(markerCache.toString());
+                                //spu.setMarkerCache(markerCache.toString());
                             }
                             else {
                                 Log.e("CBNetwork_Activity", "list长度为0");

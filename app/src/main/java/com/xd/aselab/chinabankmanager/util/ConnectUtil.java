@@ -109,6 +109,7 @@ public class ConnectUtil {
 	public static String GetInstallmentBasicPerformance = API_HOST+"GetInstallmentBasicPerformance";//卡分期--基层经理业绩（排名）
 	public static String GetInstallmentWorkerRecommendDetail = API_HOST+"GetInstallmentWorkerRecommendDetail";
 	public static String GetMarketingGuide = API_HOST+"GetMarketingGuide";//营销导航
+	public static String Set4SShopLongitudeLatitude = API_HOST+"Set4SShopLongitudeLatitude";//设置经纬度
 	public static String GetLoanBasicPerformance= API_HOST+"GetLoanBasicPerformance";
 
 	//微聊

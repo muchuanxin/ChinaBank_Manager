@@ -357,13 +357,14 @@ public class NewNotificationDetailNewActivity extends AppCompatActivity {
                                     public void run() {
                                         super.run();
 
-                                        PostParameter post[] = new PostParameter[3];
+                                        PostParameter post[] = new PostParameter[4];
                                         post[0] = new PostParameter("id", id);
                                         Log.d("Dorise", id);
                                         post[1] = new PostParameter("serial_num", serial_num + "");
                                         Log.d("Dorise", serial_num + "");
                                         post[2] = new PostParameter("money", money + "");
                                         Log.d("Dorise", money + "");
+                                        post[3] = new PostParameter("worker_account", worker_account_str + "");
                                         jsonstr = ConnectUtil.httpRequest(ConnectUtil.AddInstallmentRecommendRemark, post, "POST");
                                         if ("" == jsonstr || jsonstr == null) {
                                             msg.what = 4;
@@ -483,17 +484,6 @@ public class NewNotificationDetailNewActivity extends AppCompatActivity {
                                     Toast.makeText(NewNotificationDetailNewActivity.this, "" + message, Toast.LENGTH_SHORT).show();
                                     finish();
                                 } else if ("true".equals(status)) {
-
-
-
-
-
-
-
-
-
-
-
 
                                     worker_account_str = json.getString("worker_account");
                                     worker_name_str = json.getString("worker_name");
