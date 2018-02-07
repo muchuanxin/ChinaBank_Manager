@@ -77,7 +77,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="16dp"
                 android:textColor="@color/gray_text_most"
-                android:text="已兑换积分：216" />
+                android:text="累计兑换积分：216" />
 
         </LinearLayout>
 

@@ -98,7 +98,7 @@ public class BaseInfo extends AppCompatActivity {
         list_view.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
-                startActivityForResult(new Intent().setClass(BaseInfo.this, BaseInfoTransparent.class).putExtra("position",position), 104);
+                startActivityForResult(new Intent().setClass(BaseInfo.this, BaseInfoTransparent.class).putExtra("position",position).putExtra("fromwhere","BaseInfo"), 104);
                 overridePendingTransition(R.anim.zoomin, R.anim.zoomout);
             }
         });

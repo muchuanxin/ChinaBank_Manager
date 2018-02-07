@@ -109,6 +109,7 @@ public class ConnectUtil {
 	public static String GetInstallmentBasicPerformance = API_HOST+"GetInstallmentBasicPerformance";//卡分期--基层经理业绩（排名）
 	public static String GetInstallmentWorkerRecommendDetail = API_HOST+"GetInstallmentWorkerRecommendDetail";
 	public static String GetMarketingGuide = API_HOST+"GetMarketingGuide";//营销导航
+	public static String Set4SShopLongitudeLatitude = API_HOST+"Set4SShopLongitudeLatitude";//设置经纬度
 	public static String GetLoanBasicPerformance= API_HOST+"GetLoanBasicPerformance";
 
 	//微聊
@@ -116,6 +117,17 @@ public class ConnectUtil {
 	public static String GetHistoryChatLog = API_Chat+"GetHistoryChatLog";
 	public static String GroupChat = API_Chat+"GroupChat";
 	public static String GetGroupHistoryChatLog = API_Chat+"GetGroupHistoryChatLog";
+
+
+	//省行管理者
+	public static String GetInstallmentSecondaryBankPerformace=API_HOST+"GetInstallmentSecondaryBankPerformace";
+	public static String GetInstallmentBossManagerPerformace=API_HOST+"GetInstallmentBossManagerPerformace";
+	public static String ForceReleaseBetweenBankAnd4SShop=API_HOST+"ForceReleaseBetweenBankAnd4SShop";
+    public static String GetInstallment4SShopPerformace=API_HOST+"GetInstallment4SShopPerformace";
+
+	public static String ForceReleaseBetweenBankAnd4SShopByID=API_HOST+"ForceReleaseBetweenBankAnd4SShopByID";
+	public static String GetInstallmentWorkerPerformanceIn4SShop=API_HOST+"GetInstallmentWorkerPerformanceIn4SShop";
+
 
 
 	public static String httpRequest(String url, PostParameter[] postParams, String httpMethod) {

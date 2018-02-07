@@ -400,13 +400,14 @@ public class RecommendListActivity extends AppCompatActivity {
                                         public void run() {
                                             super.run();
 
-                                            PostParameter post[] = new PostParameter[3];
+                                            PostParameter post[] = new PostParameter[4];
                                             post[0] = new PostParameter("id", applicationsVOList.get(position).getApplicationID());
                                             Log.d("Dorise", applicationsVOList.get(position).getApplicationID());
                                             post[1] = new PostParameter("serial_num", serial_num + "");
                                             Log.d("Dorise", serial_num + "");
                                             post[2] = new PostParameter("money", money + "");
                                             Log.d("Dorise", money + "");
+                                            post[3] = new PostParameter("worker_account", worker_account_str + "");
                                             //卡分期——添加备注
                                             jsonstr = ConnectUtil.httpRequest(ConnectUtil.AddInstallmentRecommendRemark, post, "POST");
                                             if ("" == jsonstr || jsonstr == null) {

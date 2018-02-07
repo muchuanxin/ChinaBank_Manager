@@ -22,7 +22,7 @@ import com.xd.aselab.chinabankmanager.activity.MyManagement;
 import com.xd.aselab.chinabankmanager.kafenqi.KWorkerManage.activity.NewNotificationDetailActivity;
 import com.xd.aselab.chinabankmanager.kafenqi.KafenqiActivity;
 import com.xd.aselab.chinabankmanager.kafenqi.manager.MannagerKafenqiActivity;
-import com.xd.aselab.chinabankmanager.marketingGuide.MarketingGuide;
+import com.xd.aselab.chinabankmanager.marketingGuide.MarketingGuideNew;
 import com.xd.aselab.chinabankmanager.util.ConnectUtil;
 import com.xd.aselab.chinabankmanager.util.ImageLoader;
 import com.xd.aselab.chinabankmanager.util.PostParameter;
@@ -266,7 +266,7 @@ public class MainFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
-                intent.setClass(getActivity(), MarketingGuide.class);
+                intent.setClass(getActivity(), MarketingGuideNew.class);
                 startActivity(intent);
                 /*Intent intent = new Intent();
                 if (spu.getisLogin()){

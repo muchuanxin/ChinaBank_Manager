@@ -24,7 +24,7 @@ import com.xd.aselab.chinabankmanager.fragment.ImageCycleView;
 import com.xd.aselab.chinabankmanager.kafenqi.KWorkerManage.activity.NewNotificationDetailActivity;
 import com.xd.aselab.chinabankmanager.kafenqi.KafenqiActivity;
 import com.xd.aselab.chinabankmanager.kafenqi.manager.MannagerKafenqiActivity;
-import com.xd.aselab.chinabankmanager.marketingGuide.MarketingGuide;
+import com.xd.aselab.chinabankmanager.marketingGuide.MarketingGuideNew;
 import com.xd.aselab.chinabankmanager.my.BaseMyActivity;
 import com.xd.aselab.chinabankmanager.my.ManagerMyActivity;
 import com.xd.aselab.chinabankmanager.util.ConnectUtil;
@@ -299,7 +299,7 @@ public class MainActivity_all extends AppCompatActivity {
             public void onClick(View v) {
                // Toast.makeText(MainActivity_all.this,"营销导航界面",Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent();
-                intent.setClass(MainActivity_all.this, MarketingGuide.class);
+                intent.setClass(MainActivity_all.this, MarketingGuideNew.class);
                 startActivity(intent);
             }
         });

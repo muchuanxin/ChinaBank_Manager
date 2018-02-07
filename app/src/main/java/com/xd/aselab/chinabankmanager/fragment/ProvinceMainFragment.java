@@ -21,8 +21,10 @@ import com.xd.aselab.chinabankmanager.activity.MyManageBase;
 import com.xd.aselab.chinabankmanager.activity.MyManagement;
 import com.xd.aselab.chinabankmanager.kafenqi.KWorkerManage.activity.NewNotificationDetailActivity;
 import com.xd.aselab.chinabankmanager.kafenqi.KafenqiActivity;
+import com.xd.aselab.chinabankmanager.kafenqi.ProvincialBankManager.KSubManagerPerformanceActivity;
+import com.xd.aselab.chinabankmanager.kafenqi.ProvincialBankManager.KafenqiFirstActivity;
 import com.xd.aselab.chinabankmanager.kafenqi.manager.MannagerKafenqiActivity;
-import com.xd.aselab.chinabankmanager.marketingGuide.MarketingGuide;
+import com.xd.aselab.chinabankmanager.marketingGuide.MarketingGuideNew;
 import com.xd.aselab.chinabankmanager.util.ConnectUtil;
 import com.xd.aselab.chinabankmanager.util.ImageLoader;
 import com.xd.aselab.chinabankmanager.util.PostParameter;
@@ -186,17 +188,28 @@ public class ProvinceMainFragment extends Fragment {
             }
         });
 
-        ll_kafenqi.setOnClickListener(new View.OnClickListener() {
+    /*    ll_kafenqi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getActivity(),"省行管理者卡分期管理界面",Toast.LENGTH_SHORT).show();
             }
+        });*/
+
+        ll_kafenqi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(getActivity(), KafenqiFirstActivity.class);
+                startActivity(intent);
+            }
         });
+
+
         ll_yingxiaodaohang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
-                intent.setClass(getActivity(), MarketingGuide.class);
+                intent.setClass(getActivity(), MarketingGuideNew.class);
                 startActivity(intent);
             }
         });

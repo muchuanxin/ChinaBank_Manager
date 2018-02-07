@@ -350,8 +350,8 @@ public class WorkerPerformanceDetailActivity extends AppCompatActivity  implemen
         tv_recommend_num.setText("推荐分期业务数量："+("".equals(recommend_num)? "暂无" : recommend_num+"笔"));
         tv_success_num.setText("分期业务成功数量："+("".equals(success_num)? "暂无" : success_num+"笔"));
         tv_success_money.setText("分期业务成功金额："+("".equals(success_money)? "暂无" : success_money+"万元"));
-        tv_credit_sum.setText("总积分数："+("".equals(score)? "暂无" : score));
-        tv_credit_exchange.setText("已兑换积分："+("".equals(exchange_score)? "暂无" : exchange_score));
+        tv_credit_sum.setText("积分数："+("".equals(score)? "暂无" : score));
+        tv_credit_exchange.setText("累计兑换积分："+("".equals(exchange_score)? "暂无" : exchange_score));
     }
 
     private void initChartDatas(){
