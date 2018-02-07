@@ -68,7 +68,7 @@ public class NewNotificationDetailNewActivity extends AppCompatActivity {
     private EvaluationItemAdapter adapter;
     private String jsonstr;
     private TextView tv_mark;
-
+    private TextView serial_num_text, get_money_text;
     private String confirm;
     private String serial_num;
     private double money;
@@ -100,6 +100,9 @@ public class NewNotificationDetailNewActivity extends AppCompatActivity {
 //        arrow = (ImageView) findViewById(R.id.iv_right_arrow_new);
         lv_detail_information = (NoScrollListView) findViewById(R.id.detail_lv);
         bt_confirm = (Button) findViewById(R.id.new_notification_affirm_new);
+        serial_num_text = (TextView) findViewById(R.id.serial_num);
+        get_money_text = (TextView) findViewById(R.id.get_money);
+
         bt_refuse = (Button) findViewById(R.id.new_notification_refuse_new);
         iv_communacate_worker = (ImageView) findViewById(R.id.iv_worker_chat_new);
         iv_call_worker_tel = (ImageView) findViewById(R.id.iv_call_worker_tel_new);
@@ -271,14 +274,10 @@ public class NewNotificationDetailNewActivity extends AppCompatActivity {
                 if ("SUCCESS".equals(confirm)) {
 
 
-
-
                     tv_confirm.setVisibility(View.GONE);
                     tv_mark.setVisibility(View.VISIBLE);
                     tv_mark.setText("业务通过");
                     tv_mark.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
-
-
 
 
                     mview.findViewById(R.id.serial_number).setVisibility(View.GONE);
@@ -305,17 +304,10 @@ public class NewNotificationDetailNewActivity extends AppCompatActivity {
                 } else {
 
 
-
-
-
-
                     tv_mark.setVisibility(View.GONE);
                     tv_confirm.setVisibility(View.VISIBLE);
 //                    tv_mark.setText("业务通过");
 //                    tv_confirm.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
-
-
-
 
 
                     builder.setPositiveButton("提交", null);
@@ -469,7 +461,7 @@ public class NewNotificationDetailNewActivity extends AppCompatActivity {
             @Override
             public void handleMessage(Message msg) {
                 super.handleMessage(msg);
-                Log.d("Dorise","cococococococo");
+                Log.d("Dorise", "cococococococo");
                 switch (msg.what) {
                     case 0:
                         String reCode0 = (String) msg.obj;
@@ -483,16 +475,6 @@ public class NewNotificationDetailNewActivity extends AppCompatActivity {
                                     Toast.makeText(NewNotificationDetailNewActivity.this, "" + message, Toast.LENGTH_SHORT).show();
                                     finish();
                                 } else if ("true".equals(status)) {
-
-
-
-
-
-
-
-
-
-
 
 
                                     worker_account_str = json.getString("worker_account");
@@ -517,7 +499,7 @@ public class NewNotificationDetailNewActivity extends AppCompatActivity {
                                     money = Double.parseDouble(json.getString("money"));
 //                                    JSONArray jsonArray = json.getJSONArray("evaluation_detail");
 
-                                    Log.d("Dorise  confirm111",confirm);
+                                    Log.d("Dorise  confirm111", confirm);
 
 
                                  /*   if (jsonArray.length() > 0) {
@@ -544,29 +526,33 @@ public class NewNotificationDetailNewActivity extends AppCompatActivity {
                                     }*/
 
 
+                                    Log.d("Dorise  confirm444", confirm);
 
-
-                                        Log.d("Dorise  confirm444",confirm);
-
-                                    if(confirm.equals("SUCCESS")){
-                                        Log.d("Dorise  success","come in");
+                                    if (confirm.equals("SUCCESS")) {
+                                        Log.d("Dorise  success", "come in");
                                         tv_confirm.setVisibility(View.GONE);
                                         tv_mark.setVisibility(View.VISIBLE);
                                         tv_mark.setText("业务通过");
                                         tv_mark.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
-                                    }else{
-                                        Log.d("Dorise  fail","come in");
+
+
+                                        set_info.setVisibility(View.GONE);
+                                        serial_num_text.setVisibility(View.VISIBLE);
+                                        get_money_text.setVisibility(View.VISIBLE);
+                                        serial_num_text.setText("流水号：" + serial_num);
+                                        get_money_text.setText("放款金额：" + money);
+
+
+                                    } else {
+                                        Log.d("Dorise  fail", "come in");
                                         tv_mark.setVisibility(View.GONE);
                                         tv_confirm.setVisibility(View.VISIBLE);
+
+                                        serial_num_text.setVisibility(View.GONE);
+                                        get_money_text.setVisibility(View.GONE);
+                                        set_info.setVisibility(View.VISIBLE);
+
                                     }
-
-
-
-
-
-
-
-
 
 
                                 }
@@ -623,6 +609,14 @@ public class NewNotificationDetailNewActivity extends AppCompatActivity {
                             if (obj.get("status").equals("true")) {
                                 applicate_money.setText("分期总金额(万元)：" + money);
                                 confirm = "SUCCESS";
+
+
+                                set_info.setVisibility(View.GONE);
+                                serial_num_text.setVisibility(View.VISIBLE);
+                                get_money_text.setVisibility(View.VISIBLE);
+                                serial_num_text.setText("流水号：" + serial_num);
+                                get_money_text.setText("放款金额：" + money);
+
 
                                 tv_confirm.setVisibility(View.GONE);
                                 tv_mark.setVisibility(View.VISIBLE);

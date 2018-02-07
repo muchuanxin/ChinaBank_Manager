@@ -336,7 +336,7 @@ public class RecommendListActivity extends AppCompatActivity {
                     AlertDialog.Builder builder = new AlertDialog.Builder(RecommendListActivity.this);
                     final View mview = getLayoutInflater().inflate(R.layout.manager_input_info, null);
 
-                    if ("SUCCESS".equals(applicationsVOList.get(position).getState())) {
+           /*         if ("SUCCESS".equals(applicationsVOList.get(position).getState())) {
 
                         mview.findViewById(R.id.serial_number).setVisibility(View.GONE);
                         TextView text = (TextView) mview.findViewById(R.id.flow);
@@ -357,7 +357,10 @@ public class RecommendListActivity extends AppCompatActivity {
                         builder.setTitle("备注信息");
                         builder.show();
 
-                    } else {
+                    } else */
+
+
+                        {
                         builder.setPositiveButton("提交", null);
                         builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
                             @Override

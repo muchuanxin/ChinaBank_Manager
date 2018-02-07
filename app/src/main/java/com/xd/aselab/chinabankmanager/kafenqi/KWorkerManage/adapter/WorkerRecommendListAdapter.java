@@ -78,6 +78,8 @@ public class WorkerRecommendListAdapter extends BaseAdapter {
             holder.bt_confirm = (Button) convertView.findViewById(R.id.bt_list_confirm);
             holder.bt_refuse = (Button) convertView.findViewById(R.id.bt_list_refuse);
             holder.input_info = (ImageView) convertView.findViewById(R.id.input_info);
+            holder.get_money = (TextView) convertView.findViewById(R.id.get_money);
+            holder.serial_num = (TextView) convertView.findViewById(R.id.serial_num);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
@@ -87,11 +89,32 @@ public class WorkerRecommendListAdapter extends BaseAdapter {
         holder.tv_applicate_time.setText("" + list.get(position).getApplicateTime());
         holder.tv_application_tel.setText("联系电话：" + list.get(position).getTel());
         holder.tv_applicate_money.setText("分期总金额(万元)：" + list.get(position).getFenqi_money());
-        holder.tv_application_fenqi_num.setText("分期数：" + list.get(position).getFenqi_num() + "笔");
+        holder.tv_application_fenqi_num.setText("分期数：" + list.get(position).getFenqi_num());
+
+
+        String status = list.get(position).getState();
+
+
+
+
+        if (status.equals("SUCCESS")) {
+            holder.input_info.setVisibility(View.GONE);
+            holder.get_money.setVisibility(View.VISIBLE);
+            holder.serial_num.setVisibility(View.VISIBLE);
+            holder.get_money.setText("放款金额：" + list.get(position).getFenqi_money());
+            holder.serial_num.setText("流水号：" + list.get(position).getSerial_num());
+        }else{
+            holder.input_info.setVisibility(View.VISIBLE);
+            holder.get_money.setVisibility(View.GONE);
+            holder.serial_num.setVisibility(View.GONE);
+            holder.input_info.setOnClickListener(mListener);
+
+        }
+
+
 //        holder.tv_application_comm.setText("购买汽车品牌："+list.get(position).getBuy_commodity());
 //        holder.tv_score.setText(""+list.get(position).getScore());
 
-        String status = list.get(position).getState();
         switch (status) {
             case "SUCCESS":
                 holder.bt_confirm.setText("业务通过");
@@ -141,9 +164,11 @@ public class WorkerRecommendListAdapter extends BaseAdapter {
 
         holder.rl_tel.setOnClickListener(mListener);
         holder.tel.setOnClickListener(mListener);
-        holder.input_info.setOnClickListener(mListener);
+//        holder.input_info.setOnClickListener(mListener);
         holder.input_info.setTag(position);
         holder.bt_confirm.setTag(position);
+        holder.serial_num.setTag(position);
+        holder.get_money.setTag(position);
         holder.bt_refuse.setTag(position);
         holder.rl_tel.setTag(position);
         holder.tel.setTag(position);
@@ -164,6 +189,8 @@ public class WorkerRecommendListAdapter extends BaseAdapter {
         private Button bt_confirm;
         private Button bt_refuse;
         private ImageView input_info;
+        private TextView serial_num;
+        private TextView get_money;
     }
 
     public static abstract class ListBtnListener implements View.OnClickListener {

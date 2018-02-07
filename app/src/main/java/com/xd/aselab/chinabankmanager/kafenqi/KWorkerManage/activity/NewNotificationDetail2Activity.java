@@ -75,6 +75,7 @@ public class NewNotificationDetail2Activity extends AppCompatActivity {
     private double money;
     private String confirm;
     private Intent intent;
+    private TextView serial_num_text, get_money;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,6 +106,8 @@ public class NewNotificationDetail2Activity extends AppCompatActivity {
         iv_call_application_tel = (ImageView) findViewById(R.id.iv_call_application_tel);
         worker_name = (TextView) findViewById(R.id.detail_worker_name);
         worker_status = (TextView) findViewById(R.id.detail_worker_status);
+        serial_num_text = (TextView) findViewById(R.id.serial_num);
+        get_money = (TextView) findViewById(R.id.get_money);
         applicate_time = (TextView) findViewById(R.id.detail_applicate_time);
         worker_tel = (TextView) findViewById(R.id.detail_worker_tel);
         worker_company = (TextView) findViewById(R.id.detail_worker_company);
@@ -145,7 +148,7 @@ public class NewNotificationDetail2Activity extends AppCompatActivity {
                 params[0] = new PostParameter("id", id);
                 //卡分期——推广员推荐分期详情
                 String reCode = ConnectUtil.httpRequest(ConnectUtil.GetInstallmentWorkerRecommendDetail, params, ConnectUtil.POST);
-                Log.d("Dorise  url",reCode);
+                Log.d("Dorise  url", reCode);
 
                 Message msg = new Message();
                 msg.what = 0;
@@ -194,7 +197,8 @@ public class NewNotificationDetail2Activity extends AppCompatActivity {
                                     applicatin_name.setText("申请人：" + json.getString("applicant"));
                                     application_tel_str = json.getString("applicant_telephone");
                                     application_tel.setText("联系电话：" + application_tel_str);
-                                    applicate_money.setText("分期总金额(万元)：" + json.getString("money"));
+                                    Double mm= Double.valueOf(json.getString("money"));
+                                    applicate_money.setText("分期总金额(万元)：" + mm);
                                     applicate_num.setText("分期数：" + json.getString("installment_num"));
                                     serial_num = json.getString("serial_num");
 
@@ -236,6 +240,17 @@ public class NewNotificationDetail2Activity extends AppCompatActivity {
 
                                     //获取当前confirm状态
                                     confirm = json.getString("confirm");
+
+
+                                    if (confirm.equals("SUCCESS")) {
+                                        set_info.setVisibility(View.GONE);
+                                        serial_num_text.setText("流水号：" + serial_num);
+                                        get_money.setText("放款金额：" + money);
+                                    } else {
+                                        set_info.setVisibility(View.VISIBLE);
+                                        serial_num_text.setVisibility(View.GONE);
+                                        get_money.setVisibility(View.GONE);
+                                    }
 
 
                                     set_info.setOnClickListener(listener);
@@ -359,14 +374,17 @@ public class NewNotificationDetail2Activity extends AppCompatActivity {
                                 setResult(1000, intent);
                                 confirm = "SUCCESS";
 
+                                set_info.setVisibility(View.GONE);
+                                serial_num_text.setVisibility(View.VISIBLE);
+                                get_money.setVisibility(View.VISIBLE);
+                                serial_num_text.setText("流水号：" + serial_num);
+                                get_money.setText("放款金额：" + money);
 
 
                                 ll_choose.setVisibility(View.GONE);
                                 tv_mark.setVisibility(View.VISIBLE);
                                 tv_mark.setText("业务通过");
                                 tv_mark.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
-
-
 
 
                             }
@@ -494,7 +512,7 @@ public class NewNotificationDetail2Activity extends AppCompatActivity {
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(NewNotificationDetail2Activity.this);
                 final View mview = getLayoutInflater().inflate(R.layout.manager_input_info, null);
-                if (confirm.equals("SUCCESS")) {
+               /* if (confirm.equals("SUCCESS")) {
                     mview.findViewById(R.id.serial_number).setVisibility(View.GONE);
                     TextView text = (TextView) mview.findViewById(R.id.flow);
                     text.setText("流水号：" + serial_num);
@@ -512,7 +530,8 @@ public class NewNotificationDetail2Activity extends AppCompatActivity {
                     builder.setView(mview);
                     builder.setTitle("备注信息");
                     builder.show();
-                } else {
+                } else*/
+                {
 
                     builder.setPositiveButton("提交", null);
                     builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {

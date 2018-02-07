@@ -1,42 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white">
+    android:background="@color/white"
+    android:orientation="vertical">
 
     <LinearLayout
-        android:descendantFocusability="blocksDescendants"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginRight="25dp"
         android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:descendantFocusability="blocksDescendants"
         android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:orientation="horizontal">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
                 <TextView
                     android:id="@+id/shenqingren"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="18dp"
+                    android:text="申请人："
                     android:textColor="@color/black_text_most"
-                    android:text="申请人："/>
+                    android:textSize="18dp" />
+
                 <TextView
                     android:id="@+id/applicatinName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:textSize="18dp"
+                    android:text="name"
                     android:textColor="@color/colorPrimaryDark"
-                    android:text="name"/>
+                    android:textSize="18dp" />
             </LinearLayout>
 
             <TextView
@@ -45,69 +49,82 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="right"
-                android:textSize="16dp"
+                android:text="2017.09.23"
                 android:textColor="@color/gray_text_most"
-                android:text="2017.09.23"/>
+                android:textSize="16dp" />
         </LinearLayout>
+
         <RelativeLayout
             android:id="@+id/call_application"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
+
             android:orientation="horizontal">
+
             <TextView
                 android:id="@+id/fenqi_money"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
                 android:layout_weight="1"
-                android:textSize="16dp"
+                android:text="分期金额："
+
                 android:textColor="@color/gray_text_most"
-                android:text="分期金额："/>
+                android:textSize="16dp" />
+
             <TextView
                 android:id="@+id/application_tel"
-                android:layout_below="@id/fenqi_money"
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="16dp"
+                android:layout_below="@id/fenqi_money"
+                android:layout_marginTop="2dp"
                 android:paddingTop="2dp"
+
+                android:text="联系电话："
                 android:textColor="@color/gray_text_most"
-                android:text="联系电话："/>
+                android:textSize="16dp" />
 
             <ImageView
                 android:id="@+id/input_info"
-                android:clickable="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignBottom="@id/application_tel"
-                android:padding="5dp"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
+                android:layout_alignBottom="@id/application_tel"
+                android:layout_alignParentRight="true"
                 android:layout_marginBottom="2dp"
-                android:gravity="right"
+
                 android:layout_marginRight="40dp"
-                android:src="@drawable/base_info"/>
+                android:clickable="true"
+                android:gravity="right"
+                android:padding="5dp"
+                android:src="@drawable/base_info" />
 
 
             <ImageView
                 android:id="@+id/act_tel"
-                android:clickable="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignBottom="@id/application_tel"
-                android:padding="5dp"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
+                android:layout_alignBottom="@id/application_tel"
+                android:layout_alignParentRight="true"
+                android:clickable="true"
                 android:gravity="right"
-                android:src="@drawable/telephone_red"/>
+                android:padding="5dp"
+                android:src="@drawable/telephone_red" />
         </RelativeLayout>
+
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="5dp">
+            android:layout_marginBottom="2dp"
+            android:orientation="horizontal">
+
             <LinearLayout
                 android:id="@+id/left_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
+
                 android:orientation="vertical">
                 <!--TextView
                     android:id="@+id/buy_commodity"
@@ -120,46 +137,73 @@
                     android:id="@+id/fenqi_num"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="3dp"
+
                     android:gravity="right"
-                    android:textSize="16dp"
+                    android:text="分期数："
                     android:textColor="@color/gray_text_most"
-                    android:text="分期数："/>
+                    android:textSize="16dp" />
             </LinearLayout>
+
             <RelativeLayout
-                android:layout_alignBottom="@id/left_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:orientation="horizontal">
+                android:layout_alignBottom="@id/left_text"
+                android:orientation="horizontal"
+
+                android:paddingTop="2dp">
+
                 <Button
                     android:id="@+id/bt_list_confirm"
                     android:layout_width="65dp"
-                    android:layout_height="28dp"
+                    android:layout_height="25dp"
                     android:layout_alignParentRight="true"
                     android:background="@drawable/red_button_bg"
+                    android:text="确认"
                     android:textColor="#fff"
-                    android:textSize="16dp"
-                    android:text="确认"/>
+                    android:textSize="16dp" />
+
                 <Button
                     android:id="@+id/bt_list_refuse"
                     android:layout_width="65dp"
-                    android:layout_height="28dp"
-                    android:layout_toLeftOf="@+id/bt_list_confirm"
+                    android:layout_height="25dp"
                     android:layout_marginRight="15dp"
+                    android:layout_toLeftOf="@+id/bt_list_confirm"
                     android:background="@drawable/blue_button_bg"
+                    android:text="拒绝"
                     android:textColor="#fff"
-                    android:textSize="16dp"
-                    android:text="拒绝"/>
+                    android:textSize="16dp" />
             </RelativeLayout>
         </RelativeLayout>
+
+        <TextView
+            android:id="@+id/serial_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+
+            android:text="流水号："
+            android:textColor="@color/gray_text_most"
+
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/get_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="2dp"
+            android:paddingTop="2dp"
+
+            android:text="放款金额："
+            android:textColor="@color/gray_text_most"
+            android:textSize="16dp" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="0.8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
-            android:background="@color/gray_bg"/>
+            android:background="@color/gray_bg" />
 
         <!--LinearLayout
             android:layout_width="wrap_content"

@@ -198,6 +198,26 @@
                    android:textSize="16dp"
                    android:textColor="@color/black_text_light"
                    android:text="分期数："/>
+               <TextView
+                   android:id="@+id/serial_num"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_marginLeft="25dp"
+                   android:layout_marginRight="25dp"
+                   android:layout_marginTop="5dp"
+                   android:textSize="16dp"
+                   android:textColor="@color/black_text_light"
+                   android:text="流水号："/>
+               <TextView
+                   android:id="@+id/get_money"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_marginLeft="25dp"
+                   android:layout_marginRight="25dp"
+                   android:layout_marginTop="5dp"
+                   android:textSize="16dp"
+                   android:textColor="@color/black_text_light"
+                   android:text="放款金额："/>
               <!--<TextView-->
                    <!--android:id="@+id/detail_buy_commodity"-->
                    <!--android:layout_width="match_parent"-->
