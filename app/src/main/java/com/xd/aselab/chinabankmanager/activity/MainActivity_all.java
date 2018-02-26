@@ -351,6 +351,28 @@ public class MainActivity_all extends AppCompatActivity {
 
     }
 
+    //定位权限获取回调
+    @Override
+    public void onRequestPermissionsResult(int requestCode,String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions,grantResults);
+        switch(requestCode) {
+            // requestCode即所声明的权限获取码，在checkSelfPermission时传入
+            case 10012:
+                if(grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    // 获取到权限，作相应处理（调用定位SDK应当确保相关权限均被授权，否则可能引起定位失败）
+                    Intent intent = new Intent();
+                    intent.setClass(MainActivity_all.this, MarketingGuideNew.class);
+                    startActivity(intent);
+                } else{
+                    // 没有获取到权限，做特殊处理
+                    Toast.makeText(MainActivity_all.this, "请允许定位", Toast.LENGTH_SHORT).show();
+                }
+                break;
+            default:
+                break;
+        }
+    }
+
     @Override
     public void onResume() {
         super.onResume();
