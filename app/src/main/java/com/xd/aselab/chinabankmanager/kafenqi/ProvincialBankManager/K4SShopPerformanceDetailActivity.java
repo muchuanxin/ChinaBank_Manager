@@ -1,10 +1,16 @@
 package com.xd.aselab.chinabankmanager.kafenqi.ProvincialBankManager;
 
+import android.Manifest;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -383,23 +389,36 @@ Log.i("kmj","secondary_num"+secondary_num);
             @Override
             public void onClick(View v) {
 
-                new Thread(){
+                AlertDialog.Builder builder=new AlertDialog.Builder(K4SShopPerformanceDetailActivity.this);
+                builder.setTitle("强制解约");
+                builder.setMessage("是否将该二级行与该4S店解约？");
+                builder.setPositiveButton("是", new DialogInterface.OnClickListener() {
                     @Override
-                    public void run() {
-                        super.run();
-                        final PostParameter[] params = new PostParameter[2];
-                        params[0] = new PostParameter("4sshop_id", worker_account);
-                        params[1] = new PostParameter("secondary_num", secondary_num);
-                        String reCode = ConnectUtil.httpRequest(ConnectUtil.ForceReleaseBetweenBankAnd4SShopByID, params, ConnectUtil.POST);
-                        Log.e("reCode",""+reCode);
-                        Message msg = new Message();
-                        msg.what = 1;
-                        msg.obj = reCode;
-                        handler.sendMessage(msg);
+                    public void onClick(DialogInterface dialog, int which) {
+                        new Thread(){
+                            @Override
+                            public void run() {
+                                super.run();
+                                final PostParameter[] params = new PostParameter[2];
+                                params[0] = new PostParameter("4sshop_id", worker_account);
+                                params[1] = new PostParameter("secondary_num", secondary_num);
+                                String reCode = ConnectUtil.httpRequest(ConnectUtil.ForceReleaseBetweenBankAnd4SShopByID, params, ConnectUtil.POST);
+                                Log.e("reCode",""+reCode);
+                                Message msg = new Message();
+                                msg.what = 1;
+                                msg.obj = reCode;
+                                handler.sendMessage(msg);
+                            }
+                        }.start();
                     }
-                }.start();
-
-
+                });
+                builder.setNegativeButton("否", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                builder.create().show();
             }
         });
 

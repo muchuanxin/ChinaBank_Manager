@@ -1,13 +1,17 @@
 package com.xd.aselab.chinabankmanager.activity;
 
+import android.Manifest;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.LocalBroadcastManager;
+import android.support.v4.content.PermissionChecker;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -298,9 +302,28 @@ public class MainActivity_all extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                // Toast.makeText(MainActivity_all.this,"营销导航界面",Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent();
-                intent.setClass(MainActivity_all.this, MarketingGuideNew.class);
-                startActivity(intent);
+                if (Build.VERSION.SDK_INT >= 23) {
+
+                    //判断有没有定位权限
+                    if (PermissionChecker.checkSelfPermission(MainActivity_all.this,
+                            Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                            || PermissionChecker.checkSelfPermission(MainActivity_all.this,
+                            Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                        //请求定位权限
+                        ActivityCompat.requestPermissions(MainActivity_all.this,
+                                new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION }, 10012);
+                    }
+                    else {
+                        Intent intent = new Intent();
+                        intent.setClass(MainActivity_all.this, MarketingGuideNew.class);
+                        startActivity(intent);
+                    }
+                }
+                else {
+                    Intent intent = new Intent();
+                    intent.setClass(MainActivity_all.this, MarketingGuideNew.class);
+                    startActivity(intent);
+                }
             }
         });
 
