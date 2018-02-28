@@ -260,7 +260,7 @@ public class Login extends AppCompatActivity {
                             spu.setJobNumber("0001");
                             spu.setTel("18182691877");
                             spu.setLandlineNumber("010-6962209");
-                            spu.setName("薛敏");
+                            spu.setName("省行");
                             spu.setBranchLevel2("01");
                             spu.setBranchLevel4("02");
                             spu.setType("ProvinceMannager");

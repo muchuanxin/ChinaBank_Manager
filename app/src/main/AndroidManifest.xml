@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.xd.aselab.chinabankmanager"
-    android:versionCode="1"
-    android:versionName="1.0">
+    android:versionCode="2"
+    android:versionName="2.0">
 
     <permission
         android:name="${applicationId}.permission.JPUSH_MESSAGE"
@@ -46,7 +46,7 @@
         android:theme="@style/AppTheme">
         <meta-data
             android:name="com.amap.api.v2.apikey"
-            android:value="19b79625ea9c89b2b7646105d082bc43" />
+            android:value="0d64ee466ee5897caa20929c38a69e17" />
 
         <!-- 友盟统计数据 -->
         <meta-data
@@ -481,7 +481,7 @@
             android:theme="@style/Translucent"
             android:windowSoftInputMode="adjustPan|stateHidden" />
 
-        <!--省行管理者部分-->
+        <!-- 省行管理者部分 -->
         <activity
             android:name=".kafenqi.ProvincialBankManager.KSubManagerPerformanceActivity"
             android:configChanges="orientation|keyboardHidden"
@@ -494,7 +494,6 @@
             android:screenOrientation="nosensor"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan|stateHidden" />
-
         <activity
             android:name=".kafenqi.ProvincialBankManager.KCustomerManagerPerformanceActivity"
             android:configChanges="orientation|keyboardHidden"
@@ -507,7 +506,6 @@
             android:screenOrientation="nosensor"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan|stateHidden" />
-
         <activity
             android:name=".kafenqi.ProvincialBankManager.KafenqiFirstActivity"
             android:configChanges="orientation|keyboardHidden"
@@ -520,14 +518,12 @@
             android:screenOrientation="nosensor"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan|stateHidden" />
-
         <activity
             android:name=".kafenqi.ProvincialBankManager.K4SShopPerformanceActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="nosensor"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan|stateHidden" />
-
         <activity
             android:name=".kafenqi.ProvincialBankManager.K4SShopPerformanceDetailActivity"
             android:configChanges="orientation|keyboardHidden"
@@ -632,21 +628,23 @@
             android:screenOrientation="nosensor"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan|stateHidden" />
-        <activity android:name=".marketingGuide.MarketingGuide"
+        <activity
+            android:name=".marketingGuide.MarketingGuide"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="nosensor"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="adjustPan|stateHidden"/>
+            android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
             android:name=".kafenqi.KWorkerManage.activity.NewNotificationDetailNewActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="nosensor"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="adjustPan|stateHidden"/>
-        <activity android:name=".activity.MainActivity"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity
+            android:name=".activity.MainActivity"
             android:configChanges="orientation|keyboardHidden"
-            android:screenOrientation="nosensor"
             android:launchMode="singleTask"
+            android:screenOrientation="nosensor"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
@@ -661,8 +659,13 @@
             android:screenOrientation="nosensor"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity android:name="com.mabeijianxi.smallvideorecord2.MediaRecorderActivity" />
         <activity
-            android:name="com.mabeijianxi.smallvideorecord2.MediaRecorderActivity"/>
+            android:name=".marketingGuide.MarketingGuideNew"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="nosensor"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
     </application>
 
 </manifest>
