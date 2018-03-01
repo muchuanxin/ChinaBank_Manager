@@ -56,6 +56,7 @@ public class Group_info extends AppCompatActivity {
     private GridLayout grid_layout;
     private SlidingDrawerGridView grid_view;
     private boolean flag;
+    private String head_image;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +76,8 @@ public class Group_info extends AppCompatActivity {
         group_tag = (TextView) findViewById(R.id.group_tag);
         list = new ArrayList();
         flag = false;
+
+        head_image = getIntent().getStringExtra("head_image");
 
         //网格用户处  设置监听  如果成功踢人则  网格重新设置adapter
 /*        grid_view.setOnClickListener(new View.OnClickListener() {
@@ -179,7 +182,6 @@ public class Group_info extends AppCompatActivity {
             }
         });
 
-        String head_image = getIntent().getStringExtra("head_image");
         ImageLoader loader = ImageLoader.getInstance();
         loader.loadBitmap(Group_info.this, head_image, group_image, R.drawable.default_photo);
         group_tag.setText(getIntent().getStringExtra("group_name"));
@@ -194,7 +196,7 @@ public class Group_info extends AppCompatActivity {
                     Intent intent = new Intent(Group_info.this, ChangePhotoActivity.class);
                     intent.putExtra("jump", "group_head");
                     intent.putExtra("group_id", getIntent().getStringExtra("group_id"));
-                    intent.putExtra("head_image", getIntent().getStringExtra("head_image"));
+                    intent.putExtra("head_image", head_image);
                     startActivityForResult(intent, Constants.LOCAL_PHOTO);
                 }
             });
@@ -416,6 +418,7 @@ public class Group_info extends AppCompatActivity {
         if (resultCode == Activity.RESULT_OK) {
             ImageLoader loader = ImageLoader.getInstance();
             loader.loadBitmap(Group_info.this, sp.getGroupHeadUrl(), group_image, R.drawable.default_head);
+            head_image = sp.getGroupHeadUrl();
         }
     }
 
