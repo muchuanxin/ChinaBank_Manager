@@ -26,6 +26,7 @@ import com.xd.aselab.chinabankmanager.util.ConnectUtil;
 import com.xd.aselab.chinabankmanager.util.Encode;
 import com.xd.aselab.chinabankmanager.util.PostParameter;
 import com.xd.aselab.chinabankmanager.util.SharePreferenceUtil;
+import com.xd.aselab.chinabankmanager.util.UpdateManager;
 
 import org.json.JSONObject;
 
@@ -236,6 +237,36 @@ public class Login extends AppCompatActivity {
                             e.printStackTrace();
                         }
                         break;
+                    case 1:
+                        try {
+                            String reCode = (String)msg.obj;
+                            if (reCode != null && !"{}".equals(reCode)) {
+                                JSONObject json = new JSONObject(reCode);
+                                String status = json.getString("status");
+                                if ("false".equals(status)) {
+                                    Toast.makeText(Login.this, json.getString("message"), Toast.LENGTH_SHORT).show();
+                                } else if ("true".equals(status)) {
+                                    String new_version = json.getString("version");
+                                    if (new_version!=null && !"".equals(new_version)){
+                                        UpdateManager updateManager = UpdateManager.getUpdateManager();
+                                        updateManager.judgeAppUpdate(new_version,Login.this);
+                                    }
+                                    else {
+                                        Log.e("new_version","版本号为空串");
+                                    }
+                                }
+                            }
+                            else if (reCode != null && "{}".equals(reCode)){
+                                Log.e("new_version","版本号为空null");
+                            }
+                            else {
+                                Log.e("connect","连接失败，未获取版本号");
+                            }
+                        }
+                        catch (Exception e){
+                            e.printStackTrace();
+                        }
+                        break;
                     default:
                         Log.e("Login_Activity",Login.this.getResources().getString(R.string.handler_what_exception));
                         break;
@@ -303,6 +334,20 @@ public class Login extends AppCompatActivity {
             account_delete.setVisibility(View.VISIBLE);
             psw_delete.setVisibility(View.VISIBLE);
         }
+
+        new Thread(){
+            @Override
+            public void run() {
+                super.run();
+                PostParameter[] params = new PostParameter[1];
+                params[0] = new PostParameter("send", "version");
+                String reCode = ConnectUtil.httpRequest(ConnectUtil.GetManagerClientVersion, params, ConnectUtil.POST);
+                Message msg = new Message();
+                msg.what = 1;
+                msg.obj = reCode;
+                handler.sendMessage(msg);
+            }
+        }.start();
     }
 
 

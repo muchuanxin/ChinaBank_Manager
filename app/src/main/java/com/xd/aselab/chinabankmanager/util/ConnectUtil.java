@@ -38,7 +38,7 @@ public class ConnectUtil {
 	public final static String HTTPS = "https://";
 
 	//public final static String API_HOST = "http://117.34.117.107/ChinaBank/Manager/";
-//	public final static String IP = "http://47.93.31.35/";
+	//public final static String IP = "http://47.93.31.35/";
 	public final static String IP = "http://192.168.0.129/";
 	//public final static String IP = "http://192.168.0.73:8080/";
 	//public final static String IP = "http://10.170.13.113:8080/";
@@ -50,8 +50,8 @@ public class ConnectUtil {
 	public final static String API_HOST = SERVER+"Manager/";
     public final static String API_Chat = SERVER+"Chat/";
 
+	public final static String API_HOST_DOWNLOAD=SERVER+"download/";
 	public final static String API_HOST_IMAGE=API_HOST+"images/";
-    public final static String API_HOST_DOWNLOAD=API_HOST+"download/";
 
     public final static String Chat=SERVER+"Chat/";
 
@@ -71,6 +71,7 @@ public class ConnectUtil {
     public final static String GetRollingPicture = COMMON + "GetRollingPicture";
 
 	public static String IS_AVAILABLE = API_HOST+"ManagerLogin";
+	public static String GetManagerClientVersion = API_HOST+"GetManagerClientVersion";
 	public static String MANAGER_LOGIN = API_HOST+"ManagerLogin";
 	public static String CHANGE_PASSWORD = API_HOST+"ReviseManagerPassword";
 	public static String CHANGE_TELEPHONE = API_HOST+"ReviseManagerTeleNumber";
