@@ -161,7 +161,7 @@ public class ShopPerformance extends AppCompatActivity {
                                         list_view.setVisibility(View.GONE);
                                         no_data_img.setVisibility(View.VISIBLE);
                                         no_data_txt.setVisibility(View.VISIBLE);
-                                        Toast.makeText(ShopPerformance.this, "还没有店铺业绩信息", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(ShopPerformance.this, "还没有商户业绩信息", Toast.LENGTH_SHORT).show();
                                     }
                                     else {
                                         //Log.e("jsonArray",jsonArray.toString());
@@ -172,10 +172,10 @@ public class ShopPerformance extends AppCompatActivity {
                                             JSONObject temp = (JSONObject) jsonArray.get(i);
                                             Map<String, String> map = new HashMap<>();
                                             map.put("shopName", temp.getString("shopName"));
-                                            //map.put("ownerName", "店铺负责人："+temp.getString("shopAccount"));
+                                            //map.put("ownerName", "商户负责人："+temp.getString("shopAccount"));
                                             map.put("shopRelease", temp.getString("status"));
                                             map.put("ownerName", "");
-                                            map.put("sum_card_count", "店铺扫码人数："+temp.getString("sum_card_count"));
+                                            map.put("sum_card_count", "商户扫码人数："+temp.getString("sum_card_count"));
                                             map.put("success_sum", "成功办卡人数："+temp.getString("success_sum"));
                                             list.add(map);
                                         }

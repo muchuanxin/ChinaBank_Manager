@@ -180,7 +180,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:textSize="14dp"
-        android:text="还没有基层经理业绩信息~"
+        android:text="还没有银行卡客户经理业绩信息~"
         android:visibility="gone"/>
 
     <!--<TextView
@@ -231,6 +231,6 @@
         android:background="#EFF3F9"
         android:gravity="center"
         android:textSize="21dp"
-        android:text="各店铺业绩情况"/>-->
+        android:text="商户业绩情况"/>-->
 
 </LinearLayout>

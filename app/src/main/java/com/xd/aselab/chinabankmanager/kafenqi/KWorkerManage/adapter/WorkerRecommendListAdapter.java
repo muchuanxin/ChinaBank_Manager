@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.xd.aselab.chinabankmanager.R;
 import com.xd.aselab.chinabankmanager.kafenqi.KWorkerManage.model.ApplicationsVO;
 
+import java.text.DecimalFormat;
 import java.util.List;
 import java.util.zip.Inflater;
 
@@ -85,10 +86,11 @@ public class WorkerRecommendListAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
+        DecimalFormat df = new DecimalFormat("#0.00");
         holder.tv_application_name.setText(list.get(position).getApplicatinName());
         holder.tv_applicate_time.setText("" + list.get(position).getApplicateTime());
         holder.tv_application_tel.setText("联系电话：" + list.get(position).getTel());
-        holder.tv_applicate_money.setText("分期总金额(万元)：" + list.get(position).getFenqi_money());
+        holder.tv_applicate_money.setText("分期总金额(万元)：" + df.format(list.get(position).getFenqi_money()));
         holder.tv_application_fenqi_num.setText("分期数：" + list.get(position).getFenqi_num());
 
 
@@ -97,11 +99,11 @@ public class WorkerRecommendListAdapter extends BaseAdapter {
 
 
 
-        if (status.equals("SUCCESS")) {
+        if (!"".equals(list.get(position).getSerial_num())) {
             holder.input_info.setVisibility(View.GONE);
             holder.get_money.setVisibility(View.VISIBLE);
             holder.serial_num.setVisibility(View.VISIBLE);
-            holder.get_money.setText("放款金额：" + list.get(position).getFenqi_money());
+            holder.get_money.setText("放款金额(万元)：" + list.get(position).getFenqi_money());
             holder.serial_num.setText("流水号：" + list.get(position).getSerial_num());
         }else{
             holder.input_info.setVisibility(View.VISIBLE);

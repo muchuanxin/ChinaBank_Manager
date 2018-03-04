@@ -199,7 +199,7 @@ public class BasePerformance extends AppCompatActivity {
                                         //red_total.setVisibility(View.GONE);
                                         no_data_img.setVisibility(View.VISIBLE);
                                         no_data_txt.setVisibility(View.VISIBLE);
-                                        Toast.makeText(BasePerformance.this, "还没有基层经理业绩信息", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(BasePerformance.this, "还没有银行卡客户经理业绩信息", Toast.LENGTH_SHORT).show();
                                     }
                                     else {
                                         no_data_img.setVisibility(View.GONE);

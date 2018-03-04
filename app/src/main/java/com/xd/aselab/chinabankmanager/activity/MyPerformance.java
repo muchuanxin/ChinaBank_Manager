@@ -98,7 +98,7 @@ public class MyPerformance extends AppCompatActivity {
                     startActivity(intent);
                 }
                 else if (no_data_img.getVisibility()==View.VISIBLE){
-                    Toast.makeText(MyPerformance.this, "还没有基层经理业绩信息", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MyPerformance.this, "还没有银行卡客户经理业绩信息", Toast.LENGTH_SHORT).show();
                 }
             }
         });*/
@@ -331,7 +331,7 @@ public class MyPerformance extends AppCompatActivity {
                                     }*/
                                     line1.setText("共有"+json.getString("sumCount")+"人扫码，共有"+json.getString("success_sum")+"人成功办卡");
                                     if ("BASIC".equals(spu.getType())){
-                                        line2.setText("发展店铺排名："+("".equals(json.getString("shop_rank"))? "暂无" : "第"+json.getString("shop_rank")+"名"));
+                                        line2.setText("发展商户排名："+("".equals(json.getString("shop_rank"))? "暂无" : "第"+json.getString("shop_rank")+"名"));
                                         line3.setText("成功办卡业绩排名："+("".equals(json.getString("cards_rank"))? "暂无" : "第"+json.getString("cards_rank")+"名"));
                                         line2.setVisibility(View.VISIBLE);
                                         line3.setVisibility(View.VISIBLE);
@@ -342,7 +342,7 @@ public class MyPerformance extends AppCompatActivity {
                                         chart.setVisibility(View.GONE);
                                         no_data_img.setVisibility(View.VISIBLE);
                                         no_data_txt.setVisibility(View.VISIBLE);
-                                        Toast.makeText(MyPerformance.this, "还没有基层经理业绩信息", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(MyPerformance.this, "还没有银行卡客户经理业绩信息", Toast.LENGTH_SHORT).show();
                                     }
                                     else {
                                         no_data_img.setVisibility(View.GONE);

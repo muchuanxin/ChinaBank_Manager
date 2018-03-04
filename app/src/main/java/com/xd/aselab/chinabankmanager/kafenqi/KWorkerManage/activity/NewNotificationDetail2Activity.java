@@ -37,6 +37,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -198,7 +199,8 @@ public class NewNotificationDetail2Activity extends AppCompatActivity {
                                     application_tel_str = json.getString("applicant_telephone");
                                     application_tel.setText("联系电话：" + application_tel_str);
                                     Double mm= Double.valueOf(json.getString("money"));
-                                    applicate_money.setText("分期总金额(万元)：" + mm);
+                                    DecimalFormat df = new DecimalFormat("#0.00");
+                                    applicate_money.setText("分期总金额(万元)：" + df.format(mm));
                                     applicate_num.setText("分期数：" + json.getString("installment_num"));
                                     serial_num = json.getString("serial_num");
 
@@ -242,10 +244,10 @@ public class NewNotificationDetail2Activity extends AppCompatActivity {
                                     confirm = json.getString("confirm");
 
 
-                                    if (confirm.equals("SUCCESS")) {
+                                    if (serial_num!=null && !"".equals(serial_num)){
                                         set_info.setVisibility(View.GONE);
                                         serial_num_text.setText("流水号：" + serial_num);
-                                        get_money.setText("放款金额：" + money);
+                                        get_money.setText("放款金额(万元)：" + money);
                                     } else {
                                         set_info.setVisibility(View.VISIBLE);
                                         serial_num_text.setVisibility(View.GONE);
@@ -363,7 +365,8 @@ public class NewNotificationDetail2Activity extends AppCompatActivity {
                             if (obj.get("status").equals("true")) {
 
 
-                                applicate_money.setText("分期总金额(万元)：" + money);
+                                DecimalFormat df = new DecimalFormat("#0.00");
+                                applicate_money.setText("分期总金额(万元)：" + df.format(money));
 
                                 Intent intent = new Intent();
                                 intent.putExtra("action", "add_text");
@@ -372,7 +375,7 @@ public class NewNotificationDetail2Activity extends AppCompatActivity {
                                 intent.putExtra("money", money);
                                 Log.d("Dorise 返回时候Monwy", money + "");
                                 setResult(1000, intent);
-                                confirm = "SUCCESS";
+                                //confirm = "SUCCESS";
 
                                 set_info.setVisibility(View.GONE);
                                 serial_num_text.setVisibility(View.VISIBLE);
@@ -381,10 +384,10 @@ public class NewNotificationDetail2Activity extends AppCompatActivity {
                                 get_money.setText("放款金额：" + money);
 
 
-                                ll_choose.setVisibility(View.GONE);
+                                /*ll_choose.setVisibility(View.GONE);
                                 tv_mark.setVisibility(View.VISIBLE);
                                 tv_mark.setText("业务通过");
-                                tv_mark.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
+                                tv_mark.setTextColor(getResources().getColor(R.color.colorPrimaryDark));*/
 
 
                             }

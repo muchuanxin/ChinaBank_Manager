@@ -79,7 +79,7 @@ public class ShopInfo extends AppCompatActivity {
                     overridePendingTransition(R.anim.zoomin, R.anim.zoomout);
                 }
                 else {
-                    Toast.makeText(ShopInfo.this, "店铺"+backup.get(position).get("shopRelease"), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ShopInfo.this, "商户"+backup.get(position).get("shopRelease"), Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -134,7 +134,7 @@ public class ShopInfo extends AppCompatActivity {
                                         list_view.setVisibility(View.GONE);
                                         no_data_img.setVisibility(View.VISIBLE);
                                         no_data_txt.setVisibility(View.VISIBLE);
-                                        Toast.makeText(ShopInfo.this, "还没有店铺信息", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(ShopInfo.this, "还没有商户信息", Toast.LENGTH_SHORT).show();
                                     }
                                     else {
                                         no_data_img.setVisibility(View.GONE);
@@ -146,10 +146,10 @@ public class ShopInfo extends AppCompatActivity {
                                             JSONObject temp = (JSONObject) jsonArray.get(i);
                                             Map<String, String> map = new HashMap<>();
                                             map.put("shopName", temp.getString("shopName"));
-                                            //map.put("ownerName", "店铺负责人："+temp.getString("shopAccount"));
+                                            //map.put("ownerName", "商户负责人："+temp.getString("shopAccount"));
                                             map.put("shopRelease", temp.getString("status"));
                                             map.put("ownerName", "");
-                                            map.put("shop_type", "店铺类型："+temp.getString("industry"));
+                                            map.put("shop_type", "商户类型："+temp.getString("industry"));
                                             map.put("shop_addr", "地址："+temp.getString("province")+temp.getString("city")
                                                     +temp.getString("county")+temp.getString("street")+temp.getString("locationDescribe"));
                                             map.put("teleNumber", temp.getString("teleNumber"));
@@ -206,7 +206,7 @@ public class ShopInfo extends AppCompatActivity {
                                         list_view.setVisibility(View.GONE);
                                         no_data_img.setVisibility(View.VISIBLE);
                                         no_data_txt.setVisibility(View.VISIBLE);
-                                        Toast.makeText(ShopInfo.this, "还没有店铺信息", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(ShopInfo.this, "还没有商户信息", Toast.LENGTH_SHORT).show();
                                     }
                                 } else {
                                     Log.e("ShopInfo_Activity", ShopInfo.this.getResources().getString(R.string.status_exception));

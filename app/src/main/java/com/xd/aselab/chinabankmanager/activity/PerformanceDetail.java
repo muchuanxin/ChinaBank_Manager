@@ -114,8 +114,8 @@ public class PerformanceDetail extends AppCompatActivity {
                                             JSONObject temp = (JSONObject) jsonArray.get(i);
                                             Map<String, String> map = new HashMap<>();
                                             map.put("shopName", temp.getString("shopName"));
-                                            map.put("saoma", "店铺扫码人数："+temp.getString("sum_card_count"));
-                                            map.put("banka", "店铺办卡成功人数："+temp.getString("success_sum"));
+                                            map.put("saoma", "商户扫码人数："+temp.getString("sum_card_count"));
+                                            map.put("banka", "商户办卡成功人数："+temp.getString("success_sum"));
                                             //total += Integer.valueOf(temp.getString("success_sum"));
                                             list.add(map);
                                         }
@@ -123,7 +123,7 @@ public class PerformanceDetail extends AppCompatActivity {
                                                 new String[]{"shopName","saoma","banka"},
                                                 new int[]{R.id.list_view_perf_detail_shop_name, R.id.list_view_perf_detail_saoma, R.id.list_view_perf_detail_banka});
                                         list_view.setAdapter(adapter);
-                                        red_total.setText("在"+intent.getStringExtra("real_name")+"管理的" + jsonArray.length()+"家店铺中，共有"+saoma+"人扫码，"+banka+"人成功办卡");
+                                        red_total.setText("在"+intent.getStringExtra("real_name")+"管理的" + jsonArray.length()+"家商户中，共有"+saoma+"人扫码，"+banka+"人成功办卡");
                                     }
                                 } else {
                                     Log.e("PerformDetail_Activity", PerformanceDetail.this.getResources().getString(R.string.status_exception));

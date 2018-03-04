@@ -9,7 +9,6 @@
     android:id="@+id/activity_kafenqi"
     tools:context="com.xd.aselab.chinabankmanager.kafenqi.KafenqiActivity">
 
-
     <RelativeLayout
         android:id="@+id/act_my_mana_top_bar"
         android:layout_width="match_parent"

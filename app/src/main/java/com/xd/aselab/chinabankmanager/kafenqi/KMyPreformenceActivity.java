@@ -53,6 +53,7 @@ import com.xd.aselab.chinabankmanager.util.SharePreferenceUtil;
 
 import org.json.JSONObject;
 
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -78,7 +79,7 @@ public class KMyPreformenceActivity extends AppCompatActivity implements OnChart
     private float[] money = new float[12];
     private String choosen_time = "one_week";
     private int number1,number2,number3,number4,recommend_number1,recommend_number2,recommend_number3,recommend_number4;
-    private int money1,money2,money3,money4,recommend_money1,recommend_money2,recommend_money3,recommend_money4;
+    private double money1,money2,money3,money4,recommend_money1,recommend_money2,recommend_money3,recommend_money4;
     private String type;
     private ChooseTimeAdapter chooseTimeAdapter;
     private PopupWindow pop;
@@ -173,32 +174,33 @@ public class KMyPreformenceActivity extends AppCompatActivity implements OnChart
                                     //Log.e("this_year", this_year.toString());
                                     // float[] numbers = new float[12];
                                     recommend_number1 = oneWeekJO.getInt("recommend_num");
-                                    recommend_money1 = oneWeekJO.getInt("recommend_money");
+                                    recommend_money1 = oneWeekJO.getDouble("recommend_money");
                                     number1 = oneWeekJO.getInt("number");
-                                    money1 = oneWeekJO.getInt("money");
+                                    money1 = oneWeekJO.getDouble("money");
                                     recommend_number2 = oneMonthJO.getInt("recommend_num");
-                                    recommend_money2 = oneMonthJO.getInt("recommend_money");
+                                    recommend_money2 = oneMonthJO.getDouble("recommend_money");
                                     number2 = oneMonthJO.getInt("number");
-                                    money2 = oneMonthJO.getInt("money");
+                                    money2 = oneMonthJO.getDouble("money");
                                     recommend_number3 = threeMonthJO.getInt("recommend_num");
-                                    recommend_money3 = threeMonthJO.getInt("recommend_money");
+                                    recommend_money3 = threeMonthJO.getDouble("recommend_money");
                                     number3 = threeMonthJO.getInt("number");
-                                    money3 = threeMonthJO.getInt("money");
+                                    money3 = threeMonthJO.getDouble("money");
                                     recommend_number4 = oneYearJO.getInt("recommend_num");
-                                    recommend_money4 = oneYearJO.getInt("recommend_money");
+                                    recommend_money4 = oneYearJO.getDouble("recommend_money");
                                     number4 = oneYearJO.getInt("number");
-                                    money4 = oneYearJO.getInt("money");
+                                    money4 = oneYearJO.getDouble("money");
 
+                                    DecimalFormat df = new DecimalFormat("#0.00");
                                     line1.setText("分期业务推荐数量："+("".equals(recommend_number1)? "暂无" : recommend_number1+"笔"));
-                                    line2.setText("分期业务推荐金额："+("".equals(recommend_money1)? "暂无" : recommend_money1+"万元"));
+                                    line2.setText("分期业务推荐金额："+("".equals(recommend_money1)? "暂无" : df.format(recommend_money1)+"万元"));
                                     line3.setText("分期业务成功数量："+("".equals(number1)? "暂无" : number1+"笔"));
-                                    line4.setText("分期业务成功金额："+("".equals(money1)? "暂无" : money1+"万元"));
+                                    line4.setText("分期业务成功金额："+("".equals(money1)? "暂无" : df.format(money1)+"万元"));
 
                                     boolean flag = false;
                                     for (int i=0; i<12; i++){
                                         // numbers[i] = thisYearJO.getInt(""+(i+1));
                                         numbers[i]=thisYearJO.getJSONObject(""+(i+1)).getInt("number");
-                                        money[i] = thisYearJO.getJSONObject(""+(i+1)).getInt("money");
+                                        money[i] = (float) thisYearJO.getJSONObject(""+(i+1)).getDouble("money");
                                         if (numbers[i]>0){
                                             flag = true;
                                         }
@@ -444,10 +446,11 @@ public class KMyPreformenceActivity extends AppCompatActivity implements OnChart
 
     }
 
-    void setText(int recommend_number,int recommend_money,int success_number,int success_money){
+    void setText(int recommend_number,double recommend_money,int success_number,double success_money){
+        DecimalFormat df = new DecimalFormat("#0.00");
         line1.setText("分期业务推荐数量："+("".equals(recommend_number)? "暂无" : recommend_number+"笔"));
-        line2.setText("分期业务推荐金额："+("".equals(recommend_money)? "暂无" : recommend_money+"万元"));
+        line2.setText("分期业务推荐金额："+("".equals(recommend_money)? "暂无" : df.format(recommend_money)+"万元"));
         line3.setText("分期业务成功数量："+("".equals(success_number)? "暂无" : success_number+"笔"));
-        line4.setText("分期业务成功金额："+("".equals(success_money)? "暂无" : success_money+"万元"));
+        line4.setText("分期业务成功金额："+("".equals(success_money)? "暂无" : df.format(success_money)+"万元"));
     }
 }

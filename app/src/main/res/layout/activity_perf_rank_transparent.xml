@@ -104,7 +104,7 @@
             android:gravity="center"
             android:textSize="18dp"
             android:textColor="#5A5A5A"
-            android:text="累计发展店铺"/>
+            android:text="累计发展商户"/>
 
     </RelativeLayout>
 

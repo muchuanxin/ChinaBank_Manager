@@ -99,7 +99,7 @@ public class MyPerformanceBase extends AppCompatActivity {
                                         red_total.setVisibility(View.GONE);
                                         no_data_img.setVisibility(View.VISIBLE);
                                         no_data_txt.setVisibility(View.VISIBLE);
-                                        Toast.makeText(MyPerformanceBase.this, "还没有基层经理业绩信息", Toast.LENGTH_SHORT).show();*/
+                                        Toast.makeText(MyPerformanceBase.this, "还没有银行卡客户经理业绩信息", Toast.LENGTH_SHORT).show();*/
                                         Log.e("PerformDetail_Activity", MyPerformanceBase.this.getResources().getString(R.string.list_length_exception));
                                     }
                                     else {
@@ -113,8 +113,8 @@ public class MyPerformanceBase extends AppCompatActivity {
                                             JSONObject temp = (JSONObject) jsonArray.get(i);
                                             Map<String, String> map = new HashMap<>();
                                             map.put("shopName", temp.getString("shopName"));
-                                            map.put("saoma", "店铺扫码人数："+temp.getString("sumCount"));
-                                            map.put("banka", "店铺办卡成功人数："+temp.getString("success_sum"));
+                                            map.put("saoma", "商户扫码人数："+temp.getString("sumCount"));
+                                            map.put("banka", "商户办卡成功人数："+temp.getString("success_sum"));
                                             total += Integer.valueOf(temp.getString("sumCount"));
                                             //names[i] = temp.getString("manager_realname");
                                             //numbers[i] = Float.valueOf(temp.getString("sum_card_count")).floatValue();
@@ -125,7 +125,7 @@ public class MyPerformanceBase extends AppCompatActivity {
                                                 new int[]{R.id.list_view_perf_detail_shop_name, R.id.list_view_perf_detail_saoma, R.id.list_view_perf_detail_banka});
                                         list_view.setAdapter(adapter);
                                         //list_view.setVisibility(View.VISIBLE);
-                                        red_total.setText("在您管理的" + jsonArray.length()+"家店铺中，共有"+total+"人成功办卡");
+                                        red_total.setText("在您管理的" + jsonArray.length()+"家商户中，共有"+total+"人成功办卡");
                                         //red_total.setVisibility(View.VISIBLE);
                                     }
                                 } else {

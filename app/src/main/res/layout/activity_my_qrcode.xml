@@ -47,7 +47,7 @@
         android:layout_height="wrap_content"
         android:textColor="#B81C1E"
         android:textSize="14dp"
-        android:text="注：店铺扫描二维码即可申请加盟，店铺注册成功后，基层客户经理请到  我的管理->店铺管理->店铺加盟审核  中同意或拒绝加盟"/>
+        android:text="注：商户扫描二维码即可申请加盟，商户注册成功后，银行卡客户经理请到  我的管理->特约商户管理->商户加盟审核  中同意或拒绝加盟"/>
 
     <ImageView
         android:id="@+id/act_my_qrcode_qrcode_img"

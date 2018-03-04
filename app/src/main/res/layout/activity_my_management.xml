@@ -101,7 +101,7 @@
            android:layout_height="wrap_content"
            android:textColor="#000"
            android:textSize="20dp"
-           android:text="基层客户经理业绩排名"/>
+           android:text="银行卡客户经理业绩排名"/>
 
    </LinearLayout>
 
@@ -134,7 +134,7 @@
            android:layout_height="wrap_content"
            android:textColor="#000"
            android:textSize="20dp"
-           android:text="基层客户经理信息"/>
+           android:text="银行卡客户经理信息"/>
 
    </LinearLayout>
 
@@ -167,7 +167,7 @@
             android:layout_height="wrap_content"
             android:textColor="#000"
             android:textSize="20dp"
-            android:text="基层客户经理业绩"/>
+            android:text="银行卡客户经理业绩"/>
 
     </LinearLayout>
 

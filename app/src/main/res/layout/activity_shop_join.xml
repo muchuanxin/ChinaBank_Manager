@@ -35,7 +35,7 @@
             android:layout_centerHorizontal="true"
             android:textColor="#fff"
             android:textSize="22dp"
-            android:text="店铺加盟审核"/>
+            android:text="特约商户加盟审核"/>
 
     </RelativeLayout>
 
@@ -64,7 +64,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:textSize="14dp"
-        android:text="还没有店铺信息~"
+        android:text="还没有商户信息~"
         android:visibility="gone"/>
 
 </RelativeLayout>

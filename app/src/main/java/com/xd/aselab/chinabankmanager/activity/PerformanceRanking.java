@@ -82,7 +82,7 @@ public class PerformanceRanking extends AppCompatActivity {
                 AlertDialog.Builder builder = new AlertDialog.Builder(PerformanceRanking.this);
                 builder.setTitle("选择时间范围");
                 //    指定下拉列表的显示数据
-                final String[] select_string = {"累计业绩排名", "近半年排名", "近三月排名", "累计发展店铺"};
+                final String[] select_string = {"累计业绩排名", "近半年排名", "近三月排名", "累计商户商户"};
                 //    设置一个下拉的列表选择项
                 builder.setItems(select_string, new DialogInterface.OnClickListener() {
                     @Override
@@ -113,8 +113,8 @@ public class PerformanceRanking extends AppCompatActivity {
                                 params[2] = new PostParameter("begin", format.format(calendar.getTime()));
                                 params[3] = new PostParameter("end", format.format(new Date()));
                                 break;
-                            case "累计发展店铺" :
-                                title.setText("累计发展店铺");
+                            case "累计发展商户" :
+                                title.setText("累计发展商户");
                                 flag = "shop";
                                 break;
                         }
@@ -162,7 +162,7 @@ public class PerformanceRanking extends AppCompatActivity {
                                         list_view.setVisibility(View.GONE);
                                         no_data_img.setVisibility(View.VISIBLE);
                                         no_data_txt.setVisibility(View.VISIBLE);
-                                        Toast.makeText(PerformanceRanking.this, "还没有基层经理排名信息", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(PerformanceRanking.this, "还没有银行卡客户经理排名信息", Toast.LENGTH_SHORT).show();
                                     }
                                     else {
                                         no_data_img.setVisibility(View.GONE);
@@ -257,7 +257,7 @@ public class PerformanceRanking extends AppCompatActivity {
                     params[2] = new PostParameter("end", format.format(new Date()));
                     break;
                 case "shop_total" :
-                    title.setText("累计发展店铺");
+                    title.setText("累计发展商户");
                     flag = "shop";
                     break;
             }

@@ -318,14 +318,14 @@ public class BaseMyAllPerformanceActivity extends AppCompatActivity  implements 
                                     tv_card_saomiao.setText("共有"+json.getString("sumCount")+"人扫码");
                                     tv_card_success.setText("共有"+json.getString("success_sum")+"人成功办卡");
                                    /* if ("BASIC".equals(spu.getType())){
-                                        line2.setText("发展店铺排名："+("".equals(json.getString("shop_rank"))? "暂无" : "第"+json.getString("shop_rank")+"名"));
+                                        line2.setText("发展商户排名："+("".equals(json.getString("shop_rank"))? "暂无" : "第"+json.getString("shop_rank")+"名"));
                                         line3.setText("成功办卡业绩排名："+("".equals(json.getString("cards_rank"))? "暂无" : "第"+json.getString("cards_rank")+"名"));
                                     }*/
 
                                     if (! flag){
                                         ll_card_chart.setVisibility(View.GONE);
                                         no_data_card_chart.setVisibility(View.VISIBLE);
-                                       // Toast.makeText(BaseMyAllPerformanceActivity.this, "还没有基层经理业绩信息", Toast.LENGTH_SHORT).show();
+                                       // Toast.makeText(BaseMyAllPerformanceActivity.this, "还没有银行卡客户经理业绩信息", Toast.LENGTH_SHORT).show();
                                     }
                                     else {
                                         ll_card_chart.setVisibility(View.VISIBLE);

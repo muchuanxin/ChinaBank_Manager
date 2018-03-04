@@ -169,7 +169,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:textSize="14dp"
-            android:text="还没有基层经理排名信息~"/>
+            android:text="还没有银行卡客户经理排名信息~"/>
     </RelativeLayout>
 
 

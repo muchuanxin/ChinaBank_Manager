@@ -165,7 +165,7 @@ public class RecommendListActivity extends AppCompatActivity {
                             if (obj.get("status").equals("true")) {
 
 
-                                applicationsVOList.get(msg.arg1).setState("SUCCESS");
+                                //applicationsVOList.get(msg.arg1).setState("SUCCESS");
                                 applicationsVOList.get(msg.arg1).setFenqi_money(money);
                                 applicationsVOList.get(msg.arg1).setserial_num(serial_num);
 
@@ -492,7 +492,7 @@ public class RecommendListActivity extends AppCompatActivity {
                     Log.d("Dorise进入add_text", "进来了进来了");
                     Log.d("Dorise进入add_text", data.getDoubleExtra("money", 0) + "============");
                     applicationsVOList.get(position).setFenqi_money(data.getDoubleExtra("money", 0));
-                    applicationsVOList.get(position).setState("SUCCESS");
+                    //applicationsVOList.get(position).setState("SUCCESS");
                     applicationsVOList.get(position).setserial_num(data.getStringExtra("serial_num"));
                     adaper.notifyDataSetChanged();
                     break;

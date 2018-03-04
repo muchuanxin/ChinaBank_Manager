@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.xd.aselab.chinabankmanager.R;
 
+import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Map;
 
@@ -69,15 +70,17 @@ public class BasePerfAllAdapter extends BaseAdapter {
         holder.tv_base_card_sum.setText("共有"+card_num+"人扫码");
         holder.tv_base_card_success.setText("共有"+card_success_num+"人成功办卡");
 
+
+        DecimalFormat df = new DecimalFormat("#0.00");
         String fenqi_num = list.get(position).get("sum_fenqi_count")==null?"0":list.get(position).get("sum_fenqi_count");
         String fenqi_money = list.get(position).get("sum_fenqi_money")==null?"0":list.get(position).get("sum_fenqi_money");
         holder.tv_base_fenqi_num.setText("分期业务数量："+fenqi_num+"笔");
-        holder.tv_base_fenqi_money.setText("分期业务金额："+fenqi_money+"万元");
+        holder.tv_base_fenqi_money.setText("分期业务金额："+df.format(Double.valueOf(fenqi_money))+"万元");
 
         String xiaodai_num = list.get(position).get("sum_xiaodai_count")==null?"0":list.get(position).get("sum_xiaodai_count");
         String xiaodai_money = list.get(position).get("sum_xiaodai_money")==null?"0":list.get(position).get("sum_xiaodai_money");
         holder.tv_base_xiaodai_num.setText("贷款业务数量："+xiaodai_num+"笔");
-        holder.tv_base_xiaodai_money.setText("贷款业务金额："+xiaodai_money+"万元");
+        holder.tv_base_xiaodai_money.setText("贷款业务金额："+df.format(Double.valueOf(xiaodai_money))+"万元");
         return convertView;
     }
 

@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="65dp"
         android:orientation="horizontal"
-        android:background="@color/colorPrimaryDark">
+        android:background="@drawable/navigation_bg">
 
         <RelativeLayout
             android:id="@+id/act_change_head_photo_back_btn"
@@ -23,7 +23,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="28dp"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="31dp"
+                android:layout_marginTop="28dp"
                 android:padding="1.5dp"
                 android:src="@drawable/back_btn_bg"/>
 

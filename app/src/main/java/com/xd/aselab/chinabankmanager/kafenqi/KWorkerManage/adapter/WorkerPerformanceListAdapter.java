@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.xd.aselab.chinabankmanager.R;
 import com.xd.aselab.chinabankmanager.kafenqi.KWorkerManage.model.WorkerVO;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 /**
@@ -70,11 +71,12 @@ public class WorkerPerformanceListAdapter extends BaseAdapter {
             holder=(ViewHolder)convertView.getTag();
         }
 
+        DecimalFormat df = new DecimalFormat("#0.00");
         holder.tv_worker_name.setText(list.get(position).getName());
         holder.tv_worker_address.setText("工作单位："+list.get(position).getWorker_address());
         holder.tv_recommend_number.setText("推荐分期业务数量："+list.get(position).getRecommend_number()+"笔");
         holder.tv_success_number.setText("分期业务成功数量："+list.get(position).getSuccess_number()+"笔");
-        holder.tv_success_money.setText("分期业务成功金额："+list.get(position).getSuccess_money()+"万元");
+        holder.tv_success_money.setText("分期业务成功金额："+df.format(list.get(position).getSuccess_money())+"万元");
         holder.tv_sum_credit.setText("积分数："+list.get(position).getSum_credit());
         holder.tv_exchange_credit.setText("累计兑换积分："+list.get(position).getExchange_credit());
 

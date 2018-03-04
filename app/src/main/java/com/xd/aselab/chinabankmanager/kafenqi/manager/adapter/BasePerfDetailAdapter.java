@@ -11,6 +11,7 @@ import com.xd.aselab.chinabankmanager.R;
 import com.xd.aselab.chinabankmanager.kafenqi.KWorkerManage.model.WorkerVO;
 import com.xd.aselab.chinabankmanager.kafenqi.manager.model.BaseVO;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 /**
@@ -68,8 +69,9 @@ public class BasePerfDetailAdapter extends BaseAdapter {
             holder=(ViewHolder)convertView.getTag();
         }
 
+        DecimalFormat df = new DecimalFormat("#0.00");
         holder.tv_base_name.setText(list.get(position).getName());
-        holder.tv_base_money.setText("分期业务金额："+list.get(position).getSuccess_money()+"万元");
+        holder.tv_base_money.setText("分期业务金额："+df.format(list.get(position).getSuccess_money())+"万元");
         holder.tv_base_num.setText("分期业务数量："+list.get(position).getSuccess_number()+"笔");
         if(!list.get(position).getStatus().equals("已加盟"))
         {

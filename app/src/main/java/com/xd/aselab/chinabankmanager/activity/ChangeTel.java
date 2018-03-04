@@ -21,6 +21,9 @@ import com.xd.aselab.chinabankmanager.util.SharePreferenceUtil;
 
 import org.json.JSONObject;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class ChangeTel extends AppCompatActivity {
 
     private RelativeLayout back;
@@ -95,18 +98,19 @@ public class ChangeTel extends AppCompatActivity {
             public void onClick(View v) {
                 tel = tel_edit.getText().toString().trim();
                 //String telRegex = "[1][3578]\\d{9}";
+                Pattern p = Pattern.compile("^(1)\\d{10}$");
                 if (tel==null || "".equals(tel)){
                     Toast.makeText(ChangeTel.this, "请填写电话号码", Toast.LENGTH_SHORT).show();
                 }
                 else if (tel.equals(spu.getTel())){
                     Toast.makeText(ChangeTel.this, "请输入新的电话号码", Toast.LENGTH_SHORT).show();
                 }
-                else if (tel.length()!=11) {
-                    Toast.makeText(ChangeTel.this, "电话号码不符合规格", Toast.LENGTH_SHORT).show();
-                }
-                /*else if (!tel.matches(telRegex)) {
+                /*else if (tel.length()!=11) {
                     Toast.makeText(ChangeTel.this, "电话号码不符合规格", Toast.LENGTH_SHORT).show();
                 }*/
+                else if (p.matcher(tel).matches()) {
+                    Toast.makeText(ChangeTel.this, "电话号码不符合规格", Toast.LENGTH_SHORT).show();
+                }
                 else {
                     new Thread(){
                         @Override

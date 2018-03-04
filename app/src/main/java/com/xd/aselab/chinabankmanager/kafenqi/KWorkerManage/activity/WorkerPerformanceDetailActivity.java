@@ -49,6 +49,7 @@ import com.xd.aselab.chinabankmanager.util.SharePreferenceUtil;
 
 import org.json.JSONObject;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -79,10 +80,11 @@ public class WorkerPerformanceDetailActivity extends AppCompatActivity  implemen
     private float[] money = new float[12];
     private String choosen_time = "one_week";
     private String worker_account,worker_name,worker_status;
-    private int recommend_num_one_week,success_num_one_week,success_money_one_week,score_one_week,exchange_score_one_week;
-    private int recommend_num_one_month,success_num_one_month,success_money_one_month,score_one_month,exchange_score_one_month;
-    private int recommend_num_three_month,success_num_three_month,success_money_three_month,score_three_month,exchange_score_three_month;
-    private int recommend_num_one_year,success_num_one_year,success_money_one_year,score_one_year,exchange_score_one_year;
+    private int recommend_num_one_week,success_num_one_week,score_one_week,exchange_score_one_week;
+    private int recommend_num_one_month,success_num_one_month,score_one_month,exchange_score_one_month;
+    private int recommend_num_three_month,success_num_three_month,score_three_month,exchange_score_three_month;
+    private int recommend_num_one_year,success_num_one_year,score_one_year,exchange_score_one_year;
+    private double success_money_one_week,success_money_one_month,success_money_three_month,success_money_one_year;
     private ChooseTimeAdapter chooseTimeAdapter;
     private PopupWindow pop;
     private RelativeLayout rl_choose_time;
@@ -268,25 +270,25 @@ public class WorkerPerformanceDetailActivity extends AppCompatActivity  implemen
                                     // float[] numbers = new float[12];
                                     recommend_num_one_week = oneWeekJO.getInt("recommend_num");
                                     success_num_one_week = oneWeekJO.getInt("success_num");
-                                    success_money_one_week= oneWeekJO.getInt("success_money");
+                                    success_money_one_week= oneWeekJO.getDouble("success_money");
                                     score_one_week= oneWeekJO.getInt("score");
                                     exchange_score_one_week= oneWeekJO.getInt("exchange_score");
 
                                     recommend_num_one_month = oneMonthJO.getInt("recommend_num");
                                     success_num_one_month = oneMonthJO.getInt("success_num");
-                                    success_money_one_month= oneMonthJO.getInt("success_money");
+                                    success_money_one_month= oneMonthJO.getDouble("success_money");
                                     score_one_month= oneMonthJO.getInt("score");
                                     exchange_score_one_month= oneMonthJO.getInt("exchange_score");
 
                                     recommend_num_three_month = threeMonthJO.getInt("recommend_num");
                                     success_num_three_month = threeMonthJO.getInt("success_num");
-                                    success_money_three_month= threeMonthJO.getInt("success_money");
+                                    success_money_three_month= threeMonthJO.getDouble("success_money");
                                     score_three_month= threeMonthJO.getInt("score");
                                     exchange_score_three_month= threeMonthJO.getInt("exchange_score");
 
                                     recommend_num_one_year = oneYearJO.getInt("recommend_num");
                                     success_num_one_year = oneYearJO.getInt("success_num");
-                                    success_money_one_year= oneYearJO.getInt("success_money");
+                                    success_money_one_year= oneYearJO.getDouble("success_money");
                                     score_one_year= oneYearJO.getInt("score");
                                     exchange_score_one_year= oneYearJO.getInt("exchange_score");
 
@@ -346,10 +348,11 @@ public class WorkerPerformanceDetailActivity extends AppCompatActivity  implemen
 
     }
 
-    private void setText(int recommend_num,int success_num,int success_money,int score,int exchange_score){
+    private void setText(int recommend_num,int success_num,double success_money,int score,int exchange_score){
+        DecimalFormat df = new DecimalFormat("#0.00");
         tv_recommend_num.setText("推荐分期业务数量："+("".equals(recommend_num)? "暂无" : recommend_num+"笔"));
         tv_success_num.setText("分期业务成功数量："+("".equals(success_num)? "暂无" : success_num+"笔"));
-        tv_success_money.setText("分期业务成功金额："+("".equals(success_money)? "暂无" : success_money+"万元"));
+        tv_success_money.setText("分期业务成功金额："+("".equals(success_money)? "暂无" : df.format(success_money)+"万元"));
         tv_credit_sum.setText("积分数："+("".equals(score)? "暂无" : score));
         tv_credit_exchange.setText("累计兑换积分："+("".equals(exchange_score)? "暂无" : exchange_score));
     }

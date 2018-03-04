@@ -35,7 +35,7 @@
             android:layout_centerHorizontal="true"
             android:textColor="#fff"
             android:textSize="22dp"
-            android:text="店铺管理"/>
+            android:text="特约商户管理"/>
 
     </RelativeLayout>
 
@@ -43,22 +43,53 @@
         android:id="@+id/act_shop_mana_division1"
         android:layout_below="@id/act_shop_mana_top_bar"
         android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:background="#EFF3F9"/>
+        android:layout_height="10dp"
+        android:background="@color/gray_bg"/>
 
     <LinearLayout
         android:id="@+id/act_shop_mana_shop_info"
         android:layout_below="@id/act_shop_mana_division1"
-        android:padding="20dp"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="70dp"
         android:orientation="horizontal">
 
         <ImageView
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="20dp"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_marginLeft="30dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/shop_info_red"/>
+
+        <TextView
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:textSize="18dp"
+            android:text="特约商户信息"/>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/act_shop_mana_division2"
+        android:layout_below="@id/act_shop_mana_shop_info"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/gray_bg"/>
+
+    <LinearLayout
+        android:id="@+id/act_shop_mana_shop_perf"
+        android:layout_below="@id/act_shop_mana_division2"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="30dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:src="@drawable/base_ranking"/>
 
         <TextView
@@ -67,41 +98,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#000"
-            android:textSize="20dp"
-            android:text="店铺信息"/>
-
-    </LinearLayout>
-
-    <RelativeLayout
-        android:id="@+id/act_shop_mana_division2"
-        android:layout_below="@id/act_shop_mana_shop_info"
-        android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:background="#EFF3F9"/>
-
-    <LinearLayout
-        android:id="@+id/act_shop_mana_shop_perf"
-        android:layout_below="@id/act_shop_mana_division2"
-        android:padding="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="20dp"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/base_info"/>
-
-        <TextView
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="30dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#000"
-            android:textSize="20dp"
-            android:text="店铺业绩"/>
+            android:textSize="18dp"
+            android:text="特约商户业绩"/>
 
     </LinearLayout>
 
@@ -109,23 +107,22 @@
         android:id="@+id/act_shop_mana_division3"
         android:layout_below="@id/act_shop_mana_shop_perf"
         android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:background="#EFF3F9"/>
+        android:layout_height="10dp"
+        android:background="@color/gray_bg"/>
 
     <LinearLayout
         android:id="@+id/act_shop_mana_shop_join"
         android:layout_below="@id/act_shop_mana_division3"
-        android:padding="20dp"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="70dp"
         android:orientation="horizontal">
 
         <ImageView
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="20dp"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/shop_join"/>
+            android:layout_marginLeft="30dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/worker_join_check"/>
 
         <TextView
             android:layout_gravity="center_vertical"
@@ -133,8 +130,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#000"
-            android:textSize="20dp"
-            android:text="店铺加盟审核"/>
+            android:textSize="18dp"
+            android:text="商户加盟审核"/>
 
     </LinearLayout>
 
@@ -142,23 +139,22 @@
         android:id="@+id/act_shop_mana_division4"
         android:layout_below="@id/act_shop_mana_shop_join"
         android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:background="#EFF3F9"/>
+        android:layout_height="10dp"
+        android:background="@color/gray_bg"/>
 
     <LinearLayout
         android:id="@+id/act_shop_mana_shop_release"
         android:layout_below="@id/act_shop_mana_division4"
-        android:padding="20dp"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="70dp"
         android:orientation="horizontal">
 
         <ImageView
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="20dp"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/shop_release"/>
+            android:layout_marginLeft="30dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/worke_release_check"/>
 
         <TextView
             android:layout_gravity="center_vertical"
@@ -166,8 +162,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#000"
-            android:textSize="20dp"
-            android:text="店铺解约审核"/>
+            android:textSize="18dp"
+            android:text="商户解约审核"/>
 
     </LinearLayout>
 

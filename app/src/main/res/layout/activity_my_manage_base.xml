@@ -43,22 +43,21 @@
         android:id="@+id/act_my_mana_base_division1"
         android:layout_below="@id/act_my_mana_base_top_bar"
         android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:background="#EFF3F9"/>
+        android:layout_height="10dp"
+        android:background="@color/gray_bg"/>
 
     <LinearLayout
         android:id="@+id/act_my_mana_base_my_perf"
         android:layout_below="@id/act_my_mana_base_division1"
-        android:padding="20dp"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="70dp"
         android:orientation="horizontal">
 
         <ImageView
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="20dp"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_marginLeft="30dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:src="@drawable/my_performance"/>
 
         <TextView
@@ -67,7 +66,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#000"
-            android:textSize="20dp"
+            android:textSize="18dp"
             android:text="我的业绩"/>
 
     </LinearLayout>
@@ -76,22 +75,21 @@
         android:id="@+id/act_my_mana_base_division2"
         android:layout_below="@id/act_my_mana_base_my_perf"
         android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:background="#EFF3F9"/>
+        android:layout_height="10dp"
+        android:background="@color/gray_bg"/>
 
     <LinearLayout
         android:id="@+id/act_my_mana_base_shop_mana"
         android:layout_below="@id/act_my_mana_base_division2"
-        android:padding="20dp"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="70dp"
         android:orientation="horizontal">
 
         <ImageView
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="20dp"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_marginLeft="30dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:src="@drawable/base_info"/>
 
         <TextView
@@ -100,8 +98,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#000"
-            android:textSize="20dp"
-            android:text="店铺管理"/>
+            android:textSize="18dp"
+            android:text="特约商户管理"/>
 
     </LinearLayout>
 

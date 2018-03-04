@@ -34,7 +34,7 @@
             android:layout_centerHorizontal="true"
             android:textColor="#fff"
             android:textSize="22dp"
-            android:text="店铺解约审核"/>
+            android:text="商户解约审核"/>
 
     </RelativeLayout>
 

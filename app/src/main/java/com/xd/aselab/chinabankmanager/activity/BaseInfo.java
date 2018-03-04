@@ -125,7 +125,7 @@ public class BaseInfo extends AppCompatActivity {
                                         list_view.setVisibility(View.GONE);
                                         no_data_img.setVisibility(View.VISIBLE);
                                         no_data_txt.setVisibility(View.VISIBLE);
-                                        Toast.makeText(BaseInfo.this, "还没有基层经理信息", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(BaseInfo.this, "还没有银行卡客户经理信息", Toast.LENGTH_SHORT).show();
                                     } else {
                                         no_data_img.setVisibility(View.GONE);
                                         no_data_txt.setVisibility(View.GONE);

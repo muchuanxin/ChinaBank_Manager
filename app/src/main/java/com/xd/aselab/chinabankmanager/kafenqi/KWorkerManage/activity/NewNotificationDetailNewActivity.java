@@ -39,6 +39,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -286,9 +287,10 @@ public class NewNotificationDetailNewActivity extends AppCompatActivity {
                     Log.d("Dorise流水号", serial_num);
 
 
+                    DecimalFormat df = new DecimalFormat("#0.00");
                     mview.findViewById(R.id.money).setVisibility(View.GONE);
                     TextView text1 = (TextView) mview.findViewById(R.id.get_money);
-                    text1.setText("放款金额(万元)：" + money);
+                    text1.setText("放款金额(万元)：" + df.format(money));
                     Log.d("Dorise放款金额succcess", money + "");
 
                     builder.setNegativeButton("确定", new DialogInterface.OnClickListener() {
@@ -478,6 +480,7 @@ public class NewNotificationDetailNewActivity extends AppCompatActivity {
                                 } else if ("true".equals(status)) {
 
 
+                                    DecimalFormat df = new DecimalFormat("#0.00");
                                     worker_account_str = json.getString("worker_account");
                                     worker_name_str = json.getString("worker_name");
                                     worker_head_str = json.getString("worker_head");
@@ -489,7 +492,7 @@ public class NewNotificationDetailNewActivity extends AppCompatActivity {
                                     applicatin_name.setText("申请人：" + json.getString("applicant"));
                                     application_tel_str = json.getString("applicant_telephone");
                                     application_tel.setText("联系电话：" + application_tel_str);
-                                    applicate_money.setText("分期总金额(万元)：" + json.getString("money"));
+                                    applicate_money.setText("分期总金额(万元)：" + df.format(json.getDouble("money")));
                                     applicate_num.setText("分期数：" + json.getString("installment_num"));
                                     //buy_commodity.setText("购买汽车品牌：" + json.getString("car_type"));
                                     //self_score.setText("评分：" + json.getString("evaluation"));
@@ -535,26 +538,24 @@ public class NewNotificationDetailNewActivity extends AppCompatActivity {
                                         tv_mark.setVisibility(View.VISIBLE);
                                         tv_mark.setText("业务通过");
                                         tv_mark.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
+                                    } else {
+                                        Log.d("Dorise  fail", "come in");
+                                        tv_mark.setVisibility(View.GONE);
+                                        tv_confirm.setVisibility(View.VISIBLE);
+                                    }
 
-
+                                    if (serial_num!=null && !"".equals(serial_num)){
                                         set_info.setVisibility(View.GONE);
                                         serial_num_text.setVisibility(View.VISIBLE);
                                         get_money_text.setVisibility(View.VISIBLE);
                                         serial_num_text.setText("流水号：" + serial_num);
                                         get_money_text.setText("放款金额：" + money);
-
-
-                                    } else {
-                                        Log.d("Dorise  fail", "come in");
-                                        tv_mark.setVisibility(View.GONE);
-                                        tv_confirm.setVisibility(View.VISIBLE);
-
+                                    }
+                                    else {
                                         serial_num_text.setVisibility(View.GONE);
                                         get_money_text.setVisibility(View.GONE);
                                         set_info.setVisibility(View.VISIBLE);
-
                                     }
-
 
                                 }
                             } catch (JSONException e) {
@@ -607,9 +608,10 @@ public class NewNotificationDetailNewActivity extends AppCompatActivity {
                             JSONObject obj = new JSONObject(msg.obj.toString());
                             Toast.makeText(NewNotificationDetailNewActivity.this, obj.getString("message"), Toast.LENGTH_SHORT).show();
 
+                            DecimalFormat df = new DecimalFormat("#0.00");
                             if (obj.get("status").equals("true")) {
-                                applicate_money.setText("分期总金额(万元)：" + money);
-                                confirm = "SUCCESS";
+                                applicate_money.setText("分期总金额(万元)：" + df.format(money));
+                                //confirm = "SUCCESS";
 
 
                                 set_info.setVisibility(View.GONE);
@@ -619,10 +621,10 @@ public class NewNotificationDetailNewActivity extends AppCompatActivity {
                                 get_money_text.setText("放款金额：" + money);
 
 
-                                tv_confirm.setVisibility(View.GONE);
+                                /*tv_confirm.setVisibility(View.GONE);
                                 tv_mark.setVisibility(View.VISIBLE);
                                 tv_mark.setText("业务通过");
-                                tv_mark.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
+                                tv_mark.setTextColor(getResources().getColor(R.color.colorPrimaryDark));*/
 
 
                             }

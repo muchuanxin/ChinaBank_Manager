@@ -37,7 +37,7 @@
             android:layout_centerHorizontal="true"
             android:textColor="#fff"
             android:textSize="22dp"
-            android:text="店铺业绩"/>
+            android:text="特约商户业绩"/>
 
     </RelativeLayout>
 
@@ -99,7 +99,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:textSize="14dp"
-        android:text="还没有店铺业绩信息~"
+        android:text="还没有商户业绩信息~"
         android:visibility="gone"/>
 
 </LinearLayout>

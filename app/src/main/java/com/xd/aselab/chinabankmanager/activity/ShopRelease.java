@@ -100,7 +100,7 @@ public class ShopRelease extends AppCompatActivity {
                                         list_view.setVisibility(View.GONE);
                                         no_data_img.setVisibility(View.VISIBLE);
                                         no_data_txt.setVisibility(View.VISIBLE);
-                                        Toast.makeText(ShopRelease.this, "还没有店铺解约信息", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(ShopRelease.this, "还没有商户解约信息", Toast.LENGTH_SHORT).show();
                                         sleep_and_finish(1);
                                     }
                                     else {
@@ -112,7 +112,7 @@ public class ShopRelease extends AppCompatActivity {
                                             JSONObject temp = (JSONObject) jsonArray.get(i);
                                             Map<String, String> map = new HashMap<>();
                                             map.put("shopName", temp.getString("shopName"));
-                                            map.put("shop_type", "店铺类型："+temp.getString("industry"));
+                                            map.put("shop_type", "商户类型："+temp.getString("industry"));
                                             //map.put("ownerName", "店主："+temp.getString("account"));
                                             map.put("ownerName", "");
                                             map.put("teleNumber", "电话："+temp.getString("teleNumber"));
@@ -170,7 +170,7 @@ public class ShopRelease extends AppCompatActivity {
                                         list_view.setVisibility(View.GONE);
                                         no_data_img.setVisibility(View.VISIBLE);
                                         no_data_txt.setVisibility(View.VISIBLE);
-                                        Toast.makeText(ShopRelease.this, "还没有店铺解约信息", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(ShopRelease.this, "还没有商户解约信息", Toast.LENGTH_SHORT).show();
                                         sleep_and_finish(2);
                                     }
                                 } else {
@@ -213,7 +213,7 @@ public class ShopRelease extends AppCompatActivity {
                                         list_view.setVisibility(View.GONE);
                                         no_data_img.setVisibility(View.VISIBLE);
                                         no_data_txt.setVisibility(View.VISIBLE);
-                                        Toast.makeText(ShopRelease.this, "还没有店铺解约信息", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(ShopRelease.this, "还没有商户解约信息", Toast.LENGTH_SHORT).show();
                                         sleep_and_finish(2);
                                     }
                                 } else {

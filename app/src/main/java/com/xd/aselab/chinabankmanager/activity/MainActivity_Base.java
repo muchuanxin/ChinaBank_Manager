@@ -121,7 +121,7 @@ public class MainActivity_Base extends AppCompatActivity {
         toast_i.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity_Base.this, "基层客户经理，您好", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity_Base.this, "银行卡客户经理，您好", Toast.LENGTH_SHORT).show();
             }
         });
 

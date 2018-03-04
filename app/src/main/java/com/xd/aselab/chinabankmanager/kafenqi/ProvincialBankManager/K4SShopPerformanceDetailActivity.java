@@ -33,6 +33,7 @@ import com.xd.aselab.chinabankmanager.util.SharePreferenceUtil;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -252,21 +253,22 @@ Log.i("kmj","secondary_num"+secondary_num);
                                     }
                                     adapter = new BasePerfDetailAdapter(worker_list_one_week,K4SShopPerformanceDetailActivity.this);
                                     listView.setAdapter(adapter);
+                                    DecimalFormat df = new DecimalFormat("#0.00");
                                     switch (range){
                                         case "4S店近一周业绩":
-                                            base_red_total.setText("在"+secondary_name+"发展的"+worker_name+"4S店中，共有"+oneWeekJA.length()+"位4S店销售，共成功办理"+num_one_week_sum+"笔分期业务，总金额为"+money_one_week_sum+"元");
+                                            base_red_total.setText("在"+secondary_name+"发展的"+worker_name+"4S店中，共有"+oneWeekJA.length()+"位4S店销售，共成功办理"+num_one_week_sum+"笔分期业务，总金额为"+df.format(money_one_week_sum)+"万元");
                                             setListview(worker_list_one_week);
                                             break;
                                         case "4S店近一月业绩":
-                                            base_red_total.setText("在"+secondary_name+"发展的"+worker_name+"4S店中，共有"+oneMonthJA.length()+"位4S店销售，共成功办理"+num_one_month_sum+"笔分期业务，总金额为"+money_one_month_sum+"元");
+                                            base_red_total.setText("在"+secondary_name+"发展的"+worker_name+"4S店中，共有"+oneMonthJA.length()+"位4S店销售，共成功办理"+num_one_month_sum+"笔分期业务，总金额为"+df.format(money_one_month_sum)+"万元");
                                             setListview(worker_list_one_month);
                                             break;
                                         case "4S店近一季度业绩":
-                                            base_red_total.setText("在"+secondary_name+"发展的"+worker_name+"4S店中，共有"+threeMonthJA.length()+"位4S店销售，共成功办理"+num_three_month_sum+"笔分期业务，总金额为"+money_three_month_sum+"元");
+                                            base_red_total.setText("在"+secondary_name+"发展的"+worker_name+"4S店中，共有"+threeMonthJA.length()+"位4S店销售，共成功办理"+num_three_month_sum+"笔分期业务，总金额为"+df.format(money_three_month_sum)+"万元");
                                             setListview(worker_list_three_month);
                                             break;
                                         case "4S店近一年业绩":
-                                            base_red_total.setText("在"+secondary_name+"发展的"+worker_name+"4S店中，共有"+oneYearJA.length()+"位4S店销售，共成功办理"+num_one_year_sum+"笔分期业务，总金额为"+money_one_year_sum+"元");
+                                            base_red_total.setText("在"+secondary_name+"发展的"+worker_name+"4S店中，共有"+oneYearJA.length()+"位4S店销售，共成功办理"+num_one_year_sum+"笔分期业务，总金额为"+df.format(money_one_year_sum)+"万元");
                                             setListview(worker_list_one_year);
                                             break;
 
