@@ -298,7 +298,7 @@ public class BaseMyAllPerformanceActivity extends AppCompatActivity  implements 
                         try {
                             String reCode = (String) msg.obj;
                             if (reCode!=null){
-                                Log.e("MyPerformance：reCode", reCode);
+                                Log.e("All：reCode", reCode);
                                 JSONObject json = new JSONObject(reCode);
                                 String status = json.getString("status");
                                 if ("false".equals(status)) {
@@ -583,28 +583,41 @@ public class BaseMyAllPerformanceActivity extends AppCompatActivity  implements 
                         setFenqiData(number1_fenqi,money1_fenqi);
                                 /*line1.setText("分期业务成功数量："+("".equals(number1)? "暂无" : number1+"笔"));
                                 line2.setText("分期业务成功金额："+("".equals(money1)? "暂无" : money1+"万元"));*/
-                        calendar.set(Calendar.DATE, calendar.get(Calendar.DATE) - 7);
+                       // calendar.set(Calendar.DATE, calendar.get(Calendar.DATE) - 7);
+                        calendar.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
                         params[3] = new PostParameter("begin", format.format(calendar.getTime()));
                         params[4] = new PostParameter("end", format.format(new Date()));
                         break;
                     case "近一月业绩" :
                         choosen_time="one_month";
                         setFenqiData(number2_fenqi,money2_fenqi);
-                        calendar.set(Calendar.MONTH, calendar.get(Calendar.MONTH) - 1);
+                        //calendar.set(Calendar.MONTH, calendar.get(Calendar.MONTH) - 1);
+                        calendar.set(Calendar.DAY_OF_MONTH,1);
                         params[3] = new PostParameter("begin", format.format(calendar.getTime()));
                         params[4] = new PostParameter("end", format.format(new Date()));
                         break;
                     case "近一季度业绩" :
                         choosen_time="three_month";
                         setFenqiData(number3_fenqi,money3_fenqi);
-                        calendar.set(Calendar.MONTH, calendar.get(Calendar.MONTH) - 3);
+                       // calendar.set(Calendar.MONTH, calendar.get(Calendar.MONTH) - 3);
+                        int currentMonth = calendar.get(Calendar.MONTH) + 1;
+                        if (currentMonth >= 1 && currentMonth <= 3)
+                            calendar.set(Calendar.MONTH, 0);
+                        else if (currentMonth >= 4 && currentMonth <= 6)
+                            calendar.set(Calendar.MONTH, 3);
+                        else if (currentMonth >= 7 && currentMonth <= 9)
+                            calendar.set(Calendar.MONTH, 6);
+                        else if (currentMonth >= 10 && currentMonth <= 12)
+                            calendar.set(Calendar.MONTH, 9);
+                        calendar.set(Calendar.DAY_OF_MONTH,1);
                         params[3] = new PostParameter("begin", format.format(calendar.getTime()));
                         params[4] = new PostParameter("end", format.format(new Date()));
                         break;
                     case "近一年业绩" :
                         choosen_time="one_year";
                         setFenqiData(number4_fenqi,money4_fenqi);
-                        calendar.set(Calendar.YEAR, calendar.get(Calendar.YEAR) - 1);
+                       // calendar.set(Calendar.YEAR, calendar.get(Calendar.YEAR) - 1);
+                        calendar.set(Calendar.MONTH, 0);
                         params[3] = new PostParameter("begin", format.format(calendar.getTime()));
                         params[4] = new PostParameter("end", format.format(new Date()));
                         break;
