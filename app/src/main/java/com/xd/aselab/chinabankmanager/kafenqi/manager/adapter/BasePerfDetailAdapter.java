@@ -1,6 +1,7 @@
 package com.xd.aselab.chinabankmanager.kafenqi.manager.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -73,7 +74,8 @@ public class BasePerfDetailAdapter extends BaseAdapter {
         holder.tv_base_name.setText(list.get(position).getName());
         holder.tv_base_money.setText("分期业务金额："+df.format(list.get(position).getSuccess_money())+"万元");
         holder.tv_base_num.setText("分期业务数量："+list.get(position).getSuccess_number()+"笔");
-        if(!list.get(position).getStatus().equals("已加盟"))
+        
+        if(!"已加盟".equals(list.get(position).getStatus()))
         {
             holder.tv_base_status.setVisibility(View.VISIBLE);
             holder.tv_base_status.setText(list.get(position).getStatus());

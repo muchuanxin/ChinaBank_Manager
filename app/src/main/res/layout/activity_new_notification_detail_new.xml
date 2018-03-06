@@ -322,26 +322,7 @@
             android:layout_height="1dp"
             android:background="@color/grey"/>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         <LinearLayout
-
             android:id="@+id/confirm"
             android:layout_width="match_parent"
             android:layout_height="43dp"
@@ -382,8 +363,6 @@
                     android:text="确认"/>
             </RelativeLayout>
         </LinearLayout>
-
-
 
     </LinearLayout>
 

@@ -127,6 +127,7 @@ public class KafenqiBasePerfDetailActivity extends AppCompatActivity {
                                             WorkerVO workerVO = new WorkerVO();
                                             workerVO.setAccount(temp.getString("account"));
                                             workerVO.setName(temp.getString("name"));
+                                            workerVO.setStatus(temp.getString("status"));
                                             workerVO.setWorker_address(temp.getString("company"));
                                             workerVO.setRecommend_number(temp.getInt("recommend_num"));
                                             workerVO.setSuccess_number(temp.getInt("success_num"));
@@ -153,6 +154,7 @@ public class KafenqiBasePerfDetailActivity extends AppCompatActivity {
                                             WorkerVO workerVO = new WorkerVO();
                                             workerVO.setAccount(temp.getString("account"));
                                             workerVO.setName(temp.getString("name"));
+                                            workerVO.setStatus(temp.getString("status"));
                                             workerVO.setWorker_address(temp.getString("company"));
                                             workerVO.setRecommend_number(temp.getInt("recommend_num"));
                                             workerVO.setSuccess_number(temp.getInt("success_num"));
@@ -179,6 +181,7 @@ public class KafenqiBasePerfDetailActivity extends AppCompatActivity {
                                             WorkerVO workerVO = new WorkerVO();
                                             workerVO.setAccount(temp.getString("account"));
                                             workerVO.setName(temp.getString("name"));
+                                            workerVO.setStatus(temp.getString("status"));
                                             workerVO.setWorker_address(temp.getString("company"));
                                             workerVO.setRecommend_number(temp.getInt("recommend_num"));
                                             workerVO.setSuccess_number(temp.getInt("success_num"));
@@ -205,6 +208,7 @@ public class KafenqiBasePerfDetailActivity extends AppCompatActivity {
                                             WorkerVO workerVO = new WorkerVO();
                                             workerVO.setAccount(temp.getString("account"));
                                             workerVO.setName(temp.getString("name"));
+                                            workerVO.setStatus(temp.getString("status"));
                                             workerVO.setWorker_address(temp.getString("company"));
                                             workerVO.setRecommend_number(temp.getInt("recommend_num"));
                                             workerVO.setSuccess_number(temp.getInt("success_num"));

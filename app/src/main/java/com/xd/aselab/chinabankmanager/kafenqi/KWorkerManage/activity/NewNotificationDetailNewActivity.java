@@ -266,35 +266,26 @@ public class NewNotificationDetailNewActivity extends AppCompatActivity {
         });
 
         set_info.setOnClickListener(new View.OnClickListener() {
-
-
             public void onClick(View v) {
-
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(NewNotificationDetailNewActivity.this);
                 final View mview = getLayoutInflater().inflate(R.layout.manager_input_info, null);
 
                 if ("SUCCESS".equals(confirm)) {
 
-
                     tv_confirm.setVisibility(View.GONE);
                     tv_mark.setVisibility(View.VISIBLE);
                     tv_mark.setText("已放款");
                     tv_mark.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
 
-
                     mview.findViewById(R.id.serial_number).setVisibility(View.GONE);
                     TextView text = (TextView) mview.findViewById(R.id.flow);
                     text.setText("流水号：" + serial_num);
-                    Log.d("Dorise流水号", serial_num);
-
 
                     DecimalFormat df = new DecimalFormat("#0.00");
                     mview.findViewById(R.id.money).setVisibility(View.GONE);
                     TextView text1 = (TextView) mview.findViewById(R.id.get_money);
                     text1.setText("放款金额：" + df.format(money)+"万元");
-                    Log.d("Dorise放款金额succcess", money + "");
-
                     builder.setNegativeButton("确定", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
@@ -307,12 +298,10 @@ public class NewNotificationDetailNewActivity extends AppCompatActivity {
 
                 } else {
 
-
                     tv_mark.setVisibility(View.GONE);
                     tv_confirm.setVisibility(View.VISIBLE);
 //                    tv_mark.setText("已放款");
 //                    tv_confirm.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
-
 
                     builder.setPositiveButton("提交", null);
                     builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
@@ -330,7 +319,6 @@ public class NewNotificationDetailNewActivity extends AppCompatActivity {
                         @Override
                         public void onClick(View view) {
 
-
                             EditText temp1 = ((EditText) mview.findViewById(R.id.serial_number));
                             serial_num = (temp1.getText().toString().trim());
                             EditText temp2 = ((EditText) mview.findViewById(R.id.money));
@@ -338,14 +326,11 @@ public class NewNotificationDetailNewActivity extends AppCompatActivity {
 
                             if ("".equals(serial_num)) {
                                 Toast.makeText(NewNotificationDetailNewActivity.this, "请输入流水号", Toast.LENGTH_SHORT).show();
-                                Log.d("Dorise流水号", serial_num + "----------");
                                 return;
                             } else if ("".equals(money)) {
                                 Toast.makeText(NewNotificationDetailNewActivity.this, "请输入放款金额", Toast.LENGTH_SHORT).show();
-                                Log.d("Dorise放款金额", money + "----------");
                                 return;
                             } else {
-                                Log.d("Dorise  elseli面", money + "----------");
                                 new Thread() {
                                     Message msg = handler.obtainMessage();
 
@@ -367,8 +352,6 @@ public class NewNotificationDetailNewActivity extends AppCompatActivity {
                                             msg.obj = "提交失败";
                                         } else {
                                             msg.what = 5;
-
-
                                             msg.obj = jsonstr;
                                         }
                                         handler.sendMessage(msg);
@@ -377,16 +360,12 @@ public class NewNotificationDetailNewActivity extends AppCompatActivity {
                                 }.start();
                             }
 
-
                         }
                     });
 
-
                 }
-
                 //kk
                 //   builder.show();
-
             }
         });
 
@@ -415,7 +394,6 @@ public class NewNotificationDetailNewActivity extends AppCompatActivity {
                 params[0] = new PostParameter("id", id);
                 //卡分期——推广员推荐分期详情
                 String reCode = ConnectUtil.httpRequest(ConnectUtil.GetInstallmentWorkerRecommendDetail, params, ConnectUtil.POST);
-
                 Message msg = new Message();
                 msg.what = 0;
                 msg.obj = reCode;
@@ -466,12 +444,10 @@ public class NewNotificationDetailNewActivity extends AppCompatActivity {
             @Override
             public void handleMessage(Message msg) {
                 super.handleMessage(msg);
-                Log.d("Dorise", "cococococococo");
                 switch (msg.what) {
                     case 0:
                         String reCode0 = (String) msg.obj;
                         if (reCode0 != null) {
-                            Log.e("www1", "newrecode:" + reCode0);
                             try {
                                 JSONObject json = new JSONObject(reCode0);
                                 String status = json.getString("status");
@@ -480,8 +456,6 @@ public class NewNotificationDetailNewActivity extends AppCompatActivity {
                                     Toast.makeText(NewNotificationDetailNewActivity.this, "" + message, Toast.LENGTH_SHORT).show();
                                     finish();
                                 } else if ("true".equals(status)) {
-
-
                                     DecimalFormat df = new DecimalFormat("#0.00");
                                     worker_account_str = json.getString("worker_account");
                                     worker_name_str = json.getString("worker_name");
@@ -522,15 +496,11 @@ public class NewNotificationDetailNewActivity extends AppCompatActivity {
                                         adapter = new EvaluationItemAdapter(list, NewNotificationDetailNewActivity.this);
                                         lv_detail_information.setAdapter(adapter);
 
-
-
-
                                         Log.d("Dorise  confirm222",confirm);
                                     } else {
                                         Log.d("Dorise  confirm333",confirm);
                                         finish();
                                     }*/
-
 
                                     Log.d("Dorise  confirm444", confirm);
 
@@ -602,6 +572,7 @@ public class NewNotificationDetailNewActivity extends AppCompatActivity {
                         }
                         break;
                     case 1:
+                        //点了确认按钮
                         String reCode = (String) msg.obj;
                         if (reCode != null) {
                             try {
@@ -612,11 +583,15 @@ public class NewNotificationDetailNewActivity extends AppCompatActivity {
                                     Toast.makeText(NewNotificationDetailNewActivity.this, "" + message, Toast.LENGTH_SHORT).show();
                                 } else if ("true".equals(status)) {
                                     set_info.setVisibility(View.VISIBLE);
-                                    bt_refuse.setVisibility(View.GONE);
-                                    bt_confirm.setVisibility(View.VISIBLE);
-                                    bt_confirm.setBackgroundResource(R.drawable.grey_corner);
-                                    bt_confirm.setText("已确认");
-                                    bt_confirm.setClickable(false);
+                                    ll_choose.setVisibility(View.GONE);
+                                    tv_mark.setVisibility(View.VISIBLE);
+                                    tv_mark.setText("已确认");
+                                    tv_mark.setTextColor(getResources().getColor(R.color.blue_text));
+//                                    bt_refuse.setVisibility(View.GONE);
+//                                    bt_confirm.setVisibility(View.VISIBLE);
+//                                    bt_confirm.setBackgroundResource(R.drawable.grey_corner);
+//                                    bt_confirm.setText("已确认");
+//                                    bt_confirm.setClickable(false);
                                     Toast.makeText(NewNotificationDetailNewActivity.this, "" + message, Toast.LENGTH_LONG).show();
                                     //finish();
                                 }
@@ -636,11 +611,15 @@ public class NewNotificationDetailNewActivity extends AppCompatActivity {
                                     Toast.makeText(NewNotificationDetailNewActivity.this, "" + message, Toast.LENGTH_SHORT).show();
                                 } else if ("true".equals(status)) {
                                     set_info.setVisibility(View.GONE);
-                                    bt_refuse.setVisibility(View.GONE);
-                                    bt_confirm.setVisibility(View.VISIBLE);
-                                    bt_confirm.setBackgroundResource(R.drawable.grey_corner);
-                                    bt_confirm.setText("已拒绝");
-                                    bt_confirm.setClickable(false);
+                                    ll_choose.setVisibility(View.GONE);
+                                    tv_mark.setVisibility(View.VISIBLE);
+                                    tv_mark.setText("已拒绝");
+                                    tv_mark.setTextColor(getResources().getColor(R.color.gray_text_most_1));
+//                                    bt_refuse.setVisibility(View.GONE);
+//                                    bt_confirm.setVisibility(View.VISIBLE);
+//                                    bt_confirm.setBackgroundResource(R.drawable.grey_corner);
+//                                    bt_confirm.setText("已拒绝");
+//                                    bt_confirm.setClickable(false);
                                     Toast.makeText(NewNotificationDetailNewActivity.this, "" + message, Toast.LENGTH_LONG).show();
                                     //finish();
                                 }
@@ -662,15 +641,12 @@ public class NewNotificationDetailNewActivity extends AppCompatActivity {
                             if (obj.get("status").equals("true")) {
                                 applicate_money.setText("分期总金额：" + df.format(money)+"万元");
                                 //confirm = "SUCCESS";
-
-
                                 set_info.setVisibility(View.GONE);
                                 serial_num_text.setVisibility(View.VISIBLE);
                                 get_money_text.setVisibility(View.VISIBLE);
                                 serial_num_text.setText("流水号：" + serial_num);
                                 get_money_text.setText("放款金额：" + money+"万元");
-
-
+                                tv_mark.setVisibility(View.VISIBLE);
                                 /*tv_confirm.setVisibility(View.GONE);
                                 tv_mark.setVisibility(View.VISIBLE);
                                 tv_mark.setText("已放款");
