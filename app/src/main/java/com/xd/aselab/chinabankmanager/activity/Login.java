@@ -153,6 +153,12 @@ public class Login extends AppCompatActivity {
                                     spu.setAccount(account);
                                     spu.setPassword(psw);
                                     spu.setPhotoUrl(json.getString("head_image"));
+
+                                    //---------------------------------------
+                                    Log.d("Dorise",spu.getPhotoUrl()+"");
+
+
+
                                     spu.setJobNumber(json.getString("jobNumber"));
                                     spu.setTel(json.getString("teleNumber"));
                                     spu.setLandlineNumber(json.getString("landlineNumber"));
@@ -301,6 +307,11 @@ public class Login extends AppCompatActivity {
                             Toast.makeText(Login.this, "用户名或密码错误", Toast.LENGTH_SHORT).show();
                         }
                     }else{
+
+
+
+
+
                         showProgressDialog();
                         new Thread(){
                             @Override

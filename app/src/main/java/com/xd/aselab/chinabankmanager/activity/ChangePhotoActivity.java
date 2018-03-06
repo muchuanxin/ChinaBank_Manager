@@ -77,9 +77,9 @@ public class ChangePhotoActivity extends AppCompatActivity implements ImageSetti
 
         iv_head_photo = (ImageView) findViewById(R.id.user_headphoto);
         if (getIntent().getStringExtra("jump").equals("personal_info")) {
-            imageLoader.loadBitmap(ChangePhotoActivity.this, spu.getPhotoUrl(), iv_head_photo, R.drawable.portrait);
+            imageLoader.loadBitmap(ChangePhotoActivity.this, spu.getPhotoUrl(), iv_head_photo, R.drawable.default_head);
         } else if (getIntent().getStringExtra("jump").equals("group_head")) {
-            imageLoader.loadBitmap(ChangePhotoActivity.this, getIntent().getStringExtra("head_image"), iv_head_photo, R.drawable.portrait);
+            imageLoader.loadBitmap(ChangePhotoActivity.this, getIntent().getStringExtra("head_image"), iv_head_photo, R.drawable.default_head);
         }
 
     }

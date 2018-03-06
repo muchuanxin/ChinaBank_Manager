@@ -46,7 +46,7 @@ public class BaseMyActivity extends AppCompatActivity {
         });
 
         iv_head_photo=(CircleImageView)findViewById(R.id.base_my_head);
-        imageLoader.loadBitmap(BaseMyActivity.this,spu.getPhotoUrl(),iv_head_photo,R.drawable.portrait);
+        imageLoader.loadBitmap(BaseMyActivity.this,spu.getPhotoUrl(),iv_head_photo,R.drawable.default_head);
 
         rl_my_performance = (RelativeLayout)findViewById(R.id.base_my_performance);
         rl_my_performance.setOnClickListener(new View.OnClickListener() {

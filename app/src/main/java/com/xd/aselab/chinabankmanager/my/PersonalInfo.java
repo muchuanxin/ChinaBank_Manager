@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -44,6 +45,7 @@ public class PersonalInfo extends AppCompatActivity {
     private TextView QRcode_label;
     private Button check_out;
     private CircleImageView head_photo;
+    private TextView password;
     private ImageLoader imageLoader;
 
     private boolean state = true;
@@ -68,13 +70,19 @@ public class PersonalInfo extends AppCompatActivity {
             }
         });
 
-        head_photo = (CircleImageView)findViewById(R.id.head);
-        imageLoader.loadBitmap(PersonalInfo.this, spu.getPhotoUrl(), head_photo, R.drawable.portrait);
+        password = (TextView) findViewById(R.id.password);
+
+        head_photo = (CircleImageView) findViewById(R.id.head);
+
+        //---------------------------------------
+        Log.d("Dorise",spu.getPhotoUrl()+"");
+
+        imageLoader.loadBitmap(PersonalInfo.this, spu.getPhotoUrl(), head_photo, R.drawable.default_head);
         head_photo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(PersonalInfo.this,ChangePhotoActivity.class);
-                intent.putExtra("jump","personal_info");
+                Intent intent = new Intent(PersonalInfo.this, ChangePhotoActivity.class);
+                intent.putExtra("jump", "personal_info");
                 startActivity(intent);
             }
         });
@@ -103,7 +111,7 @@ public class PersonalInfo extends AppCompatActivity {
         update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (state){
+                if (state) {
                     update.setText("  完成");
                     changeTextColor(state);
                     state = false;
@@ -111,10 +119,9 @@ public class PersonalInfo extends AppCompatActivity {
                         @Override
                         public void onClick(View v) {
                             Intent intent = new Intent();
-                            if ("123456".equals(spu.getPassword())){
+                            if ("123456".equals(spu.getPassword())) {
                                 intent.setClass(PersonalInfo.this, SecureQuestionActivity.class);
-                            }
-                            else {
+                            } else {
                                 intent.setClass(PersonalInfo.this, ChangePsw.class);
                             }
                             startActivity(intent);
@@ -129,8 +136,7 @@ public class PersonalInfo extends AppCompatActivity {
                         }
                     });
                     QRcode.setOnClickListener(null);
-                }
-                else {
+                } else {
                     update.setText("  修改");
                     changeTextColor(state);
                     state = true;
@@ -179,15 +185,15 @@ public class PersonalInfo extends AppCompatActivity {
         tel = (TextView) findViewById(R.id.act_personal_info_tel_txt);
         tel.setText(spu.getTel());
         landline = (TextView) findViewById(R.id.act_personal_info_landline_txt);
-        landline.setText("".equals(spu.getLandlineNumber()) ? "无" : spu.getLandlineNumber() );
+        landline.setText("".equals(spu.getLandlineNumber()) ? "无" : spu.getLandlineNumber());
         type = (TextView) findViewById(R.id.act_personal_info_emp_type_txt);
-        switch (spu.getType()){
-            case "MANAGER" :
+        switch (spu.getType()) {
+            case "MANAGER":
                 type.setText("二级行管理者");
                 my_contact.setVisibility(View.GONE);
                 QRcode.setVisibility(View.GONE);
                 break;
-            case "BASIC" :
+            case "BASIC":
                 type.setText("银行卡客户经理");
                 my_contact.setVisibility(View.VISIBLE);
                 break;
@@ -197,9 +203,13 @@ public class PersonalInfo extends AppCompatActivity {
         }
     }
 
-    private void changeTextColor(boolean state){
-        if (state){
-            int grey = getResources().getColor(R.color.grey);
+    private void changeTextColor(boolean state) {
+
+        Log.d("Dorise", tel.getTextColors() + "");
+
+            int black = getResources().getColor(R.color.black);
+            int grey = getResources().getColor(R.color.black_alpha_fifty);
+        if (state) {
             name_label.setTextColor(grey);
             name.setTextColor(grey);
             job_number_label.setTextColor(grey);
@@ -208,18 +218,21 @@ public class PersonalInfo extends AppCompatActivity {
             type.setTextColor(grey);
             landline_label.setTextColor(grey);
             landline.setTextColor(grey);
+            tel.setTextColor(black);
+            password.setTextColor(black);
             QRcode_label.setTextColor(grey);
-        }
-        else {
-            int black = getResources().getColor(R.color.black);
+        } else {
+            name.setTextColor(grey);
+            job_number.setTextColor(grey);
+            tel.setTextColor(grey);
+            password.setTextColor(grey);
+            landline.setTextColor(grey);
+            type.setTextColor(grey);
+
             name_label.setTextColor(black);
-            name.setTextColor(black);
             job_number_label.setTextColor(black);
-            job_number.setTextColor(black);
             type_label.setTextColor(black);
-            type.setTextColor(black);
             landline_label.setTextColor(black);
-            landline.setTextColor(black);
             QRcode_label.setTextColor(black);
         }
     }
@@ -228,6 +241,6 @@ public class PersonalInfo extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         tel.setText(spu.getTel());
-        imageLoader.loadBitmap(PersonalInfo.this, spu.getPhotoUrl(), head_photo, R.drawable.portrait);
+        imageLoader.loadBitmap(PersonalInfo.this, spu.getPhotoUrl(), head_photo, R.drawable.default_head);
     }
 }

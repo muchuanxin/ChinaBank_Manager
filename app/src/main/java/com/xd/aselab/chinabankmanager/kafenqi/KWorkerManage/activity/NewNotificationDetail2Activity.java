@@ -200,8 +200,8 @@ public class NewNotificationDetail2Activity extends AppCompatActivity {
                                     application_tel.setText("联系电话：" + application_tel_str);
                                     Double mm= Double.valueOf(json.getString("money"));
                                     DecimalFormat df = new DecimalFormat("#0.00");
-                                    applicate_money.setText("分期总金额(万元)：" + df.format(mm));
-                                    applicate_num.setText("分期数(月)：" + json.getString("installment_num"));
+                                    applicate_money.setText("分期总金额：" + df.format(mm)+"万元");
+                                    applicate_num.setText("分期数：" + json.getString("installment_num")+"月");
                                     serial_num = json.getString("serial_num");
 
 
@@ -288,7 +288,8 @@ public class NewNotificationDetail2Activity extends AppCompatActivity {
                                         serial_num_text.setVisibility(View.VISIBLE);
                                         get_money.setVisibility(View.VISIBLE);
                                         serial_num_text.setText("流水号：" + serial_num);
-                                        get_money.setText("放款金额(万元)：" + money);
+                                        get_money.setText("放款金额：" + money+"万元");
+                                        get_money.setText("放款金额：" + money+"万元");
                                     } else {
                                         serial_num_text.setVisibility(View.GONE);
                                         get_money.setVisibility(View.GONE);
@@ -371,7 +372,7 @@ public class NewNotificationDetail2Activity extends AppCompatActivity {
 
 
                                 DecimalFormat df = new DecimalFormat("#0.00");
-                                applicate_money.setText("分期总金额(万元)：" + df.format(money));
+                                applicate_money.setText("分期总金额：" + df.format(money)+"万元");
 
                                 Intent intent = new Intent();
                                 intent.putExtra("action", "add_text");
@@ -386,7 +387,7 @@ public class NewNotificationDetail2Activity extends AppCompatActivity {
                                 serial_num_text.setVisibility(View.VISIBLE);
                                 get_money.setVisibility(View.VISIBLE);
                                 serial_num_text.setText("流水号：" + serial_num);
-                                get_money.setText("放款金额(万元)：" + money);
+                                get_money.setText("放款金额：" + money+"万元");
 
 
                                 /*ll_choose.setVisibility(View.GONE);

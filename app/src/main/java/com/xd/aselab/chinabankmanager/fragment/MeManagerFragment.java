@@ -31,7 +31,7 @@ public class MeManagerFragment extends Fragment {
     private SharePreferenceUtil spu;
     private ImageLoader imageLoader;
     //private CircleImageView iv_head_photo;
-    private ImageView iv_head_photo;
+    private CircleImageView iv_head_photo;
     private TextView tv_user_name;
     private RelativeLayout rl_my_info;
     private RelativeLayout rl_my_performance;
@@ -66,7 +66,7 @@ public class MeManagerFragment extends Fragment {
         imageLoader = ImageLoader.getInstance();
 
     //    iv_head_photo = (CircleImageView)root.findViewById(R.id.manager_my_head);
-        iv_head_photo = (ImageView)root.findViewById(R.id.manager_my_head);
+        iv_head_photo = (CircleImageView) root.findViewById(R.id.manager_my_head);
         imageLoader.loadBitmap(getActivity(),spu.getPhotoUrl(),iv_head_photo, R.drawable.portrait);
 
         tv_user_name = (TextView) root.findViewById(R.id.user_name);

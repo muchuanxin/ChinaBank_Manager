@@ -4,6 +4,7 @@ package com.xd.aselab.chinabankmanager.fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,7 +29,7 @@ public class MeBasicFragment extends Fragment {
     private SharePreferenceUtil spu;
     private RelativeLayout back;
    // private CircleImageView iv_head_photo;
-    private ImageView iv_head_photo;
+    private CircleImageView iv_head_photo;
     private TextView tv_user_name;
     private RelativeLayout rl_my_info;
     private RelativeLayout rl_my_performance;
@@ -56,8 +57,10 @@ public class MeBasicFragment extends Fragment {
             }
         });*/
 
-        iv_head_photo=(ImageView)root.findViewById(R.id.base_my_head);
-        imageLoader.loadBitmap(getActivity(),spu.getPhotoUrl(),iv_head_photo,R.drawable.default_photo);
+        iv_head_photo=(CircleImageView)root.findViewById(R.id.base_my_head);
+        //---------------------------------------
+        Log.d("Dorise",spu.getPhotoUrl()+"");
+        imageLoader.loadBitmap(getActivity(),spu.getPhotoUrl(),iv_head_photo,R.drawable.default_head);
 
         tv_user_name = (TextView)root.findViewById(R.id.user_name);
         tv_user_name.setText(spu.getName());
@@ -100,6 +103,6 @@ public class MeBasicFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        imageLoader.loadBitmap(getActivity(), spu.getPhotoUrl(), iv_head_photo, R.drawable.default_photo);
+        imageLoader.loadBitmap(getActivity(), spu.getPhotoUrl(), iv_head_photo, R.drawable.default_head);
     }
 }

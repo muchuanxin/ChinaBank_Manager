@@ -39,13 +39,17 @@ tools:context="com.xd.aselab.chinabankmanager.fragment.MeManagerFragment">
         android:layout_height="60dp"
         android:background="@color/white"
         android:orientation="horizontal">
-        <ImageView
+
+        <com.xd.aselab.chinabankmanager.util.CircleImageView
             android:id="@+id/manager_my_head"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_marginLeft="15dp"
-            android:layout_centerVertical="true"
-            android:src="@drawable/default_photo"/>
+            android:layout_alignBottom="@+id/head_arrow_right"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="14dp"
+            android:layout_marginStart="14dp"
+            android:src="@drawable/default_head" />
 
         <ImageView
             android:id="@+id/head_arrow_right"

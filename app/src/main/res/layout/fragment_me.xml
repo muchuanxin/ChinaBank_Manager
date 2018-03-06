@@ -30,13 +30,13 @@
         android:layout_height="60dp"
         android:background="@color/white"
         android:orientation="horizontal">
-        <ImageView
+        <com.xd.aselab.chinabankmanager.util.CircleImageView
             android:id="@+id/base_my_head"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginLeft="15dp"
             android:layout_centerVertical="true"
-            android:src="@drawable/default_photo"/>
+            android:src="@drawable/default_head"/>
 
         <ImageView
             android:id="@+id/head_arrow_right"

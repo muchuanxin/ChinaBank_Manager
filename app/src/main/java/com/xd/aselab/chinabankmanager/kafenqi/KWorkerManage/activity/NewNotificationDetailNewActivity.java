@@ -292,7 +292,7 @@ public class NewNotificationDetailNewActivity extends AppCompatActivity {
                     DecimalFormat df = new DecimalFormat("#0.00");
                     mview.findViewById(R.id.money).setVisibility(View.GONE);
                     TextView text1 = (TextView) mview.findViewById(R.id.get_money);
-                    text1.setText("放款金额(万元)：" + df.format(money));
+                    text1.setText("放款金额：" + df.format(money)+"万元");
                     Log.d("Dorise放款金额succcess", money + "");
 
                     builder.setNegativeButton("确定", new DialogInterface.OnClickListener() {
@@ -494,8 +494,8 @@ public class NewNotificationDetailNewActivity extends AppCompatActivity {
                                     applicatin_name.setText("申请人：" + json.getString("applicant"));
                                     application_tel_str = json.getString("applicant_telephone");
                                     application_tel.setText("联系电话：" + application_tel_str);
-                                    applicate_money.setText("分期总金额(万元)：" + df.format(json.getDouble("money")));
-                                    applicate_num.setText("分期数(月)：" + json.getString("installment_num"));
+                                    applicate_money.setText("分期总金额：" + df.format(json.getDouble("money"))+"万元");
+                                    applicate_num.setText("分期数：" + json.getString("installment_num")+"月");
                                     //buy_commodity.setText("购买汽车品牌：" + json.getString("car_type"));
                                     //self_score.setText("评分：" + json.getString("evaluation"));
                                     //返回什么
@@ -588,7 +588,7 @@ public class NewNotificationDetailNewActivity extends AppCompatActivity {
                                         serial_num_text.setVisibility(View.VISIBLE);
                                         get_money_text.setVisibility(View.VISIBLE);
                                         serial_num_text.setText("流水号：" + serial_num);
-                                        get_money_text.setText("放款金额(万元)：" + money);
+                                        get_money_text.setText("放款金额：" + money+"万元");
                                     }
                                     else {
                                         serial_num_text.setVisibility(View.GONE);
@@ -660,7 +660,7 @@ public class NewNotificationDetailNewActivity extends AppCompatActivity {
 
                             DecimalFormat df = new DecimalFormat("#0.00");
                             if (obj.get("status").equals("true")) {
-                                applicate_money.setText("分期总金额(万元)：" + df.format(money));
+                                applicate_money.setText("分期总金额：" + df.format(money)+"万元");
                                 //confirm = "SUCCESS";
 
 
@@ -668,7 +668,7 @@ public class NewNotificationDetailNewActivity extends AppCompatActivity {
                                 serial_num_text.setVisibility(View.VISIBLE);
                                 get_money_text.setVisibility(View.VISIBLE);
                                 serial_num_text.setText("流水号：" + serial_num);
-                                get_money_text.setText("放款金额(万元)：" + money);
+                                get_money_text.setText("放款金额：" + money+"万元");
 
 
                                 /*tv_confirm.setVisibility(View.GONE);

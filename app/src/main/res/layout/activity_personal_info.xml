@@ -94,6 +94,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_alignBottom="@id/act_personal_info_name_label"
                 android:layout_marginRight="20dp"
+                android:textColor="@color/black_alpha_fifty"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="18dp"
@@ -116,6 +117,8 @@
                 android:layout_alignBottom="@id/act_personal_info_job_num_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/black_alpha_fifty"
+
                 android:textSize="18dp"
                 android:text="default"/>
 
@@ -136,6 +139,8 @@
                 android:layout_alignBottom="@id/act_personal_info_emp_type_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/black_alpha_fifty"
+
                 android:textSize="18dp"
                 android:text="default"/>
 
@@ -155,7 +160,9 @@
                     android:text="手机"/>
 
                 <TextView
+
                     android:id="@+id/act_personal_info_tel_txt"
+                    android:textColor="@color/black_alpha_fifty"
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="20dp"
                     android:layout_centerVertical="true"
@@ -178,6 +185,8 @@
                 android:text="座机"/>
 
             <TextView
+                android:textColor="@color/black_alpha_fifty"
+
                 android:id="@+id/act_personal_info_landline_txt"
                 android:layout_alignRight="@id/act_personal_info_name_txt"
                 android:layout_alignBottom="@id/act_personal_info_landline_label"
@@ -238,8 +247,11 @@
                     android:text="密码"/>
 
                 <TextView
+                    android:id="@+id/password"
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="20dp"
+                    android:textColor="@color/black_alpha_fifty"
+
                     android:layout_centerVertical="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
