@@ -107,7 +107,7 @@ public class ConnectUtil {
 	public static String PublishAnnouncement = API_HOST+"PublishAnnouncement";
 	public static String AddInstallmentRecommendRemark = API_HOST+"AddInstallmentRecommendRemark";//卡分期--添加备注
 	public static String InstallmentActivelyRelieveWorker = API_HOST+"InstallmentActivelyRelieveWorker";
-	public static String GetInstallmentBasicPerformance = API_HOST+"GetInstallmentBasicPerformance";//卡分期--基层经理业绩（排名）
+	public static String GetInstallmentBasicPerformance = API_HOST+"GetInstallmentBasicPerformance";//卡分期--银行卡客户经理业绩（排名）
 	public static String GetInstallmentWorkerRecommendDetail = API_HOST+"GetInstallmentWorkerRecommendDetail";
 	public static String GetMarketingGuide = API_HOST+"GetMarketingGuide";//营销导航
 	public static String Set4SShopLongitudeLatitude = API_HOST+"Set4SShopLongitudeLatitude";//设置经纬度

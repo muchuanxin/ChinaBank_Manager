@@ -6,11 +6,9 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Environment;
 import android.os.Looper;
-import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -27,11 +25,6 @@ import com.luck.picture.lib.config.PictureConfig;
 import com.luck.picture.lib.config.PictureMimeType;
 import com.luck.picture.lib.entity.LocalMedia;
 import com.xd.aselab.chinabankmanager.R;
-import com.xd.aselab.chinabankmanager.photo.AlbumActivity;
-import com.xd.aselab.chinabankmanager.photo.Bimp;
-import com.xd.aselab.chinabankmanager.photo.ImageItem;
-import com.xd.aselab.chinabankmanager.photo.util.FileUtils;
-import com.xd.aselab.chinabankmanager.util.ConnectUtil;
 import com.xd.aselab.chinabankmanager.util.Constants;
 import com.xd.aselab.chinabankmanager.util.ImageLoader;
 
@@ -42,11 +35,7 @@ import com.xd.aselab.chinabankmanager.util.SharePreferenceUtil;
 import org.json.JSONObject;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import static android.os.Environment.MEDIA_MOUNTED;
@@ -129,7 +118,7 @@ public class ChangePhotoActivity extends AppCompatActivity implements ImageSetti
                                         //.withAspectRatio()// int 裁剪比例 如16:9 3:2 3:4 1:1 可自定义
                                         .hideBottomControls(true)// 是否显示uCrop工具栏，默认不显示 true or false
                                         .isGif(true)// 是否显示gif图片 true or false
-                                        .compressSavePath(getFilePath())//压缩图片保存地址
+                                        .compressSavePath(getCompressImagePath())//压缩图片保存地址
                                         //.freeStyleCropEnabled()// 裁剪框是否可拖拽 true or false
                                         //.circleDimmedLayer()// 是否圆形裁剪 true or false
                                         //.showCropFrame()// 是否显示裁剪矩形边框 圆形裁剪时建议设为false   true or false
@@ -173,7 +162,7 @@ public class ChangePhotoActivity extends AppCompatActivity implements ImageSetti
                                         //.withAspectRatio()// int 裁剪比例 如16:9 3:2 3:4 1:1 可自定义
                                         .hideBottomControls(true)// 是否显示uCrop工具栏，默认不显示 true or false
                                         //.isGif(true)// 是否显示gif图片 true or false
-                                        .compressSavePath(getFilePath())//压缩图片保存地址
+                                        .compressSavePath(getCompressImagePath())//压缩图片保存地址
                                         //.freeStyleCropEnabled()// 裁剪框是否可拖拽 true or false
                                         //.circleDimmedLayer()// 是否圆形裁剪 true or false
                                         //.showCropFrame()// 是否显示裁剪矩形边框 圆形裁剪时建议设为false   true or false
@@ -242,8 +231,6 @@ public class ChangePhotoActivity extends AppCompatActivity implements ImageSetti
         for (int i=0; i<selectList.size(); i++) {
             final LocalMedia media = selectList.get(i);
             Log.e("图片------", media.getPath());
-            final String[] temp = media.getPath().split("\\.");
-            //Log.e("temp.length", ""+temp.length);
             final int finalI = i;
 
             new Thread(){
@@ -256,17 +243,21 @@ public class ChangePhotoActivity extends AppCompatActivity implements ImageSetti
                     if (getIntent().getStringExtra("jump").equals("personal_info")) {
                         postParams[0] = new PostParameter("account", spu.getAccount());
                         postParams[1] = new PostParameter("type", "manager");
-                        InputStream is = ImageSettingUtil.compressJPG(media.getPath());
+                        InputStream is = null;
                         if (media.isCompressed())
                             is = ImageSettingUtil.compressJPG(media.getCompressPath());
+                        else
+                            is = ImageSettingUtil.compressJPG(media.getPath());
                         ImageSettingUtil.uploadImage(ChangePhotoActivity.this, finalI, postParams, is, Constants.uploadHeadPhoto);
 
                     } else if (getIntent().getStringExtra("jump").equals("group_head")) {
                         postParams[0] = new PostParameter("account", spu.getAccount());
                         postParams[1] = new PostParameter("group_id", getIntent().getStringExtra("group_id") + "");
-                        InputStream is = ImageSettingUtil.compressJPG(media.getPath());
+                        InputStream is = null;
                         if (media.isCompressed())
                             is = ImageSettingUtil.compressJPG(media.getCompressPath());
+                        else
+                            is = ImageSettingUtil.compressJPG(media.getPath());
                         ImageSettingUtil.uploadImage(ChangePhotoActivity.this, finalI, postParams, is, Constants.ChangeGroupHeadPhoto);
 
                     }
@@ -354,7 +345,7 @@ public class ChangePhotoActivity extends AppCompatActivity implements ImageSetti
 
     }
 
-    private String getFilePath()
+    private String getCompressImagePath()
     {
         String filePath="";
         File appCacheDir=null;

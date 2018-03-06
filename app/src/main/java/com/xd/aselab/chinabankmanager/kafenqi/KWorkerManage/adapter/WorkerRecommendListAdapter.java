@@ -91,35 +91,18 @@ public class WorkerRecommendListAdapter extends BaseAdapter {
         holder.tv_applicate_time.setText("" + list.get(position).getApplicateTime());
         holder.tv_application_tel.setText("联系电话：" + list.get(position).getTel());
         holder.tv_applicate_money.setText("分期总金额(万元)：" + df.format(list.get(position).getFenqi_money()));
-        holder.tv_application_fenqi_num.setText("分期数：" + list.get(position).getFenqi_num());
+        holder.tv_application_fenqi_num.setText("分期数(月)：" + list.get(position).getFenqi_num());
 
 
         String status = list.get(position).getState();
-
-
-
-
-        if (!"".equals(list.get(position).getSerial_num())) {
-            holder.input_info.setVisibility(View.GONE);
-            holder.get_money.setVisibility(View.VISIBLE);
-            holder.serial_num.setVisibility(View.VISIBLE);
-            holder.get_money.setText("放款金额(万元)：" + list.get(position).getFenqi_money());
-            holder.serial_num.setText("流水号：" + list.get(position).getSerial_num());
-        }else{
-            holder.input_info.setVisibility(View.VISIBLE);
-            holder.get_money.setVisibility(View.GONE);
-            holder.serial_num.setVisibility(View.GONE);
-            holder.input_info.setOnClickListener(mListener);
-
-        }
-
 
 //        holder.tv_application_comm.setText("购买汽车品牌："+list.get(position).getBuy_commodity());
 //        holder.tv_score.setText(""+list.get(position).getScore());
 
         switch (status) {
             case "SUCCESS":
-                holder.bt_confirm.setText("业务通过");
+                holder.bt_confirm.setText("已放款");
+                holder.input_info.setVisibility(View.GONE);
                 holder.bt_confirm.setBackgroundResource(R.drawable.grey_corner);
                 holder.bt_confirm.setVisibility(View.VISIBLE);
                 holder.bt_refuse.setVisibility(View.GONE);
@@ -128,6 +111,7 @@ public class WorkerRecommendListAdapter extends BaseAdapter {
                 break;
             case "YES":
                 holder.bt_confirm.setText("已确认");
+                holder.input_info.setVisibility(View.VISIBLE);
                 holder.bt_confirm.setBackgroundResource(R.drawable.grey_corner);
                 holder.bt_confirm.setVisibility(View.VISIBLE);
                 holder.bt_refuse.setVisibility(View.GONE);
@@ -136,6 +120,7 @@ public class WorkerRecommendListAdapter extends BaseAdapter {
                 break;
             case "NO":
                 holder.bt_confirm.setText("已拒绝");
+                holder.input_info.setVisibility(View.GONE);
                 holder.bt_confirm.setBackgroundResource(R.drawable.grey_corner);
                 holder.bt_confirm.setVisibility(View.VISIBLE);
                 holder.bt_refuse.setVisibility(View.GONE);
@@ -144,6 +129,7 @@ public class WorkerRecommendListAdapter extends BaseAdapter {
                 break;
             case "CHECK":
                 holder.bt_refuse.setVisibility(View.VISIBLE);
+                holder.input_info.setVisibility(View.GONE);
                 holder.bt_confirm.setVisibility(View.VISIBLE);
                 holder.bt_confirm.setText("确认");
                 holder.bt_refuse.setText("拒绝");
@@ -156,6 +142,7 @@ public class WorkerRecommendListAdapter extends BaseAdapter {
                 break;
             case "FAIL":
                 holder.bt_confirm.setText("业务不通过");
+                holder.input_info.setVisibility(View.GONE);
                 holder.bt_confirm.setBackgroundResource(R.drawable.grey_corner);
                 holder.bt_confirm.setVisibility(View.VISIBLE);
                 holder.bt_refuse.setVisibility(View.GONE);
@@ -164,6 +151,18 @@ public class WorkerRecommendListAdapter extends BaseAdapter {
                 break;
         }
 
+        if (!"".equals(list.get(position).getSerial_num())) {
+            holder.input_info.setVisibility(View.GONE);
+            holder.get_money.setVisibility(View.VISIBLE);
+            holder.serial_num.setVisibility(View.VISIBLE);
+            holder.get_money.setText("放款金额(万元)：" + list.get(position).getFenqi_money());
+            holder.serial_num.setText("流水号：" + list.get(position).getSerial_num());
+        }else{
+            holder.get_money.setVisibility(View.GONE);
+            holder.serial_num.setVisibility(View.GONE);
+        }
+
+        holder.input_info.setOnClickListener(mListener);
         holder.rl_tel.setOnClickListener(mListener);
         holder.tel.setOnClickListener(mListener);
 //        holder.input_info.setOnClickListener(mListener);

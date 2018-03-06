@@ -68,7 +68,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
                 android:layout_weight="1"
-                android:text="分期金额："
+                android:text="分期金额(万元)："
 
                 android:textColor="@color/gray_text_most"
                 android:textSize="16dp" />
@@ -139,7 +139,7 @@
                     android:layout_height="wrap_content"
 
                     android:gravity="right"
-                    android:text="分期数："
+                    android:text="分期数(月)："
                     android:textColor="@color/gray_text_most"
                     android:textSize="16dp" />
             </LinearLayout>
@@ -194,7 +194,7 @@
             android:layout_marginTop="2dp"
             android:paddingTop="2dp"
 
-            android:text="放款金额："
+            android:text="放款金额(万元)："
             android:textColor="@color/gray_text_most"
             android:textSize="16dp" />
 

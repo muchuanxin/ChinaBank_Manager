@@ -129,8 +129,8 @@ public class NewNotificationDetailActivity extends AppCompatActivity {
                 applicatin_name.setText("申请人："+json.getString("applicant"));
                 application_tel_str = json.getString("telephone");
                 application_tel.setText("联系电话："+application_tel_str);
-                applicate_money.setText("申请金额："+json.getString("money"));
-                applicate_num.setText("分期数："+json.getString("installment_num"));
+                applicate_money.setText("申请金额(万元)："+json.getString("money"));
+                applicate_num.setText("分期数(月)："+json.getString("installment_num"));
                 buy_commodity.setText("购买商品："+json.getString("car_type"));
                 self_score.setText("评分："+json.getString("evaluation"));
                 //返回什么

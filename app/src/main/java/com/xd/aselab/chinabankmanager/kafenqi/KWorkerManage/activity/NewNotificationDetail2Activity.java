@@ -201,7 +201,7 @@ public class NewNotificationDetail2Activity extends AppCompatActivity {
                                     Double mm= Double.valueOf(json.getString("money"));
                                     DecimalFormat df = new DecimalFormat("#0.00");
                                     applicate_money.setText("分期总金额(万元)：" + df.format(mm));
-                                    applicate_num.setText("分期数：" + json.getString("installment_num"));
+                                    applicate_num.setText("分期数(月)：" + json.getString("installment_num"));
                                     serial_num = json.getString("serial_num");
 
 
@@ -243,52 +243,55 @@ public class NewNotificationDetail2Activity extends AppCompatActivity {
                                     //获取当前confirm状态
                                     confirm = json.getString("confirm");
 
-
-                                    if (serial_num!=null && !"".equals(serial_num)){
-                                        set_info.setVisibility(View.GONE);
-                                        serial_num_text.setText("流水号：" + serial_num);
-                                        get_money.setText("放款金额(万元)：" + money);
-                                    } else {
-                                        set_info.setVisibility(View.VISIBLE);
-                                        serial_num_text.setVisibility(View.GONE);
-                                        get_money.setVisibility(View.GONE);
-                                    }
-
-
                                     set_info.setOnClickListener(listener);
-
 
                                     Log.e("www", "----" + confirm);
                                     switch (confirm) {
                                         case "SUCCESS":
+                                            set_info.setVisibility(View.GONE);
                                             ll_choose.setVisibility(View.GONE);
                                             tv_mark.setVisibility(View.VISIBLE);
-                                            tv_mark.setText("业务通过");
+                                            tv_mark.setText("已放款");
                                             tv_mark.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
                                             break;
                                         case "YES":
+                                            set_info.setVisibility(View.VISIBLE);
                                             ll_choose.setVisibility(View.GONE);
                                             tv_mark.setVisibility(View.VISIBLE);
                                             tv_mark.setText("已确认");
                                             tv_mark.setTextColor(getResources().getColor(R.color.blue_text));
                                             break;
                                         case "NO":
+                                            set_info.setVisibility(View.GONE);
                                             ll_choose.setVisibility(View.GONE);
                                             tv_mark.setVisibility(View.VISIBLE);
                                             tv_mark.setText("已拒绝");
                                             tv_mark.setTextColor(getResources().getColor(R.color.gray_text_most_1));
                                             break;
                                         case "CHECK":
+                                            set_info.setVisibility(View.GONE);
                                             ll_choose.setVisibility(View.VISIBLE);
                                             tv_mark.setVisibility(View.GONE);
                                             break;
                                         case "FAIL":
+                                            set_info.setVisibility(View.GONE);
                                             ll_choose.setVisibility(View.GONE);
                                             tv_mark.setVisibility(View.VISIBLE);
                                             tv_mark.setText("业务不通过");
                                             tv_mark.setTextColor(getResources().getColor(R.color.gray_text_most_1));
                                             break;
 
+                                    }
+
+                                    if (serial_num!=null && !"".equals(serial_num)){
+                                        set_info.setVisibility(View.GONE);
+                                        serial_num_text.setVisibility(View.VISIBLE);
+                                        get_money.setVisibility(View.VISIBLE);
+                                        serial_num_text.setText("流水号：" + serial_num);
+                                        get_money.setText("放款金额(万元)：" + money);
+                                    } else {
+                                        serial_num_text.setVisibility(View.GONE);
+                                        get_money.setVisibility(View.GONE);
                                     }
                                 }
 
@@ -310,6 +313,7 @@ public class NewNotificationDetail2Activity extends AppCompatActivity {
                                 if ("false".equals(status)) {
                                     Toast.makeText(NewNotificationDetail2Activity.this, "" + message, Toast.LENGTH_SHORT).show();
                                 } else if ("true".equals(status)) {
+                                    set_info.setVisibility(View.VISIBLE);
                                     bt_refuse.setVisibility(View.GONE);
                                     bt_confirm.setVisibility(View.VISIBLE);
                                     bt_confirm.setBackgroundResource(R.drawable.grey_corner);
@@ -320,7 +324,7 @@ public class NewNotificationDetail2Activity extends AppCompatActivity {
                                     intent.putExtra("action", "confirm");
                                     intent.putExtra("position", position);
                                     setResult(1000, intent);
-                                    finish();
+                                    //finish();
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -337,6 +341,7 @@ public class NewNotificationDetail2Activity extends AppCompatActivity {
                                 if ("false".equals(status)) {
                                     Toast.makeText(NewNotificationDetail2Activity.this, "" + message, Toast.LENGTH_SHORT).show();
                                 } else if ("true".equals(status)) {
+                                    set_info.setVisibility(View.GONE);
                                     bt_refuse.setVisibility(View.GONE);
                                     bt_confirm.setVisibility(View.VISIBLE);
                                     bt_confirm.setBackgroundResource(R.drawable.grey_corner);
@@ -347,7 +352,7 @@ public class NewNotificationDetail2Activity extends AppCompatActivity {
                                     intent.putExtra("action", "refuse");
                                     intent.putExtra("position", position);
                                     setResult(1000, intent);
-                                    finish();
+                                    //finish();
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -381,12 +386,12 @@ public class NewNotificationDetail2Activity extends AppCompatActivity {
                                 serial_num_text.setVisibility(View.VISIBLE);
                                 get_money.setVisibility(View.VISIBLE);
                                 serial_num_text.setText("流水号：" + serial_num);
-                                get_money.setText("放款金额：" + money);
+                                get_money.setText("放款金额(万元)：" + money);
 
 
                                 /*ll_choose.setVisibility(View.GONE);
                                 tv_mark.setVisibility(View.VISIBLE);
-                                tv_mark.setText("业务通过");
+                                tv_mark.setText("已放款");金额
                                 tv_mark.setTextColor(getResources().getColor(R.color.colorPrimaryDark));*/
 
 

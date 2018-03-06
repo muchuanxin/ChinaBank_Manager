@@ -186,7 +186,7 @@
                 android:layout_marginTop="5dp"
                 android:textSize="16dp"
                 android:textColor="@color/black_text_light"
-                android:text="分期数："/>
+                android:text="分期数(月)："/>
             <TextView
                 android:id="@+id/serial_num"
                 android:layout_width="match_parent"

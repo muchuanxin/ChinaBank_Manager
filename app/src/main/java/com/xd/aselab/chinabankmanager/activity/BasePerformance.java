@@ -103,6 +103,7 @@ public class BasePerformance extends AppCompatActivity {
                         switch (select_string[which]) {
                             case "近一周业绩":
                                 //calendar.set(Calendar.DATE, calendar.get(Calendar.DATE) - 7);
+                                calendar.setFirstDayOfWeek(Calendar.MONDAY);
                                 calendar.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
                                 params[3] = new PostParameter("begin", format.format(calendar.getTime()));
                                 params[4] = new PostParameter("end", format.format(new Date()));
@@ -257,6 +258,7 @@ public class BasePerformance extends AppCompatActivity {
                 params[2] = new PostParameter("type", "1");
                 calendar.setTime(new Date());
                 //calendar.set(Calendar.DATE, calendar.get(Calendar.DATE) - 7);
+                calendar.setFirstDayOfWeek(Calendar.MONDAY);
                 calendar.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
                 params[3] = new PostParameter("begin", format.format(calendar.getTime()));
                 params[4] = new PostParameter("end", format.format(new Date()));

@@ -122,6 +122,6 @@
         android:layout_marginRight="5dp"
         android:dividerHeight="5dp"
         android:divider="@color/transparent"
-        android:layout_marginTop="10dp"></ListView>
+        android:layout_marginTop="10dp"/>
 
 </LinearLayout>

@@ -183,6 +183,7 @@ public class BasePerfAllListActivity extends AppCompatActivity {
                 params[2] = new PostParameter("type", "1");
                 calendar.setTime(new Date());
                // calendar.set(Calendar.DATE, calendar.get(Calendar.DATE) - 7);
+                calendar.setFirstDayOfWeek(Calendar.MONDAY);
                 calendar.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
                 params[3] = new PostParameter("begin", format.format(calendar.getTime()));
                 params[4] = new PostParameter("end", format.format(new Date()));
@@ -650,6 +651,7 @@ public class BasePerfAllListActivity extends AppCompatActivity {
                                 /*line1.setText("分期业务成功数量："+("".equals(number1)? "暂无" : number1+"笔"));
                                 line2.setText("分期业务成功金额："+("".equals(money1)? "暂无" : money1+"元"));*/
                         //calendar.set(Calendar.DATE, calendar.get(Calendar.DATE) - 7);
+                        calendar.setFirstDayOfWeek(Calendar.MONDAY);
                         calendar.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
                         params[3] = new PostParameter("begin", format.format(calendar.getTime()));
                         params[4] = new PostParameter("end", format.format(new Date()));
