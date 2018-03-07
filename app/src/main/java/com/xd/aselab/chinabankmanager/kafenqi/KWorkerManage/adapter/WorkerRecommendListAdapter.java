@@ -30,11 +30,13 @@ public class WorkerRecommendListAdapter extends BaseAdapter {
     private Context mContext;
     private LayoutInflater mInflater;
     private ListBtnListener mListener;
+    private ListBtnListener textViewListener;
 
-    public WorkerRecommendListAdapter(List<ApplicationsVO> list, Context context, ListBtnListener mListener) {
+    public WorkerRecommendListAdapter(List<ApplicationsVO> list, Context context, ListBtnListener mListener, ListBtnListener textViewListener ) {
         this.list = list;
         this.mContext = context;
         this.mListener = mListener;
+        this.textViewListener = textViewListener;
         mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);//LayoutInflater.from(mContext);
     }
 
@@ -167,12 +169,30 @@ public class WorkerRecommendListAdapter extends BaseAdapter {
         holder.tel.setOnClickListener(mListener);
 //        holder.input_info.setOnClickListener(mListener);
         holder.input_info.setTag(position);
+
+        holder.tv_application_name.setTag(position);
+        holder.tv_applicate_time.setTag(position);
+        holder.tv_applicate_money.setTag(position);
+        holder.tv_application_fenqi_num.setTag(position);
+        holder.tv_application_tel.setTag(position);
         holder.bt_confirm.setTag(position);
         holder.serial_num.setTag(position);
         holder.get_money.setTag(position);
         holder.bt_refuse.setTag(position);
         holder.rl_tel.setTag(position);
         holder.tel.setTag(position);
+
+        holder.tv_application_name.setOnClickListener(textViewListener);
+        holder.tv_applicate_time.setOnClickListener(textViewListener);
+        holder.rl_tel.setOnClickListener(textViewListener);
+        holder.tv_applicate_money.setOnClickListener(textViewListener);
+        holder.tv_application_fenqi_num.setOnClickListener(textViewListener);
+        //holder.tv_application_comm.setOnClickListener(textViewListener);
+        holder.tv_application_tel.setOnClickListener(textViewListener);
+        //holder.tv_score.setOnClickListener(textViewListener);
+        holder.serial_num.setOnClickListener(textViewListener);
+        holder.get_money.setOnClickListener(textViewListener);
+
         return convertView;
     }
 

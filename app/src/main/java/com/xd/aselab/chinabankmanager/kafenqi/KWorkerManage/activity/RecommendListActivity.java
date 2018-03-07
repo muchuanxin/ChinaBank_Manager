@@ -445,7 +445,18 @@ public class RecommendListActivity extends AppCompatActivity {
             }
         };
 
-        adaper = new WorkerRecommendListAdapter(applicationsVOList, RecommendListActivity.this, mListener);
+        WorkerRecommendListAdapter.ListBtnListener textViewListener = new WorkerRecommendListAdapter.ListBtnListener() {
+            @Override
+            public void myOnClick(int position, View v) {
+                Intent intent = new Intent();
+                intent.setClass(RecommendListActivity.this, NewNotificationDetail2Activity.class);
+                intent.putExtra("id", applicationsVOList.get(position).getApplicationID());
+                intent.putExtra("position", position);
+                startActivityForResult(intent, 999);
+            }
+        };
+
+        adaper = new WorkerRecommendListAdapter(applicationsVOList, RecommendListActivity.this, mListener, textViewListener);
         recommend_listView.setAdapter(adaper);
 
         recommend_listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
