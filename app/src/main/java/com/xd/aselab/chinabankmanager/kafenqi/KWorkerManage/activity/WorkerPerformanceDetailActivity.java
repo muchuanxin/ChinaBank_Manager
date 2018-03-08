@@ -79,7 +79,7 @@ public class WorkerPerformanceDetailActivity extends AppCompatActivity  implemen
     private float[] numbers = new float[12];
     private float[] money = new float[12];
     private String choosen_time = "one_week";
-    private String worker_account,worker_name,worker_status;
+    private String worker_account,worker_name,worker_status,time_range;
     private int recommend_num_one_week,success_num_one_week,score_one_week,exchange_score_one_week;
     private int recommend_num_one_month,success_num_one_month,score_one_month,exchange_score_one_month;
     private int recommend_num_three_month,success_num_three_month,score_three_month,exchange_score_three_month;
@@ -132,6 +132,8 @@ public class WorkerPerformanceDetailActivity extends AppCompatActivity  implemen
         worker_name = getIntent().getStringExtra("worker_name");
         worker_account = getIntent().getStringExtra("worker_account");
         worker_status = getIntent().getStringExtra("worker_status");
+        time_range = getIntent().getStringExtra("time_range");
+        select_time.setText(time_range);
         chooseTimeAdapter = new ChooseTimeAdapter(Constants.chooseTimeList,WorkerPerformanceDetailActivity.this);
 
         switch (worker_status){
@@ -292,13 +294,27 @@ public class WorkerPerformanceDetailActivity extends AppCompatActivity  implemen
                                     score_one_year= oneYearJO.getInt("score");
                                     exchange_score_one_year= oneYearJO.getInt("exchange_score");
 
-                                    setText(recommend_num_one_week,success_num_one_week,success_money_one_week,score_one_week,exchange_score_one_week);
-                                    if(recommend_num_one_week==0){
-                                        rl_detail_recommend.setClickable(false);
-                                        right_arrow.setVisibility(View.GONE);
-                                    }else{
-                                        rl_detail_recommend.setClickable(true);
-                                        right_arrow.setVisibility(View.VISIBLE);
+                                    switch (time_range){
+                                        case "近一周业绩":
+                                            choosen_time="one_week";
+                                            chooseTimeAdapter.setPosition(0);
+                                            setText(recommend_num_one_week,success_num_one_week,success_money_one_week,score_one_week,exchange_score_one_week);
+                                            break;
+                                        case "近一月业绩":
+                                            choosen_time="one_month";
+                                            chooseTimeAdapter.setPosition(1);
+                                            setText(recommend_num_one_month,success_num_one_month,success_money_one_month,score_one_month,exchange_score_one_month);
+                                            break;
+                                        case "近一季度业绩":
+                                            choosen_time="three_month";
+                                            chooseTimeAdapter.setPosition(2);
+                                            setText(recommend_num_three_month,success_num_three_month,success_money_three_month,score_three_month,exchange_score_three_month);
+                                            break;
+                                        case "近一年业绩":
+                                            choosen_time="one_year";
+                                            chooseTimeAdapter.setPosition(3);
+                                            setText(recommend_num_one_year,success_num_one_year,success_money_one_year,score_one_year,exchange_score_one_year);
+                                            break;
                                     }
 
                                     boolean flag = false;
@@ -355,6 +371,13 @@ public class WorkerPerformanceDetailActivity extends AppCompatActivity  implemen
         tv_success_money.setText("分期业务成功金额："+("".equals(success_money)? "暂无" : df.format(success_money)+"万元"));
         tv_credit_sum.setText("积分数："+("".equals(score)? "暂无" : score));
         tv_credit_exchange.setText("累计兑换积分："+("".equals(exchange_score)? "暂无" : exchange_score));
+        if(recommend_num==0){
+            rl_detail_recommend.setClickable(false);
+            right_arrow.setVisibility(View.GONE);
+        }else{
+            rl_detail_recommend.setClickable(true);
+            right_arrow.setVisibility(View.VISIBLE);
+        }
     }
 
     private void initChartDatas(){
@@ -556,46 +579,18 @@ public class WorkerPerformanceDetailActivity extends AppCompatActivity  implemen
                     case "近一周业绩" :
                         choosen_time="one_week";
                         setText(recommend_num_one_week,success_num_one_week,success_money_one_week,score_one_week,exchange_score_one_week);
-                        if(recommend_num_one_week==0){
-                            rl_detail_recommend.setClickable(false);
-                            right_arrow.setVisibility(View.GONE);
-                        }else{
-                            rl_detail_recommend.setClickable(true);
-                            right_arrow.setVisibility(View.VISIBLE);
-                        }
                         break;
                     case "近一月业绩" :
                         choosen_time="one_month";
                         setText(recommend_num_one_month,success_num_one_month,success_money_one_month,score_one_month,exchange_score_one_month);
-                        if(recommend_num_one_month==0){
-                            rl_detail_recommend.setClickable(false);
-                            right_arrow.setVisibility(View.GONE);
-                        }else{
-                            rl_detail_recommend.setClickable(true);
-                            right_arrow.setVisibility(View.VISIBLE);
-                        }
                         break;
                     case "近一季度业绩" :
                         choosen_time="three_month";
                         setText(recommend_num_three_month,success_num_three_month,success_money_three_month,score_three_month,exchange_score_three_month);
-                        if(recommend_num_three_month==0){
-                            rl_detail_recommend.setClickable(false);
-                            right_arrow.setVisibility(View.GONE);
-                        }else{
-                            rl_detail_recommend.setClickable(true);
-                            right_arrow.setVisibility(View.VISIBLE);
-                        }
                         break;
                     case "近一年业绩" :
                         choosen_time="one_year";
                         setText(recommend_num_one_year,success_num_one_year,success_money_one_year,score_one_year,exchange_score_one_year);
-                        if(recommend_num_one_year==0){
-                            rl_detail_recommend.setClickable(false);
-                            right_arrow.setVisibility(View.GONE);
-                        }else{
-                            rl_detail_recommend.setClickable(true);
-                            right_arrow.setVisibility(View.VISIBLE);
-                        }
                         break;
                 }
             }

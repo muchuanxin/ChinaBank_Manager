@@ -471,27 +471,32 @@ public class WorkerPerformenceActivity extends AppCompatActivity {
                 String worker_account = "";
                 String worker_name = "";
                 String worker_status = "";
+                String time_range = "";
                // worker_account = worker_list.get(position).getAccount();
                 switch (select_time.getText().toString()){
                     case "近一周业绩" :
                         worker_account = worker_list_one_week.get(position).getAccount();
                         worker_name = worker_list_one_week.get(position).getName();
                         worker_status = worker_list_one_week.get(position).getStatus();
+                        time_range = "近一周业绩";
                         break;
                     case "近一月业绩" :
                         worker_account = worker_list_one_month.get(position).getAccount();
                         worker_name = worker_list_one_month.get(position).getName();
                         worker_status = worker_list_one_month.get(position).getStatus();
+                        time_range = "近一月业绩";
                         break;
                     case "近一季度业绩" :
                         worker_account = worker_list_three_month.get(position).getAccount();
                         worker_name = worker_list_three_month.get(position).getName();
                         worker_status = worker_list_three_month.get(position).getStatus();
+                        time_range = "近一季度业绩";
                         break;
                     case "近一年业绩" :
                         worker_account = worker_list_one_year.get(position).getAccount();
                         worker_name = worker_list_one_year.get(position).getName();
                         worker_status = worker_list_one_year.get(position).getStatus();
+                        time_range = "近一年业绩";
                         break;
                 }
                 Intent intent = new Intent();
@@ -499,6 +504,7 @@ public class WorkerPerformenceActivity extends AppCompatActivity {
                 intent.putExtra("worker_account",worker_account);
                 intent.putExtra("worker_name",worker_name);
                 intent.putExtra("worker_status",worker_status);
+                intent.putExtra("time_range",time_range);
                 startActivity(intent);
             }
         });
