@@ -39,12 +39,14 @@ public class ConnectUtil {
 
 	//public final static String API_HOST = "http://117.34.117.107/ChinaBank/Manager/";
 //	public final static String IP = "http://47.93.31.35/";
-	public final static String IP = "http://192.168.0.129/";
+	//public final static String IP = "http://192.168.0.129/";
+	//public final static String IP = "http://192.168.0.27/";
+	//public final static String IP = "http://192.168.0.27:8080/";
 	//public final static String IP = "http://192.168.0.73:8080/";
 	//public final static String IP = "http://10.170.13.113:8080/";
 	//public final static String IP = "http://117.34.117.107/";
 	//public final static String IP = "http://juyuntechinfo.gotoip1.com/";
-	//public final static String IP = "http://www.juyunjinrongapp.com/";
+	public final static String IP = "http://www.juyunjinrongapp.com/";
 	//public final static String IP = "http://javaapp.gotoip2.com/";
 	public final static String SERVER = IP +"ChinaBank/";
 	public final static String API_HOST = SERVER+"Manager/";

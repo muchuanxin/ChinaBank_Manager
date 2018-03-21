@@ -11,6 +11,7 @@ import android.os.Message;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.PermissionChecker;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -171,7 +172,7 @@ public class ProvinceMainFragment extends Fragment {
                 if (spu.getisLogin()){
                     if(spu.getType().equals("BASIC")){
                         Toast.makeText(getActivity(), "银行卡客户经理，您好", Toast.LENGTH_SHORT).show();
-                    }else  if(spu.getType().equals("ProvinceMannager")){
+                    }else  if(spu.getType().equals("PROVINCE")){
                         Toast.makeText(getActivity(), "省行管理者，您好", Toast.LENGTH_SHORT).show();
                     }else{
                         Toast.makeText(getActivity(), "二级行管理者，您好", Toast.LENGTH_SHORT).show();
@@ -221,7 +222,10 @@ public class ProvinceMainFragment extends Fragment {
                             || PermissionChecker.checkSelfPermission(getActivity(),
                             Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                         //请求定位权限
-                        ActivityCompat.requestPermissions(getActivity(),
+                        /*ActivityCompat.requestPermissions(getActivity(),
+                                new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION }, 10012);*/
+                        //Fragment不能用ActivityCompat.requestPermissions，这是Activity用的
+                        ProvinceMainFragment.this.requestPermissions(
                                 new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION }, 10012);
                     }
                     else {
@@ -272,13 +276,20 @@ public class ProvinceMainFragment extends Fragment {
         switch(requestCode) {
             // requestCode即所声明的权限获取码，在checkSelfPermission时传入
             case 10012:
-                if(grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Log.e("yingxiaodaohang","进入10012");
+                if(grantResults.length > 1 &&
+                        grantResults[0] == PackageManager.PERMISSION_GRANTED &&
+                        grantResults[1] == PackageManager.PERMISSION_GRANTED) {
+                    Log.e("yingxiaodaohang","已授权");
                     // 获取到权限，作相应处理（调用定位SDK应当确保相关权限均被授权，否则可能引起定位失败）
+                    // 实际上还未点击确定授权，就已经进来了
                     Intent intent = new Intent();
                     intent.setClass(getActivity(), MarketingGuideNew.class);
                     startActivity(intent);
                 } else{
                     // 没有获取到权限，做特殊处理
+                    // 实际上拒绝授权也进不来
+                    Log.e("yingxiaodaohang","不允许定位");
                     Toast.makeText(getActivity(), "请允许定位", Toast.LENGTH_SHORT).show();
                 }
                 break;

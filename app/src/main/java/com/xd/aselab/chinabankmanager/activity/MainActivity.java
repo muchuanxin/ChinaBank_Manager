@@ -145,7 +145,7 @@ public class MainActivity extends AppCompatActivity {
                     fra_main = new MainFragment();
                     transaction.add(R.id.mcx_main_content, fra_main,"main_home");
                 }*/
-                if(spu.getType().equals("ProvinceMannager")){
+                if(spu.getType().equals("PROVINCE")){
                     if (fra_province_main == null){
                         fra_province_main = new ProvinceMainFragment();
                         transaction.add(R.id.mcx_main_content, fra_province_main,"main_home_province");
@@ -200,7 +200,7 @@ public class MainActivity extends AppCompatActivity {
                             fra_me_manager = new MeManagerFragment();
                             transaction.add(R.id.mcx_main_content, fra_me_manager,"main_manager_me");
                         }
-                    }else if(spu.getType().equals("ProvinceMannager")){
+                    }else if(spu.getType().equals("PROVINCE")){
                         if (fra_me_manager == null){
                             fra_me_manager = new MeManagerFragment();
                             transaction.add(R.id.mcx_main_content, fra_me_manager,"main_manager_me");

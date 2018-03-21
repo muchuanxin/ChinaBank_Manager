@@ -197,6 +197,10 @@ public class PersonalInfo extends AppCompatActivity {
                 type.setText("银行卡客户经理");
                 my_contact.setVisibility(View.VISIBLE);
                 break;
+            case "PROVINCE":
+                type.setText("省行管理者");
+                my_contact.setVisibility(View.VISIBLE);
+                break;
             default:
                 type.setText("经理");
                 break;

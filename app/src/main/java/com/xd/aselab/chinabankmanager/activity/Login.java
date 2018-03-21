@@ -150,25 +150,37 @@ public class Login extends AppCompatActivity {
                                 if ("false".equals(status)) {
                                     Toast.makeText(Login.this, json.getString("message"), Toast.LENGTH_SHORT).show();
                                 } else if ("true".equals(status)) {
-                                    spu.setAccount(account);
-                                    spu.setPassword(psw);
-                                    spu.setPhotoUrl(json.getString("head_image"));
+                                    if ("PROVINCE".equals(json.getString("job"))){
+                                        spu.setAccount(account);
+                                        spu.setPassword(psw);
+                                        spu.setJobNumber(json.getString("jobNumber"));
+                                        spu.setName(json.getString("realName"));
+                                        spu.setTel(json.getString("teleNumber"));
+                                        String job = json.getString("job");
+                                        spu.setType(job);
+                                        spu.setPhotoUrl(json.getString("head_image"));
+                                        spu.setCookie(json.getString("cookie"));
+                                        spu.setIsLogin(true);
+                                    }
+                                    else {
+                                        spu.setAccount(account);
+                                        spu.setPassword(psw);
+                                        spu.setPhotoUrl(json.getString("head_image"));
 
-                                    //---------------------------------------
-                                    Log.d("Dorise",spu.getPhotoUrl()+"");
+                                        Log.d("Dorise",spu.getPhotoUrl()+"");
 
+                                        spu.setJobNumber(json.getString("jobNumber"));
+                                        spu.setTel(json.getString("teleNumber"));
+                                        spu.setLandlineNumber(json.getString("landlineNumber"));
+                                        spu.setName(json.getString("realName"));
+                                        spu.setBranchLevel2(json.getString("branchLevel2"));
+                                        spu.setBranchLevel4(json.getString("branchLevel4"));
+                                        String job = json.getString("job");
+                                        spu.setType(job);
+                                        spu.setCookie(json.getString("cookie"));
+                                        spu.setIsLogin(true);
+                                    }
 
-
-                                    spu.setJobNumber(json.getString("jobNumber"));
-                                    spu.setTel(json.getString("teleNumber"));
-                                    spu.setLandlineNumber(json.getString("landlineNumber"));
-                                    spu.setName(json.getString("realName"));
-                                    spu.setBranchLevel2(json.getString("branchLevel2"));
-                                    spu.setBranchLevel4(json.getString("branchLevel4"));
-                                    String job = json.getString("job");
-                                    spu.setType(job);
-                                    spu.setCookie(json.getString("cookie"));
-                                    spu.setIsLogin(true);
                                     JPushInterface.setAlias(Login.this,new Random().nextInt(),account);
                                     /*if ("BASIC".equals(job)){
                                         startActivity(new Intent().setClass(Login.this, MainActivity_Base.class));
@@ -200,13 +212,13 @@ public class Login extends AppCompatActivity {
                                         finish();
                                     }
                                     else if ("card".equals(clickView)) {
-                                        if ("BASIC".equals(job)){
+                                        if ("BASIC".equals(spu.getType())){
                                             Intent intent = new Intent();
                                             intent.setClass(Login.this, MyManagement.class);
                                             finish();
                                             startActivity(intent);
                                         }
-                                        else if ("MANAGER".equals(job)) {
+                                        else if ("MANAGER".equals(spu.getType())) {
                                             //Toast.makeText(Login.this,"分区经理卡分期管理界面",Toast.LENGTH_SHORT).show();
                                             Intent intent = new Intent();
                                             intent.setClass(Login.this, MyManageBase.class);
@@ -289,7 +301,7 @@ public class Login extends AppCompatActivity {
                     Toast.makeText(Login.this, "请输入账号密码", Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    if("0001".equals(account)){
+                    /*if("0001".equals(account)){
                         if("123456".equals(psw)){
                             spu.setAccount(account);
                             spu.setPassword(psw);
@@ -300,34 +312,30 @@ public class Login extends AppCompatActivity {
                             spu.setName("省行");
                             spu.setBranchLevel2("01");
                             spu.setBranchLevel4("02");
-                            spu.setType("ProvinceMannager");
+                            spu.setType("PROVINCE");
                             spu.setIsLogin(true);
                              startActivity(new Intent().setClass(Login.this, MainActivity.class));
                         }else{
                             Toast.makeText(Login.this, "用户名或密码错误", Toast.LENGTH_SHORT).show();
                         }
-                    }else{
+                    }else{*/
 
-
-
-
-
-                        showProgressDialog();
-                        new Thread(){
-                            @Override
-                            public void run() {
-                                super.run();
-                                PostParameter[] params = new PostParameter[2];
-                                params[0] = new PostParameter("account",account);
-                                params[1] = new PostParameter("password", Encode.getEncode("MD5", psw));
-                                String reCode = ConnectUtil.httpRequest(ConnectUtil.MANAGER_LOGIN, params, ConnectUtil.POST);
-                                Message msg = new Message();
-                                msg.what = 0;
-                                msg.obj = reCode;
-                                handler.sendMessage(msg);
-                            }
-                        }.start();
-                    }
+                    showProgressDialog();
+                    new Thread(){
+                        @Override
+                        public void run() {
+                            super.run();
+                            PostParameter[] params = new PostParameter[2];
+                            params[0] = new PostParameter("account",account);
+                            params[1] = new PostParameter("password", Encode.getEncode("MD5", psw));
+                            String reCode = ConnectUtil.httpRequest(ConnectUtil.MANAGER_LOGIN, params, ConnectUtil.POST);
+                            Message msg = new Message();
+                            msg.what = 0;
+                            msg.obj = reCode;
+                            handler.sendMessage(msg);
+                        }
+                    }.start();
+                    //}
 
                 }
             }

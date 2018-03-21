@@ -108,7 +108,7 @@ public class ChangeTel extends AppCompatActivity {
                 /*else if (tel.length()!=11) {
                     Toast.makeText(ChangeTel.this, "电话号码不符合规格", Toast.LENGTH_SHORT).show();
                 }*/
-                else if (p.matcher(tel).matches()) {
+                else if (!p.matcher(tel).matches()) {
                     Toast.makeText(ChangeTel.this, "电话号码不符合规格", Toast.LENGTH_SHORT).show();
                 }
                 else {
