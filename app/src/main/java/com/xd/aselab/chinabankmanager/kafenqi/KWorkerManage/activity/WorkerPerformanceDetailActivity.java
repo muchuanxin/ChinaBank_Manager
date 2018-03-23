@@ -365,7 +365,7 @@ public class WorkerPerformanceDetailActivity extends AppCompatActivity  implemen
     }
 
     private void setText(int recommend_num,int success_num,double success_money,int score,int exchange_score){
-        DecimalFormat df = new DecimalFormat("#0.00");
+        DecimalFormat df = new DecimalFormat("#0.0000");
         tv_recommend_num.setText("推荐分期业务数量："+("".equals(recommend_num)? "暂无" : recommend_num+"笔"));
         tv_success_num.setText("分期业务成功数量："+("".equals(success_num)? "暂无" : success_num+"笔"));
         tv_success_money.setText("分期业务成功金额："+("".equals(success_money)? "暂无" : df.format(success_money)+"万元"));
@@ -441,7 +441,7 @@ public class WorkerPerformanceDetailActivity extends AppCompatActivity  implemen
                     yVals2.add(new BarEntry(i, numbers[i-1]));
                     break;
                 default:
-                    yVals1.add(new BarEntry(i, (float)0.00));
+                    yVals1.add(new BarEntry(i, (float)0.0000));
                     yVals2.add(new BarEntry(i, 2));
                     break;
             }

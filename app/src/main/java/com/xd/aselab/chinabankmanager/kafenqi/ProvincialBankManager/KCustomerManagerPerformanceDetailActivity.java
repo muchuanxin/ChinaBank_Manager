@@ -243,7 +243,7 @@ public class KCustomerManagerPerformanceDetailActivity extends AppCompatActivity
                                     }
                                     adapter = new BasePerfDetailAdapter(worker_list_one_week,KCustomerManagerPerformanceDetailActivity.this);
                                     listView.setAdapter(adapter);
-                                    DecimalFormat df = new DecimalFormat("#0.00");
+                                    DecimalFormat df = new DecimalFormat("#0.0000");
                                     switch (range){
                                         case "4S店销售近一周业绩":
                                             base_red_total.setText("在"+worker_name+"发展的"+oneWeekJA.length()+"位4S店销售中，共成功办理"+num_one_week_sum+"笔分期业务，总金额为"+df.format(money_one_week_sum)+"万元");

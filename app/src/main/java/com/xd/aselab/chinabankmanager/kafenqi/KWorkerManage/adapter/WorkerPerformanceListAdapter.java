@@ -71,7 +71,7 @@ public class WorkerPerformanceListAdapter extends BaseAdapter {
             holder=(ViewHolder)convertView.getTag();
         }
 
-        DecimalFormat df = new DecimalFormat("#0.00");
+        DecimalFormat df = new DecimalFormat("#0.0000");
         holder.tv_worker_name.setText(list.get(position).getName());
         holder.tv_worker_address.setText("工作单位："+list.get(position).getWorker_address());
         holder.tv_recommend_number.setText("推荐分期业务数量："+list.get(position).getRecommend_number()+"笔");

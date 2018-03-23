@@ -190,7 +190,7 @@ public class KMyPreformenceActivity extends AppCompatActivity implements OnChart
                                     number4 = oneYearJO.getInt("number");
                                     money4 = oneYearJO.getDouble("money");
 
-                                    DecimalFormat df = new DecimalFormat("#0.00");
+                                    DecimalFormat df = new DecimalFormat("#0.0000");
                                     line1.setText("分期业务推荐数量："+("".equals(recommend_number1)? "暂无" : recommend_number1+"笔"));
                                     line2.setText("分期业务推荐金额："+("".equals(recommend_money1)? "暂无" : df.format(recommend_money1)+"万元"));
                                     line3.setText("分期业务成功数量："+("".equals(number1)? "暂无" : number1+"笔"));
@@ -447,7 +447,7 @@ public class KMyPreformenceActivity extends AppCompatActivity implements OnChart
     }
 
     void setText(int recommend_number,double recommend_money,int success_number,double success_money){
-        DecimalFormat df = new DecimalFormat("#0.00");
+        DecimalFormat df = new DecimalFormat("#0.0000");
         line1.setText("分期业务推荐数量："+("".equals(recommend_number)? "暂无" : recommend_number+"笔"));
         line2.setText("分期业务推荐金额："+("".equals(recommend_money)? "暂无" : df.format(recommend_money)+"万元"));
         line3.setText("分期业务成功数量："+("".equals(success_number)? "暂无" : success_number+"笔"));

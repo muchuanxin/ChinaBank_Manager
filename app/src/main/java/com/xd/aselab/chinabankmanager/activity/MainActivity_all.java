@@ -43,6 +43,7 @@ import java.util.ArrayList;
 
 import cn.jpush.android.api.JPushInterface;
 
+//已废弃
 public class MainActivity_all extends AppCompatActivity {
 
     private ImageCycleView imageCycleView;

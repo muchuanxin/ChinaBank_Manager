@@ -54,6 +54,7 @@ import cn.jpush.android.api.TagAliasCallback;
 import static com.xd.aselab.chinabankmanager.util.Constants.FROM_MAIN_ME_TO_LOGIN;
 import static com.xd.aselab.chinabankmanager.util.Constants.LOGIN_TO_MAIN_ME;
 
+//目前在用的首页
 public class MainActivity extends AppCompatActivity {
 
     private MainFragment fra_main;

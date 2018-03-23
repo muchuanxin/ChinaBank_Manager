@@ -88,7 +88,7 @@ public class WorkerRecommendListAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        DecimalFormat df = new DecimalFormat("#0.00");
+        DecimalFormat df = new DecimalFormat("#0.0000");
         holder.tv_application_name.setText(list.get(position).getApplicatinName());
         holder.tv_applicate_time.setText("" + list.get(position).getApplicateTime());
         holder.tv_application_tel.setText("联系电话：" + list.get(position).getTel());

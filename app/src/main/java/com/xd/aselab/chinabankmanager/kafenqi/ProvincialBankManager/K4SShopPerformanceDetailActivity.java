@@ -253,7 +253,7 @@ Log.i("kmj","secondary_num"+secondary_num);
                                     }
                                     adapter = new BasePerfDetailAdapter(worker_list_one_week,K4SShopPerformanceDetailActivity.this);
                                     listView.setAdapter(adapter);
-                                    DecimalFormat df = new DecimalFormat("#0.00");
+                                    DecimalFormat df = new DecimalFormat("#0.0000");
                                     switch (range){
                                         case "4S店近一周业绩":
                                             base_red_total.setText("在"+secondary_name+"发展的"+worker_name+"4S店中，共有"+oneWeekJA.length()+"位4S店销售，共成功办理"+num_one_week_sum+"笔分期业务，总金额为"+df.format(money_one_week_sum)+"万元");

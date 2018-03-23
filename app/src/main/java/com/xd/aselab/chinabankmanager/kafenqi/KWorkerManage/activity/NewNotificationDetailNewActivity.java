@@ -282,7 +282,7 @@ public class NewNotificationDetailNewActivity extends AppCompatActivity {
                     TextView text = (TextView) mview.findViewById(R.id.flow);
                     text.setText("流水号：" + serial_num);
 
-                    DecimalFormat df = new DecimalFormat("#0.00");
+                    DecimalFormat df = new DecimalFormat("#0.0000");
                     mview.findViewById(R.id.money).setVisibility(View.GONE);
                     TextView text1 = (TextView) mview.findViewById(R.id.get_money);
                     text1.setText("放款金额：" + df.format(money)+"万元");
@@ -456,7 +456,7 @@ public class NewNotificationDetailNewActivity extends AppCompatActivity {
                                     Toast.makeText(NewNotificationDetailNewActivity.this, "" + message, Toast.LENGTH_SHORT).show();
                                     finish();
                                 } else if ("true".equals(status)) {
-                                    DecimalFormat df = new DecimalFormat("#0.00");
+                                    DecimalFormat df = new DecimalFormat("#0.0000");
                                     worker_account_str = json.getString("worker_account");
                                     worker_name_str = json.getString("worker_name");
                                     worker_head_str = json.getString("worker_head");
@@ -637,7 +637,7 @@ public class NewNotificationDetailNewActivity extends AppCompatActivity {
                             JSONObject obj = new JSONObject(msg.obj.toString());
                             Toast.makeText(NewNotificationDetailNewActivity.this, obj.getString("message"), Toast.LENGTH_SHORT).show();
 
-                            DecimalFormat df = new DecimalFormat("#0.00");
+                            DecimalFormat df = new DecimalFormat("#0.0000");
                             if (obj.get("status").equals("true")) {
                                 applicate_money.setText("分期总金额：" + df.format(money)+"万元");
                                 //confirm = "SUCCESS";

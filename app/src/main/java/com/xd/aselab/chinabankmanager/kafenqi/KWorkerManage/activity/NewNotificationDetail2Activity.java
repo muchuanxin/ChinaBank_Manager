@@ -199,7 +199,7 @@ public class NewNotificationDetail2Activity extends AppCompatActivity {
                                     application_tel_str = json.getString("applicant_telephone");
                                     application_tel.setText("联系电话：" + application_tel_str);
                                     Double mm= Double.valueOf(json.getString("money"));
-                                    DecimalFormat df = new DecimalFormat("#0.00");
+                                    DecimalFormat df = new DecimalFormat("#0.0000");
                                     applicate_money.setText("分期总金额：" + df.format(mm)+"万元");
                                     applicate_num.setText("分期数：" + json.getString("installment_num")+"月");
                                     serial_num = json.getString("serial_num");
@@ -371,7 +371,7 @@ public class NewNotificationDetail2Activity extends AppCompatActivity {
                             if (obj.get("status").equals("true")) {
 
 
-                                DecimalFormat df = new DecimalFormat("#0.00");
+                                DecimalFormat df = new DecimalFormat("#0.0000");
                                 applicate_money.setText("分期总金额：" + df.format(money)+"万元");
 
                                 Intent intent = new Intent();

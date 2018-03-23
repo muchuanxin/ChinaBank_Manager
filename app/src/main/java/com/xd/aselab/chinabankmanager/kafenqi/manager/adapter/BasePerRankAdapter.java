@@ -72,7 +72,7 @@ public class BasePerRankAdapter extends BaseAdapter {
         holder.tv_number.setText(""+rank);
         holder.tv_base_name.setText(list.get(position).getBase_name());
         holder.tv_count.setText(list.get(position).getBase_fenqi_num()+"笔");
-        DecimalFormat df = new DecimalFormat("#0.00");
+        DecimalFormat df = new DecimalFormat("#0.0000");
         holder.tv_money.setText(df.format(list.get(position).getBase_fenqi_money())+"万元");
         if(("fenqi_num").equals(list.get(position).getFlag())){
             holder.tv_count.setVisibility(View.VISIBLE);

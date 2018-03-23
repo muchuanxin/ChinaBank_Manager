@@ -71,7 +71,7 @@ public class BasePerfAllAdapter extends BaseAdapter {
         holder.tv_base_card_success.setText("共有"+card_success_num+"人成功办卡");
 
 
-        DecimalFormat df = new DecimalFormat("#0.00");
+        DecimalFormat df = new DecimalFormat("#0.0000");
         String fenqi_num = list.get(position).get("sum_fenqi_count")==null?"0":list.get(position).get("sum_fenqi_count");
         String fenqi_money = list.get(position).get("sum_fenqi_money")==null?"0":list.get(position).get("sum_fenqi_money");
         holder.tv_base_fenqi_num.setText("分期业务数量："+fenqi_num+"笔");
