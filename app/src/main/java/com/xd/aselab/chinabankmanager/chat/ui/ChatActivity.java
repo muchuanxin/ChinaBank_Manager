@@ -648,7 +648,7 @@ public class ChatActivity extends AppCompatActivity implements ImageSettingUtil.
                             temp = media.getCompressPath().split("\\.");
                         }
                         else {
-                            path = media.getCompressPath();
+                            path = media.getPath();
                             temp = media.getPath().split("\\.");
                         }
                         //Log.e("temp.length", ""+temp.length);
