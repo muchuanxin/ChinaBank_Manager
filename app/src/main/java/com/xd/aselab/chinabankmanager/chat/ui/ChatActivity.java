@@ -642,10 +642,13 @@ public class ChatActivity extends AppCompatActivity implements ImageSettingUtil.
                         final LocalMedia media = selectList.get(i);
                         Log.e("视频------", media.getPath());
                         String[] temp = null;
+                        String path = null;
                         if (media.isCompressed()){
+                            path = media.getCompressPath();
                             temp = media.getCompressPath().split("\\.");
                         }
                         else {
+                            path = media.getCompressPath();
                             temp = media.getPath().split("\\.");
                         }
                         //Log.e("temp.length", ""+temp.length);
@@ -655,7 +658,7 @@ public class ChatActivity extends AppCompatActivity implements ImageSettingUtil.
 
                         LocalMediaConfig.Buidler buidler = new LocalMediaConfig.Buidler();
                         final LocalMediaConfig config = buidler
-                                .setVideoPath(media.getPath())
+                                .setVideoPath(path)
                                 .captureThumbnailsTime(1)
                                 .doH264Compress(new AutoVBRMode())
                                 .setFramerate(10)

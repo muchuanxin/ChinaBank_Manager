@@ -648,10 +648,13 @@ public class GroupChatActivity extends AppCompatActivity implements ImageSetting
                         final LocalMedia media = selectList.get(i);
                         Log.e("视频------", media.getPath());
                         String[] temp = null;
+                        String path = null;
                         if (media.isCompressed()){
+                            path = media.getCompressPath();
                             temp = media.getCompressPath().split("\\.");
                         }
                         else {
+                            path = media.getPath();
                             temp = media.getPath().split("\\.");
                         }
                         //Log.e("temp.length", ""+temp.length);
@@ -661,7 +664,7 @@ public class GroupChatActivity extends AppCompatActivity implements ImageSetting
 
                         LocalMediaConfig.Buidler buidler = new LocalMediaConfig.Buidler();
                         final LocalMediaConfig config = buidler
-                                .setVideoPath(media.getPath())
+                                .setVideoPath(path)
                                 .captureThumbnailsTime(1)
                                 .doH264Compress(new AutoVBRMode())
                                 .setFramerate(10)
