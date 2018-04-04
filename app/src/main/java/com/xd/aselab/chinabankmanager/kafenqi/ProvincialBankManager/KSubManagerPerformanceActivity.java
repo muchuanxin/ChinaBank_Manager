@@ -136,7 +136,7 @@ public class KSubManagerPerformanceActivity extends AppCompatActivity {
                                             BaseVO baseVO = new BaseVO();
                                             baseVO.setBase_account(temp.getString("secondary_num"));
                                             baseVO.setBase_name(temp.getString("secondary_name"));
-                                            baseVO.setBase_fenqi_num(temp.getInt("number"));
+                                            baseVO.setBase_fenqi_num(temp.getInt("successNumber"));
                                             baseVO.setBase_fenqi_money(temp.getDouble("money"));
                                             base_list_one_week.add(baseVO);
                                         }
@@ -149,7 +149,7 @@ public class KSubManagerPerformanceActivity extends AppCompatActivity {
                                             BaseVO baseVO = new BaseVO();
                                             baseVO.setBase_account(temp.getString("secondary_num"));
                                             baseVO.setBase_name(temp.getString("secondary_name"));
-                                            baseVO.setBase_fenqi_num(temp.getInt("number"));
+                                            baseVO.setBase_fenqi_num(temp.getInt("successNumber"));
                                             baseVO.setBase_fenqi_money(temp.getDouble("money"));
                                             base_list_one_month.add(baseVO);
                                         }
@@ -162,7 +162,7 @@ public class KSubManagerPerformanceActivity extends AppCompatActivity {
                                             BaseVO baseVO = new BaseVO();
                                             baseVO.setBase_account(temp.getString("secondary_num"));
                                             baseVO.setBase_name(temp.getString("secondary_name"));
-                                            baseVO.setBase_fenqi_num(temp.getInt("number"));
+                                            baseVO.setBase_fenqi_num(temp.getInt("successNumber"));
                                             baseVO.setBase_fenqi_money(temp.getDouble("money"));
                                             base_list_three_month.add(baseVO);
                                         }
@@ -175,7 +175,7 @@ public class KSubManagerPerformanceActivity extends AppCompatActivity {
                                             BaseVO baseVO = new BaseVO();
                                             baseVO.setBase_account(temp.getString("secondary_num"));
                                             baseVO.setBase_name(temp.getString("secondary_name"));
-                                            baseVO.setBase_fenqi_num(temp.getInt("number"));
+                                            baseVO.setBase_fenqi_num(temp.getInt("successNumber"));
                                             baseVO.setBase_fenqi_money(temp.getDouble("money"));
                                             base_list_one_year.add(baseVO);
                                         }
@@ -334,7 +334,7 @@ public class KSubManagerPerformanceActivity extends AppCompatActivity {
                 chooseSortAdapter.setPosition(position);
                 sort.setText(Constants.shengHangChooseSortList.get(position));
                 switch (Constants.shengHangChooseSortList.get(position)){
-                    case "分期业务数量降序" :
+                    case "成功业务数量降序" :
                         choosen_sort=base_fenqi_num;
                         switch (choosen_time){
                             case "one_week":
@@ -351,7 +351,7 @@ public class KSubManagerPerformanceActivity extends AppCompatActivity {
                                 break;
                         }
                         break;
-                    case "分期业务金额降序" :
+                    case "成功业务金额降序" :
                         choosen_sort=base_fenqi_money;
                         switch (choosen_time){
                             case "one_week":

@@ -24,7 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.xd.aselab.chinabankmanager.R;
-import com.xd.aselab.chinabankmanager.kafenqi.manager.adapter.BasePerfAdapter;
+import com.xd.aselab.chinabankmanager.kafenqi.manager.adapter.BasePerfToAdapter;
 import com.xd.aselab.chinabankmanager.kafenqi.manager.model.BaseVO;
 import com.xd.aselab.chinabankmanager.util.ChooseTimeAdapter;
 import com.xd.aselab.chinabankmanager.util.ConnectUtil;
@@ -55,7 +55,7 @@ public class KBasePerformanceActivity extends AppCompatActivity {
     private List<BaseVO> base_list_one_month= new ArrayList<>();
     private List<BaseVO> base_list_three_month= new ArrayList<>();
     private List<BaseVO> base_list_one_year= new ArrayList<>();
-    private BasePerfAdapter adapter;
+    private BasePerfToAdapter adapter;
     private ChooseTimeAdapter chooseTimeAdapter;
     private PopupWindow pop;
     private RelativeLayout rl_choose_time;
@@ -127,7 +127,10 @@ public class KBasePerformanceActivity extends AppCompatActivity {
                                             BaseVO baseVO = new BaseVO();
                                             baseVO.setBase_account(temp.getString("account"));
                                             baseVO.setBase_name(temp.getString("name"));
-                                            baseVO.setBase_fenqi_num(temp.getInt("number"));
+                                            baseVO.setbase_fenqi_confirm_num(temp.getInt("confirmNumber"));
+                                            baseVO.setbase_fenqi_refuse_num(temp.getInt("refuseNumber"));
+                                            baseVO.setbase_fenqi_remark_num(temp.getInt("remarkNumber"));
+                                            baseVO.setBase_fenqi_num(temp.getInt("successNumber"));
                                             baseVO.setBase_fenqi_money(temp.getDouble("money"));
                                             base_list_one_week.add(baseVO);
                                         }
@@ -140,7 +143,10 @@ public class KBasePerformanceActivity extends AppCompatActivity {
                                             BaseVO baseVO = new BaseVO();
                                             baseVO.setBase_account(temp.getString("account"));
                                             baseVO.setBase_name(temp.getString("name"));
-                                            baseVO.setBase_fenqi_num(temp.getInt("number"));
+                                            baseVO.setbase_fenqi_confirm_num(temp.getInt("confirmNumber"));
+                                            baseVO.setbase_fenqi_refuse_num(temp.getInt("refuseNumber"));
+                                            baseVO.setbase_fenqi_remark_num(temp.getInt("remarkNumber"));
+                                            baseVO.setBase_fenqi_num(temp.getInt("successNumber"));
                                             baseVO.setBase_fenqi_money(temp.getDouble("money"));
                                             base_list_one_month.add(baseVO);
                                         }
@@ -153,7 +159,10 @@ public class KBasePerformanceActivity extends AppCompatActivity {
                                             BaseVO baseVO = new BaseVO();
                                             baseVO.setBase_account(temp.getString("account"));
                                             baseVO.setBase_name(temp.getString("name"));
-                                            baseVO.setBase_fenqi_num(temp.getInt("number"));
+                                            baseVO.setbase_fenqi_confirm_num(temp.getInt("confirmNumber"));
+                                            baseVO.setbase_fenqi_refuse_num(temp.getInt("refuseNumber"));
+                                            baseVO.setbase_fenqi_remark_num(temp.getInt("remarkNumber"));
+                                            baseVO.setBase_fenqi_num(temp.getInt("successNumber"));
                                             baseVO.setBase_fenqi_money(temp.getDouble("money"));
                                             base_list_three_month.add(baseVO);
                                         }
@@ -166,13 +175,16 @@ public class KBasePerformanceActivity extends AppCompatActivity {
                                             BaseVO baseVO = new BaseVO();
                                             baseVO.setBase_account(temp.getString("account"));
                                             baseVO.setBase_name(temp.getString("name"));
-                                            baseVO.setBase_fenqi_num(temp.getInt("number"));
+                                            baseVO.setbase_fenqi_confirm_num(temp.getInt("confirmNumber"));
+                                            baseVO.setbase_fenqi_refuse_num(temp.getInt("refuseNumber"));
+                                            baseVO.setbase_fenqi_remark_num(temp.getInt("remarkNumber"));
+                                            baseVO.setBase_fenqi_num(temp.getInt("successNumber"));
                                             baseVO.setBase_fenqi_money(temp.getDouble("money"));
                                             base_list_one_year.add(baseVO);
                                         }
                                     }
 
-                                    adapter = new BasePerfAdapter(base_list_one_week,KBasePerformanceActivity.this);
+                                    adapter = new BasePerfToAdapter(base_list_one_week,KBasePerformanceActivity.this);
                                     listView.setAdapter(adapter);
 
                                     if(base_list_one_week.size()>0){
@@ -238,6 +250,7 @@ public class KBasePerformanceActivity extends AppCompatActivity {
                 String worker_account = "";
                 String worker_name = "";
                 String range = "";
+
                 int fenqi_num = 0;
                 double fenqi_money = 0;
                 // worker_account = worker_list.get(position).getAccount();

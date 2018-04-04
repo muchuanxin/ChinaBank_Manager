@@ -4,7 +4,7 @@ package com.xd.aselab.chinabankmanager.kafenqi.KWorkerManage.model;
  * Created by Administrator on 2017/10/4.
  */
 
-public class WorkerVO {
+public class  WorkerVO {
 
     private String account;
     private String name;

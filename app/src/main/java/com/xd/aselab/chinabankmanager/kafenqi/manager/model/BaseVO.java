@@ -9,9 +9,13 @@ public class BaseVO {
     private String base_account;
     private String base_name;
     private String base_tel;
-    private int base_fenqi_num;
     private double base_fenqi_money;
+    private int base_fenqi_confirm_num;//确认业务
+    private int base_fenqi_remark_num;//备注业务
+    private int base_fenqi_refuse_num;//拒绝业务数
+    private int base_fenqi_num;//成功业务数
     private String flag;
+    private int base_fenqi_recommend_num;//推荐业务
 
     public String getBase_account() {
         return base_account;
@@ -40,9 +44,32 @@ public class BaseVO {
     public int getBase_fenqi_num() {
         return base_fenqi_num;
     }
-
     public void setBase_fenqi_num(int base_fenqi_num) {
         this.base_fenqi_num = base_fenqi_num;
+    }
+    public int getbase_fenqi_remark_num() {
+        return base_fenqi_remark_num;
+    }
+    public void setbase_fenqi_remark_num(int base_fenqi_remark_num) {
+        this.base_fenqi_remark_num = base_fenqi_remark_num;
+    }
+    public int getbase_fenqi_confirm_num() {
+        return base_fenqi_confirm_num;
+    }
+    public void setbase_fenqi_confirm_num(int base_fenqi_confirm_num) {
+        this.base_fenqi_confirm_num = base_fenqi_confirm_num;
+    }
+    public int getbase_fenqi_refuse_num() {
+        return base_fenqi_refuse_num;
+    }
+    public void setbase_fenqi_refuse_num(int base_fenqi_refuse_num) {
+        this.base_fenqi_refuse_num = base_fenqi_refuse_num;
+    }
+    public int getBase_fenqi_recommend_num() {
+        return base_fenqi_recommend_num;
+    }
+    public void setbase_fenqi_recommend_num(int base_fenqi_num) {
+        this.base_fenqi_recommend_num = base_fenqi_recommend_num;
     }
 
     public double getBase_fenqi_money() {

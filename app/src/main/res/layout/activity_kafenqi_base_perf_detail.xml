@@ -47,6 +47,7 @@
         android:background="@color/white">
 
         <TextView
+
             android:id="@+id/act_kafenqi_base_perf_detail_name"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="15dp"
@@ -58,6 +59,7 @@
             android:textSize="20dp"/>
 
         <TextView
+
             android:id="@+id/act_kafenqi_base_perf_detail_job_number"
             android:layout_alignParentRight="true"
             android:layout_marginRight="15dp"

@@ -44,7 +44,7 @@
             android:layout_marginTop="3dp"
             android:textSize="16dp"
             android:textColor="@color/black_text_most"
-            android:text="分期业务数量：0笔"/>
+            android:text="成功业务数量：0笔"/>
         <TextView
             android:id="@+id/kafenqi_base_perf_money"
             android:layout_width="match_parent"
@@ -52,7 +52,7 @@
             android:layout_marginTop="3dp"
             android:textSize="16dp"
             android:textColor="@color/black_text_most"
-            android:text="分期业务金额：0.0000万元"/>
+            android:text="成功业务金额：0.0000万元"/>
     </LinearLayout>
 
 </LinearLayout>

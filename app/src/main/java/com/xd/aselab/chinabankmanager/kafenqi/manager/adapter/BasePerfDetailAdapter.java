@@ -1,7 +1,6 @@
 package com.xd.aselab.chinabankmanager.kafenqi.manager.adapter;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +9,6 @@ import android.widget.TextView;
 
 import com.xd.aselab.chinabankmanager.R;
 import com.xd.aselab.chinabankmanager.kafenqi.KWorkerManage.model.WorkerVO;
-import com.xd.aselab.chinabankmanager.kafenqi.manager.model.BaseVO;
 
 import java.text.DecimalFormat;
 import java.util.List;
@@ -59,8 +57,9 @@ public class BasePerfDetailAdapter extends BaseAdapter {
         ViewHolder holder;
         if(convertView==null){
             holder = new ViewHolder();
-            convertView = mInflater.inflate(R.layout.kafenqi_base_perf_adapter, null);
+            convertView = mInflater.inflate(R.layout.kafenqi_base_perfto_detail_adapter, null);
             holder.tv_base_name = (TextView)convertView.findViewById(R.id.kafenqi_base_perf_name);
+            holder.tv_base_recommend_num = (TextView)convertView.findViewById(R.id.kafenqi_base_recommend_num);
             holder.tv_base_num = (TextView)convertView.findViewById(R.id.kafenqi_base_perf_num);
             holder.tv_base_money = (TextView)convertView.findViewById(R.id.kafenqi_base_perf_money);
             holder.tv_base_status = (TextView)convertView.findViewById(R.id.detail_worker_status);
@@ -72,8 +71,9 @@ public class BasePerfDetailAdapter extends BaseAdapter {
 
         DecimalFormat df = new DecimalFormat("#0.0000");
         holder.tv_base_name.setText(list.get(position).getName());
-        holder.tv_base_money.setText("分期业务金额："+df.format(list.get(position).getSuccess_money())+"万元");
-        holder.tv_base_num.setText("分期业务数量："+list.get(position).getSuccess_number()+"笔");
+        holder.tv_base_recommend_num.setText("推荐业务数量："+list.get(position).getRecommend_number()+"笔");
+        holder.tv_base_money.setText("成功业务金额："+df.format(list.get(position).getSuccess_money())+"万元");
+        holder.tv_base_num.setText("成功业务数量："+list.get(position).getSuccess_number()+"笔");
         
         if(!"已加盟".equals(list.get(position).getStatus()))
         {
@@ -89,6 +89,7 @@ public class BasePerfDetailAdapter extends BaseAdapter {
     private static class ViewHolder {
         private TextView tv_base_name;
         private TextView tv_base_num;
+        private TextView tv_base_recommend_num;
         private TextView tv_base_money;
         private TextView tv_base_status;
     }

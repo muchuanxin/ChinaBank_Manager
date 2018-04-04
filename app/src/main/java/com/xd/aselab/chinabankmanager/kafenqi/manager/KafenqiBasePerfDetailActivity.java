@@ -44,6 +44,7 @@ public class KafenqiBasePerfDetailActivity extends AppCompatActivity {
     private String worker_account = "";
     private String worker_name = "";
     private int fenqi_num = 0;
+  //  private int fenqi_recommend_num=0;
     private double fenqi_money = 0;
     private Handler handler;
     private List<WorkerVO> worker_list_one_week= new ArrayList<>();
@@ -89,6 +90,7 @@ public class KafenqiBasePerfDetailActivity extends AppCompatActivity {
         worker_account = getIntent().getStringExtra("worker_account");
         worker_name = getIntent().getStringExtra("worker_name");
         fenqi_num = getIntent().getIntExtra("fenqi_num",0);
+      //  fenqi_recommend_num = getIntent().getIntExtra("fenqi_recommend_num",0);
         fenqi_money = getIntent().getDoubleExtra("fenqi_money",0);
         title.setText(range);
         base_name.setText(worker_name);

@@ -34,6 +34,7 @@ public class KafenqiFirstActivity extends AppCompatActivity {
     private RelativeLayout back;
 
     private LinearLayout my_performance;
+    private LinearLayout my_4smanagement;
     private LinearLayout worker_management;
     private SharePreferenceUtil sp;
 
@@ -51,8 +52,8 @@ public class KafenqiFirstActivity extends AppCompatActivity {
 
     private void initViews(){
         back = (RelativeLayout) findViewById(R.id.act_kafenqi_back_btn);
-
         my_performance = (LinearLayout) findViewById(R.id.act_kafenqi_my_perf);
+        my_4smanagement = (LinearLayout) findViewById(R.id.act_kafenqi_4s_management);
         worker_management = (LinearLayout) findViewById(R.id.act_kafenqi_worker_management);
 
 
@@ -79,6 +80,14 @@ public class KafenqiFirstActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent();
                 intent.setClass(KafenqiFirstActivity.this,KSubManagerPerformanceActivity.class);
+                startActivity(intent);
+            }
+        });
+        my_4smanagement.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(KafenqiFirstActivity.this,KSubManager4sManagementActivity.class);
                 startActivity(intent);
             }
         });

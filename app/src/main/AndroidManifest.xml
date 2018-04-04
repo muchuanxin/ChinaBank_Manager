@@ -493,6 +493,18 @@
 
         <!-- 省行管理者部分 -->
         <activity
+            android:name=".kafenqi.ProvincialBankManager.KSubManager4sManagementActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="nosensor"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity
+            android:name=".kafenqi.ProvincialBankManager.KSubManager4sManagementDetailActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="nosensor"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity
             android:name=".kafenqi.ProvincialBankManager.KSubManagerPerformanceActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="nosensor"
