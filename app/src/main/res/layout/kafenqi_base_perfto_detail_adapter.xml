@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginBottom="5dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/kafenqi_base_perf_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="经理：小明"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/detail_worker_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="2dp"
+                android:textColor="@color/black_text_most"
+                android:textSize="15dp" />
+        </RelativeLayout>
+
+
+        <TextView
+            android:id="@+id/kafenqi_base_recommend_num"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:textSize="16dp"
+            android:textColor="@color/black_text_most"
+            android:text="推荐业务数量：0笔"/>
+        <TextView
+            android:id="@+id/kafenqi_base_perf_num"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:textSize="16dp"
+            android:textColor="@color/black_text_most"
+            android:text="成功业务数量：0笔"/>
+        <TextView
+            android:id="@+id/kafenqi_base_perf_money"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:textSize="16dp"
+            android:textColor="@color/black_text_most"
+            android:text="成功业务金额：0.0000万元"/>
+    </LinearLayout>
+
+</LinearLayout>
