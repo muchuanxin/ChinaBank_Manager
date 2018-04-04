@@ -94,7 +94,7 @@
             android:layout_marginLeft="30dp"
             android:layout_width="35dp"
             android:layout_height="35dp"
-            android:src="@drawable/base_info"/>
+            android:src="@drawable/my_information"/>
 
         <TextView
             android:layout_gravity="center_vertical"
@@ -123,7 +123,7 @@
             android:layout_marginLeft="30dp"
             android:layout_width="35dp"
             android:layout_height="35dp"
-            android:src="@drawable/my_information"/>
+            android:src="@drawable/base_info"/>
 
         <TextView
             android:layout_gravity="center_vertical"
