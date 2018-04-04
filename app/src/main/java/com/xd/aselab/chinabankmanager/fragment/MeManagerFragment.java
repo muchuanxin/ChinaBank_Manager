@@ -4,6 +4,7 @@ package com.xd.aselab.chinabankmanager.fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.xd.aselab.chinabankmanager.R;
+import com.xd.aselab.chinabankmanager.activity.Login;
 import com.xd.aselab.chinabankmanager.my.BaseMyAllPerformanceActivity;
 import com.xd.aselab.chinabankmanager.my.BasePerfAllListActivity;
 import com.xd.aselab.chinabankmanager.my.PersonalInfo;
@@ -44,83 +46,122 @@ public class MeManagerFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        root = inflater.inflate(R.layout.fragment_me_manager, container, false);
         spu = new SharePreferenceUtil(getActivity(),"user");
-        initView();
-        return root;
-    }
+        if ("PROVINCE".equals(spu.getType())){
+            root = inflater.inflate(R.layout.fragment_me_manager, container, false);
+            imageLoader = ImageLoader.getInstance();
 
-    void initView(){
-        /*exit = (Button)root.findViewById(R.id.manager_my_tuichu);
-        exit.setOnClickListener(new View.OnClickListener() {
+            //    iv_head_photo = (CircleImageView)root.findViewById(R.id.manager_my_head);
+            iv_head_photo = (CircleImageView) root.findViewById(R.id.manager_my_head);
+            imageLoader.loadBitmap(getActivity(),spu.getPhotoUrl(),iv_head_photo, R.drawable.portrait);
+
+            tv_user_name = (TextView) root.findViewById(R.id.user_name);
+            tv_user_name.setText(spu.getName());
+
+            rl_my_info = (RelativeLayout)root.findViewById(R.id.manager_my_info);
+            rl_my_info.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent();
+                    intent.setClass(getActivity(),PersonalInfo.class);
+                    startActivityForResult(intent, Constants.MIAN_ME_TO_INFO);
+                }
+            });
+
+            rl_my_performance = (RelativeLayout)root.findViewById(R.id.manager_my_performance);
+            rl_my_performance.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent();
+                    intent.setClass(getActivity(),BaseMyAllPerformanceActivity.class);
+                    intent.putExtra("account",spu.getAccount());
+                    intent.putExtra("type","1");
+                    startActivity(intent);
+                }
+            });
+
+            rl_my_base_performance = (RelativeLayout)root.findViewById(R.id.manager_my_base_performance);
+            rl_my_base_performance.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent();
+                    intent.setClass(getActivity(),BasePerfAllListActivity.class);
+                    startActivity(intent);
+                }
+            });
+
+            rl_my_online_chat = (RelativeLayout)root.findViewById(R.id.manager_my_online);
+            rl_my_online_chat.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                }
+            });
+
+            rl_my_Information = (RelativeLayout)root.findViewById(R.id.manager_my_information);
+            rl_my_Information.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent();
+                    intent.setClass(getActivity(),PersonalInfo.class);
+                    startActivity(intent);
+                }
+            });
+            return root;
+        }else{
+        root = inflater.inflate(R.layout.fragment_me, container, false);
+            imageLoader = ImageLoader.getInstance();
+
+        /*back = (RelativeLayout)root. findViewById(R.id.act_base_my_back_btn);
+        back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                spu.setIsLogin(false);
-                *//*Intent intent = new Intent();
-                intent.setClass(getContext(), Login.class);
-                intent.putExtra("clickView", "exit");
-                startActivity(intent);*//*
+                finish();
             }
         });*/
 
-        imageLoader = ImageLoader.getInstance();
+            iv_head_photo=(CircleImageView)root.findViewById(R.id.base_my_head);
+            //---------------------------------------
+            Log.d("Dorise",spu.getPhotoUrl()+"");
+            imageLoader.loadBitmap(getActivity(),spu.getPhotoUrl(),iv_head_photo,R.drawable.default_head);
 
-    //    iv_head_photo = (CircleImageView)root.findViewById(R.id.manager_my_head);
-        iv_head_photo = (CircleImageView) root.findViewById(R.id.manager_my_head);
-        imageLoader.loadBitmap(getActivity(),spu.getPhotoUrl(),iv_head_photo, R.drawable.portrait);
+            tv_user_name = (TextView)root.findViewById(R.id.user_name);
+            tv_user_name.setText(spu.getName());
 
-        tv_user_name = (TextView) root.findViewById(R.id.user_name);
-        tv_user_name.setText(spu.getName());
+            rl_my_info = (RelativeLayout) root.findViewById(R.id.base_my_info);
+            rl_my_info.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent();
+                    intent.setClass(getActivity(),PersonalInfo.class);
+                    startActivityForResult(intent, Constants.MIAN_ME_TO_INFO);
+                    //startActivity(intent);
+                }
+            });
 
-        rl_my_info = (RelativeLayout)root.findViewById(R.id.manager_my_info);
-        rl_my_info.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setClass(getActivity(),PersonalInfo.class);
-                startActivityForResult(intent, Constants.MIAN_ME_TO_INFO);
-            }
-        });
+            rl_my_performance = (RelativeLayout)root.findViewById(R.id.base_my_performance);
+            rl_my_performance.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent();
+                    intent.setClass(getActivity(),BaseMyAllPerformanceActivity.class);
+                    intent.putExtra("account",spu.getAccount());
+                    intent.putExtra("type","0");
+                    startActivity(intent);
+                }
+            });
 
-        rl_my_performance = (RelativeLayout)root.findViewById(R.id.manager_my_performance);
-        rl_my_performance.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setClass(getActivity(),BaseMyAllPerformanceActivity.class);
-                intent.putExtra("account",spu.getAccount());
-                intent.putExtra("type","1");
-                startActivity(intent);
-            }
-        });
-
-        rl_my_base_performance = (RelativeLayout)root.findViewById(R.id.manager_my_base_performance);
-        rl_my_base_performance.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setClass(getActivity(),BasePerfAllListActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        rl_my_online_chat = (RelativeLayout)root.findViewById(R.id.manager_my_online);
-        rl_my_online_chat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
-        rl_my_Information = (RelativeLayout)root.findViewById(R.id.manager_my_information);
-        rl_my_Information.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setClass(getActivity(),PersonalInfo.class);
-                startActivity(intent);
-            }
-        });
+            rl_my_Information = (RelativeLayout)root.findViewById(R.id.base_my_information);
+            rl_my_Information.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent();
+                    intent.setClass(getActivity(),PersonalInfo.class);
+                    startActivity(intent);
+                }
+            });
+            return root;
+        }
 
     }
 
