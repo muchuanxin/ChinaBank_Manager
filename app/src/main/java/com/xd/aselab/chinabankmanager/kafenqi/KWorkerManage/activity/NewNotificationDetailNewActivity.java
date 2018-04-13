@@ -547,7 +547,7 @@ public class NewNotificationDetailNewActivity extends AppCompatActivity {
                                             set_info.setVisibility(View.GONE);
                                             ll_choose.setVisibility(View.GONE);
                                             tv_mark.setVisibility(View.VISIBLE);
-                                            tv_mark.setText("业务不通过");
+                                            tv_mark.setText("不通过");
                                             tv_mark.setTextColor(getResources().getColor(R.color.gray_text_most_1));
                                             break;
 

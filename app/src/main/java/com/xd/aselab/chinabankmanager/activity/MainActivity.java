@@ -191,10 +191,14 @@ public class MainActivity extends AppCompatActivity {
                     ((ImageButton) me_btn.findViewById(R.id.mcx_footer_me_btn))
                             .setImageResource(R.drawable.me_black);
                     if(spu.getType().equals("BASIC")){
-                        if (fra_me_basic == null){
-                            fra_me_basic = new MeBasicFragment();
-                            transaction.add(R.id.mcx_main_content, fra_me_basic,"main_basic_me");
+                        if (fra_me_manager == null){
+                            fra_me_manager = new MeManagerFragment();
+                            transaction.add(R.id.mcx_main_content, fra_me_manager,"main_manager_me");
                         }
+//                        if (fra_me_basic == null){
+//                            fra_me_basic = new MeBasicFragment();
+//                            transaction.add(R.id.mcx_main_content, fra_me_basic,"main_basic_me");
+//                        }
                         // intent.setClass(MainActivity_all.this, BaseMyActivity.class);
                     }else if(spu.getType().equals("MANAGER")){
                         if (fra_me_manager == null){

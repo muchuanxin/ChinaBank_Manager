@@ -529,6 +529,15 @@ public class KSubManager4sManagementActivity extends AppCompatActivity {
                     case "近一周业绩" :
                         choosen_time="one_week";
                         switch (choosen_sort){
+                            case "base_fenqi_confirm_num":
+                                setListAndAdaper(base_list_one_week,"base_fenqi_confirm_num");
+                                break;
+                            case "base_fenqi_refuse_num":
+                                setListAndAdaper(base_list_one_week,"base_fenqi_refuse_num");
+                                break;
+                            case "base_fenqi_remark_num":
+                                setListAndAdaper(base_list_one_week,"base_fenqi_remark_num");
+                                break;
                             case "base_fenqi_num":
                                 ListUtils.sort(base_list_one_week,false,"base_fenqi_num");
                                 adapter.setList(base_list_one_week);
@@ -543,6 +552,15 @@ public class KSubManager4sManagementActivity extends AppCompatActivity {
                     case "近一月业绩" :
                         choosen_time="one_month";
                         switch (choosen_sort){
+                            case "base_fenqi_confirm_num":
+                                setListAndAdaper(base_list_one_month,"base_fenqi_confirm_num");
+                                break;
+                            case "base_fenqi_refuse_num":
+                                setListAndAdaper(base_list_one_month,"base_fenqi_refuse_num");
+                                break;
+                            case "base_fenqi_remark_num":
+                                setListAndAdaper(base_list_one_month,"base_fenqi_remark_num");
+                                break;
                             case "base_fenqi_num":
                                 setListAndAdaper(base_list_one_month,"base_fenqi_num");
                                 break;

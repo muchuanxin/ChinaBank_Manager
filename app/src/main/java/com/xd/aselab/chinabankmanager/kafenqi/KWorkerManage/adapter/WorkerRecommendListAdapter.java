@@ -143,7 +143,7 @@ public class WorkerRecommendListAdapter extends BaseAdapter {
                 holder.bt_refuse.setOnClickListener(mListener);
                 break;
             case "FAIL":
-                holder.bt_confirm.setText("业务不通过");
+                holder.bt_confirm.setText("不通过");
                 holder.input_info.setVisibility(View.GONE);
                 holder.bt_confirm.setBackgroundResource(R.drawable.grey_corner);
                 holder.bt_confirm.setVisibility(View.VISIBLE);
