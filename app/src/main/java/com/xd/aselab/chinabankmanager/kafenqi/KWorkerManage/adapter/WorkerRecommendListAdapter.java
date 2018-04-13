@@ -157,7 +157,7 @@ public class WorkerRecommendListAdapter extends BaseAdapter {
             holder.input_info.setVisibility(View.GONE);
             holder.get_money.setVisibility(View.VISIBLE);
             holder.serial_num.setVisibility(View.VISIBLE);
-            holder.get_money.setText("放款金额：" + list.get(position).getFenqi_money()+"万元");
+            holder.get_money.setText("放款金额：" + df.format(list.get(position).getFenqi_money())+"万元");
             holder.serial_num.setText("流水号：" + list.get(position).getSerial_num());
         }else{
             holder.get_money.setVisibility(View.GONE);

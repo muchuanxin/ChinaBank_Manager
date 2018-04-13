@@ -147,7 +147,7 @@ public class WorkerPerformenceActivity extends AppCompatActivity {
                                             workerVO.setStatus(temp.getString("status"));
                                             double rate = 0;
                                             if (temp.getInt("recommend_num") > 0) {
-                                                rate = temp.getInt("success_num") / temp.getInt("recommend_num");
+                                                rate = Double.valueOf(temp.getInt("success_num")) / temp.getInt("recommend_num");
                                             }
                                             workerVO.setSuccess_rate(rate);
                                             worker_list_one_week.add(workerVO);
@@ -170,7 +170,7 @@ public class WorkerPerformenceActivity extends AppCompatActivity {
                                             workerVO.setExchange_credit(temp.getInt("exchange_score"));
                                             double rate = 0;
                                             if (temp.getInt("recommend_num") > 0) {
-                                                rate = temp.getInt("success_num") / temp.getInt("recommend_num");
+                                                rate = Double.valueOf(temp.getInt("success_num")) / temp.getInt("recommend_num");
                                             }
                                             workerVO.setSuccess_rate(rate);
                                             worker_list_one_month.add(workerVO);
@@ -193,7 +193,7 @@ public class WorkerPerformenceActivity extends AppCompatActivity {
                                             workerVO.setExchange_credit(temp.getInt("exchange_score"));
                                             double rate = 0;
                                             if (temp.getInt("recommend_num") > 0) {
-                                                rate = temp.getInt("success_num") / temp.getInt("recommend_num");
+                                                rate = Double.valueOf(temp.getInt("success_num")) / temp.getInt("recommend_num");
                                             }
                                             workerVO.setSuccess_rate(rate);
                                             worker_list_three_month.add(workerVO);
@@ -216,7 +216,7 @@ public class WorkerPerformenceActivity extends AppCompatActivity {
                                             workerVO.setExchange_credit(temp.getInt("exchange_score"));
                                             double rate = 0;
                                             if (temp.getInt("recommend_num") > 0) {
-                                                rate = temp.getInt("success_num") / temp.getInt("recommend_num");
+                                                rate = Double.valueOf(temp.getInt("success_num")) / temp.getInt("recommend_num");
                                             }
                                             workerVO.setSuccess_rate(rate);
                                             worker_list_one_year.add(workerVO);
