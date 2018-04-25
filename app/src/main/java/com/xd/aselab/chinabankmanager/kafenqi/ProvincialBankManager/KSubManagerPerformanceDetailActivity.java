@@ -67,6 +67,13 @@ public class KSubManagerPerformanceDetailActivity extends AppCompatActivity {
     private String choosen_sort = "base_fenqi_num";
     private String  base_fenqi_num="base_fenqi_num";//分期业务数
     private String  base_fenqi_money="base_fenqi_money";//分期金额数
+    private String shijian;
+    private Integer position1=0;
+    private String worker_account = "";
+    private String worker_name = "";
+    private String range = "";
+    private int fenqi_num = 0;
+    private double fenqi_money = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -99,141 +106,200 @@ public class KSubManagerPerformanceDetailActivity extends AppCompatActivity {
         rl_no_data = (LinearLayout)findViewById(R.id.act_kafenqi_base_perf_no_data);
     }
 
-    void initDatas(){
+    void initDatas() {
         spu = new SharePreferenceUtil(KSubManagerPerformanceDetailActivity.this, "user");
         select_string = new String[]{"近一周业绩", "近一月业绩", "近一季度业绩", "近一年业绩"};
-        chooseTimeAdapter = new ChooseTimeAdapter(Constants.chooseTimeList,KSubManagerPerformanceDetailActivity.this);
-        chooseSortAdapter = new ChooseSortAdapter(Constants.shengHangChooseSortList,KSubManagerPerformanceDetailActivity.this);
-        intent=getIntent();
-        secondary_num=(String) intent.getSerializableExtra("worker_account");
-        handler = new Handler(){
-            @Override
-            public void handleMessage(Message msg) {
-                super.handleMessage(msg);
-                switch (msg.what){
-                    case 0 :
-                        try {
-                            String reCode = (String) msg.obj;
-                            if (reCode!=null){
-                                Log.e("KBasePerformance：reCode", reCode);
-                                JSONObject json = new JSONObject(reCode);
-                                String status = json.getString("status");
-                                //worker_list_one_week = new ArrayList<>();
-                                if ("false".equals(status)) {
-                                    Toast.makeText(KSubManagerPerformanceDetailActivity.this, json.getString("message"), Toast.LENGTH_SHORT).show();
-                                } else if ("true".equals(status)) {
-                                    JSONArray oneWeekJA = json.getJSONArray("one_week");
-                                    JSONArray oneMonthJA = json.getJSONArray("one_month");
-                                    JSONArray threeMonthJA = json.getJSONArray("three_month");
-                                    JSONArray oneYearJA = json.getJSONArray("one_year");
-                                    //JSONObject oneMonthJO = json.getJSONObject("one_month");
-                                    //Log.e("this_year", this_year.toString());
+        chooseTimeAdapter = new ChooseTimeAdapter(Constants.chooseTimeList, KSubManagerPerformanceDetailActivity.this);
+        chooseSortAdapter = new ChooseSortAdapter(Constants.shengHangChooseSortList, KSubManagerPerformanceDetailActivity.this);
+        intent = getIntent();
+        secondary_num = intent.getStringExtra("worker_account");
+        shijian = intent.getStringExtra("shijian");
+        position1 = intent.getIntExtra("position", 0);
+       /* if (shijian != null) {
+            switch (shijian) {
+                case "近一周业绩":
+                    worker_account = base_list_one_week.get(position1).getBase_account();
+                    worker_name = base_list_one_week.get(position1).getBase_name();
+                    range = "近一周业绩";
+                    fenqi_num = base_list_one_week.get(position1).getBase_fenqi_num();
+                    fenqi_money = base_list_one_week.get(position1).getBase_fenqi_money();
+                    break;
+                case "近一月业绩":
+                    worker_account = base_list_one_month.get(position1).getBase_account();
+                    worker_name = base_list_one_month.get(position1).getBase_name();
+                    range = "近一月业绩";
+                    fenqi_num = base_list_one_month.get(position1).getBase_fenqi_num();
+                    fenqi_money = base_list_one_month.get(position1).getBase_fenqi_money();
+                    break;
+                case "近一季度业绩":
+                    worker_account = base_list_three_month.get(position1).getBase_account();
+                    worker_name = base_list_three_month.get(position1).getBase_name();
+                    range = "近一季度业绩";
+                    fenqi_num = base_list_three_month.get(position1).getBase_fenqi_num();
+                    fenqi_money = base_list_three_month.get(position1).getBase_fenqi_money();
+                    break;
+                case "近一年业绩":
+                    worker_account = base_list_one_year.get(position1).getBase_account();
+                    worker_name = base_list_one_year.get(position1).getBase_name();
+                    range = "近一年业绩";
+                    fenqi_num = base_list_one_year.get(position1).getBase_fenqi_num();
+                    fenqi_money = base_list_one_year.get(position1).getBase_fenqi_money();
+                    break;
+            }*/
+            handler = new Handler() {
+                @Override
+                public void handleMessage(Message msg) {
+                    super.handleMessage(msg);
+                    switch (msg.what) {
+                        case 0:
+                            try {
+                                String reCode = (String) msg.obj;
+                                if (reCode != null) {
+                                    Log.e("KBasePerformance：reCode", reCode);
+                                    JSONObject json = new JSONObject(reCode);
+                                    String status = json.getString("status");
+                                    //worker_list_one_week = new ArrayList<>();
+                                    if ("false".equals(status)) {
+                                        Toast.makeText(KSubManagerPerformanceDetailActivity.this, json.getString("message"), Toast.LENGTH_SHORT).show();
+                                    } else if ("true".equals(status)) {
+                                        JSONArray oneWeekJA = json.getJSONArray("one_week");
+                                        JSONArray oneMonthJA = json.getJSONArray("one_month");
+                                        JSONArray threeMonthJA = json.getJSONArray("three_month");
+                                        JSONArray oneYearJA = json.getJSONArray("one_year");
+                                        //JSONObject oneMonthJO = json.getJSONObject("one_month");
+                                        //Log.e("this_year", this_year.toString());
 
-                                    base_list_one_week.clear();
-                                    base_list_one_month.clear();
-                                    base_list_three_month.clear();
-                                    base_list_one_year.clear();
-                                    if(oneWeekJA.length()>0){
-                                        for (int i = 0; i < oneWeekJA.length(); i++) {
-                                            JSONObject temp = (JSONObject) oneWeekJA.get(i);
-                                            BaseVO baseVO = new BaseVO();
-                                            baseVO.setBase_account(temp.getString("account"));
-                                            baseVO.setBase_name(temp.getString("name"));
-                                            baseVO.setBase_fenqi_num(temp.getInt("number"));
-                                            baseVO.setBase_fenqi_money(temp.getDouble("money"));
-                                            base_list_one_week.add(baseVO);
+                                        base_list_one_week.clear();
+                                        base_list_one_month.clear();
+                                        base_list_three_month.clear();
+                                        base_list_one_year.clear();
+                                        if (oneWeekJA.length() > 0) {
+                                            for (int i = 0; i < oneWeekJA.length(); i++) {
+                                                JSONObject temp = (JSONObject) oneWeekJA.get(i);
+                                                BaseVO baseVO = new BaseVO();
+                                                baseVO.setBase_account(temp.getString("account"));
+                                                baseVO.setBase_name(temp.getString("name"));
+                                                baseVO.setBase_fenqi_num(temp.getInt("number"));
+                                                baseVO.setBase_fenqi_money(temp.getDouble("money"));
+                                                base_list_one_week.add(baseVO);
+                                            }
                                         }
-                                    }
 
-                                    //worker_list_one_month = new ArrayList<>();
-                                    if(oneMonthJA.length()>0){
-                                        for (int i = 0; i < oneMonthJA.length(); i++) {
-                                            JSONObject temp = (JSONObject) oneMonthJA.get(i);
-                                            BaseVO baseVO = new BaseVO();
-                                            baseVO.setBase_account(temp.getString("account"));
-                                            baseVO.setBase_name(temp.getString("name"));
-                                            baseVO.setBase_fenqi_num(temp.getInt("number"));
-                                            baseVO.setBase_fenqi_money(temp.getDouble("money"));
-                                            base_list_one_month.add(baseVO);
+                                        //worker_list_one_month = new ArrayList<>();
+                                        if (oneMonthJA.length() > 0) {
+                                            for (int i = 0; i < oneMonthJA.length(); i++) {
+                                                JSONObject temp = (JSONObject) oneMonthJA.get(i);
+                                                BaseVO baseVO = new BaseVO();
+                                                baseVO.setBase_account(temp.getString("account"));
+                                                baseVO.setBase_name(temp.getString("name"));
+                                                baseVO.setBase_fenqi_num(temp.getInt("number"));
+                                                baseVO.setBase_fenqi_money(temp.getDouble("money"));
+                                                base_list_one_month.add(baseVO);
+                                            }
                                         }
-                                    }
 
-                                    // worker_list_three_month = new ArrayList<>();
-                                    if(threeMonthJA.length()>0){
-                                        for (int i = 0; i < threeMonthJA.length(); i++) {
-                                            JSONObject temp = (JSONObject) threeMonthJA.get(i);
-                                            BaseVO baseVO = new BaseVO();
-                                            baseVO.setBase_account(temp.getString("account"));
-                                            baseVO.setBase_name(temp.getString("name"));
-                                            baseVO.setBase_fenqi_num(temp.getInt("number"));
-                                            baseVO.setBase_fenqi_money(temp.getDouble("money"));
-                                            base_list_three_month.add(baseVO);
+                                        // worker_list_three_month = new ArrayList<>();
+                                        if (threeMonthJA.length() > 0) {
+                                            for (int i = 0; i < threeMonthJA.length(); i++) {
+                                                JSONObject temp = (JSONObject) threeMonthJA.get(i);
+                                                BaseVO baseVO = new BaseVO();
+                                                baseVO.setBase_account(temp.getString("account"));
+                                                baseVO.setBase_name(temp.getString("name"));
+                                                baseVO.setBase_fenqi_num(temp.getInt("number"));
+                                                baseVO.setBase_fenqi_money(temp.getDouble("money"));
+                                                base_list_three_month.add(baseVO);
+                                            }
                                         }
-                                    }
 
-                                    // worker_list_one_year = new ArrayList<>();
-                                    if(oneYearJA.length()>0){
-                                        for (int i = 0; i < oneYearJA.length(); i++) {
-                                            JSONObject temp = (JSONObject) oneYearJA.get(i);
-                                            BaseVO baseVO = new BaseVO();
-                                            baseVO.setBase_account(temp.getString("account"));
-                                            baseVO.setBase_name(temp.getString("name"));
-                                            baseVO.setBase_fenqi_num(temp.getInt("number"));
-                                            baseVO.setBase_fenqi_money(temp.getDouble("money"));
-                                            base_list_one_year.add(baseVO);
+                                        // worker_list_one_year = new ArrayList<>();
+                                        if (oneYearJA.length() > 0) {
+                                            for (int i = 0; i < oneYearJA.length(); i++) {
+                                                JSONObject temp = (JSONObject) oneYearJA.get(i);
+                                                BaseVO baseVO = new BaseVO();
+                                                baseVO.setBase_account(temp.getString("account"));
+                                                baseVO.setBase_name(temp.getString("name"));
+                                                baseVO.setBase_fenqi_num(temp.getInt("number"));
+                                                baseVO.setBase_fenqi_money(temp.getDouble("money"));
+                                                base_list_one_year.add(baseVO);
+                                            }
                                         }
+
+                                        List temp = null;
+                                        if (shijian!=null && !"".equals(shijian)) {
+                                            switch (shijian) {
+                                                case "近一周业绩":
+                                                    chooseTimeAdapter.setPosition(0);
+                                                    choosen_time="one_week";
+                                                    temp = base_list_one_week;
+                                                    break;
+                                                case "近一月业绩":
+                                                    chooseTimeAdapter.setPosition(1);
+                                                    choosen_time="one_month";
+                                                    temp = base_list_one_month;
+                                                    break;
+                                                case "近一季度业绩":
+                                                    chooseTimeAdapter.setPosition(2);
+                                                    choosen_time="three_month";
+                                                    temp = base_list_three_month;
+                                                    break;
+                                                case "近一年业绩":
+                                                    chooseTimeAdapter.setPosition(3);
+                                                    choosen_time="one_year";
+                                                    temp = base_list_one_year;
+                                                    break;
+                                            }
+                                            select_time.setText(shijian);
+                                            adapter = new BasePerfAdapter(temp, KSubManagerPerformanceDetailActivity.this);
+                                        }
+                                        else {
+                                            select_time.setText("近一周业绩");
+                                            adapter = new BasePerfAdapter(base_list_one_week, KSubManagerPerformanceDetailActivity.this);
+                                        }
+                                        listView.setAdapter(adapter);
+
+                                        if (temp.size() > 0) {
+                                            listView.setVisibility(View.VISIBLE);
+                                            no_data.setVisibility(View.GONE);
+
+                                        } else {
+                                            listView.setVisibility(View.GONE);
+                                            no_data.setVisibility(View.VISIBLE);
+                                        }
+
+                                    } else {
+                                        Log.e("KMyPreformenceActivity", KSubManagerPerformanceDetailActivity.this.getResources().getString(R.string.status_exception));
                                     }
-
-                                    adapter = new BasePerfAdapter(base_list_one_week,KSubManagerPerformanceDetailActivity.this);
-                                    listView.setAdapter(adapter);
-
-                                    if(base_list_one_week.size()>0){
-                                        listView.setVisibility(View.VISIBLE);
-                                        no_data.setVisibility(View.GONE);
-
-                                    }else{
-                                        listView.setVisibility(View.GONE);
-                                        no_data.setVisibility(View.VISIBLE);
-                                    }
-
                                 } else {
-                                    Log.e("KMyPreformenceActivity", KSubManagerPerformanceDetailActivity.this.getResources().getString(R.string.status_exception));
+                                    Toast.makeText(KSubManagerPerformanceDetailActivity.this, KSubManagerPerformanceDetailActivity.this.getResources().getString(R.string.network_connect_exception), Toast.LENGTH_SHORT).show();
+                                    Log.e("KMyPreformenceActivity", "reCode为空");
                                 }
+                            } catch (Exception e) {
+                                e.printStackTrace();
                             }
-                            else {
-                                Toast.makeText(KSubManagerPerformanceDetailActivity.this, KSubManagerPerformanceDetailActivity.this.getResources().getString(R.string.network_connect_exception), Toast.LENGTH_SHORT).show();
-                                Log.e("KMyPreformenceActivity", "reCode为空");
-                            }
-                        }
-                        catch (Exception e){
-                            e.printStackTrace();
-                        }
-                        break;
-                    default:
-                        Log.e("KMyPreformenceActivity", KSubManagerPerformanceDetailActivity.this.getResources().getString(R.string.handler_what_exception));
-                        break;
+                            break;
+                        default:
+                            Log.e("KMyPreformenceActivity", KSubManagerPerformanceDetailActivity.this.getResources().getString(R.string.handler_what_exception));
+                            break;
+                    }
                 }
-            }
-        };
+            };
 
-        new Thread(){
-            @Override
-            public void run() {
-                super.run();
-                final PostParameter[] params = new PostParameter[1];
-                params[0] = new PostParameter("secondary_num", secondary_num);
-                String reCode = ConnectUtil.httpRequest(ConnectUtil.GetInstallmentBossManagerPerformace, params, ConnectUtil.POST);
-                Log.e("reCode",""+reCode);
-                Message msg = new Message();
-                msg.what = 0;
-                msg.obj = reCode;
-                handler.sendMessage(msg);
-            }
-        }.start();
-
+            new Thread() {
+                @Override
+                public void run() {
+                    super.run();
+                    final PostParameter[] params = new PostParameter[1];
+                    params[0] = new PostParameter("secondary_num", secondary_num);
+                    String reCode = ConnectUtil.httpRequest(ConnectUtil.GetInstallmentBossManagerPerformace, params, ConnectUtil.POST);
+                    Log.e("reCode", "" + reCode);
+                    Message msg = new Message();
+                    msg.what = 0;
+                    msg.obj = reCode;
+                    handler.sendMessage(msg);
+                }
+            }.start();
 
     }
-
     void initEvents(){
         rl_choose_sort.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -252,12 +318,9 @@ public class KSubManagerPerformanceDetailActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                String worker_account = "";
-                String worker_name = "";
-                String range = "";
-                int fenqi_num = 0;
-                double fenqi_money = 0;
+
                 // worker_account = worker_list.get(position).getAccount();
+               // shijian=select_time.getText().toString();
                 switch (select_time.getText().toString()){
                     case "近一周业绩" :
                         worker_account = base_list_one_week.get(position).getBase_account();
@@ -296,9 +359,12 @@ public class KSubManagerPerformanceDetailActivity extends AppCompatActivity {
                 intent.putExtra("fenqi_num",fenqi_num);
                 intent.putExtra("fenqi_money",fenqi_money);
 
+               intent.putExtra("shijian",select_time.getText().toString());
+//                intent.putExtra("position",position);
                 startActivity(intent);
             }
         });
+//        if()
     }
     void showSortPopWindow(){
         View root = LayoutInflater.from(KSubManagerPerformanceDetailActivity.this).inflate(R.layout.choose_time_listview,null);
@@ -320,7 +386,7 @@ public class KSubManagerPerformanceDetailActivity extends AppCompatActivity {
                 chooseSortAdapter.setPosition(position);
                 sort.setText(Constants.shengHangChooseSortList.get(position));
                 switch (Constants.shengHangChooseSortList.get(position)){
-                    case "分期业务数量降序" :
+                    case "成功业务数量降序" :
                         choosen_sort=base_fenqi_num;
                         switch (choosen_time){
                             case "one_week":
@@ -337,7 +403,7 @@ public class KSubManagerPerformanceDetailActivity extends AppCompatActivity {
                                 break;
                         }
                         break;
-                    case "分期业务金额降序" :
+                    case "成功业务金额降序" :
                         choosen_sort=base_fenqi_money;
                         switch (choosen_time){
                             case "one_week":

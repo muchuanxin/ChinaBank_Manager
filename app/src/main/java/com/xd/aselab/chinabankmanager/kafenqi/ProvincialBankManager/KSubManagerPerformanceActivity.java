@@ -65,7 +65,13 @@ public class KSubManagerPerformanceActivity extends AppCompatActivity {
     private String choosen_sort = "base_fenqi_num";
     private String  base_fenqi_num="base_fenqi_num";//分期业务数
     private String  base_fenqi_money="base_fenqi_money";//分期金额数
-
+    private String shijian;
+    private Integer position1=0;
+    private String worker_account = "";
+    private String worker_name = "";
+    private String range = "";
+    private int fenqi_num = 0;
+    private double fenqi_money = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -183,6 +189,7 @@ public class KSubManagerPerformanceActivity extends AppCompatActivity {
 
                                     adapter = new BasePerfAdapter(base_list_one_week, KSubManagerPerformanceActivity.this);
                                     listView.setAdapter(adapter);
+                                    select_time.setText("近一周业绩");
 
                                     if(base_list_one_week.size()>0){
                                         listView.setVisibility(View.VISIBLE);
@@ -231,7 +238,7 @@ public class KSubManagerPerformanceActivity extends AppCompatActivity {
 
     }
 
-    void initEvents(){
+    void initEvents() {
 
         rl_choose_sort.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -252,35 +259,35 @@ public class KSubManagerPerformanceActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                String worker_account = "";
-                String worker_name = "";
-                String range = "";
-                int fenqi_num = 0;
-                double fenqi_money = 0;
+//                String worker_account = "";
+//                String worker_name = "";
+//                String range = "";
+//                int fenqi_num = 0;
+//                double fenqi_money = 0;
                 // worker_account = worker_list.get(position).getAccount();
-                switch (select_time.getText().toString()){
-                    case "近一周业绩" :
+                switch (select_time.getText().toString()) {
+                    case "近一周业绩":
                         worker_account = base_list_one_week.get(position).getBase_account();
                         worker_name = base_list_one_week.get(position).getBase_name();
                         range = "近一周业绩";
                         fenqi_num = base_list_one_week.get(position).getBase_fenqi_num();
                         fenqi_money = base_list_one_week.get(position).getBase_fenqi_money();
                         break;
-                    case "近一月业绩" :
+                    case "近一月业绩":
                         worker_account = base_list_one_month.get(position).getBase_account();
                         worker_name = base_list_one_month.get(position).getBase_name();
                         range = "近一月业绩";
                         fenqi_num = base_list_one_month.get(position).getBase_fenqi_num();
                         fenqi_money = base_list_one_month.get(position).getBase_fenqi_money();
                         break;
-                    case "近一季度业绩" :
+                    case "近一季度业绩":
                         worker_account = base_list_three_month.get(position).getBase_account();
                         worker_name = base_list_three_month.get(position).getBase_name();
                         range = "近一季度业绩";
                         fenqi_num = base_list_three_month.get(position).getBase_fenqi_num();
                         fenqi_money = base_list_three_month.get(position).getBase_fenqi_money();
                         break;
-                    case "近一年业绩" :
+                    case "近一年业绩":
                         worker_account = base_list_one_year.get(position).getBase_account();
                         worker_name = base_list_one_year.get(position).getBase_name();
                         range = "近一年业绩";
@@ -289,13 +296,16 @@ public class KSubManagerPerformanceActivity extends AppCompatActivity {
                         break;
                 }
                 Intent intent = new Intent();
-                intent.setClass(KSubManagerPerformanceActivity.this,KSubManagerPerformanceDetailActivity.class);
+                intent.setClass(KSubManagerPerformanceActivity.this, KSubManagerPerformanceDetailActivity.class);
 
-                intent.putExtra("worker_account",worker_account);
-                intent.putExtra("worker_name",worker_name);
-                intent.putExtra("range",range);
-                intent.putExtra("fenqi_num",fenqi_num);
-                intent.putExtra("fenqi_money",fenqi_money);
+                intent.putExtra("worker_account", worker_account);
+                intent.putExtra("worker_name", worker_name);
+                intent.putExtra("range", range);
+                intent.putExtra("fenqi_num", fenqi_num);
+                intent.putExtra("fenqi_money", fenqi_money);
+
+                intent.putExtra("shijian", select_time.getText().toString());
+                intent.putExtra("position", position);
 
                 startActivity(intent);
             }

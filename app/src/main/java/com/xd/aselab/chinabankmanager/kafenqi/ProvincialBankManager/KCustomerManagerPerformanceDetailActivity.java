@@ -105,6 +105,7 @@ public class KCustomerManagerPerformanceDetailActivity extends AppCompatActivity
     }
 
     void getDataFormServer(){
+
         handler = new Handler(){
             @Override
             public void handleMessage(Message msg) {
@@ -233,6 +234,7 @@ public class KCustomerManagerPerformanceDetailActivity extends AppCompatActivity
                                             worker_list_one_year.add(workerVO);
                                         }
                                     }
+
                                     if(worker_list_one_week.size()>0){
                                         listView.setVisibility(View.VISIBLE);
                                         no_data.setVisibility(View.GONE);
