@@ -21,7 +21,7 @@ import java.util.Map;
 
 public class WhereToGo extends AppCompatActivity {
 
-    private RelativeLayout back;
+    private RelativeLayout back; 
     private ListView list_view;
     private SearchView search;
 
