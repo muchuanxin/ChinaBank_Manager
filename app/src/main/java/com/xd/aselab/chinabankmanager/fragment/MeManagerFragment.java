@@ -1,6 +1,5 @@
 package com.xd.aselab.chinabankmanager.fragment;
 
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

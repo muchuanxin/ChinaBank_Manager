@@ -61,7 +61,7 @@ public class BaseInfo extends AppCompatActivity {
         back = (RelativeLayout) findViewById(R.id.act_base_info_back_btn);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 finish();
             }
         });

@@ -1,6 +1,5 @@
 package com.xd.aselab.chinabankmanager.util;
 
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;

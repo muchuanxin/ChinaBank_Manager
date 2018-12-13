@@ -29,7 +29,7 @@ public class WhereToGo extends AppCompatActivity {
     private List<Map<String, String>> list;
     private List<Map<String, String>> backup;
     private String[] names=null;
-    private String[] addrs=null; 
+    private String[] addrs=null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

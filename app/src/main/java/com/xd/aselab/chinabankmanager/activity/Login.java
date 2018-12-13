@@ -19,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.xd.aselab.chinabankmanager.BaseScoreAccount.BaseIndexActivity;
 import com.xd.aselab.chinabankmanager.R;
 import com.xd.aselab.chinabankmanager.gerenxiaodai.GerenxiaodaiActivity;
 import com.xd.aselab.chinabankmanager.kafenqi.KafenqiActivity;
@@ -50,6 +51,7 @@ public class Login extends AppCompatActivity {
 
     private String account;
     private String psw;
+    private boolean scoreFlag = false;  // 积分账号登录时的判别标志
 
     private String clickView = "";
     private Handler handler;
@@ -188,7 +190,13 @@ public class Login extends AppCompatActivity {
                                     else if ("MANAGER".equals(job)) {
                                         startActivity(new Intent().setClass(Login.this, MainActivity_Boss.class));
                                     }*/
-                                    startActivity(new Intent().setClass(Login.this, MainActivity.class));
+                                    // 判断页面跳转，是否应该去积分页面
+                                    if (scoreFlag) {
+                                        startActivity(new Intent().setClass(Login.this, BaseIndexActivity.class));
+                                    } else {
+                                        startActivity(new Intent().setClass(Login.this, MainActivity.class));
+                                    }
+
                                     if ("toast_i".equals(clickView)){
                                         finish();
                                     }
@@ -296,6 +304,15 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 account = account_edit.getText().toString().trim();
+                // 判断账号是否为积分账号，看最后3位后缀
+                // 如果是"_JF"，去掉之
+                // 同时令积分账号登录flag为1，准备跳转到积分账号页
+                String postfix = account.substring(account.length()-3);
+                if(postfix.equalsIgnoreCase("_JF")){
+                    account = account.substring(0, account.length()-3);
+                    scoreFlag = true;
+                }
+
                 psw = psw_edit.getText().toString().trim();
                 if (account==null || "".equals(account) || psw==null || "".equals(psw)){
                     Toast.makeText(Login.this, "请输入账号密码", Toast.LENGTH_SHORT).show();
