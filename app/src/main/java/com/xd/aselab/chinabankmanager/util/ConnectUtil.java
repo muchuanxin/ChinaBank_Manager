@@ -134,6 +134,7 @@ public class ConnectUtil {
 
 	//积分账户相关
 	public static String GetNotExchangedScore=API_HOST+"GetManagerNotExchangeScore";
+	public static String GiveScore=API_HOST+"GiveScore";
 
 	public static String httpRequest(String url, PostParameter[] postParams, String httpMethod) {
 		InputStream input = null;

@@ -18,8 +18,19 @@ public class SharePreferenceUtil {
         editor.commit();
     }
 
+    // 用户输入的完整账号
+    // 主要是加了_JF后缀的账号方便自动登录
+    public void setFullAccount(String account) {
+        editor.putString("fullAccount", account);
+        editor.commit();
+    }
+
     public String getAccount() {
         return sp.getString("account", "");
+    }
+
+    public String getFullAccount() {
+        return sp.getString("fullAccount", "");
     }
 
     // 密码  存储的是没加密的

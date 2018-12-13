@@ -50,6 +50,7 @@ public class Login extends AppCompatActivity {
     private ProgressDialog progDialog = null;
 
     private String account;
+    private String full_account;
     private String psw;
     private boolean scoreFlag = false;  // 积分账号登录时的判别标志
 
@@ -65,7 +66,6 @@ public class Login extends AppCompatActivity {
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         }
 
-
         clickView = getIntent().getStringExtra("clickView");
 
         login = (Button) findViewById(R.id.login);
@@ -74,14 +74,6 @@ public class Login extends AppCompatActivity {
         account_delete = (ImageView) findViewById(R.id.act_login_account_delete) ;
         psw_delete = (ImageView) findViewById(R.id.act_login_password_delete) ;
         spu = new SharePreferenceUtil(Login.this, "user");
-        if (!"".equals(spu.getAccount())){
-            account_edit.setText(spu.getAccount());
-            psw_edit.setText(spu.getPassword());
-        }
-        if (spu.getAccount().length()>0){
-            account_delete.setVisibility(View.VISIBLE);
-            psw_delete.setVisibility(View.VISIBLE);
-        }
 
         account_delete.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -164,8 +156,10 @@ public class Login extends AppCompatActivity {
                                         spu.setCookie(json.getString("cookie"));
                                         spu.setIsLogin(true);
                                     }
+                                    // 积分账号自动登录里，full_account的处理也要考虑
                                     else {
                                         spu.setAccount(account);
+                                        spu.setFullAccount(full_account);
                                         spu.setPassword(psw);
                                         spu.setPhotoUrl(json.getString("head_image"));
 
@@ -303,14 +297,20 @@ public class Login extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                account = account_edit.getText().toString().trim();
+                // 先把用户输入的用户名存在full_account里
+                // 方便积分用户的自动登录处理
+                full_account = account_edit.getText().toString().trim();
                 // 判断账号是否为积分账号，看最后3位后缀
-                // 如果是"_JF"，去掉之
+                // 如果是"_JF"，去掉fullAccount的后缀
                 // 同时令积分账号登录flag为1，准备跳转到积分账号页
-                String postfix = account.substring(account.length()-3);
+                String postfix = full_account.substring(full_account.length()-3);
                 if(postfix.equalsIgnoreCase("_JF")){
-                    account = account.substring(0, account.length()-3);
+                    spu.setFullAccount(account);
+                    account = full_account.substring(0, full_account.length()-3);
                     scoreFlag = true;
+                }else{
+                    // 否则account和full_account相同
+                    account = full_account;
                 }
 
                 psw = psw_edit.getText().toString().trim();
@@ -362,8 +362,11 @@ public class Login extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+
+        // 用户名的自动填充
+        // fullAccount包括了带_JF后缀的假账号
         if (!"".equals(spu.getAccount())){
-            account_edit.setText(spu.getAccount());
+            account_edit.setText(spu.getFullAccount());
             psw_edit.setText(spu.getPassword());
         }
         if (spu.getAccount().length()>0){
@@ -386,7 +389,7 @@ public class Login extends AppCompatActivity {
         }.start();
     }
 
-
+    // 如果用户点了返回键
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
