@@ -54,9 +54,8 @@ public class Login extends AppCompatActivity {
     private String psw;
     private boolean scoreFlag = false;  // 积分账号登录时的判别标志
 
-    private String clickView = "";
+//    private String clickView = "";
     private Handler handler;
-    private long mExitTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,13 +65,13 @@ public class Login extends AppCompatActivity {
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         }
 
-        clickView = getIntent().getStringExtra("clickView");
+//        clickView = getIntent().getStringExtra("clickView");
 
         login = (Button) findViewById(R.id.login);
         account_edit = (EditText) findViewById(R.id.act_login_account_edit);
         psw_edit = (EditText) findViewById(R.id.act_login_password_edit);
-        account_delete = (ImageView) findViewById(R.id.act_login_account_delete) ;
-        psw_delete = (ImageView) findViewById(R.id.act_login_password_delete) ;
+        account_delete = (ImageView) findViewById(R.id.act_login_account_delete);
+        psw_delete = (ImageView) findViewById(R.id.act_login_password_delete);
         spu = new SharePreferenceUtil(Login.this, "user");
 
         account_delete.setOnClickListener(new View.OnClickListener() {
@@ -128,13 +127,13 @@ public class Login extends AppCompatActivity {
             }
         });
 
-        handler = new Handler(){
+        handler = new Handler() {
             @Override
             public void handleMessage(Message msg) {
                 super.handleMessage(msg);
                 dissmissProgressDialog();
-                switch (msg.what){
-                    case 0 :
+                switch (msg.what) {
+                    case 0:
                         try {
                             String reCode = (String) msg.obj;
                             if (reCode != null) {
@@ -144,7 +143,7 @@ public class Login extends AppCompatActivity {
                                 if ("false".equals(status)) {
                                     Toast.makeText(Login.this, json.getString("message"), Toast.LENGTH_SHORT).show();
                                 } else if ("true".equals(status)) {
-                                    if ("PROVINCE".equals(json.getString("job"))){
+                                    if ("PROVINCE".equals(json.getString("job"))) {
                                         spu.setAccount(account);
                                         spu.setPassword(psw);
                                         spu.setJobNumber(json.getString("jobNumber"));
@@ -155,15 +154,14 @@ public class Login extends AppCompatActivity {
                                         spu.setPhotoUrl(json.getString("head_image"));
                                         spu.setCookie(json.getString("cookie"));
                                         spu.setIsLogin(true);
-                                    }
-                                    // 积分账号自动登录里，full_account的处理也要考虑
-                                    else {
+                                    }else {
                                         spu.setAccount(account);
+                                        // 设置full_account，方便积分账号的自动填充
                                         spu.setFullAccount(full_account);
                                         spu.setPassword(psw);
                                         spu.setPhotoUrl(json.getString("head_image"));
 
-                                        Log.d("Dorise",spu.getPhotoUrl()+"");
+                                        Log.d("Dorise", spu.getPhotoUrl() + "");
 
                                         spu.setJobNumber(json.getString("jobNumber"));
                                         spu.setTel(json.getString("teleNumber"));
@@ -173,11 +171,18 @@ public class Login extends AppCompatActivity {
                                         spu.setBranchLevel4(json.getString("branchLevel4"));
                                         String job = json.getString("job");
                                         spu.setType(job);
+                                        // 二级行角色的存储，方便后续区分出MAJOR和MINOR角色
+                                        if("MANAGER".equals(job)){
+                                            spu.setRole(json.getString("role"));
+                                        }else{
+                                            // 普通经理也有role属性，为防干扰手动置空
+                                            spu.setRole("");
+                                        }
                                         spu.setCookie(json.getString("cookie"));
                                         spu.setIsLogin(true);
                                     }
 
-                                    JPushInterface.setAlias(Login.this,new Random().nextInt(),account);
+                                    JPushInterface.setAlias(Login.this, new Random().nextInt(), account);
                                     /*if ("BASIC".equals(job)){
                                         startActivity(new Intent().setClass(Login.this, MainActivity_Base.class));
                                     }
@@ -185,71 +190,68 @@ public class Login extends AppCompatActivity {
                                         startActivity(new Intent().setClass(Login.this, MainActivity_Boss.class));
                                     }*/
                                     // 判断页面跳转，是否应该去积分页面
+                                    // 跳转之前先finish
+                                    finish();
                                     if (scoreFlag) {
                                         startActivity(new Intent().setClass(Login.this, BaseIndexActivity.class));
                                     } else {
                                         startActivity(new Intent().setClass(Login.this, MainActivity.class));
                                     }
-
-                                    if ("toast_i".equals(clickView)){
-                                        finish();
-                                    }
-                                    else if ("personalInfo".equals(clickView)) {
-                                        Log.e("www","personalInfo");
-                                        /*
-                                        if ("BASIC".equals(job)){
-                                            Intent intent = new Intent();
-                                            intent.setClass(Login.this, BaseMyActivity.class);
-                                            finish();
-                                            startActivityForResult(intent, 196);
-                                        }
-                                        else if ("MANAGER".equals(job)) {
-                                            Intent intent = new Intent();
-                                            intent.setClass(Login.this, ManagerMyActivity.class);
-                                            finish();
-                                            startActivityForResult(intent, 187);
-                                        }*/
-                                        Intent intent = new Intent();
-                                        setResult(LOGIN_TO_MAIN_ME, intent);
-                                        finish();
-                                    }
-                                    else if ("card".equals(clickView)) {
-                                        if ("BASIC".equals(spu.getType())){
-                                            Intent intent = new Intent();
-                                            intent.setClass(Login.this, MyManagement.class);
-                                            finish();
-                                            startActivity(intent);
-                                        }
-                                        else if ("MANAGER".equals(spu.getType())) {
-                                            //Toast.makeText(Login.this,"分区经理卡分期管理界面",Toast.LENGTH_SHORT).show();
-                                            Intent intent = new Intent();
-                                            intent.setClass(Login.this, MyManageBase.class);
-                                            finish();
-                                            startActivity(intent);
-                                        }
-
-                                    }
-                                    else if ("kafenqi".equals(clickView)) {
-                                        Intent intent = new Intent();
-                                        intent.setClass(Login.this, KafenqiActivity.class);
-                                        finish();
-                                        startActivity(intent);
-                                    }
-                                    else if ("gerenxiaodai".equals(clickView)) {
-                                        Intent intent = new Intent();
-                                        intent.setClass(Login.this, GerenxiaodaiActivity.class);
-                                        finish();
-                                        startActivity(intent);
-                                    }
+                                    // 之前有用，目前没啥用
+//
+//                                    if ("toast_i".equals(clickView)) {
+//                                        finish();
+//                                    } else if ("personalInfo".equals(clickView)) {
+//                                        Log.e("www", "personalInfo");
+//                                        /*
+//                                        if ("BASIC".equals(job)){
+//                                            Intent intent = new Intent();
+//                                            intent.setClass(Login.this, BaseMyActivity.class);
+//                                            finish();
+//                                            startActivityForResult(intent, 196);
+//                                        }
+//                                        else if ("MANAGER".equals(job)) {
+//                                            Intent intent = new Intent();
+//                                            intent.setClass(Login.this, ManagerMyActivity.class);
+//                                            finish();
+//                                            startActivityForResult(intent, 187);
+//                                        }*/
+//                                        Intent intent = new Intent();
+//                                        setResult(LOGIN_TO_MAIN_ME, intent);
+//                                        finish();
+//                                    } else if ("card".equals(clickView)) {
+//                                        if ("BASIC".equals(spu.getType())) {
+//                                            Intent intent = new Intent();
+//                                            intent.setClass(Login.this, MyManagement.class);
+//                                            finish();
+//                                            startActivity(intent);
+//                                        } else if ("MANAGER".equals(spu.getType())) {
+//                                            //Toast.makeText(Login.this,"分区经理卡分期管理界面",Toast.LENGTH_SHORT).show();
+//                                            Intent intent = new Intent();
+//                                            intent.setClass(Login.this, MyManageBase.class);
+//                                            finish();
+//                                            startActivity(intent);
+//                                        }
+//
+//                                    } else if ("kafenqi".equals(clickView)) {
+//                                        Intent intent = new Intent();
+//                                        intent.setClass(Login.this, KafenqiActivity.class);
+//                                        finish();
+//                                        startActivity(intent);
+//                                    } else if ("gerenxiaodai".equals(clickView)) {
+//                                        Intent intent = new Intent();
+//                                        intent.setClass(Login.this, GerenxiaodaiActivity.class);
+//                                        finish();
+//                                        startActivity(intent);
+//                                    }
                                 } else {
                                     Log.e("Login_Activity", Login.this.getResources().getString(R.string.status_exception));
                                 }
                             } else {
                                 Log.e("Login_Activity", "reCode为空");
-                                if (ConnectUtil.isNetworkAvailable(Login.this)){
+                                if (ConnectUtil.isNetworkAvailable(Login.this)) {
                                     Toast.makeText(Login.this, Login.this.getResources().getString(R.string.server_repairing), Toast.LENGTH_SHORT).show();
-                                }
-                                else {
+                                } else {
                                     Toast.makeText(Login.this, Login.this.getResources().getString(R.string.network_connect_exception), Toast.LENGTH_SHORT).show();
                                 }
                             }
@@ -259,7 +261,7 @@ public class Login extends AppCompatActivity {
                         break;
                     case 1:
                         try {
-                            String reCode = (String)msg.obj;
+                            String reCode = (String) msg.obj;
                             if (reCode != null && !"{}".equals(reCode)) {
                                 JSONObject json = new JSONObject(reCode);
                                 String status = json.getString("status");
@@ -267,28 +269,24 @@ public class Login extends AppCompatActivity {
                                     Toast.makeText(Login.this, json.getString("message"), Toast.LENGTH_SHORT).show();
                                 } else if ("true".equals(status)) {
                                     String new_version = json.getString("version");
-                                    if (new_version!=null && !"".equals(new_version)){
+                                    if (new_version != null && !"".equals(new_version)) {
                                         UpdateManager updateManager = UpdateManager.getUpdateManager();
-                                        updateManager.judgeAppUpdate(new_version,Login.this);
-                                    }
-                                    else {
-                                        Log.e("new_version","版本号为空串");
+                                        updateManager.judgeAppUpdate(new_version, Login.this);
+                                    } else {
+                                        Log.e("new_version", "版本号为空串");
                                     }
                                 }
+                            } else if (reCode != null && "{}".equals(reCode)) {
+                                Log.e("new_version", "版本号为空null");
+                            } else {
+                                Log.e("connect", "连接失败，未获取版本号");
                             }
-                            else if (reCode != null && "{}".equals(reCode)){
-                                Log.e("new_version","版本号为空null");
-                            }
-                            else {
-                                Log.e("connect","连接失败，未获取版本号");
-                            }
-                        }
-                        catch (Exception e){
+                        } catch (Exception e) {
                             e.printStackTrace();
                         }
                         break;
                     default:
-                        Log.e("Login_Activity",Login.this.getResources().getString(R.string.handler_what_exception));
+                        Log.e("Login_Activity", Login.this.getResources().getString(R.string.handler_what_exception));
                         break;
                 }
             }
@@ -300,24 +298,11 @@ public class Login extends AppCompatActivity {
                 // 先把用户输入的用户名存在full_account里
                 // 方便积分用户的自动登录处理
                 full_account = account_edit.getText().toString().trim();
-                // 判断账号是否为积分账号，看最后3位后缀
-                // 如果是"_JF"，去掉fullAccount的后缀
-                // 同时令积分账号登录flag为1，准备跳转到积分账号页
-                String postfix = full_account.substring(full_account.length()-3);
-                if(postfix.equalsIgnoreCase("_JF")){
-                    spu.setFullAccount(account);
-                    account = full_account.substring(0, full_account.length()-3);
-                    scoreFlag = true;
-                }else{
-                    // 否则account和full_account相同
-                    account = full_account;
-                }
-
                 psw = psw_edit.getText().toString().trim();
-                if (account==null || "".equals(account) || psw==null || "".equals(psw)){
+                // 输入的判空
+                if (full_account == null || "".equals(full_account) || psw == null || "".equals(psw)) {
                     Toast.makeText(Login.this, "请输入账号密码", Toast.LENGTH_SHORT).show();
-                }
-                else {
+                } else {
                     /*if("0001".equals(account)){
                         if("123456".equals(psw)){
                             spu.setAccount(account);
@@ -337,13 +322,27 @@ public class Login extends AppCompatActivity {
                         }
                     }else{*/
 
+                    // 判断账号是否为积分账号，看最后3位后缀
+                    // 如果是"_JF"，去掉fullAccount的后缀
+                    // 同时令积分账号登录flag为1，准备跳转到积分账号页
+                    String postfix = full_account.substring(full_account.length() - 3);
+                    if (postfix.equalsIgnoreCase("_JF")) {
+                        spu.setFullAccount(account);
+                        account = full_account.substring(0, full_account.length() - 3);
+                        scoreFlag = true;
+                    } else {
+                        // 否则account和full_account相同
+                        account = full_account;
+                    }
+
+                    // 提示用户稍候，向接口发送数据
                     showProgressDialog();
-                    new Thread(){
+                    new Thread() {
                         @Override
                         public void run() {
                             super.run();
                             PostParameter[] params = new PostParameter[2];
-                            params[0] = new PostParameter("account",account);
+                            params[0] = new PostParameter("account", account);
                             params[1] = new PostParameter("password", Encode.getEncode("MD5", psw));
                             String reCode = ConnectUtil.httpRequest(ConnectUtil.MANAGER_LOGIN, params, ConnectUtil.POST);
                             Message msg = new Message();
@@ -365,16 +364,17 @@ public class Login extends AppCompatActivity {
 
         // 用户名的自动填充
         // fullAccount包括了带_JF后缀的假账号
-        if (!"".equals(spu.getAccount())){
+        if (!"".equals(spu.getAccount())) {
             account_edit.setText(spu.getFullAccount());
             psw_edit.setText(spu.getPassword());
         }
-        if (spu.getAccount().length()>0){
+        if (spu.getAccount().length() > 0) {
             account_delete.setVisibility(View.VISIBLE);
             psw_delete.setVisibility(View.VISIBLE);
         }
 
-        new Thread(){
+        // 检查软件版本
+        new Thread() {
             @Override
             public void run() {
                 super.run();

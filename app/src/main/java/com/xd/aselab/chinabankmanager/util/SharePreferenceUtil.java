@@ -44,6 +44,8 @@ public class SharePreferenceUtil {
     }
 
     // 经理类型
+    //二级行管理者是MANAGER
+    //银行卡客户经理是BASIC
     public void setType(String type) {
         editor.putString("type", type);
         editor.commit();
@@ -52,8 +54,16 @@ public class SharePreferenceUtil {
     public String getType() {
         return sp.getString("type", "");
     }
-    //二级行管理者是MANAGER
-    //银行卡客户经理是BASIC
+
+    // 二级行管理者的角色，MAJOR/MINOR
+    public void setRole(String role) {
+        editor.putString("role", role);
+        editor.commit();
+    }
+
+    public String getRole() {
+        return sp.getString("role", "");
+    }
 
     // Cookie
     public void setCookie(String cookie) {

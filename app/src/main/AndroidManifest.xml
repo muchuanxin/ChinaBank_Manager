@@ -692,7 +692,7 @@
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan|stateHidden" />
 
-        <!--积分账号部分-->
+        <!-- 积分账号部分 -->
         <activity
             android:name=".BaseScoreAccount.BaseIndexActivity"
             android:configChanges="orientation|keyboardHidden"
@@ -723,6 +723,12 @@
             android:screenOrientation="nosensor"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity
+            android:name=".BaseScoreAccount.SecondDivideActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="nosensor"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan|stateHidden"/>
     </application>
 
 </manifest>

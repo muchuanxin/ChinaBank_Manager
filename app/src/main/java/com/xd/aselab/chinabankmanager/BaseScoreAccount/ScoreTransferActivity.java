@@ -125,9 +125,8 @@ public class ScoreTransferActivity extends AppCompatActivity {
                 try {
                     String reCode = (String) msg.obj;
                     if (reCode != null) {
-                        Log.e("Login_Activity：reCode", reCode);
+                        Log.e("ScoreTransfer：reCode", reCode);
                         JSONObject json = new JSONObject(reCode);
-                        String status = json.getString("status");
                         Toast.makeText(ScoreTransferActivity.this, json.getString("message"), Toast.LENGTH_SHORT).show();
                     }
                 } catch (Exception e) {
@@ -143,6 +142,7 @@ public class ScoreTransferActivity extends AppCompatActivity {
             public void onClick(View v) {
                 target_account = et_target_account.getText().toString().trim();
                 amount = et_amount.getText().toString();
+                Log.e("Score_Info", spu.getAccount() + ' ' + target_account+' '+amount);
                 // 如果用户输入的账号为空
                 // 则重获焦点，提示用户
                 if(target_account==null || "".equals(target_account)){
@@ -169,8 +169,8 @@ public class ScoreTransferActivity extends AppCompatActivity {
                             super.run();
                             PostParameter[] params = new PostParameter[3];
                             params[0] = new PostParameter("giver_account",spu.getAccount());
-                            params[1] = new PostParameter("receiver_account ",target_account);
-                            params[1] = new PostParameter("score",amount);
+                            params[1] = new PostParameter("receiver_account",target_account);
+                            params[2] = new PostParameter("score",amount);
                             // 发送数据，获取返回字符串
                             String reCode = ConnectUtil.httpRequest(ConnectUtil.GiveScore, params, ConnectUtil.POST);
                             Message msg = new Message();

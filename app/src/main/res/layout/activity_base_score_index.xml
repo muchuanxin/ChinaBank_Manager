@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#eaeeef"
-    tools:context=".BaseScoreAccount.BaseIndexActivity">
+    tools:context=".BaseScoreAccount.BaseIndexActivity"
+    android:orientation="vertical">
 
     <RelativeLayout
         android:id="@+id/base_my_score_status_bg"
@@ -17,30 +19,13 @@
         android:id="@+id/base_my_score_nav_bag"
         android:layout_width="match_parent"
         android:layout_height="45dp"
-        android:layout_below="@id/base_my_score_status_bg"
         android:background="@drawable/navigation_bg">
-
-        <!--<RelativeLayout-->
-        <!--android:id="@+id/base_my_score_back_btn"-->
-        <!--android:layout_width="45dp"-->
-        <!--android:layout_height="match_parent">-->
-
-        <!--<ImageView-->
-        <!--android:id="@+id/return_button"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="30dp"-->
-        <!--android:layout_centerVertical="true"-->
-        <!--android:layout_marginLeft="10dp"-->
-        <!--android:src="@drawable/back_btn_bg"-->
-        <!--android:visibility="gone" />-->
-
-        <!--</RelativeLayout>-->
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:gravity="center"
-            android:text="我的"
+            android:text="积分管理"
             android:textColor="#fff"
             android:textSize="22dp" />
     </RelativeLayout>
@@ -49,7 +34,6 @@
         android:id="@+id/myhead"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/base_my_score_nav_bag"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:orientation="horizontal">
@@ -58,8 +42,6 @@
             android:id="@+id/personal_info"
             android:layout_width="match_parent"
             android:layout_height="80dp"
-            android:layout_below="@id/base_my_score_nav_bag"
-
             android:layout_marginTop="10dp"
             android:background="#fff"
             android:orientation="horizontal">
@@ -70,7 +52,6 @@
                 android:layout_height="60dp"
                 android:layout_gravity="center"
                 android:layout_marginLeft="15dp"
-
                 android:src="@drawable/default_head" />
 
             <TextView
@@ -85,25 +66,21 @@
 
             <ImageView
                 android:id="@+id/right"
-
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
-
                 android:src="@drawable/right" />
 
         </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
-
         android:id="@+id/score_exchange"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/myhead"
         android:layout_marginTop="5dp"
         android:background="#fff">
 
@@ -145,21 +122,19 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:layout_below="@id/score_exchange"
         android:background="#F0F0F0" />
 
     <LinearLayout
         android:id="@+id/score_transfer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/score_exchange"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_marginTop="2dp"
-        android:background="#fff">
+        android:background="#fff"
+        android:visibility="gone">
 
         <ImageView
-            android:id="@+id/image2"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_centerVertical="true"
@@ -174,7 +149,6 @@
             android:layout_centerVertical="true"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="20dp"
-            android:layout_toRightOf="@id/image2"
             android:layout_weight="20"
 
             android:text="积分赠送"
@@ -190,4 +164,48 @@
             android:layout_weight="1"
             android:src="@drawable/right" />
     </LinearLayout>
-</RelativeLayout>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#F0F0F0" />
+
+    <LinearLayout
+        android:id="@+id/score_divide"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="2dp"
+        android:background="#fff"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/my_information" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="20"
+            android:text="积分切分设置"
+            android:textSize="14dp" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="20dp"
+            android:layout_weight="1"
+            android:src="@drawable/right" />
+    </LinearLayout>
+</LinearLayout>
