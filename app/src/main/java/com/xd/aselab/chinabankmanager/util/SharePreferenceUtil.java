@@ -43,6 +43,13 @@ public class SharePreferenceUtil {
         return sp.getString("password", "");
     }
 
+    // 客户经理抢单能力标记
+    public void setGrab(String grab) {
+        editor.putString("grab", grab);
+        editor.commit();
+    }
+    public String getGrab() { return sp.getString("grab", ""); }
+
     // 经理类型
     //二级行管理者是MANAGER
     //银行卡客户经理是BASIC
@@ -283,6 +290,16 @@ public class SharePreferenceUtil {
     }
     public String getMarkerCache() {
         return sp.getString("markerCache", "");
+    }
+
+    // 经理抢到的订单id和对应时间
+    // 注意取数据时要用id
+    public void setOrderInfo(String id, String completeTime) {
+        editor.putString(id, completeTime);
+        editor.commit();
+    }
+    public String getOrderInfo(String id) {
+        return sp.getString(id, "");
     }
 
 }

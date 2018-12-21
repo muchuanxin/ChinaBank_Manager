@@ -728,7 +728,27 @@
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="nosensor"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="adjustPan|stateHidden"/>
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+
+        <!--抢单部分-->
+        <activity
+            android:name=".grabOrder.GrabPerformanceDetailActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="nosensor"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity
+            android:name=".grabOrder.GrabPerformanceActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="nosensor"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity
+            android:name=".grabOrder.GrabOrderActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="nosensor"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
     </application>
 
 </manifest>

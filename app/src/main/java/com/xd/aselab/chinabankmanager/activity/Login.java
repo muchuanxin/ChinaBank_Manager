@@ -178,6 +178,13 @@ public class Login extends AppCompatActivity {
                                             // 普通经理也有role属性，为防干扰手动置空
                                             spu.setRole("");
                                         }
+                                        // 客户经理的抢单标记存储
+                                        if("BASIC".equals(job)){
+                                            spu.setGrab(json.getString("grab"));
+                                        }else{
+                                            // 普通经理也有role属性，为防干扰手动置空
+                                            spu.setGrab("false");
+                                        }
                                         spu.setCookie(json.getString("cookie"));
                                         spu.setIsLogin(true);
                                     }

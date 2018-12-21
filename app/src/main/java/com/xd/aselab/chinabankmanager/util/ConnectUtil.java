@@ -121,7 +121,6 @@ public class ConnectUtil {
 	public static String GroupChat = API_Chat+"GroupChat";
 	public static String GetGroupHistoryChatLog = API_Chat+"GetGroupHistoryChatLog";
 
-
 	//省行管理者
 	public static String GetInstallmentSecondaryBankPerformace=API_HOST+"GetInstallmentSecondaryBankPerformace";
 	public static String GetInstallmentBossManagerPerformace=API_HOST+"GetInstallmentBossManagerPerformace";
@@ -137,6 +136,16 @@ public class ConnectUtil {
 	public static String GiveScore = API_HOST + "GiveScore";
 	public static String ChangeDivideScoreRate = API_HOST + "ChangeDivideScoreRate";
 	public static String GetDivideScoreRate = API_HOST + "GetDivideScoreRate";
+
+	// 抢单相关
+	public static String GetGrabBusinessList = API_HOST + "GetGrabBusinessList";
+	public static String GrabBusiness = API_HOST + "GrabBusiness";
+	public static String GrabBusinessSubmit = API_HOST + "GrabBusinessSubmit";
+	public static String GrabBusinessContact = API_HOST + "GrabBusinessContact";
+	public static String GrabBusinessFaceForAndroid= API_HOST + "GrabBusinessFaceForAndroid";
+	public static String GetVirtualInstallmentMyPerformance= API_HOST + "GetVirtualInstallmentMyPerformance";
+	public static String GetVirtualInstallmentRecommendList= API_HOST + "GetVirtualInstallmentRecommendList";
+
 
 	public static String httpRequest(String url, PostParameter[] postParams, String httpMethod) {
 		InputStream input = null;
