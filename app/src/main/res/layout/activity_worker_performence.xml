@@ -67,33 +67,6 @@
             android:textSize="17dp"
             android:textColor="#000"
             android:text="近一周业绩"/>-->
-        <RelativeLayout
-            android:id="@+id/rl_kefenqi_worker_select_sort"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-            <TextView
-                android:id="@+id/act_kefenqi_worker_perf_sort"
-                android:layout_marginLeft="25dp"
-                android:layout_centerInParent="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="17dp"
-                android:textColor="@color/gray_text_most"
-                android:text="业绩排序"/>
-            <ImageView
-                android:layout_toRightOf="@id/act_kefenqi_worker_perf_sort"
-                android:layout_centerVertical="true"
-                android:layout_width="11dp"
-                android:layout_height="10dp"
-                android:src="@drawable/arrow_down_hui"/>
-            <View
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_width="1dp"
-                android:layout_height="20dp"
-                android:background="@color/gray_text_most"/>
-        </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/rl_kefenqi_worker_perf_select_time"
@@ -146,6 +119,37 @@
             android:gravity="center"
             android:textSize="14dp"
             android:text="当前时间段没有数据~"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_kefenqi_worker_select_sort"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/act_kefenqi_worker_perf_sort"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="25dp"
+            android:text="业绩排序"
+            android:textColor="@color/gray_text_most"
+            android:textSize="17dp" />
+
+        <ImageView
+            android:layout_width="11dp"
+            android:layout_height="10dp"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/act_kefenqi_worker_perf_sort"
+            android:src="@drawable/arrow_down_hui" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@color/gray_text_most" />
     </RelativeLayout>
 
 </LinearLayout>

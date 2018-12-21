@@ -11,4 +11,5 @@
     <string name="title_tuijian">推荐</string>
     <string name="title_me">我的</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="kafenqi_recommend_type">车位分期</string>
 </resources>

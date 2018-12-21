@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.umeng.analytics.MobclickAgent;
 import com.xd.aselab.chinabankmanager.R;
+import com.xd.aselab.chinabankmanager.activity.Manager.MyManagement;
 import com.xd.aselab.chinabankmanager.fragment.ImageCycleView;
 import com.xd.aselab.chinabankmanager.my.PersonalInfo;
 import com.xd.aselab.chinabankmanager.util.ConnectUtil;

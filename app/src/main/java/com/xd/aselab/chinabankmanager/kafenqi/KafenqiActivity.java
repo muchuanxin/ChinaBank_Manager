@@ -35,10 +35,14 @@ public class KafenqiActivity extends AppCompatActivity {
     private RelativeLayout back;
     private ImageView iv_my_contact;
     private LinearLayout my_performance;
-    private LinearLayout worker_management;
     private LinearLayout online_communation;
     private LinearLayout publish_annoucement;
     private ImageView img_qrCode,img_big_code;
+    private LinearLayout worker_management;
+    private LinearLayout car_business_performance;
+    private LinearLayout customer_business;
+    private LinearLayout non_car_business;
+    private LinearLayout virtual_4s_business;
     Bitmap qrCodeBitmap = null;
     private PopupWindow pop;
     private SharePreferenceUtil sp;
@@ -57,16 +61,22 @@ public class KafenqiActivity extends AppCompatActivity {
 
     private void initViews(){
         back = (RelativeLayout) findViewById(R.id.act_kafenqi_back_btn);
-        iv_my_contact = (ImageView)findViewById(R.id.act_iv_kafenqi_contact);
-        my_performance = (LinearLayout) findViewById(R.id.act_kafenqi_my_perf);
+
+//        iv_my_contact = (ImageView)findViewById(R.id.act_iv_kafenqi_contact);
+//        my_performance = (LinearLayout) findViewById(R.id.act_kafenqi_my_perf);
+//        online_communation = (LinearLayout) findViewById(R.id.act_kafenqi_online_communication);
+
+        car_business_performance = (LinearLayout) findViewById(R.id.act_kafenqi_car_performance);
+        customer_business = (LinearLayout) findViewById(R.id.act_kafenqi_customer);
+        non_car_business = (LinearLayout) findViewById(R.id.act_kafenqi_non_car);
+        virtual_4s_business = (LinearLayout) findViewById(R.id.act_kafenqi_virtual_4s);
         worker_management = (LinearLayout) findViewById(R.id.act_kafenqi_worker_management);
-        online_communation = (LinearLayout) findViewById(R.id.act_kafenqi_online_communication);
         publish_annoucement = (LinearLayout)findViewById(R.id.act_kafenqi_announcement);
         img_qrCode = (ImageView) findViewById(R.id.kafenqi_qrcode);
     }
 
     private void initDatas(){
-        sp=new SharePreferenceUtil(KafenqiActivity.this,"user");
+        sp = new SharePreferenceUtil(KafenqiActivity.this,"user");
         createCode(sp.getAccount()+"_2");
 
     }
@@ -88,23 +98,78 @@ public class KafenqiActivity extends AppCompatActivity {
                 finish();
             }
         });
-        iv_my_contact.setOnClickListener(new View.OnClickListener() {
+
+//        iv_my_contact.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent();
+//                intent.setClass(KafenqiActivity.this,KMyContactsActivity.class);
+//                startActivity(intent);
+//            }
+//        });
+//        my_performance.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent();
+//                intent.putExtra("type","basic");
+//                intent.setClass(KafenqiActivity.this,KMyPreformenceActivity.class);
+//                startActivity(intent);
+//            }
+//        });
+//
+//        online_communation.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent();
+//                intent.setClass(KafenqiActivity.this,KOnlineCommuActivity.class);
+//                startActivity(intent);
+//            }
+//        });
+
+        car_business_performance.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
-                intent.setClass(KafenqiActivity.this,KMyContactsActivity.class);
+                intent.setClass(KafenqiActivity.this, KafenqiCarPerformanceActivity.class);
                 startActivity(intent);
             }
         });
-        my_performance.setOnClickListener(new View.OnClickListener() {
+
+        customer_business.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
-                intent.putExtra("type","basic");
-                intent.setClass(KafenqiActivity.this,KMyPreformenceActivity.class);
+                intent.setClass(KafenqiActivity.this, KafenqiCustomerActivity.class);
                 startActivity(intent);
             }
         });
+
+        non_car_business.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(KafenqiActivity.this, KafenqiNonCarActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        if(sp.getGrab().equals("true")) {
+            virtual_4s_business.setVisibility(View.VISIBLE);
+            virtual_4s_business.setClickable(true);
+        } else {
+            virtual_4s_business.setVisibility(View.GONE);
+            virtual_4s_business.setClickable(false);
+        }
+
+        virtual_4s_business.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(KafenqiActivity.this, null);
+                startActivity(intent);
+            }
+        });
+
         worker_management.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -114,14 +179,7 @@ public class KafenqiActivity extends AppCompatActivity {
 
             }
         });
-        online_communation.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setClass(KafenqiActivity.this,KOnlineCommuActivity.class);
-                startActivity(intent);
-            }
-        });
+
         publish_annoucement.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#fff"
+    tools:context=".kafenqi.KafenqiCarPerformanceDetail">
+
+    <RelativeLayout
+        android:id="@+id/act_fenqi_my_perf_top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:orientation="horizontal"
+        android:background="@color/colorPrimaryDark">
+
+        <RelativeLayout
+            android:id="@+id/act_fenqi_my_perf_back_btn"
+            android:layout_width="50dp"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="31dp"
+                android:padding="1.5dp"
+                android:src="@drawable/back_btn_bg"/>
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="27dp"
+            android:layout_centerHorizontal="true"
+            android:textColor="#fff"
+            android:textSize="22dp"
+            android:text="我的业绩详情"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:orientation="horizontal">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <TextView
+                android:layout_marginLeft="25dp"
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="17dp"
+                android:textColor="@color/gray_text_most"
+                android:text="时间范围"/>
+            <View
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_width="1dp"
+                android:layout_height="20dp"
+                android:background="@color/gray_text_most"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_car_perf_detail_select_time"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1">
+            <TextView
+                android:id="@+id/act_car_perf_detail_select_time"
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textSize="17dp"
+                android:textColor="@color/gray_text_most"
+                android:text="近一周业绩"/>
+            <ImageView
+                android:layout_toRightOf="@id/act_car_perf_detail_select_time"
+                android:layout_centerVertical="true"
+                android:layout_width="11dp"
+                android:layout_height="10dp"
+                android:src="@drawable/arrow_down_hui"/>
+        </RelativeLayout>
+
+    </LinearLayout>
+    
+    <ListView
+        android:id="@+id/act_kafenqi_car_perf_detail_listview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@color/gray_bg"
+        android:dividerHeight="5dp"></ListView>
+
+</LinearLayout>

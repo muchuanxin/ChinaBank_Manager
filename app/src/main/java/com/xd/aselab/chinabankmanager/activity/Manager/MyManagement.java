@@ -1,4 +1,4 @@
-package com.xd.aselab.chinabankmanager.activity;
+package com.xd.aselab.chinabankmanager.activity.Manager;
 
 import android.content.Intent;
 import android.os.Build;
@@ -10,14 +10,17 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.xd.aselab.chinabankmanager.R;
+import com.xd.aselab.chinabankmanager.activity.BaseInfo;
+import com.xd.aselab.chinabankmanager.activity.BasePerformance;
+import com.xd.aselab.chinabankmanager.activity.MyPerformance;
+import com.xd.aselab.chinabankmanager.activity.PerformanceRanking;
 
 public class MyManagement extends AppCompatActivity {
 
     private RelativeLayout back;
     private LinearLayout my_performance;
-    private LinearLayout base_ranking;
-    private LinearLayout base_info;
     private LinearLayout base_performance;
+    private LinearLayout lobby_performance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,28 +46,22 @@ public class MyManagement extends AppCompatActivity {
             }
         });
 
-        base_ranking = (LinearLayout) findViewById(R.id.act_my_mana_base_ranking);
-        base_ranking.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent().setClass(MyManagement.this, PerformanceRanking.class));
-            }
-        });
-
-        base_info = (LinearLayout) findViewById(R.id.act_my_mana_base_info);
-        base_info.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent().setClass(MyManagement.this, BaseInfo.class));
-            }
-        });
-
-        base_performance = (LinearLayout) findViewById(R.id.act_my_mana_base_perf);
+        base_performance = (LinearLayout) findViewById(R.id.act_my_mana_base_performance);
         base_performance.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent().setClass(MyManagement.this, BasePerformance.class));
+                startActivity(new Intent().setClass(MyManagement.this, ManagerBasePerformance.class));
             }
         });
+
+        lobby_performance = (LinearLayout) findViewById(R.id.act_my_mana_lobby_performance);
+        lobby_performance.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent().setClass(MyManagement.this, LobbyPerformance.class));
+            }
+        });
+
+
     }
 }

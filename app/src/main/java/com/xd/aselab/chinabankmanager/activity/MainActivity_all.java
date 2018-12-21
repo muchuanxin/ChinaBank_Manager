@@ -1,20 +1,15 @@
 package com.xd.aselab.chinabankmanager.activity;
 
 import android.Manifest;
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.content.PermissionChecker;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
@@ -24,6 +19,7 @@ import android.widget.Toast;
 
 import com.umeng.analytics.MobclickAgent;
 import com.xd.aselab.chinabankmanager.R;
+import com.xd.aselab.chinabankmanager.activity.Manager.MyManagement;
 import com.xd.aselab.chinabankmanager.fragment.ImageCycleView;
 import com.xd.aselab.chinabankmanager.kafenqi.KWorkerManage.activity.NewNotificationDetailActivity;
 import com.xd.aselab.chinabankmanager.kafenqi.KafenqiActivity;

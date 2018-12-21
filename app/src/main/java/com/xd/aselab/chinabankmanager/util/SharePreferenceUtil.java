@@ -264,4 +264,11 @@ public class SharePreferenceUtil {
         return sp.getString("markerCache", "");
     }
 
+    //判断是否是可抢单客户经理
+    public void setGrab(String grab) {
+        editor.putString("grab", grab);
+        editor.commit();
+    }
+    public String getGrab() { return sp.getString("grab", ""); }
+
 }

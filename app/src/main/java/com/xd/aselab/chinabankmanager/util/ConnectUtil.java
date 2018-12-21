@@ -39,14 +39,14 @@ public class ConnectUtil {
 
 	//public final static String API_HOST = "http://117.34.117.107/ChinaBank/Manager/";
 //	public final static String IP = "http://47.93.31.35/";
-	//public final static String IP = "http://192.168.0.129/";
+	public final static String IP = "http://192.168.0.129/";
 	//public final static String IP = "http://192.168.0.27/";
 	//public final static String IP = "http://192.168.0.27:8080/";
 	//public final static String IP = "http://192.168.0.73:8080/";
 	//public final static String IP = "http://10.170.13.113:8080/";
 	//public final static String IP = "http://117.34.117.107/";
-	//public final static String IP = "http://juyuntechinfo.gotoip1.com/";
-	public final static String IP = "http://www.juyunjinrongapp.com/";
+//	public final static String IP = "http://juyuntechinfo.gotoip1.com/";
+//	public final static String IP = "http://www.juyunjinrongapp.com/";
 	//public final static String IP = "http://javaapp.gotoip2.com/";
 	public final static String SERVER = IP +"ChinaBank/";
 	public final static String API_HOST = SERVER+"Manager/";
@@ -131,6 +131,30 @@ public class ConnectUtil {
 
 	public static String ForceReleaseBetweenBankAnd4SShopByID=API_HOST+"ForceReleaseBetweenBankAnd4SShopByID";
 	public static String GetInstallmentWorkerPerformanceIn4SShop=API_HOST+"GetInstallmentWorkerPerformanceIn4SShop";
+
+	//大堂助理业绩(二级行管理者可查看)
+	public static String GetLobbyPerformance = API_HOST + "GetLobbyPerformance";
+
+	//二级行业绩(省行管理者可查看)
+	public static String GetLobbySecondaryBankPerformace = API_HOST + "GetLobbySecondaryBankPerformace";
+
+	//二级行管理者业绩(省行管理者可查看)
+	public static String GetLobbyBossManagerPerformace = API_HOST + "GetLobbyBossManagerPerformace";
+
+	//客户经理非车优客业务
+	public static String RecommendNotCar = API_HOST + "RecommendNotCar";
+	public static String GetNotCarMyPerformance = API_HOST + "GetNotCarMyPerformance";
+	public static String GetNotCarRecommendList = API_HOST + "GetNotCarRecommendList";
+	public static String AddNotCarRemark = API_HOST + "AddNotCarRemark";
+
+	public static String RecommendYouke = API_HOST + "RecommendYouke";
+	public static String GetYoukeMyPerformance = API_HOST + "GetYoukeMyPerformance";
+	public static String GetYoukeRecommendList = API_HOST + "GetYoukeRecommendList";
+	public static String AddYoukeRemark = API_HOST + "AddYoukeRemark";
+
+
+
+
 
 
 

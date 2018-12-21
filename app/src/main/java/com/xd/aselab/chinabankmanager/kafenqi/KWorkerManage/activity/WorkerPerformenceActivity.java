@@ -102,6 +102,8 @@ public class WorkerPerformenceActivity extends AppCompatActivity {
         rl_no_data = (RelativeLayout)findViewById(R.id.act_kafenqi_perf_ranking_no_data);
     }
 
+
+
     void initDatas(){
         spu = new SharePreferenceUtil(WorkerPerformenceActivity.this, "user");
         select_sort_method = new String[]{"推荐业务数降序", "成功业务数降序", "成功金额数降序", "推荐成功率降序"};

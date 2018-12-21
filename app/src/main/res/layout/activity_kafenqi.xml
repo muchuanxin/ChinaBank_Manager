@@ -53,7 +53,6 @@
 
     <RelativeLayout
         android:id="@+id/act_my_mana_division1"
-        android:layout_below="@id/act_my_mana_top_bar"
         android:layout_width="match_parent"
         android:layout_height="10dp"
         android:background="@color/gray_bg"/>
@@ -63,6 +62,7 @@
         android:layout_below="@id/act_my_mana_division1"
         android:layout_width="match_parent"
         android:layout_height="70dp"
+        android:visibility="gone"
         android:orientation="horizontal">
 
         <ImageView
@@ -83,6 +83,31 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/act_kafenqi_car_performance"
+        android:layout_below="@id/act_my_mana_division1"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="30dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/my_all_performence"/>
+
+        <TextView
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black_text_most"
+            android:textSize="18dp"
+            android:text="汽车业务业绩"/>
+
+    </LinearLayout>
+
     <RelativeLayout
         android:id="@+id/act_my_mana_division2"
         android:layout_width="match_parent"
@@ -90,7 +115,7 @@
         android:background="@color/gray_bg"/>
 
     <LinearLayout
-        android:id="@+id/act_kafenqi_worker_management"
+        android:id="@+id/act_kafenqi_customer"
         android:layout_below="@id/act_my_mana_division2"
         android:layout_width="match_parent"
         android:layout_height="70dp"
@@ -110,12 +135,11 @@
             android:layout_height="wrap_content"
             android:textColor="@color/black_text_most"
             android:textSize="18dp"
-            android:text="4S店销售管理"/>
+            android:text="优客业务"/>
 
     </LinearLayout>
 
     <RelativeLayout
-        android:visibility="gone"
         android:id="@+id/act_my_mana_division3"
         android:layout_width="match_parent"
         android:layout_height="10dp"
@@ -147,6 +171,31 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/act_kafenqi_non_car"
+        android:layout_below="@id/act_my_mana_division2"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="30dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/my_information"/>
+
+        <TextView
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black_text_most"
+            android:textSize="18dp"
+            android:text="非车业务"/>
+
+    </LinearLayout>
+
     <RelativeLayout
         android:id="@+id/act_my_mana_division4"
         android:layout_width="match_parent"
@@ -154,8 +203,78 @@
         android:background="@color/gray_bg"/>
 
     <LinearLayout
+        android:id="@+id/act_kafenqi_worker_management"
+        android:layout_below="@id/act_my_mana_division2"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="30dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/my_information"/>
+
+        <TextView
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black_text_most"
+            android:textSize="18dp"
+            android:text="4S店销售管理"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <RelativeLayout
+            android:id="@+id/act_my_mana_division5"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@color/gray_bg"/>
+
+        <LinearLayout
+            android:id="@+id/act_kafenqi_virtual_4s"
+            android:layout_below="@id/act_my_mana_division5"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="30dp"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/my_information"/>
+
+            <TextView
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black_text_most"
+                android:textSize="18dp"
+                android:text="虚拟4S店业务"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/act_my_mana_division6"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/gray_bg"/>
+
+    <LinearLayout
         android:id="@+id/act_kafenqi_announcement"
-        android:layout_below="@id/act_my_mana_division4"
+        android:layout_below="@id/act_my_mana_division6"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:orientation="horizontal">

@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".kafenqi.KafenqiRecommendCalculator">
+
+    <RelativeLayout
+        android:id="@+id/act_kafenqi_recommend_calculator_top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:background="@color/colorPrimaryDark">
+
+        <RelativeLayout
+            android:id="@+id/act_kafenqi_recommend_calculator_back_btn"
+            android:layout_width="50dp"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="31dp"
+                android:padding="1.5dp"
+                android:src="@drawable/back_btn_bg"/>
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="27dp"
+            android:layout_centerHorizontal="true"
+            android:textColor="#fff"
+            android:textSize="22dp"
+            android:text="授信计算器"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_kafenqi_recommend_calculator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp">
+
+        <LinearLayout
+            android:id="@+id/act_kafenqi_recommend_calculator_income_row"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignRight="@+id/act_kafenqi_recommend_calculator_installment_row"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="17dp"
+                android:text="申请人匡算月收入：" />
+
+            <EditText
+                android:id="@+id/act_kafenqi_recommend_calculator_income"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/act_kafenqi_recommend_calculator_repayment_row"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/act_kafenqi_recommend_calculator_income_row"
+            android:layout_alignRight="@+id/act_kafenqi_recommend_calculator_installment_row"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/act_kafenqi_recommend_calculator_repayment_label"
+                    android:layout_width="160dp"
+                    android:layout_height="50dp"
+                    android:textSize="17dp"
+                    android:textAlignment="inherit"
+                    android:text="个人征信报告中月还款金额(近6个月)：" />
+
+                <EditText
+                    android:id="@+id/act_kafenqi_recommend_calculator_repayment"
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@+id/act_kafenqi_recommend_calculator_repayment_label"
+                    android:layout_toRightOf="@+id/act_kafenqi_recommend_calculator_repayment_label"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/act_kafenqi_recommend_calculator_installment_row"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/act_kafenqi_recommend_calculator_repayment_row"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="17dp"
+                android:text="申请业务期限(分期数)：" />
+
+            <EditText
+                android:id="@+id/act_kafenqi_recommend_calculator_installment"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/act_kafenqi_recommend_calculator_marriage_row"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/act_kafenqi_recommend_calculator_installment_row"
+            android:layout_alignRight="@+id/act_kafenqi_recommend_calculator_installment_row"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="17dp"
+                android:text="婚姻状态：" />
+
+            <Spinner
+                android:id="@+id/choose_marriage"
+                android:layout_gravity="left"
+                android:layout_width="180dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:dropDownWidth="100dp"
+                android:popupBackground="#fff"
+                android:spinnerMode="dropdown"></Spinner>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/act_kafenqi_recommend_calculator_industry_row"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/act_kafenqi_recommend_calculator_marriage_row"
+            android:layout_alignRight="@+id/act_kafenqi_recommend_calculator_installment_row"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="17dp"
+                android:text="行业类型：" />
+
+            <Spinner
+                android:id="@+id/choose_industry"
+                android:layout_gravity="left"
+                android:layout_width="180dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:dropDownWidth="100dp"
+                android:popupBackground="#fff"
+                android:spinnerMode="dropdown"></Spinner>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/act_kafenqi_recommend_calculator_position_row"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/act_kafenqi_recommend_calculator_industry_row"
+            android:layout_alignRight="@+id/act_kafenqi_recommend_calculator_installment_row"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="17dp"
+                android:text="职位等级：" />
+
+            <Spinner
+                android:id="@+id/choose_position"
+                android:layout_gravity="left"
+                android:layout_width="180dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:dropDownWidth="100dp"
+                android:popupBackground="#fff"
+                android:spinnerMode="dropdown"></Spinner>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/act_kafenqi_recommend_calculator_paymethod_row"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/act_kafenqi_recommend_calculator_position_row"
+            android:layout_alignRight="@+id/act_kafenqi_recommend_calculator_installment_row"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="17dp"
+                android:text="支付方式：" />
+
+            <Spinner
+                android:id="@+id/choose_paymethod"
+                android:layout_gravity="left"
+                android:layout_width="180dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:dropDownWidth="100dp"
+                android:popupBackground="#fff"
+                android:spinnerMode="dropdown"></Spinner>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/act_kafenqi_recommend_calculator_risk_row"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/act_kafenqi_recommend_calculator_paymethod_row"
+            android:layout_alignRight="@+id/act_kafenqi_recommend_calculator_installment_row"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="17dp"
+                android:text="风险行为：" />
+
+            <Spinner
+                android:id="@+id/choose_risk"
+                android:layout_gravity="left"
+                android:layout_width="180dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:dropDownWidth="100dp"
+                android:popupBackground="#fff"
+                android:spinnerMode="dropdown"></Spinner>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp">
+
+        <ImageView
+            android:id="@+id/act_kafenqi_recommend_calculator_calculate"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:src="@drawable/submit"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#fff"
+            android:textSize="17dp"
+            android:layout_centerInParent="true"
+            android:text="计算"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

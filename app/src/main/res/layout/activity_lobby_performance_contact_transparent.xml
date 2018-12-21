@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.Manager.LobbyPerformanceContactTransparent">
+
+    <RelativeLayout
+        android:id="@+id/worker_myPerfor_status_background"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="@drawable/navigation_bg"/>
+
+    <RelativeLayout
+        android:id="@+id/worker_myPer_nav_background"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/worker_myPerfor_status_background"
+        android:layout_height="45dp"
+        android:background="@drawable/navigation_bg">
+
+        <RelativeLayout
+            android:id="@+id/worker_performance_back_btn"
+            android:layout_width="45dp"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/return_button"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/back_btn_bg" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:gravity="center"
+            android:text="大堂助理业绩"
+            android:textColor="#fff"
+            android:textSize="22dp" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#fff">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:textColor="#5A5A5A"
+            android:text="请根据需要，选择以下操作"/>
+
+        <TextView
+            android:id="@+id/lobby_info_trans_contact"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:textColor="#FF4040"
+            android:text="联系他"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:background="#E5E5E5"/>
+
+        <TextView
+            android:id="@+id/lobby_info_trans_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:textColor="#000"
+            android:textSize="20dp"
+            android:text="取消"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

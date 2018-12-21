@@ -20,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.xd.aselab.chinabankmanager.R;
+import com.xd.aselab.chinabankmanager.activity.Manager.MyManagement;
 import com.xd.aselab.chinabankmanager.gerenxiaodai.GerenxiaodaiActivity;
 import com.xd.aselab.chinabankmanager.kafenqi.KafenqiActivity;
 import com.xd.aselab.chinabankmanager.util.ConnectUtil;
@@ -177,6 +178,9 @@ public class Login extends AppCompatActivity {
                                         spu.setBranchLevel4(json.getString("branchLevel4"));
                                         String job = json.getString("job");
                                         spu.setType(job);
+                                        if("BASIC".equals(job)) {
+                                            spu.setGrab(json.getString("grab"));
+                                        }
                                         spu.setCookie(json.getString("cookie"));
                                         spu.setIsLogin(true);
                                     }

@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#fff"
+    tools:context=".kafenqi.KafenqiRecommendActivity">
+
+    <RelativeLayout
+        android:id="@+id/act_kafenqi_recommend_top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:background="@color/colorPrimaryDark">
+
+        <RelativeLayout
+            android:id="@+id/act_kafenqi_recommend_back_btn"
+            android:layout_width="50dp"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="31dp"
+                android:padding="1.5dp"
+                android:src="@drawable/back_btn_bg"/>
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="27dp"
+            android:layout_centerHorizontal="true"
+            android:textColor="#fff"
+            android:textSize="22dp"
+            android:text="推荐分期"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_kafenqi_recommend"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp">
+
+        <LinearLayout
+            android:id="@+id/act_kafenqi_recommend_type_row"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignRight="@+id/act_kafenqi_recommend_money_row"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="17dp"
+                android:text="业务类型：" />
+
+            <Spinner
+                android:id="@+id/choose_type"
+                android:layout_gravity="left"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:dropDownWidth="100dp"
+                android:popupBackground="#fff"
+                android:spinnerMode="dropdown"></Spinner>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/act_kafenqi_recommend_name_row"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/act_kafenqi_recommend_type_row"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:layout_alignRight="@+id/act_kafenqi_recommend_money_row"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="申请人姓名："
+                android:textSize="17dp" />
+
+            <EditText
+                android:id="@+id/act_kafenqi_recommend_name"
+                android:layout_marginLeft="10dp"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/act_kafenqi_recommend_tel_row"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/act_kafenqi_recommend_name_row"
+            android:layout_centerHorizontal="true"
+            android:layout_alignRight="@+id/act_kafenqi_recommend_money_row"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="联系方式："
+                android:textSize="17dp" />
+
+            <EditText
+                android:id="@+id/act_kafenqi_recommend_tel"
+                android:layout_marginLeft="10dp"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/act_kafenqi_recommend_money_row"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/act_kafenqi_recommend_tel_row"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="分期总金额（万元）："
+                android:textSize="17dp" />
+
+            <EditText
+                android:id="@+id/act_kafenqi_recommend_money"
+                android:layout_marginLeft="10dp"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/act_kafenqi_recommend_month_row"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/act_kafenqi_recommend_money_row"
+            android:layout_centerHorizontal="true"
+            android:layout_alignRight="@+id/act_kafenqi_recommend_money_row"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="分期数（月）："
+                android:textSize="17dp" />
+
+            <EditText
+                android:id="@+id/act_kafenqi_recommend_month"
+                android:layout_marginLeft="10dp"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp">
+
+        <ImageView
+            android:id="@+id/act_kafenqi_recommend_submit"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:src="@drawable/submit"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#fff"
+            android:textSize="17dp"
+            android:layout_centerInParent="true"
+            android:text="提交"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp">
+
+        <ImageView
+            android:id="@+id/act_kafenqi_recommend_calculator"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/calculator"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

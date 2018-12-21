@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_lobby_performance"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    tools:context=".activity.Manager.LobbyPerformance">
+
+    <RelativeLayout
+        android:id="@+id/worker_myPerfor_status_background"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="@drawable/navigation_bg"/>
+
+    <RelativeLayout
+        android:id="@+id/worker_myPer_nav_background"
+        android:layout_below="@+id/worker_myPerfor_status_background"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@drawable/navigation_bg">
+
+        <RelativeLayout
+            android:id="@+id/worker_performance_back_btn"
+            android:layout_width="45dp"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/return_button"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/back_btn_bg" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:gravity="center"
+            android:text="大堂助理业绩"
+            android:textColor="#fff"
+            android:textSize="22dp" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/worker_dataSelect"
+        android:layout_below="@+id/worker_myPer_nav_background"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/perfRanking"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="30dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/act_lobby_perf_sort"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="30dp"
+                android:gravity="center"
+                android:text="业绩排序"
+                android:textColor="#9e9e9e"
+                android:textSize="14dp" />
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="5dp"
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/down" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:background="#9e9e9e" />
+
+        <LinearLayout
+            android:id="@+id/timeSelect"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="30dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:id="@+id/worker_timeSelect"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="最近一周"
+                android:textColor="#9e9e9e"
+                android:textSize="14dp" />
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="5dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/down" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tab"
+        android:layout_below="@+id/worker_dataSelect"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="#e7e7e7"/>
+
+    <ListView
+        android:id="@+id/list_lobby_performance"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tab"
+        android:layout_margin="5dp"
+        android:divider="@color/gray_bg"
+        android:visibility="visible"
+        android:dividerHeight="5dp">
+    </ListView>
+
+    <RelativeLayout
+        android:id="@+id/act_lobby_perf_no_data"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tab"
+        android:visibility="gone">
+        <ImageView
+            android:id="@+id/act_lobby_perf_no_data_img"
+            android:layout_width="85dp"
+            android:layout_height="85dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/no_data"/>
+        <TextView
+            android:id="@+id/act_lobby_perf_no_data_text"
+            android:layout_below="@id/act_lobby_perf_no_data_img"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="14dp"
+            android:text="当前时间段没有数据~"/>
+    </RelativeLayout>
+
+</RelativeLayout>
