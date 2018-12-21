@@ -22,6 +22,8 @@ public class Constants {
     public static String uploadHeadPhoto = ConnectUtil.UploadHeadPhoto + "?";
     public static String ChangeGroupHeadPhoto = ConnectUtil.ChangeGroupHeadPhoto + "?";
 
+    public static String uploadGrabFacePhoto = ConnectUtil.GrabBusinessFaceForAndroid + "?";
+
     public static List<String> chooseSortList = new ArrayList<String>(Arrays.asList("推荐业务数降序", "成功业务数降序","成功金额数降序", "推荐成功率降序"));
     public static List<String> shengHangChooseSortList = new ArrayList<String>(Arrays.asList("成功业务数量降序", "成功业务金额降序"));
     public static List<String> chooseTimeList = new ArrayList<String>(Arrays.asList("近一周业绩", "近一月业绩","近一季度业绩", "近一年业绩"));

@@ -313,7 +313,7 @@ public class RecommendListActivity extends AppCompatActivity {
                             final PostParameter[] params = new PostParameter[2];
                             params[0] = new PostParameter("id", applicationsVOList.get(position).getApplicationID());
                             params[1] = new PostParameter("confirm", "NO");
-                            //卡分期——确认/拒绝推荐
+                            //确认/拒绝推荐
                             String reCode = ConnectUtil.httpRequest(ConnectUtil.ConfirmInstallmentRecommend, params, ConnectUtil.POST);
                             Log.e("reCode", "" + reCode);
                             Message msg = new Message();

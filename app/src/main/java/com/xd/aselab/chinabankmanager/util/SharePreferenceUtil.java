@@ -18,8 +18,19 @@ public class SharePreferenceUtil {
         editor.commit();
     }
 
+    // 用户输入的完整账号
+    // 主要是加了_JF后缀的账号方便自动登录
+    public void setFullAccount(String account) {
+        editor.putString("fullAccount", account);
+        editor.commit();
+    }
+
     public String getAccount() {
         return sp.getString("account", "");
+    }
+
+    public String getFullAccount() {
+        return sp.getString("fullAccount", "");
     }
 
     // 密码  存储的是没加密的
@@ -32,7 +43,16 @@ public class SharePreferenceUtil {
         return sp.getString("password", "");
     }
 
+    // 客户经理抢单能力标记
+    public void setGrab(String grab) {
+        editor.putString("grab", grab);
+        editor.commit();
+    }
+    public String getGrab() { return sp.getString("grab", ""); }
+
     // 经理类型
+    //二级行管理者是MANAGER
+    //银行卡客户经理是BASIC
     public void setType(String type) {
         editor.putString("type", type);
         editor.commit();
@@ -41,8 +61,16 @@ public class SharePreferenceUtil {
     public String getType() {
         return sp.getString("type", "");
     }
-    //二级行管理者是MANAGER
-    //银行卡客户经理是BASIC
+
+    // 二级行管理者的角色，MAJOR/MINOR
+    public void setRole(String role) {
+        editor.putString("role", role);
+        editor.commit();
+    }
+
+    public String getRole() {
+        return sp.getString("role", "");
+    }
 
     // Cookie
     public void setCookie(String cookie) {
@@ -264,11 +292,14 @@ public class SharePreferenceUtil {
         return sp.getString("markerCache", "");
     }
 
-    //判断是否是可抢单客户经理
-    public void setGrab(String grab) {
-        editor.putString("grab", grab);
+    // 经理抢到的订单id和对应时间
+    // 注意取数据时要用id
+    public void setOrderInfo(String id, String completeTime) {
+        editor.putString(id, completeTime);
         editor.commit();
     }
-    public String getGrab() { return sp.getString("grab", ""); }
+    public String getOrderInfo(String id) {
+        return sp.getString(id, "");
+    }
 
 }

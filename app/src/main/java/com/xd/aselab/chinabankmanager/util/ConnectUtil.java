@@ -132,6 +132,20 @@ public class ConnectUtil {
 	public static String ForceReleaseBetweenBankAnd4SShopByID=API_HOST+"ForceReleaseBetweenBankAnd4SShopByID";
 	public static String GetInstallmentWorkerPerformanceIn4SShop=API_HOST+"GetInstallmentWorkerPerformanceIn4SShop";
 
+	//积分账户相关
+	public static String GetNotExchangedScore = API_HOST + "GetManagerNotExchangeScore";
+	public static String GiveScore = API_HOST + "GiveScore";
+	public static String ChangeDivideScoreRate = API_HOST + "ChangeDivideScoreRate";
+	public static String GetDivideScoreRate = API_HOST + "GetDivideScoreRate";
+
+	// 抢单相关
+	public static String GetGrabBusinessList = API_HOST + "GetGrabBusinessList";
+	public static String GrabBusiness = API_HOST + "GrabBusiness";
+	public static String GrabBusinessSubmit = API_HOST + "GrabBusinessSubmit";
+	public static String GrabBusinessContact = API_HOST + "GrabBusinessContact";
+	public static String GrabBusinessFaceForAndroid= API_HOST + "GrabBusinessFaceForAndroid";
+	public static String GetVirtualInstallmentMyPerformance= API_HOST + "GetVirtualInstallmentMyPerformance";
+	public static String GetVirtualInstallmentRecommendList= API_HOST + "GetVirtualInstallmentRecommendList";
 	//大堂助理业绩(二级行管理者可查看)
 	public static String GetLobbyPerformance = API_HOST + "GetLobbyPerformance";
 
