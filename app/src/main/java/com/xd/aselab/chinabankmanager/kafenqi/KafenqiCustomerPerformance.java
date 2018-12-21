@@ -57,13 +57,12 @@ public class KafenqiCustomerPerformance extends AppCompatActivity implements OnC
     private TextView customer_recommend_money;
     private TextView customer_success_num;
     private TextView customer_success_money;
-    private TextView customer_all_score;
-    private TextView customer_exchanged_score;
     private LinearLayout ll_chart;
     private LinearLayout ll_no_data;
     private RelativeLayout rl_select_time;
     private TextView select_time;
     private String choosen_time;
+    private LinearLayout ll_click;
     private ImageView click;
     private RelativeLayout gray_bar_top;
     private TextView gray_bar;
@@ -110,8 +109,6 @@ public class KafenqiCustomerPerformance extends AppCompatActivity implements OnC
         customer_recommend_money = (TextView) findViewById(R.id.act_kafenqi_customer_perf_recommend_money_text);
         customer_success_num = (TextView) findViewById(R.id.act_kafenqi_customer_perf_success_num_text);
         customer_success_money = (TextView) findViewById(R.id.act_kafenqi_customer_perf_success_money_text);
-        customer_all_score = (TextView) findViewById(R.id.act_kafenqi_customer_perf_all_score_text);
-        customer_exchanged_score = (TextView) findViewById(R.id.act_kafenqi_customer_perf_exchanged_score_text);
         ll_chart = (LinearLayout) findViewById(R.id.ll_chart);
         ll_no_data = (LinearLayout) findViewById(R.id.ll_no_data);
         rl_select_time = (RelativeLayout) findViewById(R.id.rl_customer_perf_select_time);
@@ -120,6 +117,7 @@ public class KafenqiCustomerPerformance extends AppCompatActivity implements OnC
         gray_bar_top = (RelativeLayout)findViewById(R.id.act_kafenqi_customer_perf_gray_bar_top);
         gray_bar = (TextView)findViewById(R.id.act_kafenqi_customer_perf_gray_bar);
         gray_bar.setText(Calendar.getInstance().get(Calendar.YEAR)+"年各月分期业务情况分析");
+        ll_click = (LinearLayout) findViewById(R.id.ll_click);
         click = (ImageView) findViewById(R.id.click);
         mChart = (BarChart) findViewById(R.id.chart1);
 
@@ -250,7 +248,7 @@ public class KafenqiCustomerPerformance extends AppCompatActivity implements OnC
             }
         });
 
-        click.setOnClickListener(new View.OnClickListener() {
+        ll_click.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 spu = new SharePreferenceUtil(KafenqiCustomerPerformance.this, "user");
@@ -311,13 +309,12 @@ public class KafenqiCustomerPerformance extends AppCompatActivity implements OnC
         customer_recommend_money.setText(("".equals(recommend_money)? "暂无" : df.format(recommend_money)) + "笔");
         customer_success_num.setText(("".equals(success_num)? "暂无" : success_num) + "笔");
         customer_success_money.setText(("".equals(success_money)? "暂无" : df.format(success_money))+"万元");
-        customer_all_score.setText(("".equals(total_score)? "暂无" : total_score) + "");
-        customer_exchanged_score.setText(("".equals(exchanged_score)? "暂无" : exchanged_score) + "");
+
         if(recommend_num==0){
-            click.setClickable(false);
+            ll_click.setClickable(false);
             click.setVisibility(View.GONE);
         }else{
-            click.setClickable(true);
+            ll_click.setClickable(true);
             click.setVisibility(View.VISIBLE);
         }
     }

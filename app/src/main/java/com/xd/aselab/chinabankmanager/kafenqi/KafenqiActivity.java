@@ -131,7 +131,7 @@ public class KafenqiActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
-                intent.setClass(KafenqiActivity.this, KafenqiCarPerformanceActivity.class);
+                intent.setClass(KafenqiActivity.this, KMyPreformenceActivity.class);
                 startActivity(intent);
             }
         });

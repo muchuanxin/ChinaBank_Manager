@@ -97,6 +97,7 @@
         android:background="@color/gray_bg"/>
 
     <LinearLayout
+        android:id="@+id/ll_click"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -206,66 +207,6 @@
             android:textSize="17dp"
             android:textColor="@color/black_text_most"
             android:text="0.0000万元"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/act_kafenqi_non_car_perf_all_score_label"
-                android:layout_marginLeft="17dp"
-                android:layout_marginTop="5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="17dp"
-                android:textColor="@color/black_text_most"
-                android:text="积分数："/>
-
-            <TextView
-                android:id="@+id/act_kafenqi_non_car_perf_all_score_text"
-                android:layout_marginTop="5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="17dp"
-                android:textColor="@color/black_text_most"
-                android:text="0"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="60dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/act_kafenqi_non_car_perf_exchanged_score_label"
-                android:layout_marginLeft="17dp"
-                android:layout_marginTop="5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="17dp"
-                android:textColor="@color/black_text_most"
-                android:text="累计兑换积分："/>
-
-            <TextView
-                android:id="@+id/act_kafenqi_non_car_perf_exchanged_score_text"
-                android:layout_marginTop="5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="17dp"
-                android:textColor="@color/black_text_most"
-                android:text="0"/>
-
-        </LinearLayout>
 
     </LinearLayout>
 
