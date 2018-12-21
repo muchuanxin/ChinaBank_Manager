@@ -21,6 +21,7 @@ import android.widget.RelativeLayout;
 import com.google.zxing.WriterException;
 import com.xd.aselab.chinabankmanager.R;
 import com.xd.aselab.chinabankmanager.activity.MyManageBase;
+import com.xd.aselab.chinabankmanager.grabOrder.GrabOrderActivity;
 import com.xd.aselab.chinabankmanager.kafenqi.KOnlineCommunicate.KOnlineCommuActivity;
 import com.xd.aselab.chinabankmanager.kafenqi.KPublishAnnouncement.SelectPromoterActivity;
 import com.xd.aselab.chinabankmanager.kafenqi.KWorkerManage.activity.KMyContactsActivity;
@@ -165,7 +166,7 @@ public class KafenqiActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
-                intent.setClass(KafenqiActivity.this, null);
+                intent.setClass(KafenqiActivity.this, KafenqiVirtualActivity.class);
                 startActivity(intent);
             }
         });

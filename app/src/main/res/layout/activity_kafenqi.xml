@@ -228,6 +228,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/act_kafenqi_virtual_4s"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -240,7 +241,6 @@
             android:background="@color/gray_bg"/>
 
         <LinearLayout
-            android:id="@+id/act_kafenqi_virtual_4s"
             android:layout_below="@id/act_my_mana_division5"
             android:layout_width="match_parent"
             android:layout_height="70dp"

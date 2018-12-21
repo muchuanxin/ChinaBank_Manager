@@ -10,6 +10,8 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.xd.aselab.chinabankmanager.R;
+import com.xd.aselab.chinabankmanager.grabOrder.GrabOrderActivity;
+import com.xd.aselab.chinabankmanager.grabOrder.GrabPerformanceActivity;
 
 public class KafenqiVirtualActivity extends AppCompatActivity {
 
@@ -41,7 +43,7 @@ public class KafenqiVirtualActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent();
 //                GrabOrderActivity.class
-                intent.setClass(KafenqiVirtualActivity.this, null);
+                intent.setClass(KafenqiVirtualActivity.this, GrabOrderActivity.class);
                 startActivity(intent);
             }
         });
@@ -50,7 +52,7 @@ public class KafenqiVirtualActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
-                intent.setClass(KafenqiVirtualActivity.this, null);
+                intent.setClass(KafenqiVirtualActivity.this, GrabPerformanceActivity.class);
                 startActivity(intent);
             }
         });
