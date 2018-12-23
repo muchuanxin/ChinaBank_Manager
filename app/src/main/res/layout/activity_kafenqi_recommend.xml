@@ -65,9 +65,9 @@
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:dropDownWidth="100dp"
+                android:dropDownWidth="150dp"
                 android:popupBackground="#fff"
-                android:spinnerMode="dropdown"></Spinner>
+                android:spinnerMode="dropdown" />
 
         </LinearLayout>
 
@@ -115,6 +115,7 @@
                 android:id="@+id/act_kafenqi_recommend_tel"
                 android:layout_marginLeft="10dp"
                 android:layout_width="150dp"
+                android:inputType="phone"
                 android:layout_height="wrap_content" />
 
         </LinearLayout>
@@ -138,7 +139,8 @@
                 android:id="@+id/act_kafenqi_recommend_money"
                 android:layout_marginLeft="10dp"
                 android:layout_width="150dp"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"/>
 
         </LinearLayout>
 
@@ -162,7 +164,8 @@
                 android:id="@+id/act_kafenqi_recommend_month"
                 android:layout_marginLeft="10dp"
                 android:layout_width="150dp"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:inputType="number" />
 
         </LinearLayout>
 
@@ -196,11 +199,11 @@
 
         <ImageView
             android:id="@+id/act_kafenqi_recommend_calculator"
-            android:layout_width="65dp"
-            android:layout_height="65dp"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
-            android:src="@drawable/calculator"/>
+            android:src="@drawable/calculator1"/>
 
     </RelativeLayout>
 

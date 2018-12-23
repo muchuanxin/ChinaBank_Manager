@@ -10,10 +10,12 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.xd.aselab.chinabankmanager.R;
+import com.xd.aselab.chinabankmanager.kafenqi.KMyPreformenceActivity;
 
 public class KWorkerManageActivity extends AppCompatActivity {
 
     private RelativeLayout back;
+    private LinearLayout ll_worker_my_performance;
     private LinearLayout ll_worker_performance;
     private LinearLayout ll_worker_join_check;
     private LinearLayout ll_worker_cancel_check;
@@ -31,6 +33,17 @@ public class KWorkerManageActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
+            }
+        });
+
+        ll_worker_my_performance = (LinearLayout) findViewById(R.id.act_kafenqi_worker_manag_my_perf);
+        ll_worker_my_performance.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.putExtra("type","basic");
+                intent.setClass(KWorkerManageActivity.this,KMyPreformenceActivity.class);
+                startActivity(intent);
             }
         });
 

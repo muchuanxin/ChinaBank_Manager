@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/gray_bg"
     tools:context="com.xd.aselab.chinabankmanager.kafenqi.KWorkerManage.activity.KMyContactsActivity">
 
@@ -49,7 +48,8 @@
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:dividerHeight="5dp"
-        android:divider="@color/transparent"></ListView>
+        android:visibility="gone"
+        android:divider="@color/transparent" />
 
     <ImageView
         android:id="@+id/act_kafenqi_my_contacts_no_data_img"
@@ -57,18 +57,19 @@
         android:layout_marginTop="200dp"
         android:layout_width="85dp"
         android:layout_height="85dp"
-        android:layout_gravity="center"
+        android:layout_centerHorizontal="true"
         android:src="@drawable/no_data"
-        android:visibility="gone"/>
+        android:visibility="visible"/>
 
     <TextView
         android:id="@+id/act_kafenqi_my_contacts_no_data_txt"
         android:layout_below="@id/act_kafenqi_my_contacts_no_data_img"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:textSize="14dp"
         android:text="还没有4S店销售信息~"
-        android:visibility="gone"/>
+        android:visibility="visible"/>
 
 </RelativeLayout>

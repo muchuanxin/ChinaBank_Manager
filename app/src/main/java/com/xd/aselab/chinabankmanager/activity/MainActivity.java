@@ -280,12 +280,16 @@ public class MainActivity extends AppCompatActivity {
             Log.e("www","INFO_TO_MAIN");
             setTabSelection(0);
         }
-
         if(resultCode== Constants.LOGIN_TO_MAIN_HOME){
             Log.e("www","LOGIN_TO_MAIN_HOME");
             setTabSelection(0);
         }
-        if(resultCode== Constants.EXIT_TO_LOGIN){
+//        if(resultCode== Constants.EXIT_TO_LOGIN && "check_out".equals(data.getStringExtra("action"))){
+//            Log.e("mainactivity", "EXIT_TO_LOGIN");
+//            finish();
+//        }
+        if(resultCode== Constants.EXIT_TO_LOGIN ){
+            Log.e("mainactivity", "EXIT_TO_LOGIN");
             finish();
         }
     }

@@ -130,6 +130,9 @@ public class KafenqiRecommendActivity extends AppCompatActivity {
                 else if(recommend_tel_text.equals("")) {
                     Toast.makeText(KafenqiRecommendActivity.this, "请输入申请人联系方式！", Toast.LENGTH_SHORT).show();
                 }
+                else if(recommend_tel_text.length() != 11) {
+                    Toast.makeText(KafenqiRecommendActivity.this, "请输入正确的联系方式！", Toast.LENGTH_SHORT).show();
+                }
                 else if(recommend_money_text.equals("")) {
                     Toast.makeText(KafenqiRecommendActivity.this, "请输入分期总金额！", Toast.LENGTH_SHORT).show();
                 }

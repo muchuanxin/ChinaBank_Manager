@@ -98,7 +98,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/black_text_most"
             android:textSize="18dp"
-            android:text="我的优客业绩"/>
+            android:text="我的业绩"/>
 
     </LinearLayout>
 

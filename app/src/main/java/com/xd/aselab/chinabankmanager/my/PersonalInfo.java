@@ -15,6 +15,7 @@ import com.xd.aselab.chinabankmanager.R;
 import com.xd.aselab.chinabankmanager.activity.ChangePhotoActivity;
 import com.xd.aselab.chinabankmanager.activity.ChangePsw;
 import com.xd.aselab.chinabankmanager.activity.ChangeTel;
+import com.xd.aselab.chinabankmanager.activity.Login;
 import com.xd.aselab.chinabankmanager.activity.MyContact;
 import com.xd.aselab.chinabankmanager.activity.MyQRcode;
 import com.xd.aselab.chinabankmanager.activity.SecureQuestionActivity;
@@ -171,10 +172,12 @@ public class PersonalInfo extends AppCompatActivity {
                 JPushInterface.deleteAlias(PersonalInfo.this, 0);
                 JPushInterface.cleanTags(PersonalInfo.this, 1);
                 Intent intent = new Intent();
+                intent.setClass(PersonalInfo.this, Login.class);
 //                intent.putExtra("action", "check_out");
                 //setResult(Constants.INFO_TO_MAIN, intent);
                 setResult(Constants.EXIT_TO_LOGIN, intent);
                 finish();
+                startActivity(intent);
             }
         });
 

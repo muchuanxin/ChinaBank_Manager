@@ -63,7 +63,8 @@
             <EditText
                 android:id="@+id/act_kafenqi_recommend_calculator_income"
                 android:layout_width="180dp"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"/>
 
         </LinearLayout>
 
@@ -92,6 +93,7 @@
                     android:id="@+id/act_kafenqi_recommend_calculator_repayment"
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
                     android:layout_toEndOf="@+id/act_kafenqi_recommend_calculator_repayment_label"
                     android:layout_toRightOf="@+id/act_kafenqi_recommend_calculator_repayment_label"/>
 
@@ -116,7 +118,8 @@
             <EditText
                 android:id="@+id/act_kafenqi_recommend_calculator_installment"
                 android:layout_width="180dp"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:inputType="number" />
 
         </LinearLayout>
 

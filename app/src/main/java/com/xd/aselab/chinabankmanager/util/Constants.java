@@ -14,10 +14,11 @@ public class Constants {
     public static final int TAKE_PICTURE = 0x000001;
     public static final int FROM_MAIN_ME_TO_LOGIN = 004;
     public static final int LOGIN_TO_MAIN_ME = 005;
-    public static final int MIAN_ME_TO_INFO = 006;
+    public static final int MAIN_ME_TO_INFO = 006;
     public static final int INFO_TO_MAIN = 007;
     public static final int LOGIN_TO_MAIN_HOME = 1001;
     public static final int EXIT_TO_LOGIN = 1002;
+    public static final int LOG_OUT = 1003;
     //me_uploadHeadPhoto
     public static String uploadHeadPhoto = ConnectUtil.UploadHeadPhoto + "?";
     public static String ChangeGroupHeadPhoto = ConnectUtil.ChangeGroupHeadPhoto + "?";

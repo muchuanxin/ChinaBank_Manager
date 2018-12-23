@@ -120,15 +120,15 @@
 
                 <ImageView
                     android:id="@+id/kafenqi_perf_beizhu"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:layout_marginRight="15dp"
                     android:src="@drawable/base_info"/>
 
                 <ImageView
                     android:id="@+id/kafenqi_perf_call"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:layout_toRightOf="@+id/kafenqi_perf_beizhu"
                     android:src="@drawable/telephone_red"/>
 

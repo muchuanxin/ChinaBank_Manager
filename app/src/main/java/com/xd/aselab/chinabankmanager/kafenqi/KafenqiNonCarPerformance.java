@@ -172,29 +172,29 @@ public class KafenqiNonCarPerformance extends AppCompatActivity implements OnCha
                                     recommend_money_one_week = oneWeekJO.getDouble("recommend_money");
                                     success_num_one_week = oneWeekJO.getInt("number");
                                     success_money_one_week = oneWeekJO.getDouble("money");
-                                    total_score_one_week = oneWeekJO.getInt(null);
-                                    exchanged_score_one_week = oneWeekJO.getInt(null);
+//                                    total_score_one_week = oneWeekJO.getInt(null);
+//                                    exchanged_score_one_week = oneWeekJO.getInt(null);
 
                                     recommend_num_one_month = oneMonthJO.getInt("recommend_num");
                                     recommend_money_one_month = oneMonthJO.getDouble("recommend_money");
                                     success_num_one_month = oneMonthJO.getInt("number");
                                     success_money_one_month = oneMonthJO.getDouble("money");
-                                    total_score_one_month = oneMonthJO.getInt(null);
-                                    exchanged_score_one_month = oneMonthJO.getInt(null);
+//                                    total_score_one_month = oneMonthJO.getInt(null);
+//                                    exchanged_score_one_month = oneMonthJO.getInt(null);
 
                                     recommend_num_three_month = threeMonthJO.getInt("recommend_num");
                                     recommend_money_three_month = threeMonthJO.getDouble("recommend_money");
                                     success_num_three_month = threeMonthJO.getInt("number");
                                     success_money_three_month = threeMonthJO.getDouble("money");
-                                    total_score_three_month = threeMonthJO.getInt(null);
-                                    exchanged_score_three_month = threeMonthJO.getInt(null);
+//                                    total_score_three_month = threeMonthJO.getInt(null);
+//                                    exchanged_score_three_month = threeMonthJO.getInt(null);
 
                                     recommend_num_one_year = oneYearJO.getInt("recommend_num");
                                     recommend_money_one_year = oneYearJO.getDouble("recommend_money");
                                     success_num_one_year = oneYearJO.getInt("number");
                                     success_money_one_year = oneYearJO.getDouble("money");
-                                    total_score_one_year = oneYearJO.getInt(null);
-                                    exchanged_score_one_year = oneYearJO.getInt(null);
+//                                    total_score_one_year = oneYearJO.getInt(null);
+//                                    exchanged_score_one_year = oneYearJO.getInt(null);
 
                                     choosen_time = "one_week";
                                     chooseTimeAdapter.setPosition(0);

@@ -61,7 +61,7 @@ public class MeBasicFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent();
                 intent.setClass(getActivity(),PersonalInfo.class);
-                startActivityForResult(intent, Constants.MIAN_ME_TO_INFO);
+                startActivityForResult(intent, Constants.MAIN_ME_TO_INFO);
             }
         });
 

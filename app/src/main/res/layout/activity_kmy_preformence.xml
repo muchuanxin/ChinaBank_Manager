@@ -104,6 +104,7 @@
         android:textSize="17dp"
         android:textColor="@color/black_text_most"
         android:text="分期业务推荐数量：暂无"/>
+
     <TextView
         android:id="@+id/act_my_perf_red_recommend_money"
         android:layout_marginTop="5dp"
