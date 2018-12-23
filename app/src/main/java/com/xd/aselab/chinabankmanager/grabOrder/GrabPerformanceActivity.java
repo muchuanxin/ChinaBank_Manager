@@ -3,25 +3,16 @@ package com.xd.aselab.chinabankmanager.grabOrder;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.PopupWindow;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,25 +30,20 @@ import com.github.mikephil.charting.formatter.LargeValueFormatter;
 import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.xd.aselab.chinabankmanager.R;
-import com.xd.aselab.chinabankmanager.util.ChooseSortAdapter;
-import com.xd.aselab.chinabankmanager.util.ChooseTimeAdapter;
 import com.xd.aselab.chinabankmanager.util.ConnectUtil;
-import com.xd.aselab.chinabankmanager.util.Constants;
 import com.xd.aselab.chinabankmanager.util.CustomPopupWindow;
-import com.xd.aselab.chinabankmanager.util.ListUtils;
 import com.xd.aselab.chinabankmanager.util.MyMarkerView;
 import com.xd.aselab.chinabankmanager.util.PostParameter;
 import com.xd.aselab.chinabankmanager.util.SharePreferenceUtil;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 
 public class GrabPerformanceActivity extends AppCompatActivity implements OnChartValueSelectedListener {
 
@@ -78,7 +64,7 @@ public class GrabPerformanceActivity extends AppCompatActivity implements OnChar
 
     private ImageView no_data_img;
     private ImageView forward;
-    private TextView no_data_txt;
+    private TextView no_data_txt, P1, P2, P3, P4;
     private LinearLayout timeSelect;
     private CustomPopupWindow mPop;
 
@@ -98,7 +84,7 @@ public class GrabPerformanceActivity extends AppCompatActivity implements OnChar
         sp = new SharePreferenceUtil(this, "user");
         sdf = new SimpleDateFormat("yyyy-mm-dd");
         gray_bar = (TextView) findViewById(R.id.act_my_perf_gray_bar);
-        gray_bar.setText(Calendar.getInstance().get(Calendar.YEAR) + "年各月办卡业务情况分析");
+        gray_bar.setText(Calendar.getInstance().get(Calendar.YEAR) + "年各月分期业务情况分析");
         // 本页面就这3参数
         success_num = (TextView) findViewById(R.id.success_num);
         success_money = (TextView) findViewById(R.id.success_money);
@@ -118,6 +104,10 @@ public class GrabPerformanceActivity extends AppCompatActivity implements OnChar
         forward = (ImageView) findViewById(R.id.forward);
         timeSelect = (LinearLayout) findViewById(R.id.timeSelect);
         mPop = new CustomPopupWindow(this);
+        P1 = (TextView) findViewById(R.id.P1);
+        P2 = (TextView) findViewById(R.id.P2);
+        P3 = (TextView) findViewById(R.id.P3);
+        P4 = (TextView) findViewById(R.id.P4);
 
         timeSelect.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -177,7 +167,7 @@ public class GrabPerformanceActivity extends AppCompatActivity implements OnChar
                     //要向后台传送的参数“account”
                     PostParameter[] param = new PostParameter[1];
                     param[0] = new PostParameter("account", sp.getAccount());
-                    //获取向后台发送消息后返回的数据集！！！
+                    //获取向后台发送消息后返回的数据集
                     String jsonStr = ConnectUtil.httpRequest(ConnectUtil.GetVirtualInstallmentMyPerformance, param, "POST");
 
                     if (("").equals(jsonStr) || jsonStr == null) {
@@ -208,6 +198,14 @@ public class GrabPerformanceActivity extends AppCompatActivity implements OnChar
                 try {
                     obj = new JSONObject(str);
                     if (obj.getString("status").equals("true")) {
+                        // 取两位小数
+                        DecimalFormat format = new DecimalFormat("#.00");
+                        double rate = Double.parseDouble(obj.getString("success_rate"));
+                        success_rate.setText(format.format(rate));
+                        P1.setText("P1: " + obj.getString("P1"));
+                        P2.setText("P2: " + obj.getString("P2"));
+                        P3.setText("P3: " + obj.getString("P3"));
+                        P4.setText("P4: " + obj.getString("P4"));
                         setText("one_week");
                         flag = false;
                         //该jsonObject用于呈现图表中各月的业务情况
@@ -218,7 +216,7 @@ public class GrabPerformanceActivity extends AppCompatActivity implements OnChar
 //                                .setIcon(R.mipmap.ic_launcher)
 //                                .create().show();
                         for (int i = 0; i < 12; i++) {
-                            success_number[i] = (float) myobj.getJSONObject("" + (i + 1)).getDouble("success_num");
+                            success_number[i] = (float) myobj.getJSONObject("" + (i + 1)).getDouble("number");
 
                             if (success_number[i] > 0) {
                                 flag = true;
@@ -255,8 +253,8 @@ public class GrabPerformanceActivity extends AppCompatActivity implements OnChar
         try {
             if (ConnectUtil.isNetworkAvailable(GrabPerformanceActivity.this)) {
                 myObj = obj.getJSONObject(select);
-                success_num.setText(myObj.getString("success_num") + "笔");
-                if (!myObj.getString("success_num").equals("0")) {
+                success_num.setText(myObj.getString("number") + "笔");
+                if (!myObj.getString("number").equals("0")) {
                     click.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -270,8 +268,8 @@ public class GrabPerformanceActivity extends AppCompatActivity implements OnChar
                     click.setOnClickListener(null);
                     forward.setVisibility(View.INVISIBLE);
                 }
-                success_num.setText(myObj.getString("success_num") + "笔");
-                success_money.setText(myObj.getInt("success_money") / 10000 + "万");
+                success_num.setText(myObj.getString("number") + "笔");
+                success_money.setText(myObj.getInt("money") / 10000 + "万");
             } else {
                 Toast.makeText(this, "网络连接失败", Toast.LENGTH_SHORT).show();
             }

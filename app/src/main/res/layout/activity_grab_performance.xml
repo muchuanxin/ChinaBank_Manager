@@ -226,7 +226,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="P1："
+                android:text="P2："
                 android:textColor="#6b6b6b"
                 android:textSize="16dp" />
 
@@ -236,7 +236,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="P1："
+                android:text="P3："
                 android:textColor="#6b6b6b"
                 android:textSize="16dp" />
 
