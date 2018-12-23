@@ -130,7 +130,6 @@ public class RecommendListActivity extends AppCompatActivity {
                                     //adaper.setList(applicationsVOList);
                                     adaper.notifyDataSetChanged();
                                 }
-
                             }
                         } catch (Exception e) {
                             e.printStackTrace();
