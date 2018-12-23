@@ -210,8 +210,11 @@ public class GrabOrderActivity extends AppCompatActivity implements ImageSetting
                                 }
                                 Log.e("dardai_list_size", orderList.size() + "");
                                 // list数据源判空
+                                // 注意列表为空时也要重新绑定adapter和orderList，以防历史数据捣乱
                                 if (orderList.size() == 0) {
                                     Toast.makeText(GrabOrderActivity.this, "当前暂无业务信息", Toast.LENGTH_SHORT).show();
+                                    adapter.setList(orderList);
+                                    adapter.notifyDataSetChanged();
                                 } else {
                                     adapter.setList(orderList);
                                     adapter.notifyDataSetChanged();
