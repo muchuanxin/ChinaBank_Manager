@@ -239,8 +239,6 @@ public class LobbyPerformance extends AppCompatActivity {
         chooseSortAdapter = new ChooseSortAdapter(Constants.lobbyChooseSortList, LobbyPerformance.this);
         chooseTimeAdapter = new ChooseTimeAdapter(Constants.chooseTimeList, LobbyPerformance.this);
 
-
-
         new Thread() {
             @Override
             public void run() {

@@ -16,6 +16,7 @@ import com.xd.aselab.chinabankmanager.activity.MainActivity;
 import com.xd.aselab.chinabankmanager.activity.MainActivity_all;
 import com.xd.aselab.chinabankmanager.chat.ui.ChatActivity;
 import com.xd.aselab.chinabankmanager.chat.ui.GroupChatActivity;
+import com.xd.aselab.chinabankmanager.grabOrder.GrabOrderActivity;
 import com.xd.aselab.chinabankmanager.kafenqi.KWorkerManage.activity.NewNotificationDetailActivity;
 import com.xd.aselab.chinabankmanager.kafenqi.KWorkerManage.activity.NewNotificationDetailNewActivity;
 
@@ -152,8 +153,15 @@ public class MyReceiver extends BroadcastReceiver {
 					Log.e("www","group_name3:---"+json_extra.getString("group_name"));
 					//i.putExtras(bundle2);
 					context.startActivity(i);
+				}else if(Constants.MANAGER_GRAB.equals(type)){
+					Log.e(TAG,"Constants.ManagerGrab");
+					Intent i = new Intent(context, GrabOrderActivity.class);  //自定义打开抢单界面
+					i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK| Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//					i.putExtra("group_id",json_extra.getString("group_id"));
+					Log.e("dardai","managerGrab:---");
+					//i.putExtras(bundle2);
+					context.startActivity(i);
 				}
-
 
 			} else if (JPushInterface.ACTION_RICHPUSH_CALLBACK.equals(intent.getAction())) {
 				Log.d(TAG, "[MyReceiver] 用户收到到RICH PUSH CALLBACK: " + bundle.getString(JPushInterface.EXTRA_EXTRA));

@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.xd.aselab.chinabankmanager"
-    android:versionCode="5"
-    android:versionName="3.0.0">
+    android:versionCode="6"
+    android:versionName="3.0.1">
 
     <permission
         android:name="${applicationId}.permission.JPUSH_MESSAGE"
@@ -15,18 +15,14 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
-    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
-
-    <!-- 高德地图权限 -->
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" /> <!-- 高德地图权限 -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
-
-    <!-- 极光推送 -->
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" /> <!-- 极光推送 -->
     <uses-permission android:name="${applicationId}.permission.JPUSH_MESSAGE" />
     <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
@@ -47,9 +43,7 @@
 
         <meta-data
             android:name="com.amap.api.v2.apikey"
-            android:value="0d64ee466ee5897caa20929c38a69e17" />
-
-        <!-- 友盟统计数据 -->
+            android:value="0d64ee466ee5897caa20929c38a69e17" /> <!-- 友盟统计数据 -->
         <meta-data
             android:name="UMENG_APPKEY"
             android:value="57d74ecbe0f55a4697000d96" />
@@ -491,9 +485,7 @@
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="nosensor"
             android:theme="@style/Translucent"
-            android:windowSoftInputMode="adjustPan|stateHidden" />
-
-        <!-- 省行管理者部分 -->
+            android:windowSoftInputMode="adjustPan|stateHidden" /> <!-- 省行管理者部分 -->
         <activity
             android:name=".kafenqi.ProvincialBankManager.KSubManager4sManagementActivity"
             android:configChanges="orientation|keyboardHidden"
@@ -553,9 +545,7 @@
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="nosensor"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="adjustPan|stateHidden" />
-
-        <!-- Required SDK核心功能 -->
+            android:windowSoftInputMode="adjustPan|stateHidden" /> <!-- Required SDK核心功能 -->
         <receiver
             android:name="cn.jpush.android.service.PushReceiver"
             android:enabled="true"
@@ -577,9 +567,7 @@
 
                 <data android:scheme="package" />
             </intent-filter>
-        </receiver>
-
-        <!-- Required SDK核心功能 -->
+        </receiver> <!-- Required SDK核心功能 -->
         <receiver
             android:name="cn.jpush.android.service.AlarmReceiver"
             android:exported="false" />
@@ -775,7 +763,6 @@
             android:screenOrientation="nosensor"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan|stateHidden" />
-
         <!-- 积分账号部分 -->
         <activity
             android:name=".BaseScoreAccount.BaseIndexActivity"
@@ -814,7 +801,7 @@
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan|stateHidden" />
 
-        <!--抢单部分-->
+        <!-- 抢单部分 -->
         <activity
             android:name=".grabOrder.GrabPerformanceDetailActivity"
             android:configChanges="orientation|keyboardHidden"
@@ -829,6 +816,26 @@
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
             android:name=".grabOrder.GrabOrderActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="nosensor"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+
+        <!--二级行新增部分-->
+        <activity
+            android:name=".activity.Manager.VirtualGrabRankActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="nosensor"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity
+            android:name=".activity.Manager.VirtualPerformanceRankActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="nosensor"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity
+            android:name=".activity.Manager.ManagerVirtualSaleActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="nosensor"
             android:theme="@style/AppTheme.NoActionBar"

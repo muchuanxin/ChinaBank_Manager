@@ -153,6 +153,7 @@ public class Login extends AppCompatActivity {
                                 if ("false".equals(status)) {
                                     Toast.makeText(Login.this, json.getString("message"), Toast.LENGTH_SHORT).show();
                                 } else if ("true".equals(status)) {
+                                    // 省行角色的分支
                                     if ("PROVINCE".equals(json.getString("job"))) {
                                         spu.setAccount(account);
                                         spu.setPassword(psw);
@@ -165,6 +166,7 @@ public class Login extends AppCompatActivity {
                                         spu.setCookie(json.getString("cookie"));
                                         spu.setIsLogin(true);
                                     }else {
+                                        // 一线经理、二级行的分支
                                         spu.setAccount(account);
                                         // 设置full_account，方便积分账号的自动填充
                                         spu.setFullAccount(full_account);
@@ -190,8 +192,10 @@ public class Login extends AppCompatActivity {
                                         }
                                         // 客户经理的抢单标记存储
                                         if("BASIC".equals(job)){
+                                            Log.e("dardai_basic",json.getString("grab"));
                                             spu.setGrab(json.getString("grab"));
                                         }else{
+                                            Log.e("dardai_none_basic","false");
                                             // 普通经理也有role属性，为防干扰手动置空
                                             spu.setGrab("false");
                                         }
@@ -199,13 +203,13 @@ public class Login extends AppCompatActivity {
                                         spu.setIsLogin(true);
                                     }
 
-                                    JPushInterface.setAlias(Login.this, new Random().nextInt(), account);
-                                    /*if ("BASIC".equals(job)){
-                                        startActivity(new Intent().setClass(Login.this, MainActivity_Base.class));
-                                    }
-                                    else if ("MANAGER".equals(job)) {
-                                        startActivity(new Intent().setClass(Login.this, MainActivity_Boss.class));
-                                    }*/
+//                                    JPushInterface.setAlias(Login.this, new Random().nextInt(), account);
+//                                    if ("BASIC".equals(job)){
+//                                        startActivity(new Intent().setClass(Login.this, MainActivity_Base.class));
+//                                    }
+//                                    else if ("MANAGER".equals(job)) {
+//                                        startActivity(new Intent().setClass(Login.this, MainActivity_Boss.class));
+//                                    }
                                     // 判断页面跳转，是否应该去积分页面
                                     // 跳转之前先finish
                                     finish();
