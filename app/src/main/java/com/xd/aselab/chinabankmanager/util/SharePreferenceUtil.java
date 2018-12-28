@@ -182,6 +182,17 @@ public class SharePreferenceUtil {
         return sp.getString("landlineNumber", "");
     }
 
+    // 抢单用户的电话联系成功与否
+    // 主键用订单id+电话号码实现唯一标识
+    public void setCustomerContactFlag(String idAndPhone, boolean flag) {
+        editor.putBoolean(idAndPhone, flag);
+        editor.commit();
+    }
+
+    public boolean getCustomerContactFlag(String idAndPhone) {
+        return sp.getBoolean(idAndPhone, false);
+    }
+
     // BOSS账号
     public void setBossAccount(String bossAccount) {
         editor.putString("bossAccount", bossAccount);

@@ -26,6 +26,8 @@ import android.support.v4.content.PermissionChecker;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.telephony.PhoneStateListener;
+import android.telephony.TelephonyManager;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -91,6 +93,14 @@ public class GrabOrderActivity extends AppCompatActivity implements ImageSetting
     private GrabOrderAdapter adapter;
     private Boolean dateChangeFlag;
 
+    //通话监听
+    private TelephonyManager tm;
+    private MyPhoneListener MyPhoneListener;
+    private long callTime;//通话时长
+    private long firstCallTime;//点击拨号时候的时间
+    private boolean isCall = false;//是否拨打过电话
+    private long callTimeThreshhold = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -138,7 +148,12 @@ public class GrabOrderActivity extends AppCompatActivity implements ImageSetting
             }
         });
 
+        // 日期选择变动监听标志
         dateChangeFlag = true;
+
+        tm = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
+        MyPhoneListener = new MyPhoneListener();
+        tm.listen(MyPhoneListener, PhoneStateListener.LISTEN_CALL_STATE);
     }
 
     // 获取抢单列表数据
@@ -186,7 +201,12 @@ public class GrabOrderActivity extends AppCompatActivity implements ImageSetting
                 switch (msg.what) {
                     // 接口拿数据失败的情况
                     case 0:
-                        Toast.makeText(GrabOrderActivity.this, msg.obj.toString(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(GrabOrderActivity.this, "获取数据失败，请稍候再试", Toast.LENGTH_SHORT).show();
+                        // 如果RefreshableLayout正在刷新，停止之
+                        if (swipeRefreshLayout.isRefreshing()) {
+                            // adapter.notifyDataSetChanged();
+                            swipeRefreshLayout.setRefreshing(false);
+                        }
                         break;
                     // 页面列表源数据获取
                     case 1:
@@ -195,6 +215,9 @@ public class GrabOrderActivity extends AppCompatActivity implements ImageSetting
                             if (obj.getString("status").equals("false")) {
                                 Toast.makeText(GrabOrderActivity.this, obj.getString("message"), Toast.LENGTH_SHORT).show();
                             } else {
+                                // 获取通话时长阈值
+                                callTimeThreshhold = obj.getLong("duration");
+                                Log.e("Dardai_call_threshhold", callTimeThreshhold+"");
                                 JSONArray arr = obj.getJSONArray("list");
                                 // 遍历JSON数组，把每条JSON的属性抽出来
                                 for (int i = 0; i < arr.length(); i++) {
@@ -268,6 +291,10 @@ public class GrabOrderActivity extends AppCompatActivity implements ImageSetting
                 // 电话图标的点击事件
                 // 1：打电话；2：保存时间，供联系的时间控件用
                 if (v.getId() == R.id.phone) {
+                    // 监听通话时长清空
+                    callTime = 0;
+                    // 把当前订单的信息传给通话监听类，绑定通话时间
+                    MyPhoneListener.setCurrentIDAndPhone(orderList.get(position).getId()+orderList.get(position).getTelephone());
                     // 点击时获取时间，存储之
                     setCallTime();
                     sp.setOrderInfo(orderList.get(position).getId(), year + "-" + one2Two(month) + '-' + one2Two(day) + ' ' + one2Two(hour) + ':' + one2Two(minute));
@@ -316,13 +343,26 @@ public class GrabOrderActivity extends AppCompatActivity implements ImageSetting
                         // 再弹出时间控件窗口
                         case "TO_CONTACT":
                             // 如果用户没联系过,提醒用户先打电话
+                            // 注意联系用户成功与否的主键名是订单ID+联系电话
                             String contactTime = sp.getOrderInfo(orderList.get(position).getId());
+                            Log.e("dardai_call_id",orderList.get(position).getId());
+                            Log.e("dardai_call_time",callTime/1000 + "");
+                            Log.e("dardai_call_flag",sp.getCustomerContactFlag(orderList.get(position).getId()+orderList.get(position).getTelephone())?"true":"false");
                             if ("".equals(contactTime)) {
                                 new AlertDialog.Builder(GrabOrderActivity.this)
                                         .setTitle("提示")
                                         .setMessage("请先点击红色电话图标，联系用户")
                                         .create().show();
+                            // 如果用户打了电话，但最近一次通话时间没达到阈值，也不行
+                            } else if (callTime / 1000 < callTimeThreshhold && !sp.getCustomerContactFlag(orderList.get(position).getId()+orderList.get(position).getTelephone())) {
+                                Log.e("dardai_call_time","fail:" + callTime/1000);
+                                new AlertDialog.Builder(GrabOrderActivity.this)
+                                        .setTitle("提示")
+                                        .setMessage("您与用户通话的时长不足1分钟，请重新联系")
+                                        .create().show();
+                            // spu通话成功的flag设置在通话管理类的onCallStateChanged里实现
                             } else {
+                                Log.e("dardai_call_time", "successd: " + callTime / 1000);
                                 // 有时间戳，就拿出来把时间变量初始化
                                 SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
                                 // 用parse方法，可能会异常，所以要try-catch
@@ -335,7 +375,7 @@ public class GrabOrderActivity extends AppCompatActivity implements ImageSetting
                                     day = calendar.get(calendar.DAY_OF_MONTH);
                                     hour = calendar.get(calendar.HOUR_OF_DAY);//24小时制
                                     minute = calendar.get(calendar.MINUTE);
-                                    Log.e("dardai_contact_time", year + " " + month + " " + day + " " + hour + " " + minute);
+                                    Log.e("dardai_contact_time", year + " " + (month + 1) + " " + day + " " + hour + " " + minute);
                                 } catch (java.text.ParseException e) {
                                     e.printStackTrace();
                                 }
@@ -359,8 +399,8 @@ public class GrabOrderActivity extends AppCompatActivity implements ImageSetting
                                 }
                                 // 把默认时间保存下来，比较选择时间
                                 default_date = new String();
-                                default_date = year + one2Two(month) + one2Two(day);
-                                tv_date.setText(date_buffer.append(String.valueOf(year)).append("-").append(String.valueOf(month)).append("-").append(day));
+                                default_date = year + one2Two(month + 1) + one2Two(day);
+                                tv_date.setText(date_buffer.append(String.valueOf(year)).append("-").append(String.valueOf(month + 1)).append("-").append(day));
                                 tv_time.setText(time_buffer.append(one2Two(hour)).append(" : ").append(one2Two(minute)));
 
                                 // 日期tv点击后弹出DatePicker
@@ -377,7 +417,7 @@ public class GrabOrderActivity extends AppCompatActivity implements ImageSetting
                                                 // 选择的日期在默认时间之后才能生效，用flag监测
                                                 if (dateChangeFlag) {
                                                     date_buffer.delete(0, date_buffer.length());
-                                                    tv_date.setText(date_buffer.append(String.valueOf(year)).append("-").append(String.valueOf(month)).append("-").append(String.valueOf(day)));
+                                                    tv_date.setText(date_buffer.append(String.valueOf(year)).append("-").append(String.valueOf(month + 1)).append("-").append(String.valueOf(day)));
                                                 } else {
                                                     Toast.makeText(GrabOrderActivity.this, "请选择" + default_date + "之后的日期", Toast.LENGTH_SHORT).show();
                                                 }
@@ -398,7 +438,7 @@ public class GrabOrderActivity extends AppCompatActivity implements ImageSetting
 
                                         // 初始化日期监听事件
                                         // datePicker选择时变动的值，通过onDateChangedListner监听
-                                        datePicker.init(year, month - 1, day, GrabOrderActivity.this);
+                                        datePicker.init(year, month, day, GrabOrderActivity.this);
                                         // 显示窗口
                                         dialog.show();
                                     }
@@ -456,8 +496,8 @@ public class GrabOrderActivity extends AppCompatActivity implements ImageSetting
                                                 post[0] = new PostParameter("account", sp.getAccount());
                                                 post[1] = new PostParameter("id", orderList.get(position).getId());
                                                 // 如果月、天、时、分有个位数，处理成两位数
-                                                post[2] = new PostParameter("contact_time", year + "-" + one2Two(month) + '-' + one2Two(day) + ' ' + one2Two(hour) + ':' + one2Two(minute));
-                                                Log.e("dardai_send_time", year + "-" + one2Two(month) + '-' + one2Two(day) + ' ' + one2Two(hour) + ':' + one2Two(minute));
+                                                post[2] = new PostParameter("contact_time", year + "-" + one2Two(month + 1) + '-' + one2Two(day) + ' ' + one2Two(hour) + ':' + one2Two(minute));
+                                                Log.e("dardai_send_time", year + "-" + one2Two(month + 1) + '-' + one2Two(day) + ' ' + one2Two(hour) + ':' + one2Two(minute));
                                                 String jsonstr = ConnectUtil.httpRequest(ConnectUtil.GrabBusinessContact, post, "POST");
                                                 if ("" == jsonstr || jsonstr == null) {
                                                     msg.what = 0;
@@ -779,11 +819,53 @@ public class GrabOrderActivity extends AppCompatActivity implements ImageSetting
         }
     }
 
+    /**
+     * 监听通话时长
+     */
+    class MyPhoneListener extends PhoneStateListener {
+        String currentIDAndPhone = new String();
+
+        @Override
+        public void onCallStateChanged(int state, String incomingNumber) {
+            super.onCallStateChanged(state, incomingNumber);
+            switch (state) {
+                case TelephonyManager.CALL_STATE_IDLE://空闲
+                    System.err.println(" 空闲");
+                    if (isCall) {
+                        callTime = System.currentTimeMillis() - firstCallTime;
+                        Log.e("dardai_endCall_id", currentIDAndPhone);
+                        Log.e("dardai_endCall_time", callTime/1000+"");
+                        // 挂电话的时候看通话是否够长，对应订单ID是否非空
+                        if(!"".equals(currentIDAndPhone) && callTime/1000 > callTimeThreshhold){
+                            // 通话成功，设置成功flag，以后就跳过时间检测
+                            sp.setCustomerContactFlag(currentIDAndPhone, true);
+                            // 同时把通话时间全局变量清零，防止干扰其他订单的抢单
+                            callTime = 0;
+                        }
+                    }
+                    break;
+                case TelephonyManager.CALL_STATE_RINGING://响铃
+                    Log.e("dardai_call", "发现来电");
+                    break;
+                case TelephonyManager.CALL_STATE_OFFHOOK://通话状态
+                    isCall = true;
+                    firstCallTime = System.currentTimeMillis();
+                    Log.e("dardai_call", "通话状态");
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        public void setCurrentIDAndPhone(String s){
+            currentIDAndPhone = s;
+        }
+    }
+
     // 把小于10的数字前加0
     private String one2Two(int s) {
         return s < 10 ? "0" + s : "" + s;
     }
-
 
     // 从日历取出来的月份，从0开始，比实际的小1
     @Override
@@ -801,7 +883,7 @@ public class GrabOrderActivity extends AppCompatActivity implements ImageSetting
             dateChangeFlag = true;
             this.year = year;
             // 记得+1
-            this.month = monthOfYear + 1;
+            this.month = monthOfYear;
             this.day = dayOfMonth;
         }
     }
