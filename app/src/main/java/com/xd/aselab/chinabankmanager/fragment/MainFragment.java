@@ -24,6 +24,7 @@ import com.xd.aselab.chinabankmanager.R;
 import com.xd.aselab.chinabankmanager.activity.Login;
 import com.xd.aselab.chinabankmanager.activity.MyManageBase;
 import com.xd.aselab.chinabankmanager.activity.Manager.MyManagement;
+import com.xd.aselab.chinabankmanager.activity.TeHuiShangQuanActivity;
 import com.xd.aselab.chinabankmanager.kafenqi.KafenqiActivity;
 import com.xd.aselab.chinabankmanager.kafenqi.manager.MannagerKafenqiActivity;
 import com.xd.aselab.chinabankmanager.marketingGuide.MarketingGuideNew;
@@ -322,6 +323,9 @@ public class MainFragment extends Fragment {
             @Override
             public void onClick(View v) {
                  Toast.makeText(getActivity(),"特惠商圈界面",Toast.LENGTH_SHORT).show();
+                 Intent intent = new Intent(getActivity(), TeHuiShangQuanActivity.class);
+                 startActivity(intent);
+
             }
         });
 

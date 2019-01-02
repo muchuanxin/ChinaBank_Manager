@@ -44,7 +44,6 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <meta-data
             android:name="com.amap.api.v2.apikey"
             android:value="0d64ee466ee5897caa20929c38a69e17" />
@@ -833,6 +832,30 @@
             android:screenOrientation="nosensor"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity
+            android:name=".activity.Manager.ManagerKafenqiCarPerformance"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="nosensor"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity
+            android:name=".activity.Manager.ManagerKafenqiNonCar"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="nosensor"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity
+            android:name=".activity.Manager.ManagerKafenqiNonCarMyPerformance"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="nosensor"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity
+            android:name=".activity.TeHuiShangQuanActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="nosensor"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan|stateHidden" ></activity>
     </application>
 
 </manifest>

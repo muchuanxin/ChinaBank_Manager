@@ -12,15 +12,16 @@ import android.widget.RelativeLayout;
 import com.xd.aselab.chinabankmanager.R;
 import com.xd.aselab.chinabankmanager.activity.BaseInfo;
 import com.xd.aselab.chinabankmanager.activity.BasePerformance;
+import com.xd.aselab.chinabankmanager.activity.Manager.ManagerKafenqiCarPerformance;
 import com.xd.aselab.chinabankmanager.kafenqi.KMyPreformenceActivity;
 
 public class MannagerKafenqiActivity extends AppCompatActivity {
 
     private RelativeLayout back;
-    private LinearLayout my_performance;
-    private LinearLayout base_ranking;
-    private LinearLayout base_info;
-    private LinearLayout base_performance;
+    private LinearLayout car_business;
+    private LinearLayout non_car_business;
+    private LinearLayout customer_business;
+    private LinearLayout virtual_4s_business;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +31,7 @@ public class MannagerKafenqiActivity extends AppCompatActivity {
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         }
 
-        back = (RelativeLayout) findViewById(R.id.act_manager_my_mana_back_btn);
+        back = (RelativeLayout) findViewById(R.id.act_manager_kafenqi_back_btn);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -38,32 +39,32 @@ public class MannagerKafenqiActivity extends AppCompatActivity {
             }
         });
 
-        my_performance = (LinearLayout) findViewById(R.id.act_manager_my_mana_my_perf);
-        my_performance.setOnClickListener(new View.OnClickListener() {
+        car_business = (LinearLayout) findViewById(R.id.act_manager_kafenqi_car_business);
+        car_business.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent().setClass(MannagerKafenqiActivity.this, KMyPreformenceActivity.class).putExtra("type","manager"));
+                startActivity(new Intent().setClass(MannagerKafenqiActivity.this, ManagerKafenqiCarPerformance.class));
             }
         });
 
-        base_ranking = (LinearLayout) findViewById(R.id.act_manager_my_mana_base_ranking);
-        base_ranking.setOnClickListener(new View.OnClickListener() {
+        non_car_business = (LinearLayout) findViewById(R.id.act_manager_kafenqi_non_car);
+        non_car_business.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent().setClass(MannagerKafenqiActivity.this, BasePerformanceRandkingActivity.class));
             }
         });
 
-        base_info = (LinearLayout) findViewById(R.id.act_manager_my_mana_base_info);
-        base_info.setOnClickListener(new View.OnClickListener() {
+        customer_business = (LinearLayout) findViewById(R.id.act_manager_kafenqi_customer);
+        customer_business.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent().setClass(MannagerKafenqiActivity.this, BaseInfo.class));
             }
         });
 
-        base_performance = (LinearLayout) findViewById(R.id.act_manager_my_mana_base_perf);
-        base_performance.setOnClickListener(new View.OnClickListener() {
+        virtual_4s_business = (LinearLayout) findViewById(R.id.act_manager_kafenqi_virtual_4S);
+        virtual_4s_business.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent().setClass(MannagerKafenqiActivity.this, KBasePerformanceActivity.class));

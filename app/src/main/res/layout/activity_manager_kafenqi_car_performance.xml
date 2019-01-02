@@ -5,17 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#fff"
-    tools:context="com.xd.aselab.chinabankmanager.kafenqi.manager.MannagerKafenqiActivity">
+    tools:context=".activity.Manager.ManagerKafenqiCarPerformance">
 
     <RelativeLayout
-        android:id="@+id/act_manager_kafenqi_top_bar"
+        android:id="@+id/act_my_mana_top_bar"
         android:layout_width="match_parent"
         android:layout_height="65dp"
         android:orientation="horizontal"
         android:background="@color/colorPrimaryDark">
 
         <RelativeLayout
-            android:id="@+id/act_manager_kafenqi_back_btn"
+            android:id="@+id/act_manager_kafenqi_car_perf_back_btn"
             android:layout_width="50dp"
             android:layout_height="match_parent">
 
@@ -41,15 +41,15 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/act_manager_kafenqi_division1"
-        android:layout_below="@id/act_manager_kafenqi_top_bar"
+        android:id="@+id/act_manager_kafenqi_car_perf_division1"
+        android:layout_below="@id/act_my_mana_top_bar"
         android:layout_width="match_parent"
         android:layout_height="10dp"
         android:background="@color/gray_bg"/>
 
     <LinearLayout
-        android:id="@+id/act_manager_kafenqi_car_business"
-        android:layout_below="@id/act_manager_kafenqi_division1"
+        android:id="@+id/act_manager_kafenqi_car_perf_my_perf"
+        android:layout_below="@id/act_manager_kafenqi_car_perf_division1"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:orientation="horizontal">
@@ -68,20 +68,20 @@
             android:layout_height="wrap_content"
             android:textColor="#000"
             android:textSize="18dp"
-            android:text="汽车业务"/>
+            android:text="我的业绩"/>
 
     </LinearLayout>
 
     <RelativeLayout
-        android:id="@+id/act_manager_kafenqi_division2"
-        android:layout_below="@id/act_manager_kafenqi_car_business"
+        android:id="@+id/act_manager_kafenqi_car_perf_division2"
+        android:layout_below="@id/act_manager_kafenqi_car_perf_my_perf"
         android:layout_width="match_parent"
         android:layout_height="10dp"
         android:background="@color/gray_bg"/>
 
     <LinearLayout
-        android:id="@+id/act_manager_kafenqi_non_car"
-        android:layout_below="@id/act_manager_kafenqi_division2"
+        android:id="@+id/act_manager_kafenqi_car_perf_base_ranking"
+        android:layout_below="@id/act_manager_kafenqi_car_perf_division2"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:orientation="horizontal">
@@ -100,20 +100,20 @@
             android:layout_height="wrap_content"
             android:textColor="#000"
             android:textSize="18dp"
-            android:text="非车业务"/>
+            android:text="银行卡客户经理业绩排名"/>
 
     </LinearLayout>
 
     <RelativeLayout
-        android:id="@+id/act_manager_kafenqi_division3"
-        android:layout_below="@id/act_manager_kafenqi_non_car"
+        android:id="@+id/act_manager_kafenqi_car_perf_division3"
+        android:layout_below="@id/act_manager_kafenqi_car_perf_base_ranking"
         android:layout_width="match_parent"
         android:layout_height="10dp"
         android:background="@color/gray_bg"/>
 
     <LinearLayout
-        android:id="@+id/act_manager_kafenqi_customer"
-        android:layout_below="@id/act_manager_kafenqi_division3"
+        android:id="@+id/act_manager_kafenqi_car_perf_base_info"
+        android:layout_below="@id/act_manager_kafenqi_car_perf_division3"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:orientation="horizontal">
@@ -132,20 +132,20 @@
             android:layout_height="wrap_content"
             android:textColor="#000"
             android:textSize="18dp"
-            android:text="优客业务"/>
+            android:text="银行卡客户经理信息"/>
 
     </LinearLayout>
 
     <RelativeLayout
-        android:id="@+id/act_manager_kafenqi_division4"
-        android:layout_below="@id/act_manager_kafenqi_customer"
+        android:id="@+id/act_manager_kafenqi_car_perf_division4"
+        android:layout_below="@id/act_manager_kafenqi_car_perf_base_info"
         android:layout_width="match_parent"
         android:layout_height="10dp"
         android:background="@color/gray_bg"/>
 
     <LinearLayout
-        android:id="@+id/act_manager_kafenqi_virtual_4S"
-        android:layout_below="@id/act_manager_kafenqi_division4"
+        android:id="@+id/act_manager_kafenqi_car_perf_base_perf"
+        android:layout_below="@id/act_manager_kafenqi_car_perf_division4"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:orientation="horizontal">
@@ -165,7 +165,7 @@
             android:layout_height="wrap_content"
             android:textColor="#000"
             android:textSize="18dp"
-            android:text="虚拟4S店业务"/>
+            android:text="银行卡客户经理业绩"/>
 
     </LinearLayout>
 

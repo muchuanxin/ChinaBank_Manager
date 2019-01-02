@@ -166,6 +166,14 @@ public class ConnectUtil {
 	public static String GetYoukeRecommendList = API_HOST + "GetYoukeRecommendList";
 	public static String AddYoukeRemark = API_HOST + "AddYoukeRemark";
 
+	//经理版——二级行管理者
+	public static String GetNotCarBossMyPerformance = API_HOST + "GetNotCarBossMyPerformance";
+	public static String GetNotCarBasicPerformance = API_HOST + "GetNotCarBasicPerformance";
+	public static String GetYoukeBossMyPerformance = API_HOST + "GetYoukeBossMyPerformance";
+	public static String GetYoukeBasicPerformance = API_HOST + "GetYoukeBasicPerformance";
+
+
+
 
 
 

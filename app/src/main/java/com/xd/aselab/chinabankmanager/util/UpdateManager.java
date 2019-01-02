@@ -330,10 +330,10 @@ public class UpdateManager {
             localIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
             localIntent.setDataAndType(apkUri, "application/vnd.android.package-archive");
         } else {
-            Uri apkUri = Uri.fromFile(apkfile);
-            localIntent.setDataAndType(apkUri, "application/vnd.android.package-archive");
-            localIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        }
+			Uri apkUri = Uri.fromFile(apkfile);
+			localIntent.setDataAndType(apkUri, "application/vnd.android.package-archive");
+			localIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		}
         mContext.startActivity(localIntent);
 	}
 }
