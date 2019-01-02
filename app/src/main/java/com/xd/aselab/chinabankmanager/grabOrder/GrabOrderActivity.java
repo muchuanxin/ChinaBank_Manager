@@ -360,7 +360,7 @@ public class GrabOrderActivity extends AppCompatActivity implements ImageSetting
                                 Log.e("dardai_call_time","fail:" + callTime/1000);
                                 new AlertDialog.Builder(GrabOrderActivity.this)
                                         .setTitle("提示")
-                                        .setMessage("您与用户通话的时长不足1分钟，请重新联系")
+                                        .setMessage("您与用户通话的时长太短，请重新联系")
                                         .create().show();
                             // spu通话成功的flag设置在通话管理类的onCallStateChanged里实现
                             } else {
