@@ -146,6 +146,7 @@ public class MainActivity extends AppCompatActivity {
                     fra_main = new MainFragment();
                     transaction.add(R.id.mcx_main_content, fra_main,"main_home");
                 }*/
+                // 省行的首页和其他两个不一样
                 if(spu.getType().equals("PROVINCE")){
                     if (fra_province_main == null){
                         fra_province_main = new ProvinceMainFragment();

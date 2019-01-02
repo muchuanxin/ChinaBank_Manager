@@ -36,6 +36,7 @@ public class Constants {
     public static final int ChatToRecordVoice  = 19946;
     public static final int ChatToRecordVideo  = 19947;
 
+    public static String MANAGER_GRAB = "GRAB"; //客户经理抢单页面
     public static String RECOMMEND =  "RECOMMEND"; //推荐
     public static String CHAT = "SINGLECHAT"; //单聊
     public static String GROUPCHAT = "GROUPCHAT";//群聊

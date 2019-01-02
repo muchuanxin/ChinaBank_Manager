@@ -155,6 +155,11 @@ public class ConnectUtil {
 	//二级行管理者业绩(省行管理者可查看)
 	public static String GetLobbyBossManagerPerformace = API_HOST + "GetLobbyBossManagerPerformace";
 
+	//二级行虚拟销售业绩相关
+	public static String GetVirtualBasicGrabAbilityRanking = API_HOST + "GetVirtualBasicGrabAbilityRanking";
+	public static String GetVirtualBasicPerformanceRanking = API_HOST + "GetVirtualBasicPerformanceRanking";
+
+
 	//客户经理非车优客业务
 	public static String RecommendNotCar = API_HOST + "RecommendNotCar";
 	public static String GetNotCarMyPerformance = API_HOST + "GetNotCarMyPerformance";
