@@ -84,14 +84,14 @@ public class GrabOrderActivity extends AppCompatActivity implements ImageSetting
     private String jsonStr;
     private Dialog mDialog = null;
     private List<GrabOrderItem> orderList;
-    private String tel, selected_date, default_date;
+    private String tel, selected_date,selected_time, default_date, default_time;
     private ProgressDialog progDialog = null;
     private Intent photoData;
     private int year, month, day, hour, minute;
     private StringBuffer date_buffer, time_buffer;
     private Handler handler;
     private GrabOrderAdapter adapter;
-    private Boolean dateChangeFlag;
+    private Boolean dateChangeFlag, timeChangeFlag;
 
     //通话监听
     private TelephonyManager tm;
@@ -150,6 +150,7 @@ public class GrabOrderActivity extends AppCompatActivity implements ImageSetting
 
         // 日期选择变动监听标志
         dateChangeFlag = true;
+        selected_date = new String();
 
         tm = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
         MyPhoneListener = new MyPhoneListener();
@@ -348,6 +349,7 @@ public class GrabOrderActivity extends AppCompatActivity implements ImageSetting
                             Log.e("dardai_call_id",orderList.get(position).getId());
                             Log.e("dardai_call_time",callTime/1000 + "");
                             Log.e("dardai_call_flag",sp.getCustomerContactFlag(orderList.get(position).getId()+orderList.get(position).getTelephone())?"true":"false");
+//                            callTime = 11000;
                             if ("".equals(contactTime)) {
                                 new AlertDialog.Builder(GrabOrderActivity.this)
                                         .setTitle("提示")
@@ -400,6 +402,10 @@ public class GrabOrderActivity extends AppCompatActivity implements ImageSetting
                                 // 把默认时间保存下来，比较选择时间
                                 default_date = new String();
                                 default_date = year + one2Two(month + 1) + one2Two(day);
+                                selected_date = default_date;
+                                default_time = new String();
+                                default_time = one2Two(hour) + one2Two(minute);
+                                selected_time = default_time;
                                 tv_date.setText(date_buffer.append(String.valueOf(year)).append("-").append(String.valueOf(month + 1)).append("-").append(day));
                                 tv_time.setText(time_buffer.append(one2Two(hour)).append(" : ").append(one2Two(minute)));
 
@@ -454,8 +460,12 @@ public class GrabOrderActivity extends AppCompatActivity implements ImageSetting
                                             @Override
                                             public void onClick(DialogInterface dialog, int which) {
                                                 // 更新选择的时间
-                                                time_buffer.delete(0, time_buffer.length());
-                                                tv_time.setText(time_buffer.append(one2Two(hour)).append(" : ").append(one2Two(minute)));
+                                                if (timeChangeFlag) {
+                                                    time_buffer.delete(0, time_buffer.length());
+                                                    tv_time.setText(time_buffer.append(one2Two(hour)).append(" : ").append(one2Two(minute)));
+                                                } else {
+                                                    Toast.makeText(GrabOrderActivity.this, "请选择" + default_date+ " "+default_time + "之后的时间", Toast.LENGTH_SHORT).show();
+                                                }
                                                 dialog.dismiss();
                                             }
                                         });
@@ -870,7 +880,6 @@ public class GrabOrderActivity extends AppCompatActivity implements ImageSetting
     // 从日历取出来的月份，从0开始，比实际的小1
     @Override
     public void onDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-        selected_date = new String();
         selected_date = year + "" + one2Two(monthOfYear + 1) + one2Two(dayOfMonth);
         Log.e("dardai_select_date", selected_date);
         Log.e("dardai_default_date", default_date);
@@ -890,8 +899,20 @@ public class GrabOrderActivity extends AppCompatActivity implements ImageSetting
 
     @Override
     public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
-        this.hour = hourOfDay;
-        this.minute = minute;
+        selected_time = one2Two(hourOfDay) + one2Two(minute);
+        Log.e("dardai_select_time", selected_time);
+        Log.e("dardai_select_date", selected_date);
+        Log.e("dardai_default_time", default_time);
+        // 比较选择时间和当前时间
+        if (selected_date.equals(default_date) && selected_time.compareTo(default_time) < 0) {
+            Log.e("dardai_time_less", "true");
+            timeChangeFlag = false;
+        } else {
+            Log.e("dardai_time_less", "false");
+            timeChangeFlag = true;
+            this.hour = hourOfDay;
+            this.minute = minute;
+        }
     }
 
     //用于返回界面隐藏软键盘

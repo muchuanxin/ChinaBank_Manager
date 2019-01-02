@@ -280,11 +280,11 @@ public class GrabPerformanceActivity extends AppCompatActivity implements OnChar
     }
 
     private void initChartDatas() {
-        new AlertDialog.Builder(this)
-                .setTitle("初始化表格")
-                .setMessage(sp.getAccount())
-                .setIcon(R.mipmap.ic_launcher)
-                .create().show();
+//        new AlertDialog.Builder(this)
+//                .setTitle("初始化表格")
+//                .setMessage(sp.getAccount())
+//                .setIcon(R.mipmap.ic_launcher)
+//                .create().show();
         float groupSpace = 0.14f;
         float barSpace = 0.03f; // x4 DataSet
         float barWidth = 0.4f; // x4 DataSet
