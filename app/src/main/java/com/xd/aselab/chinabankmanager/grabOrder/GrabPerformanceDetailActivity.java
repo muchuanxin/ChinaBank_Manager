@@ -35,6 +35,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -73,8 +74,9 @@ public class GrabPerformanceDetailActivity extends AppCompatActivity {
                             map.put("telephone", temp.getString("telephone"));
                             map.put("product_type", temp.getString("product_type"));
                             map.put("serial_num", temp.getString("serial_num"));
-                            map.put("money", temp.getString("money"));
-                            map.put("status", temp.getString("status"));
+                            DecimalFormat df = new DecimalFormat("#.00");
+                            map.put("money", df.format(temp.getDouble("money"))+"");
+//                            map.put("status", temp.getString("status"));
                             temp_list.add(map);
                             final_list.add(map);
                             if (temp_list.size() == 0) {
@@ -191,8 +193,8 @@ public class GrabPerformanceDetailActivity extends AppCompatActivity {
             mymap = (Map) final_list.get(i);
             viewHolder.name.setText(mymap.get("applicant") + "");
             viewHolder.tel.setText("联系电话：" + mymap.get("telephone") + "");
-            viewHolder.tel.setText("流水号：" + mymap.get("serial_num") + "");
-            viewHolder.tel.setText("分期金额：" + mymap.get("money") + "");
+            viewHolder.serial_num.setText("流水号：" + mymap.get("serial_num") + "");
+            viewHolder.money.setText("分期金额：" + mymap.get("money") + "");
             viewHolder.image.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
