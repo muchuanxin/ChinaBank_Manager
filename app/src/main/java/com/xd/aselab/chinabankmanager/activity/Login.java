@@ -1,5 +1,6 @@
 package com.xd.aselab.chinabankmanager.activity;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Build;
@@ -156,6 +157,7 @@ public class Login extends AppCompatActivity {
                                     // 省行角色的分支
                                     if ("PROVINCE".equals(json.getString("job"))) {
                                         spu.setAccount(account);
+                                        spu.setFullAccount(full_account);
                                         spu.setPassword(psw);
                                         spu.setJobNumber(json.getString("jobNumber"));
                                         spu.setName(json.getString("realName"));

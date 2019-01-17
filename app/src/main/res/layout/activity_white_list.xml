@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff">
+
+    <RelativeLayout
+        android:id="@+id/status_bar"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="@drawable/navigation_bg" />
+
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_below="@id/status_bar"
+        android:background="@drawable/navigation_bg">
+
+        <RelativeLayout
+            android:layout_width="45dp"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/wl_back_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/back_btn_bg" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/wl_title"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:gravity="center"
+            android:text="白名单"
+            android:textColor="#fff"
+            android:textSize="22dp" />
+
+    </RelativeLayout>
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/wl_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/header">
+
+        <ListView
+            android:id="@+id/wl_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="#eaeeef"
+            android:divider="#eaeeef"
+            android:dividerHeight="5dp"
+            android:listSelector="#fff"
+            tools:listitem="@layout/activity_black_or_white_item" />
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+</RelativeLayout>

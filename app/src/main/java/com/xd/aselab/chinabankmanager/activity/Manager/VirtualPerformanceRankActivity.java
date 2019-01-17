@@ -1,15 +1,9 @@
 package com.xd.aselab.chinabankmanager.activity.Manager;
 
-import android.Manifest;
-import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.drawable.BitmapDrawable;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.PermissionChecker;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -34,7 +28,6 @@ import com.xd.aselab.chinabankmanager.util.ConnectUtil;
 import com.xd.aselab.chinabankmanager.util.Constants;
 import com.xd.aselab.chinabankmanager.util.ListUtils;
 import com.xd.aselab.chinabankmanager.util.PostParameter;
-import com.xd.aselab.chinabankmanager.util.SharePreferenceUtil;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -50,11 +43,7 @@ public class VirtualPerformanceRankActivity extends AppCompatActivity {
     private LinearLayout choose_time;
     private TextView sort;
     private TextView select_time;
-    private TextView no_data_text;
     private RelativeLayout no_data;
-
-    private String[] select_sort_string;
-    private String[] select_time_string;
 
     private String choosen_time = "one_week";
     private String choosen_sort = "number";
@@ -78,9 +67,6 @@ public class VirtualPerformanceRankActivity extends AppCompatActivity {
 
     private PopupWindow pop;
 
-    private int position;
-
-    private SharePreferenceUtil spu;
     private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -188,19 +174,19 @@ public class VirtualPerformanceRankActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lobby_performance);
+        setContentView(R.layout.activity_virtual_performance_rank);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         }
 
         initViews();
-        initDatas();
+        initData();
         initEvents();
 
     }
 
     void initViews() {
-        back = (RelativeLayout) findViewById(R.id.worker_performance_back_btn);
+        back = (RelativeLayout) findViewById(R.id.vpr_back_btn);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -208,20 +194,17 @@ public class VirtualPerformanceRankActivity extends AppCompatActivity {
             }
         });
 
-        sort = (TextView) findViewById(R.id.act_lobby_perf_sort);
-        select_time = (TextView) findViewById(R.id.worker_timeSelect);
+        sort = (TextView) findViewById(R.id.vpr_perf_sort);
+        select_time = (TextView) findViewById(R.id.vpr_tv_timeSelect);
 
-        listView = (ListView) findViewById(R.id.list_lobby_performance);
+        listView = (ListView) findViewById(R.id.vpr_performance);
 
-        choose_sort = (LinearLayout) findViewById(R.id.perfRanking);
-        choose_time = (LinearLayout) findViewById(R.id.timeSelect);
-        no_data = (RelativeLayout) findViewById(R.id.act_lobby_perf_no_data);
+        choose_sort = (LinearLayout) findViewById(R.id.vpr_performRanking);
+        choose_time = (LinearLayout) findViewById(R.id.vpr_timeSelect);
+        no_data = (RelativeLayout) findViewById(R.id.vpr_no_data);
     }
 
-    void initDatas() {
-        spu = new SharePreferenceUtil(VirtualPerformanceRankActivity.this, "user");
-        select_sort_string = new String[]{"成功笔数排名", "分期金额排名"};
-        select_time_string = new String[]{"近一周业绩", "近一月业绩", "近一季度业绩", "近一年业绩"};
+    void initData() {
         chooseSortAdapter = new ChooseSortAdapter(Constants.shengHangChooseSortList, VirtualPerformanceRankActivity.this);
         chooseTimeAdapter = new ChooseTimeAdapter(Constants.chooseTimeList, VirtualPerformanceRankActivity.this);
 
@@ -254,81 +237,7 @@ public class VirtualPerformanceRankActivity extends AppCompatActivity {
                 showTimePopWindow();
             }
         });
-
-        // 准备打电话
-//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                Intent intent = new Intent();
-//                intent.setClass(VirtualPerformanceRankActivity.this, VirtualPerformanceRankActivityContactTransparent.class);
-//                intent.putExtra("position", position);
-//                startActivityForResult(intent, 910);
-//                overridePendingTransition(R.anim.zoomin, R.anim.zoomout);
-//            }
-//        });
     }
-
-    // 在打电话，用不上
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        Intent intent = new Intent();
-//        if (912 == resultCode) {
-//            position = data.getIntExtra("position", 0);
-//            switch (data.getStringExtra("action")) {
-//                case "call":
-//                    switch (choosen_time) {
-//                        case "one_week":
-//                            intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + numberListOfWeek.get(position).getLobby_tel()));
-//                            break;
-//
-//                        case "one_month":
-//                            intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + numberListOfMonth.get(position).getLobby_tel()));
-//                            break;
-//
-//                        case "three_month":
-//                            intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + numberListOfQuarter.get(position).getLobby_tel()));
-//                            break;
-//
-//                        case "one_year":
-//                            intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + numberListOfYear.get(position).getLobby_tel()));
-//                            break;
-//
-//                        default:
-//                            break;
-//                    }
-//                    if (Build.VERSION.SDK_INT >= 23) {
-//                        //判断有没有拨打电话权限
-//                        if (PermissionChecker.checkSelfPermission(VirtualPerformanceRankActivity.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-//                            //请求拨打电话权限
-//                            ActivityCompat.requestPermissions(VirtualPerformanceRankActivity.this, new String[]{Manifest.permission.CALL_PHONE}, 10015);
-//                        } else {
-//                            startActivity(intent);
-//                        }
-//
-//                    } else {
-//                        startActivity(intent);
-//                    }
-//                    break;
-//            }
-//        }
-//    }
-//
-//    private void sleep_and_finish(final int s) {
-//        new Thread() {
-//            @Override
-//            public void run() {
-//                super.run();
-//                try {
-//                    Thread.sleep(s * 1000);
-//                } catch (InterruptedException e) {
-//                    e.printStackTrace();
-//                } finally {
-//                    finish();
-//                }
-//            }
-//        }.start();
-//    }
 
     void setListAndAdaper(List<SimpleRankAbilityVO> list, String name) {
 

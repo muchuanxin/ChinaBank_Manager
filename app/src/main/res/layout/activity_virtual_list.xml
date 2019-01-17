@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#fff">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:orientation="horizontal"
+        android:background="@color/colorPrimaryDark">
+
+        <RelativeLayout
+            android:id="@+id/vl_back_btn"
+            android:layout_width="50dp"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="31dp"
+                android:padding="1.5dp"
+                android:src="@drawable/back_btn_bg"/>
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="27dp"
+            android:layout_centerHorizontal="true"
+            android:textColor="#fff"
+            android:textSize="22dp"
+            android:text="虚拟4S店业务"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/gray_bg"/>
+
+    <LinearLayout
+        android:id="@+id/vl_performance_rank"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="30dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/my_all_performence"/>
+
+        <TextView
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black_text_most"
+            android:textSize="18dp"
+            android:text="银行卡客户经理业绩排名"/>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/gray_bg"/>
+
+    <LinearLayout
+        android:id="@+id/vl_grab_ability_rank"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="30dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/worker_join_check"/>
+
+        <TextView
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black_text_most"
+            android:textSize="18dp"
+            android:text="银行卡客户经理抢单综合能力排名"/>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/gray_bg"/>
+
+    <LinearLayout
+        android:id="@+id/vl_white_list"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="30dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/my_information"/>
+
+        <TextView
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black_text_most"
+            android:textSize="18dp"
+            android:text="白名单管理"/>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/gray_bg"/>
+
+    <LinearLayout
+        android:id="@+id/vl_black_list"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="30dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/my_information"/>
+
+        <TextView
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black_text_most"
+            android:textSize="18dp"
+            android:text="黑名单管理"/>
+
+    </LinearLayout>
+
+</LinearLayout>

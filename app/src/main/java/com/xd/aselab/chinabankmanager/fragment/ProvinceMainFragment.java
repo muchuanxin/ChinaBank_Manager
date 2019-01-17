@@ -22,6 +22,8 @@ import android.widget.Toast;
 
 import com.xd.aselab.chinabankmanager.R;
 import com.xd.aselab.chinabankmanager.activity.Login;
+import com.xd.aselab.chinabankmanager.activity.province.ErjiScoreDivisionActivity;
+import com.xd.aselab.chinabankmanager.activity.province.VirtualListActivity;
 import com.xd.aselab.chinabankmanager.kafenqi.ProvincialBankManager.KafenqiFirstActivity;
 import com.xd.aselab.chinabankmanager.marketingGuide.MarketingGuideNew;
 import com.xd.aselab.chinabankmanager.util.ConnectUtil;
@@ -239,6 +241,10 @@ public class ProvinceMainFragment extends Fragment {
             @Override
             public void onClick(View v) {
                  Toast.makeText(getActivity(),"特惠商圈界面",Toast.LENGTH_SHORT).show();
+                 // 测试用，平时应该注释掉
+//                Intent intent = new Intent();
+//                intent.setClass(getActivity(), VirtualListActivity.class);
+//                startActivity(intent);
             }
         });
 

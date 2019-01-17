@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="10dp"
+    android:orientation="vertical"
+    android:background="#fff">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="@drawable/navigation_bg"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@drawable/navigation_bg">
+
+        <RelativeLayout
+            android:id="@+id/ESD_back_btn"
+            android:layout_width="45dp"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/back_btn_bg" />
+
+        </RelativeLayout>
+
+        <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:gravity="center"
+            android:text="二级行切分比例"
+            android:textColor="#fff"
+            android:textSize="22dp" />
+
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/ESD_listView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#eaeeef"
+        android:divider="#eaeeef"
+        android:dividerHeight="5dp"
+        android:listSelector="#fff"
+        tools:listitem="@layout/esd_detail_item" />
+
+</LinearLayout>

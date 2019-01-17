@@ -15,14 +15,14 @@ import java.util.List;
 
 public class GrabRankNullAdapter extends BaseAdapter {
 
-    private Context context = null;
-    private List<SimpleRankAbilityVO> list = null;
+    private Context context;
+    private List<SimpleRankAbilityVO> list;
     private int startNo;
 
     public GrabRankNullAdapter(Context context, List<SimpleRankAbilityVO> list, int start) {
         this.context = context;
         this.list = list;
-        startNo = start;
+        startNo = start + 1;
     }
 
     public int getCount() {

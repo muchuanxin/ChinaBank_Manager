@@ -131,6 +131,7 @@ public class ConnectUtil {
 
 	public static String ForceReleaseBetweenBankAnd4SShopByID=API_HOST+"ForceReleaseBetweenBankAnd4SShopByID";
 	public static String GetInstallmentWorkerPerformanceIn4SShop=API_HOST+"GetInstallmentWorkerPerformanceIn4SShop";
+	public static String DivideScoreRate=API_HOST+"DivideScoreRate";
 
 	//积分账户相关
 	public static String GetNotExchangedScore = API_HOST + "GetManagerNotExchangeScore";
@@ -177,12 +178,11 @@ public class ConnectUtil {
 	public static String GetYoukeBossMyPerformance = API_HOST + "GetYoukeBossMyPerformance";
 	public static String GetYoukeBasicPerformance = API_HOST + "GetYoukeBasicPerformance";
 
-
-
-
-
-
-
+	//经理版——省行
+	public static String WhiteList= API_HOST + "WhiteList";
+	public static String AddIntoBlackList= API_HOST + "AddIntoBlackList";
+	public static String BlackList= API_HOST + "BlackList";
+	public static String RemoveOutBlackList= API_HOST + "RemoveOutBlackList";
 
 
 	public static String httpRequest(String url, PostParameter[] postParams, String httpMethod) {
