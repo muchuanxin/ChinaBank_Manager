@@ -81,12 +81,13 @@
                 android:textSize="17dp"
                 android:textColor="@color/gray_text_most"
                 android:text="近一周业绩"/>
+
             <ImageView
-                android:layout_toRightOf="@id/act_manager_kafenqi_non_car_my_perf_select_time"
-                android:layout_centerVertical="true"
                 android:layout_width="11dp"
                 android:layout_height="10dp"
-                android:src="@drawable/arrow_down_hui"/>
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/act_manager_kafenqi_non_car_my_perf_select_time"
+                android:src="@drawable/arrow_down_hui" />
         </RelativeLayout>
 
     </LinearLayout>
