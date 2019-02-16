@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:orientation="vertical"
+    tools:context=".kafenqi.manager.ErjiKafenqiCustomerActivity">
+
+    <RelativeLayout
+        android:id="@+id/act_erji_kafenqi_customer_top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:background="@color/colorPrimaryDark">
+
+        <RelativeLayout
+            android:id="@+id/act_erji_kafenqi_customer_back_btn"
+            android:layout_width="50dp"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="31dp"
+                android:padding="1.5dp"
+                android:src="@drawable/back_btn_bg"/>
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="27dp"
+            android:layout_centerHorizontal="true"
+            android:textColor="#fff"
+            android:textSize="22dp"
+            android:text="优客业务"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/act_erji_kafenqi_customer_division1"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="#EFF3F9"/>
+
+    <LinearLayout
+        android:id="@+id/act_erji_kafenqi_customer_my_perf"
+        android:padding="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="20dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/my_performance"/>
+
+        <TextView
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:textSize="20dp"
+            android:text="我的业绩"/>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/act_erji_kafenqi_customer_division2"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="#EFF3F9"/>
+
+    <LinearLayout
+        android:id="@+id/act_erji_kafenqi_customer_base_performance"
+        android:padding="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="20dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/base_ranking"/>
+
+        <TextView
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:textSize="20dp"
+            android:text="客户经理业绩"/>
+
+    </LinearLayout>
+
+</LinearLayout>

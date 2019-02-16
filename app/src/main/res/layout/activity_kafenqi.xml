@@ -13,7 +13,6 @@
         android:id="@+id/act_my_mana_top_bar"
         android:layout_width="match_parent"
         android:layout_height="65dp"
-        android:orientation="horizontal"
         android:background="@color/colorPrimaryDark">
 
         <RelativeLayout

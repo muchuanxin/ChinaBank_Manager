@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:orientation="vertical"
+    tools:context=".kafenqi.ProvincialBankManager.ProvinceManagerKafenqiActivity">
+
+    <RelativeLayout
+        android:id="@+id/act_province_kafenqi_top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:background="@color/colorPrimaryDark">
+
+        <RelativeLayout
+            android:id="@+id/act_province_kafenqi_back_btn"
+            android:layout_width="50dp"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="31dp"
+                android:padding="1.5dp"
+                android:src="@drawable/back_btn_bg"/>
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="27dp"
+            android:layout_centerHorizontal="true"
+            android:textColor="#fff"
+            android:textSize="22dp"
+            android:text="卡分期"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/act_province_kafenqi_division1"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="#EFF3F9"/>
+
+    <LinearLayout
+        android:id="@+id/act_province_kafenqi_car_business"
+        android:padding="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="20dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/my_all_performence"/>
+
+        <TextView
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:textSize="20dp"
+            android:text="汽车业务"/>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/act_province_kafenqi_division2"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="#EFF3F9"/>
+
+    <LinearLayout
+        android:id="@+id/act_province_kafenqi_non_car_business"
+        android:padding="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="20dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/base_ranking"/>
+
+        <TextView
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:textSize="20dp"
+            android:text="非车业务"/>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/act_province_kafenqi_division3"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="#EFF3F9"/>
+
+    <LinearLayout
+        android:id="@+id/act_province_kafenqi_customer_business"
+        android:padding="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="20dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/base_info"/>
+
+        <TextView
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:textSize="20dp"
+            android:text="优客业务"/>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/act_province_kafenqi_division4"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="#EFF3F9"/>
+
+    <LinearLayout
+        android:id="@+id/act_province_kafenqi_virtual_4S_business"
+        android:padding="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="20dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/base_ranking"/>
+
+        <TextView
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:textSize="20dp"
+            android:text="虚拟4S店业务"/>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/act_province_kafenqi_division5"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="#EFF3F9"/>
+
+    <LinearLayout
+        android:id="@+id/act_province_kafenqi_erji_score_division"
+        android:padding="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="20dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/my_performance"/>
+
+        <TextView
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:textSize="20dp"
+            android:text="二级行切分比例"/>
+
+    </LinearLayout>
+
+</LinearLayout>

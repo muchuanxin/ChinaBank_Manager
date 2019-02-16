@@ -51,7 +51,7 @@ public class MannagerKafenqiActivity extends AppCompatActivity {
         non_car_business.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent().setClass(MannagerKafenqiActivity.this, BasePerformanceRandkingActivity.class));
+                startActivity(new Intent().setClass(MannagerKafenqiActivity.this, ErjiKafenqiNonCarActivity.class));
             }
         });
 
@@ -59,7 +59,7 @@ public class MannagerKafenqiActivity extends AppCompatActivity {
         customer_business.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent().setClass(MannagerKafenqiActivity.this, BaseInfo.class));
+                startActivity(new Intent().setClass(MannagerKafenqiActivity.this, ErjiKafenqiCustomerActivity.class));
             }
         });
 

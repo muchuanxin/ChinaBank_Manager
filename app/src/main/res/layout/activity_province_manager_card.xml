@@ -4,19 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="#fff"
-    tools:context=".kafenqi.KafenqiCustomerPerformanceDetial">
+    android:orientation="vertical"
+    tools:context=".kafenqi.ProvincialBankManager.ProvinceManagerCardActivity">
 
     <RelativeLayout
-        android:id="@+id/act_kafenqi_customer_top_bar"
+        android:id="@+id/act_province_manager_card_top_bar"
         android:layout_width="match_parent"
         android:layout_height="65dp"
-        android:orientation="horizontal"
         android:background="@color/colorPrimaryDark">
 
         <RelativeLayout
-            android:id="@+id/act_kafenqi_customer_back_btn"
+            android:id="@+id/act_province_manager_card_back_btn"
             android:layout_width="50dp"
             android:layout_height="match_parent">
 
@@ -37,21 +36,39 @@
             android:layout_centerHorizontal="true"
             android:textColor="#fff"
             android:textSize="22dp"
-            android:text="推荐分期"/>
+            android:text="信用卡发卡"/>
 
     </RelativeLayout>
 
-    <TextView
+    <RelativeLayout
+        android:id="@+id/act_province_manager_card_division1"
         android:layout_width="match_parent"
-        android:layout_height="5dp"
-        android:background="@color/gray_bg"/>
+        android:layout_height="20dp"
+        android:background="#EFF3F9"/>
 
-    <ListView
-        android:id="@+id/act_kafenqi_customer_perf_detail_listview"
+    <LinearLayout
+        android:id="@+id/act_province_manager_card_erji_perf"
+        android:padding="20dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:divider="@color/gray_bg"
-        tools:listitem="@layout/kafenqi_performance_detail_adapter"
-        android:dividerHeight="5dp"></ListView>
+        android:layout_height="80dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="20dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/my_performance"/>
+
+        <TextView
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:textSize="20dp"
+            android:text="二级行业绩"/>
+
+    </LinearLayout>
 
 </LinearLayout>

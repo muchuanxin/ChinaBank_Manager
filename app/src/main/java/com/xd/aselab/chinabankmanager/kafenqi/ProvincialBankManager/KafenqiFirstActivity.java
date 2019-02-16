@@ -101,7 +101,6 @@ public class KafenqiFirstActivity extends AppCompatActivity {
             }
         });
 
-
     }
 
     private void showPopUpWindow(){

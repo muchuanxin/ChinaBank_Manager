@@ -22,9 +22,12 @@ import android.widget.Toast;
 
 import com.xd.aselab.chinabankmanager.R;
 import com.xd.aselab.chinabankmanager.activity.Login;
+import com.xd.aselab.chinabankmanager.activity.Manager.MyManagement;
 import com.xd.aselab.chinabankmanager.activity.province.ErjiScoreDivisionActivity;
 import com.xd.aselab.chinabankmanager.activity.province.VirtualListActivity;
 import com.xd.aselab.chinabankmanager.kafenqi.ProvincialBankManager.KafenqiFirstActivity;
+import com.xd.aselab.chinabankmanager.kafenqi.ProvincialBankManager.ProvinceManagerCardActivity;
+import com.xd.aselab.chinabankmanager.kafenqi.ProvincialBankManager.ProvinceManagerKafenqiActivity;
 import com.xd.aselab.chinabankmanager.marketingGuide.MarketingGuideNew;
 import com.xd.aselab.chinabankmanager.util.ConnectUtil;
 import com.xd.aselab.chinabankmanager.util.ImageLoader;
@@ -185,7 +188,9 @@ public class ProvinceMainFragment extends Fragment {
         ll_card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(),"省行管理者信用卡发管理界面",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent();
+                intent.setClass(getActivity(), ProvinceManagerCardActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -200,7 +205,7 @@ public class ProvinceMainFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
-                intent.setClass(getActivity(), KafenqiFirstActivity.class);
+                intent.setClass(getActivity(), ProvinceManagerKafenqiActivity.class);
                 startActivity(intent);
             }
         });

@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_lobby_performance"
+    android:id="@+id/activity_province_manager_card_div_lobby_performance"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#fff"
-    tools:context=".activity.Manager.LobbyPerformance">
+    tools:context=".kafenqi.ProvincialBankManager.ProvinceManagerCardDivLobbyPerformance">
 
     <RelativeLayout
         android:id="@+id/worker_myPerfor_status_background"
@@ -21,7 +22,7 @@
         android:background="@drawable/navigation_bg">
 
         <RelativeLayout
-            android:id="@+id/worker_performance_back_btn"
+            android:id="@+id/province_non_car_back_btn"
             android:layout_width="45dp"
             android:layout_height="match_parent">
 
@@ -39,7 +40,7 @@
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:gravity="center"
-            android:text="大堂助理业绩"
+            android:text="二级行业绩"
             android:textColor="#fff"
             android:textSize="22dp" />
 
@@ -63,7 +64,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/act_lobby_perf_sort"
+                android:id="@+id/province_sort"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="30dp"
@@ -96,9 +97,8 @@
             android:gravity="center"
             android:orientation="horizontal">
 
-
             <TextView
-                android:id="@+id/worker_timeSelect"
+                android:id="@+id/province_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -125,36 +125,38 @@
         android:background="#e7e7e7"/>
 
     <ListView
-        android:id="@+id/list_lobby_performance"
+        android:id="@+id/list_province"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/tab"
         android:layout_margin="5dp"
         android:divider="@color/gray_bg"
         android:visibility="visible"
-        android:dividerHeight="5dp">
-    </ListView>
+        android:dividerHeight="5dp" />
 
-    <RelativeLayout
-        android:id="@+id/act_lobby_perf_no_data"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+    <LinearLayout
+        android:id="@+id/province_no_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/tab"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical"
         android:visibility="gone">
+
         <ImageView
-            android:id="@+id/act_lobby_perf_no_data_img"
+            android:id="@+id/province_no_data_img"
             android:layout_width="85dp"
             android:layout_height="85dp"
-            android:layout_centerInParent="true"
-            android:src="@drawable/no_data"/>
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/no_data" />
+
         <TextView
-            android:id="@+id/act_lobby_perf_no_data_text"
-            android:layout_below="@id/act_lobby_perf_no_data_img"
-            android:layout_width="match_parent"
+            android:id="@+id/province_no_data_text"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:textSize="14dp"
-            android:text="当前时间段没有数据~"/>
-    </RelativeLayout>
+            android:text="当前时间段没有数据~" />
+    </LinearLayout>
 
 </RelativeLayout>
