@@ -40,8 +40,8 @@ public class ConnectUtil {
 	//public final static String API_HOST = "http://117.34.117.107/ChinaBank/Manager/";
 //	public final static String IP = "http://47.93.31.35/";
 //	public final static String IP = "http://192.168.0.129/";
-	//public final static String IP = "http://192.168.0.27/";
-	//public final static String IP = "http://192.168.0.27:8080/";
+//	public final static String IP = "http://192.168.0.27/";
+//	public final static String IP = "http://192.168.0.27:8080/";
 	//public final static String IP = "http://192.168.0.73:8080/";
 	//public final static String IP = "http://10.170.13.113:8080/";
 	//public final static String IP = "http://117.34.117.107/";
@@ -61,7 +61,7 @@ public class ConnectUtil {
     public final static String ExpelMemberFromGroup=Chat+"ExpelMemberFromGroup";
     public final static String DissolveChatGroup=Chat+"DissolveChatGroup";
     public final static String LeaveChatGroup=Chat+"LeaveChatGroup";
-    public final static String GetGroupMember=Chat+"GetGroupMember";
+		public final static String GetGroupMember=Chat+"GetGroupMember";
     public final static String GetMyCreateGroup=Chat+"GetMyCreateGroup";
     public final static String GetMyJoinGroup=Chat+"GetMyJoinGroup";
     public final static String InviteMemberToGroup=Chat+"InviteMemberToGroup";

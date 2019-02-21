@@ -282,32 +282,34 @@ public class Login extends AppCompatActivity {
                             e.printStackTrace();
                         }
                         break;
-                    case 1:
-                        try {
-                            String reCode = (String) msg.obj;
-                            if (reCode != null && !"{}".equals(reCode)) {
-                                JSONObject json = new JSONObject(reCode);
-                                String status = json.getString("status");
-                                if ("false".equals(status)) {
-                                    Toast.makeText(Login.this, json.getString("message"), Toast.LENGTH_SHORT).show();
-                                } else if ("true".equals(status)) {
-                                    String new_version = json.getString("version");
-                                    if (new_version != null && !"".equals(new_version)) {
-                                        UpdateManager updateManager = UpdateManager.getUpdateManager();
-                                        updateManager.judgeAppUpdate(new_version, Login.this);
-                                    } else {
-                                        Log.e("new_version", "版本号为空串");
-                                    }
-                                }
-                            } else if (reCode != null && "{}".equals(reCode)) {
-                                Log.e("new_version", "版本号为空null");
-                            } else {
-                                Log.e("connect", "连接失败，未获取版本号");
-                            }
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                        break;
+
+                        //新版本更新提示
+//                    case 1:
+//                        try {
+//                            String reCode = (String) msg.obj;
+//                            if (reCode != null && !"{}".equals(reCode)) {
+//                                JSONObject json = new JSONObject(reCode);
+//                                String status = json.getString("status");
+//                                if ("false".equals(status)) {
+//                                    Toast.makeText(Login.this, json.getString("message"), Toast.LENGTH_SHORT).show();
+//                                } else if ("true".equals(status)) {
+//                                    String new_version = json.getString("version");
+//                                    if (new_version != null && !"".equals(new_version)) {
+//                                        UpdateManager updateManager = UpdateManager.getUpdateManager();
+//                                        updateManager.judgeAppUpdate(new_version, Login.this);
+//                                    } else {
+//                                        Log.e("new_version", "版本号为空串");
+//                                    }
+//                                }
+//                            } else if (reCode != null && "{}".equals(reCode)) {
+//                                Log.e("new_version", "版本号为空null");
+//                            } else {
+//                                Log.e("connect", "连接失败，未获取版本号");
+//                            }
+//                        } catch (Exception e) {
+//                            e.printStackTrace();
+//                        }
+//                        break;
                     default:
                         Log.e("Login_Activity", Login.this.getResources().getString(R.string.handler_what_exception));
                         break;
