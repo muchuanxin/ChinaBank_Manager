@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.xd.aselab.chinabankmanager"
-    android:versionCode="8"
-    android:versionName="3.0.3">
+    android:versionCode="9"
+    android:versionName="3.0.4">
 
     <permission
         android:name="${applicationId}.permission.JPUSH_MESSAGE"
