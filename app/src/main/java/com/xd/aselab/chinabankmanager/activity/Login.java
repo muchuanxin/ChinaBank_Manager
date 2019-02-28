@@ -212,16 +212,26 @@ public class Login extends AppCompatActivity {
 //                                    else if ("MANAGER".equals(job)) {
 //                                        startActivity(new Intent().setClass(Login.this, MainActivity_Boss.class));
 //                                    }
+
+                                    // 暂时性处理
+                                    // 封堵高新路支行的积分账号登录
+                                    // 弹出提示，然后break退出switch分支
+                                    if (scoreFlag && "4613086066".equals(spu.getBranchLevel2())) {
+                                        Toast.makeText(Login.this, "您的账号当前无法登录", Toast.LENGTH_SHORT).show();
+                                        break;
+                                    }
+
                                     // 判断页面跳转，是否应该去积分页面
                                     // 跳转之前先finish
                                     finish();
+                                    // 如果是高新路支行的积分小号，不让登录
                                     if (scoreFlag) {
                                         startActivity(new Intent().setClass(Login.this, BaseIndexActivity.class));
                                     } else {
+                                        // 普通账号跳转
                                         startActivity(new Intent().setClass(Login.this, MainActivity.class));
                                     }
                                     // 之前有用，目前没啥用
-//
 //                                    if ("toast_i".equals(clickView)) {
 //                                        finish();
 //                                    } else if ("personalInfo".equals(clickView)) {
@@ -320,6 +330,10 @@ public class Login extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // 积分登录的识别变量初始化
+                // 以防用户先用积分账号后用普通账号登录，出现错乱
+                scoreFlag = false;
+
                 // 先把用户输入的用户名存在full_account里
                 // 方便积分用户的自动登录处理
                 full_account = account_edit.getText().toString().trim();
@@ -360,6 +374,9 @@ public class Login extends AppCompatActivity {
                         account = full_account;
                     }
 
+                    Log.e("dardai_jf", "account:" + account);
+                    Log.e("dardai_jf", "full_account:" + full_account);
+                    Log.e("dardai_jf", ""+ scoreFlag);
                     // 提示用户稍候，向接口发送数据
                     showProgressDialog();
                     new Thread() {
