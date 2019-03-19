@@ -14,6 +14,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.PermissionChecker;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -76,7 +77,7 @@ public class GrabPerformanceDetailActivity extends AppCompatActivity {
                             map.put("serial_num", temp.getString("serial_num"));
                             DecimalFormat df = new DecimalFormat("#.00");
                             map.put("money", df.format(temp.getDouble("money"))+"");
-//                            map.put("status", temp.getString("status"));
+                            map.put("status", temp.getString("confirm"));
                             temp_list.add(map);
                             final_list.add(map);
                             if (temp_list.size() == 0) {
@@ -195,6 +196,7 @@ public class GrabPerformanceDetailActivity extends AppCompatActivity {
             viewHolder.tel.setText("联系电话：" + mymap.get("telephone") + "");
             viewHolder.serial_num.setText("流水号：" + mymap.get("serial_num") + "");
             viewHolder.money.setText("分期金额：" + mymap.get("money") + "");
+            viewHolder.status.setText("已完成");
             viewHolder.image.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -223,14 +225,8 @@ public class GrabPerformanceDetailActivity extends AppCompatActivity {
                     } else {
                         startActivity(intent);
                     }
-
-
                 }
-
-
             });
-            viewHolder.status.setText("已放款");
-
             if(mymap.get("product_type").equals("car")){
                 viewHolder.type.setText("产品类型：" + "汽车分期");
             }else if(mymap.get("product_type").equals("parking")){
@@ -242,7 +238,6 @@ public class GrabPerformanceDetailActivity extends AppCompatActivity {
             }else if(mymap.get("product_type").equals("youke")){
                 viewHolder.type.setText("产品类型：" + "优客业务");
             }
-
 
             return myview;
         }

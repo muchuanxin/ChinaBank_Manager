@@ -52,9 +52,8 @@ public class Login extends AppCompatActivity {
     private ProgressDialog progDialog = null;
 
     private String account;
-    private String full_account;
+    private String accountType;
     private String psw;
-    private boolean scoreFlag = false;  // 积分账号登录时的判别标志
 
 //    private String clickView = "";
     private Handler handler;
@@ -157,7 +156,8 @@ public class Login extends AppCompatActivity {
                                     // 省行角色的分支
                                     if ("PROVINCE".equals(json.getString("job"))) {
                                         spu.setAccount(account);
-                                        spu.setFullAccount(full_account);
+                                        // 设置新增的账号类型字段
+                                        spu.setAccountType(json.getString("accountType"));
                                         spu.setPassword(psw);
                                         spu.setJobNumber(json.getString("jobNumber"));
                                         spu.setName(json.getString("realName"));
@@ -170,8 +170,8 @@ public class Login extends AppCompatActivity {
                                     }else {
                                         // 一线经理、二级行的分支
                                         spu.setAccount(account);
-                                        // 设置full_account，方便积分账号的自动填充
-                                        spu.setFullAccount(full_account);
+                                        // 设置新增的账号类型字段
+                                        spu.setAccountType(json.getString("type"));
                                         spu.setPassword(psw);
                                         spu.setPhotoUrl(json.getString("head_image"));
 
@@ -216,16 +216,17 @@ public class Login extends AppCompatActivity {
                                     // 暂时性处理
                                     // 封堵高新路支行的积分账号登录
                                     // 弹出提示，然后break退出switch分支
-                                    if (scoreFlag && "4613086066".equals(spu.getBranchLevel2())) {
-                                        Toast.makeText(Login.this, "您的账号当前无法登录", Toast.LENGTH_SHORT).show();
-                                        break;
-                                    }
+//                                    if (scoreFlag && "4613086066".equals(spu.getBranchLevel2())) {
+//                                        Toast.makeText(Login.this, "您的账号当前无法登录", Toast.LENGTH_SHORT).show();
+//                                        break;
+//                                    }
 
                                     // 判断页面跳转，是否应该去积分页面
                                     // 跳转之前先finish
                                     finish();
-                                    // 如果是高新路支行的积分小号，不让登录
-                                    if (scoreFlag) {
+                                    // 根据当前账号的类型判断跳转页面
+                                    accountType= spu.getAccountType();
+                                    if ("SCORE".equals(accountType)) {
                                         startActivity(new Intent().setClass(Login.this, BaseIndexActivity.class));
                                     } else {
                                         // 普通账号跳转
@@ -330,16 +331,11 @@ public class Login extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // 积分登录的识别变量初始化
-                // 以防用户先用积分账号后用普通账号登录，出现错乱
-                scoreFlag = false;
-
-                // 先把用户输入的用户名存在full_account里
-                // 方便积分用户的自动登录处理
-                full_account = account_edit.getText().toString().trim();
+                // 把用户输入的用户名存在account里
+                account = account_edit.getText().toString().trim();
                 psw = psw_edit.getText().toString().trim();
                 // 输入的判空
-                if (full_account == null || "".equals(full_account) || psw == null || "".equals(psw)) {
+                if (account == null || "".equals(account) || psw == null || "".equals(psw)) {
                     Toast.makeText(Login.this, "请输入账号密码", Toast.LENGTH_SHORT).show();
                 } else {
                     /*if("0001".equals(account)){
@@ -360,23 +356,6 @@ public class Login extends AppCompatActivity {
                             Toast.makeText(Login.this, "用户名或密码错误", Toast.LENGTH_SHORT).show();
                         }
                     }else{*/
-
-                    // 判断账号是否为积分账号，看最后3位后缀
-                    // 如果是"_JF"，去掉fullAccount的后缀
-                    // 同时令积分账号登录flag为1，准备跳转到积分账号页
-                    String postfix = full_account.substring(full_account.length() - 3);
-                    if (postfix.equalsIgnoreCase("_JF")) {
-                        spu.setFullAccount(account);
-                        account = full_account.substring(0, full_account.length() - 3);
-                        scoreFlag = true;
-                    } else {
-                        // 否则account和full_account相同
-                        account = full_account;
-                    }
-
-                    Log.e("dardai_jf", "account:" + account);
-                    Log.e("dardai_jf", "full_account:" + full_account);
-                    Log.e("dardai_jf", ""+ scoreFlag);
                     // 提示用户稍候，向接口发送数据
                     showProgressDialog();
                     new Thread() {
@@ -407,7 +386,7 @@ public class Login extends AppCompatActivity {
         // 用户名的自动填充
         // fullAccount包括了带_JF后缀的假账号
         if (!"".equals(spu.getAccount())) {
-            account_edit.setText(spu.getFullAccount());
+            account_edit.setText(spu.getAccount());
             psw_edit.setText(spu.getPassword());
         }
         if (spu.getAccount().length() > 0) {

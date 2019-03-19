@@ -12,25 +12,25 @@ public class SharePreferenceUtil {
         editor = sp.edit();
     }
 
+    // 账号类型，是正常账号还是积分账号
+    public void setAccountType(String accountType) {
+        editor.putString("accountType", accountType);
+        editor.commit();
+    }
+
+    public String getAccountType() {
+        return sp.getString("accountType", "");
+    }
+
+
     // 账号
     public void setAccount(String account) {
         editor.putString("account", account);
         editor.commit();
     }
 
-    // 用户输入的完整账号
-    // 主要是加了_JF后缀的账号方便自动登录
-    public void setFullAccount(String account) {
-        editor.putString("fullAccount", account);
-        editor.commit();
-    }
-
     public String getAccount() {
         return sp.getString("account", "");
-    }
-
-    public String getFullAccount() {
-        return sp.getString("fullAccount", "");
     }
 
     // 密码  存储的是没加密的
