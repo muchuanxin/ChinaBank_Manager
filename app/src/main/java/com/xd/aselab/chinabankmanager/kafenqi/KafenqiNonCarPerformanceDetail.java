@@ -129,6 +129,7 @@ public class KafenqiNonCarPerformanceDetail extends AppCompatActivity {
                                         nonCarVO.setProduct_type(temp.getString("product_type"));
                                         nonCarVO.setInstallment_num(temp.getInt("installment_num"));
                                         nonCarVO.setSerial_num(temp.getString("serial_num"));
+                                        nonCarVO.setConfirm(temp.getString("confirm"));
 
                                         nonCarVOList.add(nonCarVO);
                                     }

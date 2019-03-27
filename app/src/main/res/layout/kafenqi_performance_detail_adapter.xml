@@ -62,13 +62,31 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/kafenqi_perf_total_money"
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:textSize="16dp"
-                    android:text="分期总金额：12.7950万"/>
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/kafenqi_perf_total_money"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:textSize="16dp"
+                        android:text="分期总金额：12.7950万"/>
+
+                    <TextView
+                        android:id="@+id/status"
+                        android:layout_width="60dp"
+                        android:layout_height="20dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_alignParentRight="true"
+                        android:text="已完成"
+                        android:textSize="12dp"
+                        android:textAlignment="center"
+                        android:textColor="#ffffff"
+                        android:background="@drawable/blue_corner_rectangle"/>
+
+                </RelativeLayout>
 
                 <TextView
                     android:id="@+id/kafenqi_perf_tel"
@@ -114,27 +132,33 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:orientation="vertical"
                 android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:orientation="horizontal">
+                android:layout_centerVertical="true">
 
-                <ImageView
-                    android:id="@+id/kafenqi_perf_beizhu"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginRight="15dp"
-                    android:src="@drawable/base_info"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:orientation="horizontal">
 
-                <ImageView
-                    android:id="@+id/kafenqi_perf_call"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_toRightOf="@+id/kafenqi_perf_beizhu"
-                    android:src="@drawable/telephone_red"/>
+                    <ImageView
+                        android:id="@+id/kafenqi_perf_beizhu"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginRight="15dp"
+                        android:src="@drawable/base_info"/>
+
+                    <ImageView
+                        android:id="@+id/kafenqi_perf_call"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_toRightOf="@+id/kafenqi_perf_beizhu"
+                        android:src="@drawable/telephone_red"/>
+
+                </LinearLayout>
 
             </LinearLayout>
-
-
 
         </RelativeLayout>
 

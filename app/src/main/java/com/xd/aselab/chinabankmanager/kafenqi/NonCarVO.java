@@ -11,6 +11,7 @@ public class NonCarVO {
     private String serial_num;
     private double loan_money;
     private String product_type;
+    private String confirm;
 
     public String getApplicant_id() { return applicant_id; }
     public void setApplicant_id(String applicant_id) { this.applicant_id = applicant_id; }
@@ -39,5 +40,8 @@ public class NonCarVO {
 
     public double getLoan_money() { return loan_money; }
     public void setLoan_money(double loan_money) { this.loan_money = loan_money; }
+
+    public String getConfirm() { return confirm; }
+    public void setConfirm(String confirm) { this.confirm = confirm; }
 
 }

@@ -42,7 +42,7 @@ public class ConnectUtil {
 //	public final static String IP = "http://192.168.0.129/";
 //	public final static String IP = "http://192.168.0.27/";
 //	public final static String IP = "http://192.168.0.27:8080/";
-	//public final static String IP = "http://192.168.0.73:8080/";
+//	public final static String IP = "http://192.168.0.73:8080/";
 	//public final static String IP = "http://10.170.13.113:8080/";
 	//public final static String IP = "http://117.34.117.107/";
 //	public final static String IP = "http://juyuntechinfo.gotoip1.com/";

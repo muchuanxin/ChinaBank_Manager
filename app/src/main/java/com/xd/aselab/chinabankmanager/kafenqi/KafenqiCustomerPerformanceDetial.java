@@ -125,6 +125,7 @@ public class KafenqiCustomerPerformanceDetial extends AppCompatActivity {
                                         customerVO.setTime(temp.getString("time"));
                                         customerVO.setInstallment_num(temp.getInt("installment_num"));
                                         customerVO.setSerial_num(temp.getString("serial_num"));
+                                        customerVO.setStatus(temp.getString("confirm"));
 //                                        tel = temp.getString("telephone");
 
                                         customerVOList.add(customerVO);
