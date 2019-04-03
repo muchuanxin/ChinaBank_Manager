@@ -10,6 +10,7 @@ public class CustomerVO {
     private int installment_num;
     private String serial_num;
     private double loan_money;
+    private String status;
 
     public String getApplicant_id() { return applicant_id; }
     public void setApplicant_id(String applicant_id) { this.applicant_id = applicant_id; }
@@ -35,4 +36,8 @@ public class CustomerVO {
 
     public double getLoan_money() { return loan_money; }
     public void setLoan_money(double loan_money) { this.loan_money = loan_money; }
+
+    public String getStatus() { return status; }
+    public void setStatus(String status) { this.status = status; }
+
 }

@@ -66,6 +66,7 @@ public class KafenqiNonCarPerfomanceDetailAdapter extends BaseAdapter {
             viewHolder.tv_product_type = (TextView) convertView.findViewById(R.id.kafenqi_perf_product_type);
             viewHolder.beizhu = (ImageView) convertView.findViewById(R.id.kafenqi_perf_beizhu);
             viewHolder.call = (ImageView) convertView.findViewById(R.id.kafenqi_perf_call);
+            viewHolder.confirm = (TextView) convertView.findViewById(R.id.status);
 
             convertView.setTag(viewHolder);
         } else {
@@ -78,6 +79,34 @@ public class KafenqiNonCarPerfomanceDetailAdapter extends BaseAdapter {
         viewHolder.tv_total_money.setText("分期总金额：" + df.format(list.get(position).getTotal_money()) + "万");
         viewHolder.tv_tel.setText("联系电话：" + list.get(position).getTel());
         viewHolder.tv_month.setText("分期数：" + list.get(position).getInstallment_num() + "月");
+
+        String confirm = list.get(position).getConfirm();
+        switch (confirm)
+        {
+            case "SUCCESS" :
+                viewHolder.confirm.setText("业务通过");
+                break;
+
+            case "YES" :
+                viewHolder.confirm.setText("已确认");
+                break;
+
+            case "NO" :
+                viewHolder.confirm.setText("已拒绝");
+                break;
+
+            case "CHECK" :
+                viewHolder.confirm.setText("审核中");
+                break;
+
+            case "FAIL" :
+                viewHolder.confirm.setText("业务不通过");
+                break;
+
+            default:
+                break;
+        }
+
         if(list.get(position).getProduct_type().equals("parking")) {
             viewHolder.tv_product_type.setText("产品类型：" + productTypes[0]);
         }
@@ -117,6 +146,7 @@ public class KafenqiNonCarPerfomanceDetailAdapter extends BaseAdapter {
         viewHolder.tv_loan_money.setTag(position);
         viewHolder.beizhu.setTag(position);
         viewHolder.call.setTag(position);
+        viewHolder.confirm.setTag(position);
 
         return convertView;
     }
@@ -132,6 +162,7 @@ public class KafenqiNonCarPerfomanceDetailAdapter extends BaseAdapter {
         private TextView tv_product_type;
         private ImageView beizhu;
         private ImageView call;
+        private TextView confirm;
     }
 
     public static abstract class ListBtnListener implements View.OnClickListener {

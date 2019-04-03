@@ -64,6 +64,7 @@ public class KafenqiCustomerPerformanceDetailAdapter extends BaseAdapter {
             viewHolder.tv_product_type = (TextView) convertView.findViewById(R.id.kafenqi_perf_product_type);
             viewHolder.beizhu = (ImageView) convertView.findViewById(R.id.kafenqi_perf_beizhu);
             viewHolder.call = (ImageView) convertView.findViewById(R.id.kafenqi_perf_call);
+            viewHolder.tv_status = (TextView) convertView.findViewById(R.id.status);
 
             convertView.setTag(viewHolder);
         } else {
@@ -77,6 +78,33 @@ public class KafenqiCustomerPerformanceDetailAdapter extends BaseAdapter {
         viewHolder.tv_total_money.setText("分期总金额：" + df.format(list.get(position).getTotal_money()) + "万");
         viewHolder.tv_tel.setText("联系电话：" + list.get(position).getTel());
         viewHolder.tv_month.setText("分期数：" + list.get(position).getInstallment_num() + "月");
+
+        String confirm = list.get(position).getStatus();
+        switch (confirm)
+        {
+            case "SUCCESS" :
+                viewHolder.tv_status.setText("业务通过");
+                break;
+
+            case "YES" :
+                viewHolder.tv_status.setText("已确认");
+                break;
+
+            case "NO" :
+                viewHolder.tv_status.setText("已拒绝");
+                break;
+
+            case "CHECK" :
+                viewHolder.tv_status.setText("审核中");
+                break;
+
+            case "FAIL" :
+                viewHolder.tv_status.setText("业务不通过");
+                break;
+
+            default:
+                break;
+        }
 
         String status = list.get(position).getSerial_num();
         if(!"".equals(status)) {
@@ -106,6 +134,7 @@ public class KafenqiCustomerPerformanceDetailAdapter extends BaseAdapter {
         viewHolder.tv_loan_money.setTag(position);
         viewHolder.beizhu.setTag(position);
         viewHolder.call.setTag(position);
+        viewHolder.tv_status.setTag(position);
 
         return convertView;
     }
@@ -121,6 +150,7 @@ public class KafenqiCustomerPerformanceDetailAdapter extends BaseAdapter {
         private TextView tv_product_type;
         private ImageView beizhu;
         private ImageView call;
+        private TextView tv_status;
     }
 
     public static abstract class ListBtnListener implements View.OnClickListener {
