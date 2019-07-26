@@ -168,7 +168,8 @@ public class ScoreTransferActivity extends AppCompatActivity {
                         public void run(){
                             super.run();
                             PostParameter[] params = new PostParameter[3];
-                            params[0] = new PostParameter("giver_account",spu.getAccount());
+                            String account = spu.getAccount();
+                            params[0] = new PostParameter("giver_account",account.substring(0,account.length()-3));
                             params[1] = new PostParameter("receiver_account",target_account);
                             params[2] = new PostParameter("score",amount);
                             // 发送数据，获取返回字符串

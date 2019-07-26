@@ -78,27 +78,28 @@ public class ScoreShopActivity extends AppCompatActivity {
         // 账号、未兑换积分信息
         sp = new SharePreferenceUtil(ScoreShopActivity.this, "user");
         account = sp.getAccount();
+        // 去掉_jf后缀
+        account = account.substring(0, account.length() - 3);
         score = getIntent().getIntExtra("not_exchange_score", 0);
         // 随机数获取，用于加密
         noString = generate6RandomNumber();
-        String sign_content = "appsecret="+ EncryptUtils.AppSecret+"&nostring="+noString+"&score="+score+"&uid="+account;
+        String sign_content = "appsecret=" + EncryptUtils.AppSecret + "&nostring=" + noString + "&score=" + score + "&uid=" + account;
         sign = Encode.getEncode("MD5", sign_content);
-
         // 发送的数据都加密处理
         // 之后打开商城网页
         try {
             String account_encrypt = EncryptUtils.encrypt(EncryptUtils.AppKey, account.getBytes("UTF-8"));
-            String score_encrypt = EncryptUtils.encrypt(EncryptUtils.AppKey, (""+score).getBytes("UTF-8"));
+            String score_encrypt = EncryptUtils.encrypt(EncryptUtils.AppKey, ("" + score).getBytes("UTF-8"));
 
             //测试url
             //String url = "http://jifen.koudaiqifu.cn/1000424?uid="+account_encrypt+"&score="+score_encrypt+"&nostring="+noString+"&sign="+sign;
 
             //正式url
-            String url = "https://jifen.fxqifu.com/1000229?uid="+account_encrypt+"&score="+score_encrypt+"&nostring="+noString+"&sign="+sign;
+            String url = "https://jifen.fxqifu.com/1000229?uid=" + account_encrypt + "&score=" + score_encrypt + "&nostring=" + noString + "&sign=" + sign;
             wv_webView.loadUrl(url);
 
-            Log.e("account", account);
-            Log.e("score", score+"");
+            Log.e("dardai:account", account);
+            Log.e("dardai:score", score + "");
             Log.e("noString", noString);
             Log.e("sign_content", sign_content);
             Log.e("sign", sign);
@@ -106,13 +107,13 @@ public class ScoreShopActivity extends AppCompatActivity {
             Log.e("score_encrypt", score_encrypt);
             Log.e("url", url);
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
         // 重载webView的shouldOverrideUrlLoading()方法
         // 使得打开网页时不调用系统浏览器， 而是在本WebView中显示
-        wv_webView.setWebViewClient(new WebViewClient(){
+        wv_webView.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 view.loadUrl(url);
@@ -121,12 +122,13 @@ public class ScoreShopActivity extends AppCompatActivity {
 
             //解决HTTPS图片不显示的问题
             @Override
-            public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error){
+            public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
                 handler.proceed(); // 接受网站证书
             }
         });
 
     }
+
     // 其他按键事件的监测和响应
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if ((keyCode == KeyEvent.KEYCODE_BACK) && wv_webView.canGoBack()) {
@@ -137,10 +139,10 @@ public class ScoreShopActivity extends AppCompatActivity {
     }
 
     // 加密用的随机数生成
-    private String generate6RandomNumber(){
+    private String generate6RandomNumber() {
         Random rand = new Random();
         StringBuffer stringBuffer = new StringBuffer();
-        for (int i=0; i<6; i++){
+        for (int i = 0; i < 6; i++) {
             stringBuffer.append(rand.nextInt(10));
         }
         return stringBuffer.toString();

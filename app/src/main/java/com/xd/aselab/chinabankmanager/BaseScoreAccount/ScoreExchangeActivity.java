@@ -34,7 +34,6 @@ public class ScoreExchangeActivity extends AppCompatActivity {
     private int unexchanged_score = 0;
 
     // 接口数据处理，onResume负责请求数据
-    @SuppressLint("HandlerLeak")
     Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -54,8 +53,8 @@ public class ScoreExchangeActivity extends AppCompatActivity {
                         if ("true".equals(obj.getString("status"))) {
                             // 取出并显示积分数据
                             tv_all_score.setText(obj.getString("total_score"));
-                            tv_exchanged_score.setText(obj.getString("not_exchange_score"));
-                            tv_unexchanged_score.setText(obj.getString("exchange_score"));
+                            tv_exchanged_score.setText(obj.getString("exchange_score"));
+                            tv_unexchanged_score.setText(obj.getString("not_exchange_score"));
                             // 以int保存未兑换积分，给后边用
                             unexchanged_score = obj.getInt("not_exchange_score");
                         } else {
@@ -115,7 +114,8 @@ public class ScoreExchangeActivity extends AppCompatActivity {
                 super.run();
                 Message msg = handler.obtainMessage();
                 PostParameter post[] = new PostParameter[1];
-                post[0] = new PostParameter("account", sp.getAccount());
+                String account = sp.getAccount();
+                post[0] = new PostParameter("account", account.substring(0, account.length()-3));
                 String jsonStr = ConnectUtil.httpRequest(ConnectUtil.GetNotExchangedScore, post, "POST");
                 // 请求数据非法判断
                 if (("").equals(jsonStr) || jsonStr == null) {
