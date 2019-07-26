@@ -46,8 +46,9 @@ public class ConnectUtil {
 	//public final static String IP = "http://10.170.13.113:8080/";
 	//public final static String IP = "http://117.34.117.107/";
 //	public final static String IP = "http://juyuntechinfo.gotoip1.com/";
-	public final static String IP = "http://www.juyunjinrongapp.com/";
+//	public final static String IP = "http://www.juyunjinrongapp.com/";
 	//public final static String IP = "http://javaapp.gotoip2.com/";
+	public final static String IP = "http://39.100.100.198:88/";
 	public final static String SERVER = IP +"ChinaBank/";
 	public final static String API_HOST = SERVER+"Manager/";
     public final static String API_Chat = SERVER+"Chat/";
